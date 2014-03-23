@@ -12,41 +12,45 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.dd.rgsc.Activity_DdrSn1ScoreCalculator;
 import com.dd.rgsc.R;
 
 public class Activity_Main extends Activity {
-	
+
 	protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("In the Groove");
-        list.add("DDR Extreme");
-        list.add("DDR Supernova");
-        list.add("DDR Supernova 2");
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
-                android.R.layout.simple_list_item_1, list);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("In the Groove");
+		list.add("DDR Extreme");
+		list.add("DDR Supernova");
+		list.add("DDR Supernova 2");
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, list);
 		ListView listView = (ListView) findViewById(R.id.game_menu_selector_view);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
-		            int position, long id) {
+					int position, long id) {
 				Intent intent = new Intent();
 				switch (position) {
 				case 0:
-					intent = new Intent (view.getContext(), Activity_ItgScoreCalculator.class);
+					intent = new Intent(view.getContext(),
+							Activity_Calculator_InTheGroove.class);
 					break;
 				case 1:
-					intent = new Intent(view.getContext(), Activity_DdrExScoreCalculator.class);
+					intent = new Intent(view.getContext(),
+							Activity_Calculator_DDRExtreme.class);
 					break;
 				case 2:
-					intent = new Intent(view.getContext(), Activity_DdrSn1ScoreCalculator.class);
+					intent = new Intent(view.getContext(),
+							Activity_Calculator_DDRSN1.class);
 					break;
 				case 3:
-					intent = new Intent(view.getContext(), Activity_DdrSn2ScoreCalculator.class);
+					intent = new Intent(view.getContext(),
+							Activity_Calculator_DDRSN2.class);
 					break;
 				default:
-					System.out.println("Error: No class configured for list item.");
+					System.out
+							.println("Error: No class configured for list item.");
 				}
 				startActivity(intent);
 			}

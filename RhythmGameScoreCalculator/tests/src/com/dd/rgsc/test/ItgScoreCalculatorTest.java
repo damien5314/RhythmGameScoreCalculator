@@ -6,18 +6,18 @@ import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.TextView;
 
 import com.dd.rgsc.R;
-import com.ddiehl.rgsc.Activity_ItgScoreCalculator;
+import com.ddiehl.rgsc.Activity_Calculator_InTheGroove;
 import com.robotium.solo.Solo;
 
 public class ItgScoreCalculatorTest extends
-		ActivityInstrumentationTestCase2<Activity_ItgScoreCalculator> {
+		ActivityInstrumentationTestCase2<Activity_Calculator_InTheGroove> {
 
-	private Activity_ItgScoreCalculator mItgScoreCalculator;
+	private Activity_Calculator_InTheGroove mItgScoreCalculator;
 	private TextView mTestText;
 	private Solo solo;
 
 	public ItgScoreCalculatorTest() {
-		super(Activity_ItgScoreCalculator.class);
+		super(Activity_Calculator_InTheGroove.class);
 	}
 
 	@Override

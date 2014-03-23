@@ -1,15 +1,17 @@
-package com.dd.rgsc;
+package com.ddiehl.rgsc;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 
-public class Activity_DdrSn1ScoreCalculator extends Activity {
+import com.dd.rgsc.R;
+
+public class Activity_Calculator_DDRSN1 extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_activity_ddr_sn1_score_calculator);
+		setContentView(R.layout.activity_calculator_ddrsn1);
 	}
 
 	@Override

@@ -12,11 +12,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.dd.rgsc.R;
 
-public class Activity_DdrExScoreCalculator extends Activity {
+public class Activity_Calculator_DDRSN2 extends Activity {
 
 	private static final int MARVELLOUSES_WEIGHT = 3;
 	private static final int PERFECTS_WEIGHT = 2;
@@ -25,18 +24,11 @@ public class Activity_DdrExScoreCalculator extends Activity {
 	private static final int BOOS_WEIGHT = -4;
 	private static final int MISSES_WEIGHT = -8;
 	private static final int HOLDS_WEIGHT = 6;
-	private boolean isCourseModeOn = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_ddr_ex_score_calculator);
-		ToggleButton tb = (ToggleButton) findViewById(R.id.courseModeToggle);
-		EditText et = (EditText) findViewById(R.id.marvellouses);
-		tb.setChecked(isCourseModeOn);
-		et.setFocusable(isCourseModeOn);
-		et.setFocusableInTouchMode(isCourseModeOn);
-		et.setEnabled(isCourseModeOn);
+		setContentView(R.layout.activity_calculator_ddrsn2);
 	}
 
 	@Override
@@ -51,7 +43,7 @@ public class Activity_DdrExScoreCalculator extends Activity {
 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 		
-		System.out.println("Calculating DDR EX score...");
+		System.out.println("Calculating DDR SN score...");
 		int earnedScore = 0;
 		int potentialScore = 0;
 		int marvellouses, perfects, greats, goods, boos, misses, holds, totalHolds;
@@ -99,8 +91,7 @@ public class Activity_DdrExScoreCalculator extends Activity {
 		if (stepTotal != 0) {
 			if (holds <= totalHolds) {
 				// Add number from each field multiplied by its weight to earned score
-				if (isCourseModeOn)
-					earnedScore += marvellouses * MARVELLOUSES_WEIGHT;
+				earnedScore += marvellouses * MARVELLOUSES_WEIGHT;
 				earnedScore += perfects * PERFECTS_WEIGHT;
 				earnedScore += greats * GREATS_WEIGHT;
 				earnedScore += goods * GOODS_WEIGHT;
@@ -109,14 +100,14 @@ public class Activity_DdrExScoreCalculator extends Activity {
 				earnedScore += holds * HOLDS_WEIGHT;
 				
 				// Calculate potential score
-				int bestWeight = (isCourseModeOn) ? MARVELLOUSES_WEIGHT : PERFECTS_WEIGHT;
+				int bestWeight = MARVELLOUSES_WEIGHT;
 				int[] imperfectSteps = {greats, goods, boos, misses, totalHolds-holds};
 				potentialScore += ((marvellouses + perfects + greats + goods + boos + misses) * bestWeight)
 						+ (totalHolds * HOLDS_WEIGHT);
 				
 				// Calculate score percentage rounded to 2 decimal places
 				double scorePercent = ((int)(((double)earnedScore / (double)potentialScore) * 10000) / 100.00);
-				String grade = calculateGrade(isCourseModeOn, scorePercent, imperfectSteps);
+				String grade = calculateGrade(scorePercent, imperfectSteps);
 				DecimalFormat df = new DecimalFormat("0.00");
 				System.out.println("Earned Score:    " + earnedScore);
 				System.out.println("Potential Score: " + potentialScore);
@@ -147,7 +138,7 @@ public class Activity_DdrExScoreCalculator extends Activity {
 		}
 	}
 	
-	public String calculateGrade(boolean isCourseModeOn, double percentScore, int[] imperfectSteps) {
+	public String calculateGrade(double percentScore, int[] imperfectSteps) {
 		// imperfectSteps = {greats, goods, boos, misses, totalHolds-holds}
 		boolean anyImperfectSteps = false;
 				for (int i = 0; i < imperfectSteps.length; i++)
@@ -155,11 +146,8 @@ public class Activity_DdrExScoreCalculator extends Activity {
 						anyImperfectSteps = true;
 				
 		if (!anyImperfectSteps) {
-			if (isCourseModeOn)
-				if (percentScore == 100.00)
-					return "(AAAA)";
-				else
-					return "(AAA)";
+			if (percentScore == 100.00)
+				return "(AAAA)";
 			else
 				return "(AAA)";
 		} else {
@@ -173,17 +161,6 @@ public class Activity_DdrExScoreCalculator extends Activity {
 				return "(C)";
 			else
 				return "(D)";
-		}
-	}
-	
-	public void toggleCourseMode(View v) {
-		isCourseModeOn = !isCourseModeOn;
-		EditText marv = (EditText) findViewById(R.id.marvellouses);
-		marv.setFocusable(isCourseModeOn);
-		marv.setFocusableInTouchMode(isCourseModeOn);
-		marv.setEnabled(isCourseModeOn);
-		if (!isCourseModeOn) {
-			marv.setText("");
 		}
 	}
 	
@@ -206,5 +183,5 @@ public class Activity_DdrExScoreCalculator extends Activity {
 		e = (EditText) findViewById(R.id.totalHolds);
 		e.setText("");
 	}
-	
+
 }

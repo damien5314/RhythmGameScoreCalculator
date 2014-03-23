@@ -7,14 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Activity_DdrSn2ScoreCalculator" >
+    tools:context=".Activity_Calculator_DDRExtreme" >
 
     <LinearLayout
 	    android:id="@+id/scoreEntry"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical"
-	    tools:context=".Activity_DdrSn2ScoreCalculator" >
+	    tools:context=".Activity_Calculator_DDRExtreme" >
 	    
         <LinearLayout
             style="@style/ScoreEntryRow" >
@@ -24,8 +24,12 @@
 		        android:id="@+id/marvellouses"
 		        android:hint="@string/marvellouses_hint" />
 		    
-		    <TextView 
-		        style="@style/ScoreEntryDummyElement" />
+		    <ToggleButton 
+		        android:id="@+id/courseModeToggle"
+		        android:layout_width="0dp"
+		        android:layout_height="@dimen/itg_field_height"
+		        android:layout_weight="1"
+		        android:onClick="toggleCourseMode" />
             
 		</LinearLayout>
 	    
@@ -127,7 +131,7 @@
 	    android:orientation="vertical"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    tools:context=".Activity_DdrSn2ScoreCalculator" >
+	    tools:context=".Activity_Calculator_DDRExtreme" >
 	    
 	    <TextView 
 	        android:id="@+id/scoreSectionLabel"

@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Activity_ItgScoreCalculator extends Activity {
+public class Activity_Calculator_InTheGroove extends Activity {
 
 	private static final int FANTASTICS_WEIGHT = 5;
 	private static final int EXCELLENTS_WEIGHT = 4;
@@ -27,7 +27,7 @@ public class Activity_ItgScoreCalculator extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_itg_score_calculator);
+		setContentView(R.layout.activity_calculator_inthegroove);
 	}
 
 	@Override
