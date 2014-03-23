@@ -23,9 +23,9 @@
     <string name="totalRolls_hint">Total Rolls</string>
     <string name="button_submit">Submit</string>
     <string name="itg_scoreSectionLabel">Calculated Score</string>
-    <string name="itg_earnedScoreLabel_default">Earned Score:</string>
+    <string name="itg_earnedScoreLabel_default">Earned Score</string>
     <string name="itg_earnedScoreValue_default">0</string>
-    <string name="itg_potentialScoreLabel_default">Potential Score:</string>
+    <string name="itg_potentialScoreLabel_default">Potential Score</string>
     <string name="itg_potentialScoreValue_default">0</string>
     <string name="itg_score_percent_default">0.00%</string>
     <string name="title_activity_ddr_ex_score_calculator">DDR Extreme</string>
