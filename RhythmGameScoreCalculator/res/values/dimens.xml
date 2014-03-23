@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <dimen name="introduction_header_size">35dp</dimen>
+    <dimen name="introduction_body_size">15dp</dimen>
+    
+    <dimen name="itg_field_height">48dp</dimen>
+    <dimen name="itg_field_width">140dp</dimen>
+    <dimen name="itg_scoreSectionLabel_size">30dp</dimen>
+    <dimen name="itg_earnedScoreLabel_size">20dp</dimen>
+    <dimen name="itg_earnedScoreValue_size">20dp</dimen>
+    <dimen name="itg_potentialScoreLabel_size">20dp</dimen>
+    <dimen name="itg_potentialScoreValue_size">20dp</dimen>
+    <dimen name="itg_score_percent_size">40dp</dimen>
+
+</resources>

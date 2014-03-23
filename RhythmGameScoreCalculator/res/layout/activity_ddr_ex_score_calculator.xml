@@ -1,0 +1,211 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".DdrExScoreCalculator" >
+
+    <LinearLayout
+	    android:id="@+id/scoreEntry"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    tools:context=".DdrExScoreCalculator" >
+	    
+        <LinearLayout
+            style="@style/ScoreEntryRow" >
+	
+		    <EditText
+		        style="@style/ScoreEntryElement"
+		        android:id="@+id/marvellouses"
+		        android:hint="@string/marvellouses_hint" />
+		    
+		    <ToggleButton 
+		        android:id="@+id/courseModeToggle"
+		        android:layout_width="0dp"
+		        android:layout_height="@dimen/itg_field_height"
+		        android:layout_weight="1"
+		        android:onClick="toggleCourseMode" />
+            
+		</LinearLayout>
+	    
+        <LinearLayout
+            style="@style/ScoreEntryRow" >
+            
+		    <EditText
+		        style="@style/ScoreEntryElement"
+		        android:id="@+id/perfects"
+		        android:hint="@string/perfects_hint" />
+		
+		    <EditText
+		        style="@style/ScoreEntryElement"
+		        android:id="@+id/holds"
+		        android:hint="@string/holds_hint" />
+		    
+        </LinearLayout>
+	    
+        <LinearLayout
+            style="@style/ScoreEntryRow" >
+		    
+		    <EditText
+		        style="@style/ScoreEntryElement"
+		        android:id="@+id/greats"
+		        android:hint="@string/greats_hint" />
+		
+		    <EditText
+		        style="@style/ScoreEntryElement"
+		        android:id="@+id/totalHolds"
+		        android:hint="@string/totalHolds_hint"
+		        android:nextFocusDown="@id/perfects" />
+		    
+		</LinearLayout>
+	    
+        <LinearLayout
+            style="@style/ScoreEntryRow" >
+	
+		    <EditText
+		        style="@style/ScoreEntryElement"
+		        android:id="@+id/goods"
+		        android:hint="@string/goods_hint" />
+		    
+		    <TextView 
+		        style="@style/ScoreEntryDummyElement" />
+            
+		</LinearLayout>
+	    
+        <LinearLayout
+            style="@style/ScoreEntryRow" >
+	
+		    <EditText
+		        style="@style/ScoreEntryElement"
+		        android:id="@+id/boos"
+		        android:hint="@string/boos_hint" />
+		    
+		    <TextView 
+		        style="@style/ScoreEntryDummyElement" />
+            
+		</LinearLayout>
+	    
+        <LinearLayout
+            style="@style/ScoreEntryRow" >
+	
+		    <EditText
+		        style="@style/ScoreEntryElement"
+		        android:id="@+id/misses"
+		        android:hint="@string/misses_hint"
+		        android:nextFocusDown="@id/holds" />
+		    
+		    <LinearLayout 
+		        android:orientation="horizontal"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:gravity="center" >
+		
+			    <Button
+			        android:id="@+id/submit"
+			        android:layout_width="wrap_content"
+			        android:layout_height="@dimen/itg_field_height"
+			        android:background="@drawable/submit_form"
+			        android:onClick="ddrexCalculateScore" />
+			    
+			    <Button 
+			        android:id="@+id/clearForm"
+			        android:layout_width="wrap_content"
+			        android:layout_height="@dimen/itg_field_height"
+			        android:background="@drawable/clear_form"
+			        android:onClick="clearForm" />
+			    
+		    </LinearLayout>
+        
+        </LinearLayout>
+	    
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:id="@+id/scoreDisplay"
+	    android:orientation="vertical"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    tools:context=".DdrExScoreCalculator" >
+	    
+	    <TextView 
+	        android:id="@+id/scoreSectionLabel"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/itg_scoreSectionLabel_size"
+	        android:text="@string/itg_scoreSectionLabel" />
+	    
+	    <LinearLayout 
+	        android:orientation="horizontal"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	        
+	        <TextView 
+		        android:id="@+id/earnedScoreLabel"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="@dimen/itg_earnedScoreLabel_size"
+		        android:text="@string/itg_earnedScoreLabel_default" />
+	    
+		    <TextView 
+		        android:id="@+id/earnedScoreValue"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:paddingLeft="10dp"
+		        android:textSize="@dimen/itg_earnedScoreValue_size"
+		        android:text="@string/itg_earnedScoreValue_default" />
+		    
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:orientation="horizontal"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	    
+		    <TextView 
+		        android:id="@+id/potentialScoreLabel"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="@dimen/itg_potentialScoreLabel_size"
+		        android:text="@string/itg_potentialScoreLabel_default" />
+		    
+		    <TextView 
+		        android:id="@+id/potentialScoreValue"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:paddingLeft="10dp"
+		        android:textSize="@dimen/itg_potentialScoreValue_size"
+		        android:text="@string/itg_potentialScoreValue_default" />
+		
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:orientation="horizontal"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	        
+	        <TextView 
+		        android:id="@+id/scorePercent"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="@dimen/itg_score_percent_size"
+		        android:text="@string/itg_score_percent_default" />
+	    
+		    <TextView 
+		        android:id="@+id/scoreGrade"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:textSize="@dimen/itg_score_percent_size"
+		        android:text="@string/ddr_score_grade_default" />
+	        
+	    </LinearLayout>
+	    
+	</LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,180 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ItgScoreCalculator" >
+
+	<RelativeLayout
+	    android:id="@+id/scoreEntry"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    tools:context=".ItgScoreCalculator" >
+	
+	    <EditText
+	        android:id="@+id/fantastics"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:hint="@string/fantastics_hint"
+	        android:inputType="number" />
+	
+	    <EditText
+	        android:id="@+id/excellents"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_below="@id/fantastics"
+	        android:hint="@string/excellents_hint"
+	        android:inputType="number" />
+	
+	    <EditText
+	        android:id="@+id/greats"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_below="@id/excellents"
+	        android:hint="@string/greats_hint"
+	        android:inputType="number" />
+	
+	    <EditText
+	        android:id="@+id/decents"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_below="@id/greats"
+	        android:hint="@string/decents_hint"
+	        android:inputType="number" />
+	
+	    <EditText
+	        android:id="@+id/wayoffs"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_below="@id/decents"
+	        android:hint="@string/wayoffs_hint"
+	        android:inputType="number" />
+	
+	    <EditText
+	        android:id="@+id/holds"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_toRightOf="@id/fantastics"
+	        android:hint="@string/holds_hint"
+	        android:inputType="number" />
+	
+	    <EditText
+	        android:id="@+id/misses"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_below="@id/wayoffs"
+	        android:hint="@string/misses_hint"
+	        android:inputType="number"
+	        android:nextFocusRight="@id/holds" />
+	
+	    <EditText
+	        android:id="@+id/totalHolds"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_toRightOf="@id/excellents"
+	        android:layout_below="@id/holds"
+	        android:hint="@string/totalHolds_hint"
+	        android:inputType="number" />
+	
+	    <EditText
+	        android:id="@+id/mines"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_toRightOf="@id/greats"
+	        android:layout_below="@id/totalHolds"
+	        android:hint="@string/mines_hint"
+	        android:inputType="number" />
+	
+	    <EditText
+	        android:id="@+id/rolls"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_toRightOf="@id/decents"
+	        android:layout_below="@id/mines"
+	        android:hint="@string/rolls_hint"
+	        android:inputType="number" />
+	
+	    <EditText
+	        android:id="@+id/totalRolls"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_toRightOf="@id/wayoffs"
+	        android:layout_below="@id/rolls"
+	        android:hint="@string/totalRolls_hint"
+	        android:inputType="number" />
+	
+	    <Button
+	        android:id="@+id/submit"
+	        android:layout_width="@dimen/itg_field_width"
+	        android:layout_height="@dimen/itg_field_height"
+	        android:layout_toRightOf="@id/misses"
+	        android:layout_below="@id/totalRolls"
+	        android:text="@string/button_submit"
+	        android:onClick="itgCalculateScore" />
+	    
+	</RelativeLayout>
+	
+	<RelativeLayout
+	    android:id="@+id/scoreDisplay"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/scoreEntry"
+	    tools:context=".ItgScoreCalculator" >
+	    
+	    <TextView 
+	        android:id="@+id/scoreSectionLabel"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/itg_scoreSectionLabel_size"
+	        android:text="@string/itg_scoreSectionLabel" />
+	    
+	    <TextView 
+	        android:id="@+id/earnedScoreLabel"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/scoreSectionLabel"
+	        android:textSize="@dimen/itg_earnedScoreLabel_size"
+	        android:text="@string/itg_earnedScoreLabel_default" />
+	    
+	    <TextView 
+	        android:id="@+id/earnedScoreValue"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/earnedScoreLabel"
+	        android:layout_alignTop="@id/earnedScoreLabel"
+	        android:paddingLeft="10sp"
+	        android:textSize="@dimen/itg_earnedScoreValue_size"
+	        android:text="@string/itg_earnedScoreValue_default" />
+	    
+	    <TextView 
+	        android:id="@+id/potentialScoreLabel"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/earnedScoreLabel"
+	        android:textSize="@dimen/itg_potentialScoreLabel_size"
+	        android:text="@string/itg_potentialScoreLabel_default" />
+	    
+	    <TextView 
+	        android:id="@+id/potentialScoreValue"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/potentialScoreLabel"
+	        android:layout_alignTop="@id/potentialScoreLabel"
+	        android:paddingLeft="10sp"
+	        android:textSize="@dimen/itg_potentialScoreValue_size"
+	        android:text="@string/itg_potentialScoreValue_default" />
+	    
+	    <TextView 
+	        android:id="@+id/scorePercent"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/potentialScoreLabel"
+	        android:textSize="@dimen/itg_score_percent_size"
+	        android:text="@string/itg_score_percent_default" />
+	    
+	</RelativeLayout>
+
+</RelativeLayout>
