@@ -38,6 +38,10 @@
             android:name="com.ddiehl.rgsc.Activity_DdrSn2ScoreCalculator"
             android:label="@string/title_activity_ddr_sn_score_calculator" >
         </activity>
+        <activity
+            android:name="com.dd.rgsc.Activity_DdrSn1ScoreCalculator"
+            android:label="@string/title_activity_activity__ddr_sn1_score_calculator" >
+        </activity>
     </application>
 
 </manifest>

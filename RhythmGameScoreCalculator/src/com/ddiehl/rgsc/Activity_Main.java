@@ -12,6 +12,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.dd.rgsc.Activity_DdrSn1ScoreCalculator;
 import com.dd.rgsc.R;
 
 public class Activity_Main extends Activity {
@@ -22,6 +23,7 @@ public class Activity_Main extends Activity {
         ArrayList<String> list = new ArrayList<String>();
         list.add("In the Groove");
         list.add("DDR Extreme");
+        list.add("DDR Supernova");
         list.add("DDR Supernova 2");
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
                 android.R.layout.simple_list_item_1, list);
@@ -38,6 +40,9 @@ public class Activity_Main extends Activity {
 					intent = new Intent(view.getContext(), Activity_DdrExScoreCalculator.class);
 					break;
 				case 2:
+					intent = new Intent(view.getContext(), Activity_DdrSn1ScoreCalculator.class);
+					break;
+				case 3:
 					intent = new Intent(view.getContext(), Activity_DdrSn2ScoreCalculator.class);
 					break;
 				default:
