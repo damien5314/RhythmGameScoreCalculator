@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.dd.rgsc.R;
 
-public class DdrSn2ScoreCalculator extends Activity {
+public class Activity_DdrSn2ScoreCalculator extends Activity {
 
 	private static final int MARVELLOUSES_WEIGHT = 3;
 	private static final int PERFECTS_WEIGHT = 2;
@@ -34,7 +34,7 @@ public class DdrSn2ScoreCalculator extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.ddr_ex_score_calculator, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 	

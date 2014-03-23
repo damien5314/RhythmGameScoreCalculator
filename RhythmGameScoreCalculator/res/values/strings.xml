@@ -2,8 +2,8 @@
 <resources>
 
     <string name="hello_world">Hello world!</string>
-    <string name="app_name">Score Calculator</string>
-    <string name="title_activity_game_menu_selector">Select Game</string>
+    <string name="app_name">RGSC</string>
+    <string name="title_activity_about_app">About RGSC</string>
     <string name="title_section1">In The Groove</string>
     <string name="title_section2">DDR Extreme</string>
     <string name="title_section3">DDR Supernova 2</string>

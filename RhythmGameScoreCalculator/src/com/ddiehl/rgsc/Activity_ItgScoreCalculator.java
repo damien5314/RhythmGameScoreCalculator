@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class ItgScoreCalculator extends Activity {
+public class Activity_ItgScoreCalculator extends Activity {
 
 	private static final int FANTASTICS_WEIGHT = 5;
 	private static final int EXCELLENTS_WEIGHT = 4;
@@ -33,7 +33,7 @@ public class ItgScoreCalculator extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.itg_score_calculator, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 	

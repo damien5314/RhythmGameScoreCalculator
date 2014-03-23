@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -13,11 +14,11 @@ import android.widget.ListView;
 
 import com.dd.rgsc.R;
 
-public class GameMenuSelector extends Activity {
+public class Activity_Main extends Activity {
 	
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_menu_selector);
+        setContentView(R.layout.activity_main);
         ArrayList<String> list = new ArrayList<String>();
         list.add("In the Groove");
         list.add("DDR Extreme");
@@ -28,23 +29,30 @@ public class GameMenuSelector extends Activity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 		            int position, long id) {
-				Intent i = new Intent();
+				Intent intent = new Intent();
 				switch (position) {
 				case 0:
-					i = new Intent (view.getContext(), ItgScoreCalculator.class);
+					intent = new Intent (view.getContext(), Activity_ItgScoreCalculator.class);
 					break;
 				case 1:
-					i = new Intent(view.getContext(), DdrExScoreCalculator.class);
+					intent = new Intent(view.getContext(), Activity_DdrExScoreCalculator.class);
 					break;
 				case 2:
-					i = new Intent(view.getContext(), DdrSn2ScoreCalculator.class);
+					intent = new Intent(view.getContext(), Activity_DdrSn2ScoreCalculator.class);
 					break;
 				default:
 					System.out.println("Error: No class configured for list item.");
 				}
-				startActivity(i);
+				startActivity(intent);
 			}
 		});
 		listView.setAdapter(adapter);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
 	}
 }

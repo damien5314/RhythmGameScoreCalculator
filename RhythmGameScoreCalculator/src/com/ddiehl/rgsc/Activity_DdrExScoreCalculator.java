@@ -16,7 +16,7 @@ import android.widget.ToggleButton;
 
 import com.dd.rgsc.R;
 
-public class DdrExScoreCalculator extends Activity {
+public class Activity_DdrExScoreCalculator extends Activity {
 
 	private static final int MARVELLOUSES_WEIGHT = 3;
 	private static final int PERFECTS_WEIGHT = 2;
@@ -42,7 +42,7 @@ public class DdrExScoreCalculator extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.ddr_ex_score_calculator, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 	
