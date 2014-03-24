@@ -29,6 +29,13 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
     </style>
+	
+    <style name="ScoreButtonContainer">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
     
     <style name="ScoreEntryLabel">
         <item name="android:layout_width">fill_parent</item>
@@ -50,6 +57,20 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:layout_weight">1</item>
+    </style>
+    
+    <style name="ScoreSubmitButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:src">@drawable/submit_form</item>
+    </style>
+    
+    <style name="ScoreClearButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:src">@drawable/clear_form</item>
     </style>
     
     <style name="CalculatedScoreSection">

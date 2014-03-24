@@ -119,5 +119,31 @@ public class Activity_Calculator_InTheGroove extends Activity {
 		TextView vScorePercent = (TextView) findViewById(R.id.scorePercent);
 		vScorePercent.setText(df.format(scorePercent) + "%");
 	}
+	
+	public void clearForm(View v) {
+		EditText  e;
+		e = (EditText) findViewById(R.id.fantastics);
+		e.setText("");
+		e = (EditText) findViewById(R.id.excellents);
+		e.setText("");
+		e = (EditText) findViewById(R.id.greats);
+		e.setText("");
+		e = (EditText) findViewById(R.id.decents);
+		e.setText("");
+		e = (EditText) findViewById(R.id.wayoffs);
+		e.setText("");
+		e = (EditText) findViewById(R.id.misses);
+		e.setText("");
+		e = (EditText) findViewById(R.id.holds);
+		e.setText("");
+		e = (EditText) findViewById(R.id.totalHolds);
+		e.setText("");
+		e = (EditText) findViewById(R.id.mines);
+		e.setText("");
+		e = (EditText) findViewById(R.id.rolls);
+		e.setText("");
+		e = (EditText) findViewById(R.id.totalRolls);
+		e.setText("");
+	}
 
 }

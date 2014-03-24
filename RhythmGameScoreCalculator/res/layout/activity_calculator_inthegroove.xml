@@ -154,14 +154,17 @@
                     style="@style/ScoreEntryElement" />
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
-
-                <Button
-                    android:id="@+id/submit"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:onClick="itgCalculateScore"
-                    android:text="@string/button_submit" />
+            <LinearLayout style="@style/ScoreButtonContainer" >
+		
+			    <ImageButton
+			        android:id="@+id/submit"
+			        style="@style/ScoreSubmitButton"
+			        android:onClick="itgCalculateScore" />
+			    
+			    <ImageButton 
+			        android:id="@+id/clearForm"
+			        style="@style/ScoreClearButton"
+			        android:onClick="clearForm" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
