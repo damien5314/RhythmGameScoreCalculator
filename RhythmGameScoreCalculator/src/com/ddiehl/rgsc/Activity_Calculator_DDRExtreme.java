@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.Menu;
@@ -31,6 +32,7 @@ public class Activity_Calculator_DDRExtreme extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator_ddrextreme);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		ToggleButton tb = (ToggleButton) findViewById(R.id.courseModeToggle);
 		EditText et = (EditText) findViewById(R.id.marvellouses);
 		tb.setChecked(isCourseModeOn);
