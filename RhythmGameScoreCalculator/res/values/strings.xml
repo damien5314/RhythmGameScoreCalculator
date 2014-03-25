@@ -4,7 +4,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="app_name">RGSC</string>
     <string name="title_activity_about_app">About RGSC</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_about_app">About</string>
     <string name="introduction_header">Score Calculator</string>
     <string name="introduction_body">This app calculates a player\'s score in several
         music rhythm games. Simply input your step counts and the relevant score

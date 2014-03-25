@@ -4,10 +4,12 @@ import java.text.DecimalFormat;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -39,13 +41,6 @@ public class Activity_Calculator_DDRExtreme extends Activity {
 		et.setFocusable(isCourseModeOn);
 		et.setFocusableInTouchMode(isCourseModeOn);
 		et.setEnabled(isCourseModeOn);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
 	}
 	
 	public void ddrexCalculateScore(View v) {
@@ -207,6 +202,24 @@ public class Activity_Calculator_DDRExtreme extends Activity {
 		e.setText("");
 		e = (EditText) findViewById(R.id.totalHolds);
 		e.setText("");
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+	    switch(item.getItemId()){
+	    case R.id.action_about_app:
+	        Intent intent = new Intent(this, Activity_AboutApp.class);
+	        startActivity(intent);
+	        return true;
+	    }
+	    return false;
 	}
 	
 }

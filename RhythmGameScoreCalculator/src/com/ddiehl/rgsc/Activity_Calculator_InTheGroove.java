@@ -3,11 +3,13 @@ package com.ddiehl.rgsc;
 import java.text.DecimalFormat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,13 +35,6 @@ public class Activity_Calculator_InTheGroove extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator_inthegroove);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
 	}
 
 	public void itgCalculateScore(View v) {
@@ -207,6 +202,24 @@ public class Activity_Calculator_InTheGroove extends Activity {
 		tv.setText(getString(R.string.itg_potentialScoreValue_default));
 		tv = (TextView) findViewById(R.id.scorePercent);
 		tv.setText(getString(R.string.itg_score_percent_default));
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+	    switch(item.getItemId()){
+	    case R.id.action_about_app:
+	        Intent intent = new Intent(this, Activity_AboutApp.class);
+	        startActivity(intent);
+	        return true;
+	    }
+	    return false;
 	}
 
 }
