@@ -151,20 +151,21 @@
 
                 <EditText
                     android:id="@+id/misses"
-                    style="@style/ScoreEntryElement" />
+                    style="@style/ScoreEntryElement"
+                    android:nextFocusDown="@id/holds" />
             </LinearLayout>
 
             <LinearLayout style="@style/ScoreButtonContainer" >
-		
-			    <ImageButton
-			        android:id="@+id/submit"
-			        style="@style/ScoreSubmitButton"
-			        android:onClick="itgCalculateScore" />
-			    
-			    <ImageButton 
-			        android:id="@+id/clearForm"
-			        style="@style/ScoreClearButton"
-			        android:onClick="clearForm" />
+
+                <ImageButton
+                    android:id="@+id/submit"
+                    style="@style/ScoreSubmitButton"
+                    android:onClick="itgCalculateScore" />
+
+                <ImageButton
+                    android:id="@+id/clearForm"
+                    style="@style/ScoreClearButton"
+                    android:onClick="clearForm" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
