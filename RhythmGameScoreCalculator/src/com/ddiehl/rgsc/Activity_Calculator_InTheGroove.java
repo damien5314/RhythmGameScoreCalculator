@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dd.rgsc.R;
 
@@ -114,38 +115,66 @@ public class Activity_Calculator_InTheGroove extends Activity {
 		} catch (NumberFormatException e) {
 			totalRolls = 0;
 		}
+		
+		// Verify input has been submitted
+		int[] stepCounts = {fantastics, excellents, greats, decents, wayoffs, misses, holds, totalHolds, rolls, totalRolls};
+		int stepTotal = 0;
+		for (int i = 0; i < stepCounts.length; i++)
+			stepTotal += stepCounts[i];
+		
+		if (stepTotal != 0) {
+			if (holds > totalHolds) {
+				System.out.println("Error: Holds > Total Holds");
+				String text = "Error: Holds > Total Holds";
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+				toast.show();
+			} else if (rolls > totalRolls) {
+				System.out.println("Error: Rolls > Total Rolls");
+				String text = "Error: Rolls > Total Rolls";
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+				toast.show();
+			} else {
+				// Add number from each field multiplied by its weight to earned score
+				earnedScore += fantastics * FANTASTICS_WEIGHT;
+				earnedScore += excellents * EXCELLENTS_WEIGHT;
+				earnedScore += greats * GREATS_WEIGHT;
+				earnedScore += decents * DECENTS_WEIGHT;
+				earnedScore += wayoffs * WAYOFFS_WEIGHT;
+				earnedScore += misses * MISSES_WEIGHT;
+				earnedScore += holds * HOLDS_WEIGHT;
+				earnedScore += mines * MINES_WEIGHT;
+				earnedScore += rolls * ROLLS_WEIGHT;
 
-		// Add number from each field multiplied by its weight to earned score
-		earnedScore += fantastics * FANTASTICS_WEIGHT;
-		earnedScore += excellents * EXCELLENTS_WEIGHT;
-		earnedScore += greats * GREATS_WEIGHT;
-		earnedScore += decents * DECENTS_WEIGHT;
-		earnedScore += wayoffs * WAYOFFS_WEIGHT;
-		earnedScore += misses * MISSES_WEIGHT;
-		earnedScore += holds * HOLDS_WEIGHT;
-		earnedScore += mines * MINES_WEIGHT;
-		earnedScore += rolls * ROLLS_WEIGHT;
+				// Calculate potential score
+				potentialScore += ((fantastics + excellents + greats + decents
+						+ wayoffs + misses) * FANTASTICS_WEIGHT)
+						+ (totalHolds * HOLDS_WEIGHT) + (totalRolls * ROLLS_WEIGHT);
 
-		// Calculate potential score
-		potentialScore += ((fantastics + excellents + greats + decents
-				+ wayoffs + misses) * FANTASTICS_WEIGHT)
-				+ (totalHolds * HOLDS_WEIGHT) + (totalRolls * ROLLS_WEIGHT);
+				// Calculate score percentage rounded to 2 decimal places
+				double scorePercent = ((int) (((double) earnedScore / (double) potentialScore) * 10000) / 100.00);
+				DecimalFormat df = new DecimalFormat("0.00");
+				Log.i(TAG, "Earned Score:    " + earnedScore);
+				Log.i(TAG, "Potential Score: " + potentialScore);
+				Log.i(TAG, "Score Percent:   " + df.format(scorePercent) + "%");
 
-		// Calculate score percentage rounded to 2 decimal places
-		double scorePercent = ((int) (((double) earnedScore / (double) potentialScore) * 10000) / 100.00);
-		DecimalFormat df = new DecimalFormat("0.00");
-		Log.i(TAG, "Earned Score:    " + earnedScore);
-		Log.i(TAG, "Potential Score: " + potentialScore);
-		Log.i(TAG, "Score Percent:   " + df.format(scorePercent) + "%");
-
-		TextView vEarnedScoreValue = (TextView) findViewById(R.id.earnedScoreValue);
-		vEarnedScoreValue.setText(earnedScore + "");
-		TextView vPotentialScoreValue = (TextView) findViewById(R.id.potentialScoreValue);
-		vPotentialScoreValue.setText(potentialScore + "");
-		TextView vScorePercent = (TextView) findViewById(R.id.scorePercent);
-		vScorePercent.setText(df.format(scorePercent) + "%");
+				TextView vEarnedScoreValue = (TextView) findViewById(R.id.earnedScoreValue);
+				vEarnedScoreValue.setText(earnedScore + "");
+				TextView vPotentialScoreValue = (TextView) findViewById(R.id.potentialScoreValue);
+				vPotentialScoreValue.setText(potentialScore + "");
+				TextView vScorePercent = (TextView) findViewById(R.id.scorePercent);
+				vScorePercent.setText(df.format(scorePercent) + "%");
+			}
+		} else {
+			System.out.println("Error: User did not input any steps");
+			String text = "No steps entered";
+			int duration = Toast.LENGTH_SHORT;
+			Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+			toast.show();
+		}		
 	}
-
+	
 	public void clearForm(View v) {
 		EditText e;
 		e = (EditText) findViewById(R.id.fantastics);
@@ -170,6 +199,14 @@ public class Activity_Calculator_InTheGroove extends Activity {
 		e.setText("");
 		e = (EditText) findViewById(R.id.totalRolls);
 		e.setText("");
+		
+		TextView tv;
+		tv = (TextView) findViewById(R.id.earnedScoreValue);
+		tv.setText(getString(R.string.itg_earnedScoreValue_default));
+		tv = (TextView) findViewById(R.id.potentialScoreValue);
+		tv.setText(getString(R.string.itg_potentialScoreValue_default));
+		tv = (TextView) findViewById(R.id.scorePercent);
+		tv.setText(getString(R.string.itg_score_percent_default));
 	}
 
 }
