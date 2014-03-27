@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -10,202 +10,195 @@
     tools:context=".Activity_Calculator_DDRExtreme" >
 
     <LinearLayout
-	    android:id="@+id/scoreEntry"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
-	    tools:context=".Activity_Calculator_DDRExtreme" >
-	    
-        <LinearLayout
-            style="@style/ScoreEntryRow" >
-	
-		    <EditText
-		        style="@style/ScoreEntryElement"
-		        android:id="@+id/marvellouses"
-		        android:hint="@string/marvellouses_hint" />
-		    
-		    <ToggleButton 
-		        android:id="@+id/courseModeToggle"
-		        android:layout_width="0dp"
-		        android:layout_height="@dimen/itg_field_height"
-		        android:layout_weight="1"
-		        android:onClick="toggleCourseMode" />
-            
-		</LinearLayout>
-	    
-        <LinearLayout
-            style="@style/ScoreEntryRow" >
-            
-		    <EditText
-		        style="@style/ScoreEntryElement"
-		        android:id="@+id/perfects"
-		        android:hint="@string/perfects_hint" />
-		
-		    <EditText
-		        style="@style/ScoreEntryElement"
-		        android:id="@+id/holds"
-		        android:hint="@string/holds_hint" />
-		    
+        android:id="@+id/score_entry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout style="@style/ScoreEntryRow" >
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView
+                    style="@style/ScoreEntryLabel"
+                    android:text="Marvellouses" />
+
+                <EditText
+                    android:id="@+id/marvellouses"
+                    style="@style/ScoreEntryElement" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <ToggleButton
+                    android:id="@+id/courseModeToggle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:onClick="toggleCourseMode" />
+            </LinearLayout>
         </LinearLayout>
-	    
-        <LinearLayout
-            style="@style/ScoreEntryRow" >
-		    
-		    <EditText
-		        style="@style/ScoreEntryElement"
-		        android:id="@+id/greats"
-		        android:hint="@string/greats_hint" />
-		
-		    <EditText
-		        style="@style/ScoreEntryElement"
-		        android:id="@+id/totalHolds"
-		        android:hint="@string/totalHolds_hint"
-		        android:nextFocusDown="@id/perfects" />
-		    
-		</LinearLayout>
-	    
-        <LinearLayout
-            style="@style/ScoreEntryRow" >
-	
-		    <EditText
-		        style="@style/ScoreEntryElement"
-		        android:id="@+id/goods"
-		        android:hint="@string/goods_hint" />
-		    
-		    <TextView 
-		        style="@style/ScoreEntryDummyElement" />
-            
-		</LinearLayout>
-	    
-        <LinearLayout
-            style="@style/ScoreEntryRow" >
-	
-		    <EditText
-		        style="@style/ScoreEntryElement"
-		        android:id="@+id/boos"
-		        android:hint="@string/boos_hint" />
-		    
-		    <TextView 
-		        style="@style/ScoreEntryDummyElement" />
-            
-		</LinearLayout>
-	    
-        <LinearLayout
-            style="@style/ScoreEntryRow" >
-	
-		    <EditText
-		        style="@style/ScoreEntryElement"
-		        android:id="@+id/misses"
-		        android:hint="@string/misses_hint"
-		        android:nextFocusDown="@id/holds" />
-		    
-		    <LinearLayout 
-		        android:orientation="horizontal"
-		        android:layout_width="0dp"
-		        android:layout_height="wrap_content"
-		        android:layout_weight="1"
-		        android:gravity="center" >
-		
-			    <Button
-			        android:id="@+id/submit"
-			        android:layout_width="wrap_content"
-			        android:layout_height="@dimen/itg_field_height"
-			        android:background="@drawable/submit_form"
-			        android:onClick="ddrexCalculateScore" />
-			    
-			    <Button 
-			        android:id="@+id/clearForm"
-			        android:layout_width="wrap_content"
-			        android:layout_height="@dimen/itg_field_height"
-			        android:background="@drawable/clear_form"
-			        android:onClick="clearForm" />
-			    
-		    </LinearLayout>
-        
+
+        <LinearLayout style="@style/ScoreEntryRow" >
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView
+                    style="@style/ScoreEntryLabel"
+                    android:text="Perfects" />
+
+                <EditText
+                    android:id="@+id/perfects"
+                    style="@style/ScoreEntryElement" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView
+                    style="@style/ScoreEntryLabel"
+                    android:text="Holds" />
+
+                <EditText
+                    android:id="@+id/holds"
+                    style="@style/ScoreEntryElement" />
+            </LinearLayout>
         </LinearLayout>
-	    
-	</LinearLayout>
-	
-	<LinearLayout
-	    android:id="@+id/scoreDisplay"
-	    android:orientation="vertical"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    tools:context=".Activity_Calculator_DDRExtreme" >
-	    
-	    <TextView 
-	        android:id="@+id/scoreSectionLabel"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:textSize="@dimen/itg_scoreSectionLabel_size"
-	        android:text="@string/itg_scoreSectionLabel" />
-	    
-	    <LinearLayout 
-	        android:orientation="horizontal"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content" >
-	        
-	        <TextView 
-		        android:id="@+id/earnedScoreLabel"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:textSize="@dimen/itg_earnedScoreLabel_size"
-		        android:text="@string/itg_earnedScoreLabel_default" />
-	    
-		    <TextView 
-		        android:id="@+id/earnedScoreValue"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:paddingLeft="10dp"
-		        android:textSize="@dimen/itg_earnedScoreValue_size"
-		        android:text="@string/itg_earnedScoreValue_default" />
-		    
-	    </LinearLayout>
-	    
-	    <LinearLayout 
-	        android:orientation="horizontal"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content" >
-	    
-		    <TextView 
-		        android:id="@+id/potentialScoreLabel"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:textSize="@dimen/itg_potentialScoreLabel_size"
-		        android:text="@string/itg_potentialScoreLabel_default" />
-		    
-		    <TextView 
-		        android:id="@+id/potentialScoreValue"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:paddingLeft="10dp"
-		        android:textSize="@dimen/itg_potentialScoreValue_size"
-		        android:text="@string/itg_potentialScoreValue_default" />
-		
-	    </LinearLayout>
-	    
-	    <LinearLayout
-	        android:orientation="horizontal"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content" >
-	        
-	        <TextView 
-		        android:id="@+id/scorePercent"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:textSize="@dimen/itg_score_percent_size"
-		        android:text="@string/itg_score_percent_default" />
-	    
-		    <TextView 
-		        android:id="@+id/scoreGrade"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_marginLeft="10dp"
-		        android:textSize="@dimen/itg_score_percent_size"
-		        android:text="@string/ddr_score_grade_default" />
-	        
-	    </LinearLayout>
-	    
-	</LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryRow" >
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView
+                    style="@style/ScoreEntryLabel"
+                    android:text="Greats" />
+
+                <EditText
+                    android:id="@+id/greats"
+                    style="@style/ScoreEntryElement" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView
+                    style="@style/ScoreEntryLabel"
+                    android:text="Total Holds" />
+
+                <EditText
+                    android:id="@+id/totalHolds"
+                    style="@style/ScoreEntryElement" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryRow" >
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView
+                    style="@style/ScoreEntryLabel"
+                    android:text="Goods" />
+
+                <EditText
+                    android:id="@+id/goods"
+                    style="@style/ScoreEntryElement" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView style="@style/ScoreEntryDummyElement" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryRow" >
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView
+                    style="@style/ScoreEntryLabel"
+                    android:text="Boos" />
+
+                <EditText
+                    android:id="@+id/boos"
+                    style="@style/ScoreEntryElement" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView style="@style/ScoreEntryDummyElement" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryRow" >
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView
+                    style="@style/ScoreEntryLabel"
+                    android:text="Misses" />
+
+                <EditText
+                    android:id="@+id/misses"
+                    style="@style/ScoreEntryElement"
+                    android:nextFocusDown="@id/holds" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ScoreButtonContainer" >
+
+                <ImageButton
+                    android:id="@+id/submit"
+                    style="@style/ScoreSubmitButton"
+                    android:onClick="ddrexCalculateScore" />
+
+                <ImageButton
+                    android:id="@+id/clearForm"
+                    style="@style/ScoreClearButton"
+                    android:onClick="clearForm" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/calculated_score"
+        style="@style/CalculatedScoreSection" >
+
+        <TextView
+            android:id="@+id/scoreSectionLabel"
+            style="@style/ScoreSectionTitle"
+            android:text="@string/itg_scoreSectionLabel" />
+
+        <LinearLayout style="@style/CalculatedScoreRow" >
+
+            <TextView
+                android:id="@+id/earnedScoreLabel"
+                style="@style/CalculatedScoreLabel"
+                android:text="Earned Score" />
+
+            <TextView
+                android:id="@+id/earnedScoreValue"
+                style="@style/CalculatedScoreValue" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/CalculatedScoreRow" >
+
+            <TextView
+                android:id="@+id/potentialScoreLabel"
+                style="@style/CalculatedScoreLabel"
+                android:text="Potential Score" />
+
+            <TextView
+                android:id="@+id/potentialScoreValue"
+                style="@style/CalculatedScoreValue" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/CalculatedScoreRow" >
+
+            <TextView
+                android:id="@+id/scorePercent"
+                style="@style/CalculatedScorePercent" />
+
+            <TextView
+                android:id="@+id/scoreGrade"
+                style="@style/CalculatedScoreGrade" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
