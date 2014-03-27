@@ -203,9 +203,16 @@
                 style="@style/CalculatedScoreValue" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/scorePercent"
-            style="@style/CalculatedScorePercent" />
+        <LinearLayout style="@style/CalculatedScoreRow" >
+
+            <TextView
+                android:id="@+id/scorePercent"
+                style="@style/CalculatedScorePercent" />
+
+            <TextView
+                android:id="@+id/scoreGrade"
+                style="@style/CalculatedScoreGrade" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -20,13 +20,14 @@ import com.dd.rgsc.R;
 
 public class Activity_Calculator_DDRSN2 extends Activity {
 
+	// TODO Check these weights
 	private static final int MARVELLOUSES_WEIGHT = 3;
 	private static final int PERFECTS_WEIGHT = 2;
 	private static final int GREATS_WEIGHT = 1;
 	private static final int GOODS_WEIGHT = 0;
-	private static final int BOOS_WEIGHT = -4;
-	private static final int MISSES_WEIGHT = -8;
-	private static final int HOLDS_WEIGHT = 6;
+	private static final int BOOS_WEIGHT = 0;
+	private static final int MISSES_WEIGHT = 0;
+	private static final int HOLDS_WEIGHT = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class Activity_Calculator_DDRSN2 extends Activity {
 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 		
-		System.out.println("Calculating DDR SN score...");
+		System.out.println("Calculating DDR SN2 score...");
 		int earnedScore = 0;
 		int potentialScore = 0;
 		int marvellouses, perfects, greats, goods, boos, misses, holds, totalHolds;

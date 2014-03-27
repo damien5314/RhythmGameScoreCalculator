@@ -3,6 +3,7 @@ package com.ddiehl.rgsc;
 import java.text.DecimalFormat;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +40,10 @@ public class Activity_Calculator_InTheGroove extends Activity {
 	}
 
 	public void itgCalculateScore(View v) {
+		// Dismiss keyboard
+		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+		
 		Log.i(TAG, "Calculating ITG score.");
 		int earnedScore = 0;
 		int potentialScore = 0;
