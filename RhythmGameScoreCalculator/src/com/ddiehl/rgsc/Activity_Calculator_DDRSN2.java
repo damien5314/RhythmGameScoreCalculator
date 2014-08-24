@@ -192,10 +192,7 @@ public class Activity_Calculator_DDRSN2 extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
 	    switch(item.getItemId()){
-	    case R.id.action_about_app:
-	        Intent intent = new Intent(this, Activity_AboutApp.class);
-	        startActivity(intent);
-	        return true;
+	    
 	    }
 	    return false;
 	}

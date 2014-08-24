@@ -52,8 +52,7 @@ public class Activity_Main extends Activity {
 							Activity_Calculator_DDRSN2.class);
 					break;
 				default:
-					System.out
-							.println("Error: No class configured for list item.");
+					System.out.println("Error: No class configured for list item.");
 				}
 				startActivity(intent);
 			}
@@ -71,10 +70,7 @@ public class Activity_Main extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
 	    switch(item.getItemId()){
-	    case R.id.action_about_app:
-	        Intent intent = new Intent(this, Activity_AboutApp.class);
-	        startActivity(intent);
-	        return true;
+	    
 	    }
 	    return false;
 	}
