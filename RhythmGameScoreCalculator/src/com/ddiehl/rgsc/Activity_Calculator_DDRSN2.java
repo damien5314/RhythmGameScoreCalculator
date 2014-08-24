@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.Editable;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 import com.dd.rgsc.R;
 
 public class Activity_Calculator_DDRSN2 extends Activity {
+	private static final String TAG = Activity_Calculator_DDRSN2.class.getSimpleName();
 
 	// TODO Check these weights
 	private static final int MARVELLOUSES_WEIGHT = 3;
@@ -41,7 +41,6 @@ public class Activity_Calculator_DDRSN2 extends Activity {
 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 		
-		System.out.println("Calculating DDR SN2 score...");
 		int earnedScore = 0;
 		int potentialScore = 0;
 		int marvellouses, perfects, greats, goods, boos, misses, holds, totalHolds;
@@ -87,7 +86,9 @@ public class Activity_Calculator_DDRSN2 extends Activity {
 			stepTotal += stepCounts[i];
 		
 		if (stepTotal != 0) {
-			if (holds <= totalHolds) {
+			if (holds > totalHolds) {
+				Toast.makeText(getApplicationContext(), R.string.error_invalid_holds, Toast.LENGTH_SHORT).show();
+			} else {
 				// Add number from each field multiplied by its weight to earned score
 				earnedScore += marvellouses * MARVELLOUSES_WEIGHT;
 				earnedScore += perfects * PERFECTS_WEIGHT;
@@ -107,10 +108,6 @@ public class Activity_Calculator_DDRSN2 extends Activity {
 				double scorePercent = ((int)(((double)earnedScore / (double)potentialScore) * 10000) / 100.00);
 				String grade = calculateGrade(scorePercent, imperfectSteps);
 				DecimalFormat df = new DecimalFormat("0.00");
-				System.out.println("Earned Score:    " + earnedScore);
-				System.out.println("Potential Score: " + potentialScore);
-				System.out.println("Score Percent:   " + df.format(scorePercent) + "%");
-				System.out.println("Score Grade:     " + grade);
 
 				TextView vEarnedScoreValue = (TextView) findViewById(R.id.earnedScoreValue);
 				vEarnedScoreValue.setText(earnedScore + "");
@@ -120,19 +117,9 @@ public class Activity_Calculator_DDRSN2 extends Activity {
 				vScorePercent.setText(df.format(scorePercent) + "%");
 				TextView vScoreGrade = (TextView) findViewById(R.id.scoreGrade);
 				vScoreGrade.setText(grade);
-			} else {
-				System.out.println("Error: Holds > TotalHolds.");
-				String text = "Error: Holds > Total Holds";
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-				toast.show();
 			}
 		} else {
-			System.out.println("Error: User did not input any steps.");
-			String text = "No steps entered.";
-			int duration = Toast.LENGTH_SHORT;
-			Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-			toast.show();
+			Toast.makeText(getApplicationContext(), R.string.error_no_steps, Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -163,23 +150,19 @@ public class Activity_Calculator_DDRSN2 extends Activity {
 	}
 	
 	public void clearForm(View v) {
-		EditText  e;
-		e = (EditText) findViewById(R.id.marvellouses);
-		e.setText("");
-		e = (EditText) findViewById(R.id.perfects);
-		e.setText("");
-		e = (EditText) findViewById(R.id.greats);
-		e.setText("");
-		e = (EditText) findViewById(R.id.goods);
-		e.setText("");
-		e = (EditText) findViewById(R.id.boos);
-		e.setText("");
-		e = (EditText) findViewById(R.id.misses);
-		e.setText("");
-		e = (EditText) findViewById(R.id.holds);
-		e.setText("");
-		e = (EditText) findViewById(R.id.totalHolds);
-		e.setText("");
+		((EditText)findViewById(R.id.marvellouses)).setText("");
+		((EditText)findViewById(R.id.perfects)).setText("");
+		((EditText)findViewById(R.id.greats)).setText("");
+		((EditText)findViewById(R.id.goods)).setText("");
+		((EditText)findViewById(R.id.boos)).setText("");
+		((EditText)findViewById(R.id.misses)).setText("");
+		((EditText)findViewById(R.id.holds)).setText("");
+		((EditText)findViewById(R.id.totalHolds)).setText("");
+		
+		((TextView)findViewById(R.id.earnedScoreValue)).setText("0");
+		((TextView)findViewById(R.id.potentialScoreValue)).setText("0");
+		((TextView)findViewById(R.id.scorePercent)).setText(R.string.score_percent_default);
+		((TextView)findViewById(R.id.scoreGrade)).setText(R.string.score_grade_default);
 	}
 
 	@Override

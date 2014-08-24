@@ -168,7 +168,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_below="@id/potentialScoreLabel"
 	        android:textSize="@dimen/itg_score_percent_size"
-	        android:text="@string/itg_score_percent_default" />
+	        android:text="@string/score_percent_default" />
 	    
 	</RelativeLayout>
 

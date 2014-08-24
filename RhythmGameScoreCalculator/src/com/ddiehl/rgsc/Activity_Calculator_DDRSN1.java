@@ -1,7 +1,6 @@
 package com.ddiehl.rgsc;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;

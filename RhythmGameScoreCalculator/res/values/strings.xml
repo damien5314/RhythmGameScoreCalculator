@@ -27,14 +27,17 @@
     <string name="itg_earnedScoreValue_default">0</string>
     <string name="itg_potentialScoreLabel_default">Potential Score</string>
     <string name="itg_potentialScoreValue_default">0</string>
-    <string name="itg_score_percent_default">0.00%</string>
     <string name="title_activity_ddr_ex_score_calculator">DDR Extreme</string>
     <string name="marvellouses_hint">Marvellouses</string>
     <string name="perfects_hint">Perfects</string>
     <string name="goods_hint">Goods</string>
     <string name="boos_hint">Boos</string>
-    <string name="ddr_score_grade_default">(E)</string>
+    <string name="score_percent_default">0.00%</string>
+    <string name="score_grade_default">(E)</string>
     <string name="title_activity_activity_ddr_sn1_score_calculator">DDR Supernova</string>
     <string name="title_activity_ddr_sn_score_calculator">DDR Supernova 2</string>
+    <string name="error_no_steps">Error: No steps entered.</string>
+    <string name="error_invalid_holds">Error: Holds > Total Holds.</string>
+    <string name="error_invalid_rolls">Error: Rolls > Total Rolls.</string>
 
 </resources>
