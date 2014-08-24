@@ -15,8 +15,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.dd.rgsc.R;
-
 public class Activity_Main extends Activity {
 	private static final String TAG = Activity_Main.class.getSimpleName();
 

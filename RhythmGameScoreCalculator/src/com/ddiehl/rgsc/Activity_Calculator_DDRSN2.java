@@ -15,8 +15,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dd.rgsc.R;
-
 public class Activity_Calculator_DDRSN2 extends Activity {
 	private static final String TAG = Activity_Calculator_DDRSN2.class.getSimpleName();
 

@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
-import com.dd.rgsc.R;
-
 public class Activity_AboutApp extends Activity {
 
 	@Override

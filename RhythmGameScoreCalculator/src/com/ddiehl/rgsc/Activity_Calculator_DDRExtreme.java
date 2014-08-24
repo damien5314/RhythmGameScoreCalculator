@@ -16,8 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.dd.rgsc.R;
-
 public class Activity_Calculator_DDRExtreme extends Activity {
 	private static final String TAG = Activity_Calculator_DDRExtreme.class.getSimpleName();
 

@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.dd.rgsc.R;
-
 public class Activity_Calculator_DDRSN1 extends Activity {
 
 	@Override
