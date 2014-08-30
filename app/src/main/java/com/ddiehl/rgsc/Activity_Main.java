@@ -20,7 +20,7 @@ public class Activity_Main extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(com.ddiehl.rgsc.R.layout.activity_main);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("In the Groove");
