@@ -26,7 +26,7 @@
 
                 <EditText
                     android:id="@+id/marvellouses"
-                    style="@style/ScoreEntryElement" />
+                    style="@style/ScoreEntryField" />
             </LinearLayout>
 
             <LinearLayout style="@style/ScoreEntryContainer" >
@@ -45,7 +45,7 @@
 
                 <EditText
                     android:id="@+id/perfects"
-                    style="@style/ScoreEntryElement" />
+                    style="@style/ScoreEntryField" />
             </LinearLayout>
 
             <LinearLayout style="@style/ScoreEntryContainer" >
@@ -56,7 +56,7 @@
 
                 <EditText
                     android:id="@+id/holds"
-                    style="@style/ScoreEntryElement" />
+                    style="@style/ScoreEntryField" />
             </LinearLayout>
         </LinearLayout>
 
@@ -70,7 +70,7 @@
 
                 <EditText
                     android:id="@+id/greats"
-                    style="@style/ScoreEntryElement" />
+                    style="@style/ScoreEntryField" />
             </LinearLayout>
 
             <LinearLayout style="@style/ScoreEntryContainer" >
@@ -81,7 +81,7 @@
 
                 <EditText
                     android:id="@+id/totalHolds"
-                    style="@style/ScoreEntryElement" />
+                    style="@style/ScoreEntryField" />
             </LinearLayout>
         </LinearLayout>
 
@@ -95,7 +95,7 @@
 
                 <EditText
                     android:id="@+id/goods"
-                    style="@style/ScoreEntryElement" />
+                    style="@style/ScoreEntryField" />
             </LinearLayout>
 
             <LinearLayout style="@style/ScoreEntryContainer" >
@@ -114,7 +114,7 @@
 
                 <EditText
                     android:id="@+id/boos"
-                    style="@style/ScoreEntryElement" />
+                    style="@style/ScoreEntryField" />
             </LinearLayout>
 
             <LinearLayout style="@style/ScoreEntryContainer" >
@@ -133,7 +133,7 @@
 
                 <EditText
                     android:id="@+id/misses"
-                    style="@style/ScoreEntryElement"
+                    style="@style/ScoreEntryField"
                     android:nextFocusDown="@id/holds" />
             </LinearLayout>
 

@@ -36,6 +36,8 @@
     <string name="goods_hint">Goods</string>
     <string name="boos_hint">Boos</string>
 
+    <string name="cools_hint">Cools</string>
+
     <string name="score_section_label">Calculated Score</string>
     <string name="score_label_earned_default">Earned Score</string>
     <string name="score_value_earned_default">0</string>

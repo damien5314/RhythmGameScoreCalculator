@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,6 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_PopN">
 
     <LinearLayout
@@ -20,24 +21,26 @@
             <LinearLayout style="@style/ScoreEntryContainer" >
 
                 <TextView
-                    style="@style/ScoreEntryLabel"
-                    android:text="@string/greats_hint" />
+                    android:text="@string/cools_hint"
+                    style="@style/ScoreEntryLabel" />
 
                 <EditText
-                    android:id="@+id/greats"
-                    style="@style/ScoreEntryElement" />
+                    android:id="@+id/cools"
+                    android:nextFocusDown="@id/greats"
+                    style="@style/ScoreEntryField"/>
 
             </LinearLayout>
 
             <LinearLayout style="@style/ScoreEntryContainer" >
 
                 <TextView
-                    style="@style/ScoreEntryLabel"
-                    android:text="@string/goods_hint" />
+                    android:text="@string/greats_hint"
+                    style="@style/ScoreEntryLabel" />
 
                 <EditText
-                    android:id="@+id/goods"
-                    style="@style/ScoreEntryElement" />
+                    android:id="@+id/greats"
+                    android:nextFocusDown="@id/goods"
+                    style="@style/ScoreEntryField" />
 
             </LinearLayout>
 
@@ -49,13 +52,36 @@
             <LinearLayout style="@style/ScoreEntryContainer" >
 
                 <TextView
-                    style="@style/ScoreEntryLabel"
-                    android:text="@string/boos_hint" />
+                    android:text="@string/goods_hint"
+                    style="@style/ScoreEntryLabel" />
+
+                <EditText
+                    android:id="@+id/goods"
+                    android:nextFocusDown="@id/boos"
+                    style="@style/ScoreEntryField" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/ScoreButtonContainer" >
+
+                <TextView
+                    android:text="@string/boos_hint"
+                    style="@style/ScoreEntryLabel" />
 
                 <EditText
                     android:id="@+id/boos"
-                    style="@style/ScoreEntryElement"
-                    android:nextFocusDown="@id/greats" />
+                    android:nextFocusDown="@id/cools"
+                    style="@style/ScoreEntryField" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryRow" >
+
+            <LinearLayout style="@style/ScoreEntryContainer" >
+
+                <TextView style="@style/ScoreEntryDummyElement" />
 
             </LinearLayout>
 
@@ -91,41 +117,14 @@
         <LinearLayout style="@style/CalculatedScoreRow" >
 
             <TextView
-                android:id="@+id/earnedScoreLabel"
-                style="@style/CalculatedScoreLabel"
-                android:text="@string/score_label_earned_default" />
-
-            <TextView
                 android:id="@+id/earnedScoreValue"
-                style="@style/CalculatedScoreValue" />
-
-        </LinearLayout>
-
-        <LinearLayout style="@style/CalculatedScoreRow" >
-
-            <TextView
-                android:id="@+id/potentialScoreLabel"
-                style="@style/CalculatedScoreLabel"
-                android:text="@string/score_label_potential_default" />
-
-            <TextView
-                android:id="@+id/potentialScoreValue"
-                style="@style/CalculatedScoreValue" />
-
-        </LinearLayout>
-
-        <LinearLayout style="@style/CalculatedScoreRow" >
-
-            <TextView
-                android:id="@+id/scorePercent"
-                style="@style/CalculatedScorePercent" />
-
-            <TextView
-                android:id="@+id/scoreGrade"
-                style="@style/CalculatedScoreGrade" />
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:textSize="24sp"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
