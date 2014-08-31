@@ -62,7 +62,7 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreButtonContainer" >
+            <LinearLayout style="@style/ScoreEntryContainer" >
 
                 <TextView
                     android:text="@string/boos_hint"
@@ -89,15 +89,15 @@
 
                 <ImageButton
                     android:id="@+id/submit"
-                    style="@style/ScoreSubmitButton"
                     android:onClick="calculateScore"
-                    android:contentDescription="@string/score_submit_description"/>
+                    android:contentDescription="@string/score_submit_description"
+                    style="@style/ScoreSubmitButton"/>
 
                 <ImageButton
                     android:id="@+id/clearForm"
-                    style="@style/ScoreClearButton"
                     android:onClick="clearForm"
-                    android:contentDescription="@string/score_clear_description"/>
+                    android:contentDescription="@string/score_clear_description"
+                    style="@style/ScoreClearButton"/>
 
             </LinearLayout>
 

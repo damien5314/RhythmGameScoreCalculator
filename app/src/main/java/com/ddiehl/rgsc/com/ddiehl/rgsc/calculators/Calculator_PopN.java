@@ -15,10 +15,15 @@ import com.ddiehl.rgsc.R;
 
 public class Calculator_PopN extends Activity {
     private static final String TAG = Calculator_PopN.class.getSimpleName();
-    private static final int COOLS_WEIGHT = 2;
-    private static final int GREATS_WEIGHT = 1;
-    private static final int GOODS_WEIGHT = 0;
-    private static final int BOOS_WEIGHT = 0;
+//    private static final double COOLS_WEIGHT = 2;
+//    private static final double GREATS_WEIGHT = 1.4;
+//    private static final double GOODS_WEIGHT = 0.8;
+//    private static final double BOOS_WEIGHT = 0;
+    private static final double COOLS_WEIGHT = 2;
+    private static final double GREATS_WEIGHT = 1;
+    private static final double GOODS_WEIGHT = 0;
+    private static final double BOOS_WEIGHT = 0;
+    private static final double BEST_WEIGHT = COOLS_WEIGHT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,13 @@ public class Calculator_PopN extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
+    /**
+     * Test cases
+     * 986, 12, 1 = 98938
+     * 588, 31, 0, 0 = 98497 - 97495 old system
+     * 417, 10, 0 = 98126
+     * 510, 217, 45, 41 = 77199
+     */
     public void calculateScore(View v) {
         // Dismiss keyboard
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -60,15 +72,14 @@ public class Calculator_PopN extends Activity {
             earnedScore += boos * BOOS_WEIGHT;
 
             // Calculate potential score
-            int bestWeight = COOLS_WEIGHT;
-            potentialScore += ((cools + greats + goods + boos) * bestWeight);
+            potentialScore += ((cools + greats + goods + boos) * BEST_WEIGHT);
 
             // Calculate score percentage rounded to 2 decimal places
             int weightedScore = ((int)(((double)earnedScore / (double)potentialScore) * 100000));
 
-            Log.d(TAG, "Earned score:    " + earnedScore);
-            Log.d(TAG, "Potential score: " + potentialScore);
-            Log.d(TAG, "Weighted score:  " + weightedScore);
+//            Log.d(TAG, "Earned score:    " + earnedScore);
+//            Log.d(TAG, "Potential score: " + potentialScore);
+//            Log.d(TAG, "Weighted score:  " + weightedScore);
 
             ((TextView) findViewById(R.id.earnedScoreValue)).setText(weightedScore + "");
         } else {
@@ -77,7 +88,15 @@ public class Calculator_PopN extends Activity {
     }
 
     public void clearForm(View v) {
-
+        v.clearFocus();
+        int[] ids = { R.id.cools, R.id.greats, R.id.goods, R.id.boos, R.id.earnedScoreValue };
+        for (int id : ids) {
+            try {
+                ((EditText) findViewById(id)).setText("");
+            } catch (ClassCastException e) {
+                ((TextView) findViewById(id)).setText("");
+            }
+        }
     }
 
 }
