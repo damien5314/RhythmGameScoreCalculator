@@ -15,36 +15,35 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".ModuleList"
-            android:label="@string/app_name" >
+            android:label="@string/title_module_list" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".AboutApp"
-            android:label="@string/title_activity_about_app" >
+            android:label="@string/title_about" >
         </activity>
         <activity
             android:name=".com.ddiehl.rgsc.calculators.Calculator_InTheGroove"
-            android:label="@string/title_activity_itg_score_calculator" >
+            android:label="@string/title_itg" >
         </activity>
         <activity
             android:name=".com.ddiehl.rgsc.calculators.Calculator_DDRExtreme"
-            android:label="@string/title_activity_ddr_ex_score_calculator" >
+            android:label="@string/title_ddrex" >
         </activity>
         <activity
             android:name=".com.ddiehl.rgsc.calculators.Calculator_DDRSN2"
-            android:label="@string/title_activity_ddr_sn2_score_calculator" >
+            android:label="@string/title_ddrsn2" >
         </activity>
         <activity
             android:name=".com.ddiehl.rgsc.calculators.Calculator_DDRSN1"
-            android:label="@string/title_activity_ddr_sn1_score_calculator" >
+            android:label="@string/title_ddrsn1" >
         </activity>
         <activity
             android:name=".com.ddiehl.rgsc.calculators.Calculator_PopN"
-            android:label="@string/title_activity_popn_score_calculator" >
+            android:label="@string/title_popn" >
         </activity>
     </application>
 

@@ -22,7 +22,7 @@
 
                 <TextView
                     style="@style/ScoreEntryLabel"
-                    android:text="Marvellouses" />
+                    android:text="@string/marvellouses_hint" />
 
                 <EditText
                     android:id="@+id/marvellouses"
@@ -41,7 +41,7 @@
 
                 <TextView
                     style="@style/ScoreEntryLabel"
-                    android:text="Perfects" />
+                    android:text="@string/perfects_hint" />
 
                 <EditText
                     android:id="@+id/perfects"
@@ -52,7 +52,7 @@
 
                 <TextView
                     style="@style/ScoreEntryLabel"
-                    android:text="Holds" />
+                    android:text="@string/holds_hint" />
 
                 <EditText
                     android:id="@+id/holds"
@@ -66,7 +66,7 @@
 
                 <TextView
                     style="@style/ScoreEntryLabel"
-                    android:text="Greats" />
+                    android:text="@string/greats_hint" />
 
                 <EditText
                     android:id="@+id/greats"
@@ -77,7 +77,7 @@
 
                 <TextView
                     style="@style/ScoreEntryLabel"
-                    android:text="Total Holds" />
+                    android:text="@string/totalHolds_hint" />
 
                 <EditText
                     android:id="@+id/totalHolds"
@@ -91,7 +91,7 @@
 
                 <TextView
                     style="@style/ScoreEntryLabel"
-                    android:text="Goods" />
+                    android:text="@string/goods_hint" />
 
                 <EditText
                     android:id="@+id/goods"
@@ -110,7 +110,7 @@
 
                 <TextView
                     style="@style/ScoreEntryLabel"
-                    android:text="Boos" />
+                    android:text="@string/boos_hint" />
 
                 <EditText
                     android:id="@+id/boos"
@@ -129,7 +129,7 @@
 
                 <TextView
                     style="@style/ScoreEntryLabel"
-                    android:text="Misses" />
+                    android:text="@string/misses_hint" />
 
                 <EditText
                     android:id="@+id/misses"
@@ -142,12 +142,14 @@
                 <ImageButton
                     android:id="@+id/submit"
                     style="@style/ScoreSubmitButton"
-                    android:onClick="ddrexCalculateScore" />
+                    android:onClick="calculateScore"
+                    android:contentDescription="@string/score_submit_description"/>
 
                 <ImageButton
                     android:id="@+id/clearForm"
                     style="@style/ScoreClearButton"
-                    android:onClick="clearForm" />
+                    android:onClick="clearForm"
+                    android:contentDescription="@string/score_clear_description"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -159,14 +161,14 @@
         <TextView
             android:id="@+id/scoreSectionLabel"
             style="@style/ScoreSectionTitle"
-            android:text="@string/itg_scoreSectionLabel" />
+            android:text="@string/score_section_label" />
 
         <LinearLayout style="@style/CalculatedScoreRow" >
 
             <TextView
                 android:id="@+id/earnedScoreLabel"
                 style="@style/CalculatedScoreLabel"
-                android:text="Earned Score" />
+                android:text="@string/score_label_earned_default" />
 
             <TextView
                 android:id="@+id/earnedScoreValue"
@@ -178,7 +180,7 @@
             <TextView
                 android:id="@+id/potentialScoreLabel"
                 style="@style/CalculatedScoreLabel"
-                android:text="Potential Score" />
+                android:text="@string/score_label_potential_default" />
 
             <TextView
                 android:id="@+id/potentialScoreValue"

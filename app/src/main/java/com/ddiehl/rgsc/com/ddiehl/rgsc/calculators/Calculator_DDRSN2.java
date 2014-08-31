@@ -36,7 +36,7 @@ public class Calculator_DDRSN2 extends Activity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 	
-	public void ddrexCalculateScore(View v) {
+	public void calculateScore(View v) {
 		// Dismiss keyboard
 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);

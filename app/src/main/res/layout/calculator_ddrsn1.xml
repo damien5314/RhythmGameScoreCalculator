@@ -146,7 +146,7 @@
                 <ImageButton
                     android:id="@+id/submit"
                     style="@style/ScoreSubmitButton"
-                    android:onClick="ddrexCalculateScore" />
+                    android:onClick="calculateScore" />
 
                 <ImageButton
                     android:id="@+id/clearForm"
@@ -163,7 +163,7 @@
         <TextView
             android:id="@+id/scoreSectionLabel"
             style="@style/ScoreSectionTitle"
-            android:text="@string/itg_scoreSectionLabel" />
+            android:text="@string/score_section_label" />
 
         <LinearLayout style="@style/CalculatedScoreRow" >
 
