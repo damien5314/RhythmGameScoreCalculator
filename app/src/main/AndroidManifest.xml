@@ -48,7 +48,7 @@
         </activity>
         <activity
             android:name=".com.ddiehl.rgsc.calculators.Calculator_IIDX"
-            android:label="@string/title_activity_calculator__iidx" >
+            android:label="@string/title_iidx" >
         </activity>
     </application>
 

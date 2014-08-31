@@ -3,17 +3,20 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    
-    <dimen name="introduction_header_size">35dp</dimen>
-    <dimen name="introduction_body_size">15dp</dimen>
-    
-    <dimen name="itg_field_height">48dp</dimen>
-    <dimen name="itg_field_width">140dp</dimen>
-    <dimen name="itg_scoreSectionLabel_size">30dp</dimen>
-    <dimen name="itg_earnedScoreLabel_size">20dp</dimen>
-    <dimen name="itg_earnedScoreValue_size">20dp</dimen>
-    <dimen name="itg_potentialScoreLabel_size">20dp</dimen>
-    <dimen name="itg_potentialScoreValue_size">20dp</dimen>
-    <dimen name="itg_score_percent_size">40dp</dimen>
+
+    <dimen name="score_entry_field_height">48dp</dimen>
+    <dimen name="score_entry_field_width">140dp</dimen>
+
+    <dimen name="score_calculated_section_label_size">32dp</dimen>
+    <dimen name="score_earned_label_size">20dp</dimen>
+    <dimen name="score_earned_value_size">@dimen/score_earned_label_size</dimen>
+    <dimen name="score_potential_label_size">@dimen/score_earned_label_size</dimen>
+    <dimen name="score_potential_value_size">@dimen/score_potential_label_size</dimen>
+    <dimen name="score_percent_size">40dp</dimen>
+    <dimen name="score_grade_size">@dimen/score_percent_size</dimen>
+
+    <dimen name="about_header_label_size">@dimen/score_calculated_section_label_size</dimen>
+    <dimen name="about_header_padding">10dp</dimen>
+    <dimen name="about_body_size">15sp</dimen>
 
 </resources>
