@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.Editable;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -27,6 +25,7 @@ public class Calculator_DDRSN2 extends Activity {
 	private static final int BOOS_WEIGHT = 0;
 	private static final int MISSES_WEIGHT = 0;
 	private static final int HOLDS_WEIGHT = 2;
+    private static final int BEST_WEIGHT = MARVELLOUSES_WEIGHT;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +80,8 @@ public class Calculator_DDRSN2 extends Activity {
 		// Verify input has been submitted
 		int[] stepCounts = {marvellouses, perfects, greats, goods, boos, misses, holds, totalHolds};
 		int stepTotal = 0;
-		for (int i = 0; i < stepCounts.length; i++)
-			stepTotal += stepCounts[i];
+		for (int steps : stepCounts)
+			stepTotal += steps;
 		
 		if (stepTotal != 0) {
 			if (holds > totalHolds) {
@@ -98,13 +97,12 @@ public class Calculator_DDRSN2 extends Activity {
 				earnedScore += holds * HOLDS_WEIGHT;
 				
 				// Calculate potential score
-				int bestWeight = MARVELLOUSES_WEIGHT;
-				int[] imperfectSteps = {greats, goods, boos, misses, totalHolds-holds};
-				potentialScore += ((marvellouses + perfects + greats + goods + boos + misses) * bestWeight)
+				potentialScore += ((marvellouses + perfects + greats + goods + boos + misses) * BEST_WEIGHT)
 						+ (totalHolds * HOLDS_WEIGHT);
 				
 				// Calculate score percentage rounded to 2 decimal places
 				double scorePercent = ((int)(((double)earnedScore / (double)potentialScore) * 10000) / 100.00);
+                int[] imperfectSteps = {greats, goods, boos, misses, totalHolds-holds};
 				String grade = calculateGrade(scorePercent, imperfectSteps);
 				DecimalFormat df = new DecimalFormat("0.00");
 
@@ -121,12 +119,15 @@ public class Calculator_DDRSN2 extends Activity {
 			Toast.makeText(this, R.string.error_no_steps, Toast.LENGTH_SHORT).show();
 		}
 	}
-	
+
+    /**
+     * TODO Display PFC separately from grade
+     */
 	public String calculateGrade(double percentScore, int[] imperfectSteps) {
 		// imperfectSteps = {greats, goods, boos, misses, totalHolds-holds}
 		boolean anyImperfectSteps = false;
-				for (int i = 0; i < imperfectSteps.length; i++)
-					if (imperfectSteps[i] != 0)
+				for (int steps : imperfectSteps)
+					if (steps != 0)
 						anyImperfectSteps = true;
 				
 		if (!anyImperfectSteps) {
@@ -158,25 +159,10 @@ public class Calculator_DDRSN2 extends Activity {
 		((EditText)findViewById(R.id.holds)).setText("");
 		((EditText)findViewById(R.id.totalHolds)).setText("");
 		
-		((TextView)findViewById(R.id.earnedScoreValue)).setText("0");
-		((TextView)findViewById(R.id.potentialScoreValue)).setText("0");
+		((TextView)findViewById(R.id.earnedScoreValue)).setText(R.string.score_value_earned_default);
+		((TextView)findViewById(R.id.potentialScoreValue)).setText(R.string.score_value_potential_default);
 		((TextView)findViewById(R.id.scorePercent)).setText(R.string.score_percent_default);
 		((TextView)findViewById(R.id.scoreGrade)).setText(R.string.score_grade_default);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item){
-	    switch(item.getItemId()){
-	    
-	    }
-	    return false;
 	}
 
 }

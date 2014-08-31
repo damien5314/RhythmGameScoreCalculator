@@ -95,15 +95,13 @@
 
                 <ImageButton
                     android:id="@+id/submit"
-                    style="@style/ScoreSubmitButton"
                     android:onClick="calculateScore"
-                    android:contentDescription="@string/score_submit_description"/>
+                    style="@style/ScoreSubmitButton"/>
 
                 <ImageButton
                     android:id="@+id/clearForm"
-                    style="@style/ScoreClearButton"
                     android:onClick="clearForm"
-                    android:contentDescription="@string/score_clear_description"/>
+                    style="@style/ScoreClearButton"/>
 
             </LinearLayout>
 
@@ -125,8 +123,8 @@
 
             <TextView
                 android:id="@+id/earnedScoreLabel"
-                android:text="@string/score_label_earned_default"
-                style="@style/CalculatedScoreLabel"/>
+                android:text="@string/iidx_score_label_default"
+                style="@style/EarnedScoreLabel"/>
 
             <TextView
                 android:id="@+id/earnedScoreValue"

@@ -47,7 +47,7 @@
     <string name="iidx_score_label_default">EX Score</string>
     <string name="iidx_score_value_default">0</string>
     <string name="iidx_score_percent_default">0.00%</string>
-    <string name="error_no_steps">Error: No steps entered.</string>
+    <string name="error_no_steps">Error: No grades entered.</string>
     <string name="error_invalid_holds">Error: Holds > Total Holds.</string>
     <string name="error_invalid_rolls">Error: Rolls > Total Rolls.</string>
     <string name="action_settings">Settings</string>

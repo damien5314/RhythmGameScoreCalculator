@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -88,15 +87,12 @@ public class Calculator_PopN extends Activity {
     }
 
     public void clearForm(View v) {
-        v.clearFocus();
-        int[] ids = { R.id.cools, R.id.greats, R.id.goods, R.id.boos, R.id.earnedScoreValue };
-        for (int id : ids) {
-            try {
-                ((EditText) findViewById(id)).setText("");
-            } catch (ClassCastException e) {
-                ((TextView) findViewById(id)).setText("");
-            }
-        }
+        ((EditText)findViewById(R.id.cools)).setText("");
+        ((EditText)findViewById(R.id.greats)).setText("");
+        ((EditText)findViewById(R.id.goods)).setText("");
+        ((EditText)findViewById(R.id.boos)).setText("");
+
+        ((TextView)findViewById(R.id.earnedScoreValue)).setText(R.string.score_value_earned_default);
     }
 
 }

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.Editable;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -43,7 +41,7 @@ public class Calculator_DDRExtreme extends Activity {
 		et.setEnabled(isCourseModeOn);
 	}
 	
-	public void ddrexCalculateScore(View v) {
+	public void calculateScore(View v) {
 		// Dismiss keyboard
 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
@@ -132,8 +130,8 @@ public class Calculator_DDRExtreme extends Activity {
 	public String calculateGrade(boolean isCourseModeOn, double percentScore, int[] imperfectSteps) {
 		// imperfectSteps = {greats, goods, boos, misses, totalHolds-holds}
 		boolean anyImperfectSteps = false;
-				for (int i = 0; i < imperfectSteps.length; i++)
-					if (imperfectSteps[i] != 0)
+				for (int step : imperfectSteps)
+					if (step != 0)
 						anyImperfectSteps = true;
 				
 		if (!anyImperfectSteps) {
@@ -179,25 +177,10 @@ public class Calculator_DDRExtreme extends Activity {
 		((EditText) findViewById(R.id.holds)).setText("");
 		((EditText) findViewById(R.id.totalHolds)).setText("");
 
-		((TextView)findViewById(R.id.earnedScoreValue)).setText("0");
-		((TextView)findViewById(R.id.potentialScoreValue)).setText("0");
+		((TextView)findViewById(R.id.earnedScoreValue)).setText(R.string.score_value_earned_default);
+		((TextView)findViewById(R.id.potentialScoreValue)).setText(R.string.score_value_potential_default);
 		((TextView)findViewById(R.id.scorePercent)).setText(R.string.score_percent_default);
 		((TextView)findViewById(R.id.scoreGrade)).setText(R.string.score_grade_default);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item){
-	    switch(item.getItemId()){
-	    
-	    }
-	    return false;
 	}
 	
 }
