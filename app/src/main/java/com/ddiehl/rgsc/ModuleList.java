@@ -17,6 +17,7 @@ import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_DDRExtreme;
 import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_DDRSN1;
 import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_DDRSN2;
 import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_InTheGroove;
+import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_PopN;
 
 public class ModuleList extends Activity {
 	private static final String TAG = ModuleList.class.getSimpleName();
@@ -31,8 +32,9 @@ public class ModuleList extends Activity {
         mModuleList = new ArrayList<CalculatorModule>();
         mModuleList.add(new CalculatorModule(getString(R.string.title_activity_itg_score_calculator), Calculator_InTheGroove.class));
         mModuleList.add(new CalculatorModule(getString(R.string.title_activity_ddr_ex_score_calculator), Calculator_DDRExtreme.class));
-        mModuleList.add(new CalculatorModule(getString(R.string.title_activity_ddr_sn1_score_calculator), Calculator_DDRSN1.class));
+//        mModuleList.add(new CalculatorModule(getString(R.string.title_activity_ddr_sn1_score_calculator), Calculator_DDRSN1.class));
         mModuleList.add(new CalculatorModule(getString(R.string.title_activity_ddr_sn2_score_calculator), Calculator_DDRSN2.class));
+        mModuleList.add(new CalculatorModule(getString(R.string.title_activity_popn_score_calculator), Calculator_PopN.class));
         refresh();
 	}
 

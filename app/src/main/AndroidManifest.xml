@@ -42,6 +42,10 @@
             android:name=".com.ddiehl.rgsc.calculators.Calculator_DDRSN1"
             android:label="@string/title_activity_ddr_sn1_score_calculator" >
         </activity>
+        <activity
+            android:name=".com.ddiehl.rgsc.calculators.Calculator_PopN"
+            android:label="@string/title_activity_popn_score_calculator" >
+        </activity>
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@
     <string name="title_activity_ddr_ex_score_calculator">DDR Extreme</string>
     <string name="title_activity_ddr_sn1_score_calculator">DDR Supernova</string>
     <string name="title_activity_ddr_sn2_score_calculator">DDR Supernova 2</string>
+    <string name="title_activity_popn_score_calculator">Pop\'n Music</string>
     <string name="title_activity_about_app">About RGSC</string>
     <string name="action_about_app">About RGSC</string>
     <string name="default_module_name">~Default</string>
@@ -40,5 +41,6 @@
     <string name="error_no_steps">Error: No steps entered.</string>
     <string name="error_invalid_holds">Error: Holds > Total Holds.</string>
     <string name="error_invalid_rolls">Error: Rolls > Total Rolls.</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
