@@ -108,21 +108,16 @@
         android:id="@+id/calculated_score"
         style="@style/CalculatedScoreSection" >
 
-        <TextView
-            android:id="@+id/scoreSectionLabel"
-            style="@style/ScoreSectionTitle" />
-
         <LinearLayout
             android:gravity="center"
             style="@style/CalculatedScoreRow">
 
-            <TextView
-                android:id="@+id/earnedScoreLabel"
-                style="@style/ExScoreLabel"/>
+            <TextView style="@style/ExScoreLabel"
+                android:text="@string/iidx_score_label_default"
+                android:id="@+id/earnedScoreLabel"/>
 
-            <TextView
-                android:id="@+id/earnedScoreValue"
-                style="@style/CalculatedScoreValue"/>
+            <TextView style="@style/ExScoreValue"
+                android:id="@+id/earnedScoreValue" />
 
         </LinearLayout>
 
@@ -130,13 +125,11 @@
             android:gravity="center"
             style="@style/CalculatedScoreRow">
 
-            <TextView
-                android:id="@+id/scorePercent"
-                style="@style/CalculatedScorePercent"/>
+            <TextView style="@style/CalculatedScorePercent"
+                android:id="@+id/scorePercent"/>
 
-            <TextView
-                android:id="@+id/scoreGrade"
-                style="@style/CalculatedScoreGrade"/>
+            <TextView style="@style/CalculatedScoreGrade"
+                android:id="@+id/scoreGrade"/>
 
         </LinearLayout>
 

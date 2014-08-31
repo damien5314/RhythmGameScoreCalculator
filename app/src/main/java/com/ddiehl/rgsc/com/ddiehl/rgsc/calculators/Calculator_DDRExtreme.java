@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -19,13 +18,13 @@ import java.text.DecimalFormat;
 public class Calculator_DDRExtreme extends Activity {
 	private static final String TAG = Calculator_DDRExtreme.class.getSimpleName();
 
-	private static final int MARVELLOUSES_WEIGHT = 3;
-	private static final int PERFECTS_WEIGHT = 2;
-	private static final int GREATS_WEIGHT = 1;
-	private static final int GOODS_WEIGHT = 0;
-	private static final int BOOS_WEIGHT = -4;
-	private static final int MISSES_WEIGHT = -8;
-	private static final int HOLDS_WEIGHT = 6;
+	private static final double MARVELLOUSES_WEIGHT = 3;
+	private static final double PERFECTS_WEIGHT = 2;
+	private static final double GREATS_WEIGHT = 1;
+	private static final double GOODS_WEIGHT = 0;
+	private static final double BOOS_WEIGHT = -4;
+	private static final double MISSES_WEIGHT = -8;
+	private static final double HOLDS_WEIGHT = 6;
 	private boolean isCourseModeOn = false;
 
 	@Override
@@ -45,89 +44,74 @@ public class Calculator_DDRExtreme extends Activity {
 		// Dismiss keyboard
 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-		
-		int earnedScore = 0;
-		int potentialScore = 0;
+
 		int marvellouses, perfects, greats, goods, boos, misses, holds, totalHolds;
 		
 		// Read in all of the fields in the DDR score form
-		try {
-			Editable t = (((EditText)findViewById(R.id.marvellouses)).getText());
-			marvellouses = Integer.valueOf(t.toString());	
+		try { marvellouses = Integer.valueOf(((EditText)findViewById(R.id.marvellouses)).getText().toString());
 		} catch (NumberFormatException e) { marvellouses = 0; }
-		try {
-			Editable t = (((EditText)findViewById(R.id.perfects)).getText());
-			perfects = Integer.valueOf(t.toString());	
+		try { perfects = Integer.valueOf(((EditText)findViewById(R.id.perfects)).getText().toString());
 		} catch (NumberFormatException e) { perfects = 0; }
-		try {
-			Editable t = (((EditText)findViewById(R.id.greats)).getText());
-			greats = Integer.valueOf(t.toString());	
+		try { greats = Integer.valueOf(((EditText)findViewById(R.id.greats)).getText().toString());
 		} catch (NumberFormatException e) { greats = 0; }
-		try {
-			Editable t = (((EditText)findViewById(R.id.goods)).getText());
-			goods = Integer.valueOf(t.toString());	
+		try { goods = Integer.valueOf(((EditText)findViewById(R.id.goods)).getText().toString());
 		} catch (NumberFormatException e) { goods = 0; }
-		try {
-			Editable t = (((EditText)findViewById(R.id.boos)).getText());
-			boos = Integer.valueOf(t.toString());	
+		try { boos = Integer.valueOf(((EditText)findViewById(R.id.boos)).getText().toString());
 		} catch (NumberFormatException e) { boos = 0; }
-		try {
-			Editable t = (((EditText)findViewById(R.id.misses)).getText());
-			misses = Integer.valueOf(t.toString());	
+		try { misses = Integer.valueOf(((EditText)findViewById(R.id.misses)).getText().toString());
 		} catch (NumberFormatException e) { misses = 0; }
-		try {
-			Editable t = (((EditText)findViewById(R.id.holds)).getText());
-			holds = Integer.valueOf(t.toString());	
+		try { holds = Integer.valueOf(((EditText)findViewById(R.id.holds)).getText().toString());
 		} catch (NumberFormatException e) { holds = 0; }
-		try {
-			Editable t = (((EditText)findViewById(R.id.totalHolds)).getText());
-			totalHolds = Integer.valueOf(t.toString());	
+		try { totalHolds = Integer.valueOf(((EditText)findViewById(R.id.totalHolds)).getText().toString());
 		} catch (NumberFormatException e) { totalHolds = 0; }
 		
 		// Verify input has been submitted
-		int[] stepCounts = {marvellouses, perfects, greats, goods, boos, misses, holds, totalHolds};
+		int[] stepCounts = { marvellouses, perfects, greats, goods, boos, misses, holds, totalHolds };
 		int stepTotal = 0;
-		for (int i = 0; i < stepCounts.length; i++)
-			stepTotal += stepCounts[i];
+		for (int steps : stepCounts)
+			stepTotal += steps;
 		
 		if (stepTotal != 0) {
 			if (holds > totalHolds) {
 				Toast.makeText(getApplicationContext(), R.string.error_invalid_holds, Toast.LENGTH_SHORT).show();
 			} else {
-				if (isCourseModeOn)
-					earnedScore += marvellouses * MARVELLOUSES_WEIGHT;
-				earnedScore += perfects * PERFECTS_WEIGHT;
-				earnedScore += greats * GREATS_WEIGHT;
-				earnedScore += goods * GOODS_WEIGHT;
-				earnedScore += boos * BOOS_WEIGHT;
-				earnedScore += misses * MISSES_WEIGHT;
-				earnedScore += holds * HOLDS_WEIGHT;
+                int[] judgements = { marvellouses, perfects, greats, goods, boos, misses, holds, totalHolds };
+                double[] earnedScore = applyGradeWeights(isCourseModeOn, judgements);
 				
 				// Calculate potential score
-				int bestWeight = (isCourseModeOn) ? MARVELLOUSES_WEIGHT : PERFECTS_WEIGHT;
-				int[] imperfectSteps = {greats, goods, boos, misses, totalHolds-holds};
-				potentialScore += ((marvellouses + perfects + greats + goods + boos + misses) * bestWeight)
-						+ (totalHolds * HOLDS_WEIGHT);
-				
-				// Calculate score percentage rounded to 2 decimal places
-				double scorePercent = ((int)(((double)earnedScore / (double)potentialScore) * 10000) / 100.00);
-				DecimalFormat df = new DecimalFormat("0.00");
+				final double BEST_WEIGHT = (isCourseModeOn) ? MARVELLOUSES_WEIGHT : PERFECTS_WEIGHT;
+				int[] imperfectSteps = { greats, goods, boos, misses, totalHolds-holds };
+                double potentialScore = ((marvellouses + perfects + greats + goods + boos + misses) * BEST_WEIGHT)
+                        + (totalHolds * HOLDS_WEIGHT);
+                double potentialScoreForGrade = ((marvellouses + perfects + greats + goods + boos + misses) * PERFECTS_WEIGHT)
+                        + (totalHolds * HOLDS_WEIGHT);
+
+                double scorePercent = ((int)((sum(earnedScore) / potentialScore) * 10000) / 100.00);
+                DecimalFormat df = new DecimalFormat("0.00");
 
 				TextView vEarnedScoreValue = (TextView) findViewById(R.id.earnedScoreValue);
-				vEarnedScoreValue.setText(earnedScore + "");
+				vEarnedScoreValue.setText(sum(earnedScore) + "");
 				TextView vPotentialScoreValue = (TextView) findViewById(R.id.potentialScoreValue);
 				vPotentialScoreValue.setText(potentialScore + "");
 				TextView vScorePercent = (TextView) findViewById(R.id.scorePercent);
 				vScorePercent.setText(df.format(scorePercent) + "%");
 				TextView vScoreGrade = (TextView) findViewById(R.id.scoreGrade);
-				vScoreGrade.setText(calculateGrade(isCourseModeOn, scorePercent, imperfectSteps));
+				vScoreGrade.setText(calculateGrade(isCourseModeOn, judgements, potentialScoreForGrade, imperfectSteps));
 			}
 		} else {
 			Toast.makeText(getApplicationContext(), R.string.error_no_steps, Toast.LENGTH_SHORT).show();
 		}
 	}
 	
-	public String calculateGrade(boolean isCourseModeOn, double percentScore, int[] imperfectSteps) {
+	public String calculateGrade(boolean isCourseModeOn, int[] judgements, double potentialScore, int[] imperfectSteps) {
+        judgements[1] += judgements[0];
+        judgements[0] = 0;
+
+        // Apply step weights
+        double[] earnedScore = applyGradeWeights(isCourseModeOn, judgements);
+
+        double percentScore = ((int)((sum(earnedScore) / potentialScore) * 10000) / 100.00);
+
 		// imperfectSteps = {greats, goods, boos, misses, totalHolds-holds}
 		boolean anyImperfectSteps = false;
 				for (int step : imperfectSteps)
@@ -136,25 +120,38 @@ public class Calculator_DDRExtreme extends Activity {
 				
 		if (!anyImperfectSteps) {
 			if (isCourseModeOn)
-				if (percentScore == 100.00)
+				if (percentScore == 100.0)
 					return "(AAAA)";
 				else
 					return "(AAA)";
 			else
 				return "(AAA)";
 		} else {
-			if (percentScore >= 93.00)
+			if (percentScore >= 93.0)
 				return "(AA)";
-			else if (percentScore >= 80.00)
+			else if (percentScore >= 80.0)
 				return "(A)";
-			else if (percentScore >= 65.00)
+			else if (percentScore >= 65.0)
 				return "(B)";
-			else if (percentScore >= 45.00)
+			else if (percentScore >= 45.0)
 				return "(C)";
 			else
 				return "(D)";
 		}
 	}
+
+    private double[] applyGradeWeights(boolean isCourseModeOn, int[] grades) {
+        double[] earnedScore = new double[grades.length];
+        if (isCourseModeOn)
+            earnedScore[0] = isCourseModeOn ? grades[0] * MARVELLOUSES_WEIGHT : 0;
+        earnedScore[1] = grades[1] * PERFECTS_WEIGHT;
+        earnedScore[2] = grades[2] * GREATS_WEIGHT;
+        earnedScore[3] = grades[3] * GOODS_WEIGHT;
+        earnedScore[4] = grades[4] * BOOS_WEIGHT;
+        earnedScore[5] = grades[5] * MISSES_WEIGHT;
+        earnedScore[6] = grades[6] * HOLDS_WEIGHT;
+        return earnedScore;
+    }
 	
 	public void toggleCourseMode(View v) {
 		isCourseModeOn = !isCourseModeOn;
@@ -182,5 +179,12 @@ public class Calculator_DDRExtreme extends Activity {
 		((TextView)findViewById(R.id.scorePercent)).setText(R.string.score_percent_default);
 		((TextView)findViewById(R.id.scoreGrade)).setText(R.string.score_grade_default);
 	}
+
+    private static double sum(double[] ints) {
+        int res = 0;
+        for  (double i : ints)
+            res += i;
+        return res;
+    }
 	
 }

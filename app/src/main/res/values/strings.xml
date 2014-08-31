@@ -39,7 +39,6 @@
     <string name="jgreats_hint">~Greats</string>
     <string name="bads_hint">Bads</string>
     <string name="poors_hint">Poors</string>
-    <string name="score_section_label">Score</string>
     <string name="score_label_earned_default">Earned</string>
     <string name="score_value_earned_default">0</string>
     <string name="score_label_potential_default">Potential</string>
@@ -49,8 +48,7 @@
     <string name="score_percent_default">0.00%</string>
     <string name="score_grade_default">(E)</string>
     <string name="iidx_score_label_default">EX Score</string>
-    <string name="iidx_score_value_default">0</string>
-    <string name="iidx_score_percent_default">0.00%</string>
+    <string name="popn_score_label_default">Score</string>
     <string name="error_no_steps">Error: No grades entered.</string>
     <string name="error_invalid_holds">Error: Holds > Total Holds.</string>
     <string name="error_invalid_rolls">Error: Rolls > Total Rolls.</string>

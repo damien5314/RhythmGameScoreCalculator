@@ -1,7 +1,5 @@
 package com.ddiehl.rgsc;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -19,6 +17,12 @@ import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_IIDX;
 import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_InTheGroove;
 import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_PopN;
 
+import java.util.ArrayList;
+
+/**
+ * TODO Extreme with marvellouses turned on calculates grading strangely.
+ *      Grading should be BEST_WEIGHT = PERFECTS while % calculation can be done on the raw integers
+ */
 public class ModuleList extends Activity {
 	private static final String TAG = ModuleList.class.getSimpleName();
     private ArrayList<CalculatorModule> mModuleList;

@@ -186,10 +186,6 @@
         android:id="@+id/calculated_score"
         style="@style/CalculatedScoreSection" >
 
-        <TextView
-            android:id="@+id/scoreSectionLabel"
-            style="@style/ScoreSectionTitle" />
-
         <LinearLayout style="@style/CalculatedScoreRow" >
 
             <TextView

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ActivityStandardPadding"
     android:orientation="vertical"
-    tools:context=".Calculator_DDRExtreme" >
+    tools:context=".Activity_Calculator_DDRExtreme" >
 
     <LinearLayout
         android:id="@+id/score_entry"
@@ -173,10 +173,6 @@
     <LinearLayout
         android:id="@+id/calculated_score"
         style="@style/CalculatedScoreSection" >
-
-        <TextView
-            android:id="@+id/scoreSectionLabel"
-            style="@style/ScoreSectionTitle" />
 
         <LinearLayout style="@style/CalculatedScoreRow" >
 
