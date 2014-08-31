@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "20.0.0"
-
+    buildToolsVersion '20.0.0'
     defaultConfig {
-        applicationId "com.ddiehl.rgsc"
+        applicationId 'com.ddiehl.rgsc'
         minSdkVersion 11
         targetSdkVersion 19
+        versionCode 2
+        versionName '1.1'
     }
-
     buildTypes {
         release {
             runProguard true

@@ -4,19 +4,63 @@
     android:orientation="vertical"
     tools:context=".Activity_AboutApp" >
 
-    <TextView
+    <TextView style="@style/AboutSectionHeader"
+        android:text="@string/about_screen_header" />
+    
+    <LinearLayout style="@style/AboutPackageDetails">
+
+        <LinearLayout style="@style/CalculatedScoreRow">
+
+            <TextView style="@style/EarnedScoreLabel"
+                android:id="@+id/versionNumberLabel"
+                android:text="@string/about_version_label"/>
+
+            <TextView style="@style/CalculatedScoreValue"
+                android:id="@+id/versionNumberValue"
+                android:textStyle="italic"
+                android:text="@string/about_version_value"/>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/CalculatedScoreRow">
+
+            <TextView style="@style/EarnedScoreLabel"
+                android:id="@+id/updateTimeLabel"
+                android:text="@string/about_update_label"/>
+
+            <TextView style="@style/CalculatedScoreValue"
+                android:id="@+id/updateTimeValue"
+                android:textStyle="italic"
+                android:text="@string/about_update_value"/>
+
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+    <TableLayout
+        android:id="@+id/about_changelog"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/about_header_padding"
-        android:gravity="center"
-        android:textSize="@dimen/about_header_label_size"
-        android:text="@string/introduction_header"
-        android:fontFamily="sans-serif-light" />
+        android:shrinkColumns="2">
+        
+        <TableRow style="@style/AboutChangelogRow"
+            android:id="@+id/about_changelog_headers">
 
-    <TextView
+            <TextView style="@style/AboutChangelogHeader"
+                android:text="Version"/>
+            <TextView style="@style/AboutChangelogHeader"
+                android:text="Date"/>
+            <TextView style="@style/AboutChangelogHeader"
+                android:text="Changes"/>
+            
+        </TableRow>
+        
+    </TableLayout>
+
+<!--    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/about_body_size"
-        android:text="@string/introduction_body" />
+        android:text="@string/introduction_body" />-->
 
 </LinearLayout>

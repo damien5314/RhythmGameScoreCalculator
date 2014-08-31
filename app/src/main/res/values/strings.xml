@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">RGSC</string>
-    <string name="default_module_name">~Default</string>
+    <string name="default_module_name">\???</string>
     <string name="title_module_list">@string/app_name</string> <!-- Temporary assignment to app_name until we figure out how to have a separate launcher label -->
     <string name="title_itg">In the Groove</string>
     <string name="title_ddrex">DDR Extreme</string>
@@ -12,7 +12,11 @@
     <string name="title_popn">Pop\'n Music</string>
     <string name="title_about">About RGSC</string>
     <string name="action_about_app">About RGSC</string>
-    <string name="introduction_header">Rhythm Game\nScore Calculator</string>
+    <string name="about_screen_header">Rhythm Game\nScore Calculator</string>
+    <string name="about_version_label">Version</string>
+    <string name="about_version_value">\?</string>
+    <string name="about_update_label">Updated</string>
+    <string name="about_update_value">\?</string>
     <string name="introduction_body">This app calculates a player\'s score in several
         music rhythm games. Simply input your step counts and the relevant score
         information will be displayed.</string>

@@ -17,6 +17,8 @@
 
     <dimen name="about_header_label_size">@dimen/score_calculated_section_label_size</dimen>
     <dimen name="about_header_padding">10dp</dimen>
+    <dimen name="about_package_details_padding">10dp</dimen>
     <dimen name="about_body_size">15sp</dimen>
+    <dimen name="about_changelog_padding">5dp</dimen>
 
 </resources>
