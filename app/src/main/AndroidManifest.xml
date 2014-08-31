@@ -18,6 +18,7 @@
             android:label="@string/title_module_list" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -44,6 +45,10 @@
         <activity
             android:name=".com.ddiehl.rgsc.calculators.Calculator_PopN"
             android:label="@string/title_popn" >
+        </activity>
+        <activity
+            android:name=".com.ddiehl.rgsc.calculators.Calculator_IIDX"
+            android:label="@string/title_activity_calculator__iidx" >
         </activity>
     </application>
 

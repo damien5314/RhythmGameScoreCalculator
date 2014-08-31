@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_DDRExtreme;
 import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_DDRSN2;
+import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_IIDX;
 import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_InTheGroove;
 import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_PopN;
 
@@ -33,6 +34,7 @@ public class ModuleList extends Activity {
         mModuleList.add(new CalculatorModule(getString(R.string.title_ddrex), Calculator_DDRExtreme.class));
 //        mModuleList.add(new CalculatorModule(getString(R.string.title_activity_ddr_sn1_score_calculator), Calculator_DDRSN1.class));
         mModuleList.add(new CalculatorModule(getString(R.string.title_ddrsn2), Calculator_DDRSN2.class));
+        mModuleList.add(new CalculatorModule(getString(R.string.title_iidx), Calculator_IIDX.class));
         mModuleList.add(new CalculatorModule(getString(R.string.title_popn), Calculator_PopN.class));
         refresh();
 	}
