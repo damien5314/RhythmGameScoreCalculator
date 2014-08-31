@@ -1,7 +1,5 @@
 package com.ddiehl.rgsc.com.ddiehl.rgsc.calculators;
 
-import java.text.DecimalFormat;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -16,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ddiehl.rgsc.R;
+
+import java.text.DecimalFormat;
 
 public class Calculator_InTheGroove extends Activity {
 	private static final String TAG = Calculator_InTheGroove.class.getSimpleName();

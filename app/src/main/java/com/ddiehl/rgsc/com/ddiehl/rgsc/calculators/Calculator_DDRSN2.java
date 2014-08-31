@@ -1,7 +1,5 @@
 package com.ddiehl.rgsc.com.ddiehl.rgsc.calculators;
 
-import java.text.DecimalFormat;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -17,10 +15,11 @@ import android.widget.Toast;
 
 import com.ddiehl.rgsc.R;
 
+import java.text.DecimalFormat;
+
 public class Calculator_DDRSN2 extends Activity {
 	private static final String TAG = Calculator_DDRSN2.class.getSimpleName();
 
-	// TODO Check these weights
 	private static final int MARVELLOUSES_WEIGHT = 3;
 	private static final int PERFECTS_WEIGHT = 2;
 	private static final int GREATS_WEIGHT = 1;
@@ -38,7 +37,7 @@ public class Calculator_DDRSN2 extends Activity {
 	
 	public void calculateScore(View v) {
 		// Dismiss keyboard
-		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 		
 		int earnedScore = 0;
@@ -119,7 +118,7 @@ public class Calculator_DDRSN2 extends Activity {
 				vScoreGrade.setText(grade);
 			}
 		} else {
-			Toast.makeText(getApplicationContext(), R.string.error_no_steps, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.error_no_steps, Toast.LENGTH_SHORT).show();
 		}
 	}
 	
