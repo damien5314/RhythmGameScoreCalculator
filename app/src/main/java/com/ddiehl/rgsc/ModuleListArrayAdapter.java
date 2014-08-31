@@ -30,16 +30,20 @@ public class ModuleListArrayAdapter extends ArrayAdapter<CalculatorModule> {
         ItemHolder holder;
         CalculatorModule item = data.get(position);
 
-        LayoutInflater inflater = ( (Activity) context ).getLayoutInflater();
-        row = inflater.inflate(layoutResourceId, parent, false);
+        if (row == null) {
+            LayoutInflater inflater = ( (Activity) context ).getLayoutInflater();
+            row = inflater.inflate(layoutResourceId, parent, false);
 
-        holder = new ItemHolder();
-        holder.itemName = (TextView) row.findViewById(R.id.itemName);
+            holder = new ItemHolder();
+            holder.itemName = (TextView) row.findViewById(R.id.itemName);
+
+            row.setTag(holder);
+        } else {
+            holder = (ItemHolder) row.getTag();
+        }
+
         holder.itemName.setText(item.getModuleName());
 
-        row.setTag(holder);
-
-        Log.d(TAG, "Item #" + position + " : " + item.getModuleName());
         return row;
     }
 

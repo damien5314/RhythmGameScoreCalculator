@@ -3,18 +3,18 @@ package com.ddiehl.rgsc;
 public class CalculatorModule {
     private static final String TAG = CalculatorModule.class.getSimpleName();
     private String mName;
-    private Class mClass;
+    private Class<?> mClass;
 
-    public CalculatorModule(String name, Class class_in) {
+    public CalculatorModule(String name, Class<?> class_in) {
         setModuleName(name);
-        setModuleClass(mClass);
+        setModuleClass(class_in);
     }
 
-    public Class getModuleClass() {
+    public Class<?> getModuleClass() {
         return mClass;
     }
 
-    public void setModuleClass(Class mClass) {
+    public void setModuleClass(Class<?> mClass) {
         this.mClass = mClass;
     }
 

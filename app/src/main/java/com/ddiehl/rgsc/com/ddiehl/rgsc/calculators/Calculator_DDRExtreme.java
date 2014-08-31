@@ -1,4 +1,4 @@
-package com.ddiehl.rgsc;
+package com.ddiehl.rgsc.com.ddiehl.rgsc.calculators;
 
 import java.text.DecimalFormat;
 
@@ -16,8 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class Activity_Calculator_DDRExtreme extends Activity {
-	private static final String TAG = Activity_Calculator_DDRExtreme.class.getSimpleName();
+import com.ddiehl.rgsc.R;
+
+public class Calculator_DDRExtreme extends Activity {
+	private static final String TAG = Calculator_DDRExtreme.class.getSimpleName();
 
 	private static final int MARVELLOUSES_WEIGHT = 3;
 	private static final int PERFECTS_WEIGHT = 2;
@@ -31,7 +33,7 @@ public class Activity_Calculator_DDRExtreme extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_calculator_ddrextreme);
+		setContentView(R.layout.calculator_ddrextreme);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		ToggleButton tb = (ToggleButton) findViewById(R.id.courseModeToggle);
 		EditText et = (EditText) findViewById(R.id.marvellouses);

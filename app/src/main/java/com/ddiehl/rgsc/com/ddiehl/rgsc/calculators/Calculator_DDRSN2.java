@@ -1,4 +1,4 @@
-package com.ddiehl.rgsc;
+package com.ddiehl.rgsc.com.ddiehl.rgsc.calculators;
 
 import java.text.DecimalFormat;
 
@@ -15,8 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Activity_Calculator_DDRSN2 extends Activity {
-	private static final String TAG = Activity_Calculator_DDRSN2.class.getSimpleName();
+import com.ddiehl.rgsc.R;
+
+public class Calculator_DDRSN2 extends Activity {
+	private static final String TAG = Calculator_DDRSN2.class.getSimpleName();
 
 	// TODO Check these weights
 	private static final int MARVELLOUSES_WEIGHT = 3;
@@ -30,7 +32,7 @@ public class Activity_Calculator_DDRSN2 extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_calculator_ddrsn2);
+		setContentView(R.layout.calculator_ddrsn2);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 	

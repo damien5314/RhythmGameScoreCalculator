@@ -1,4 +1,4 @@
-package com.ddiehl.rgsc;
+package com.ddiehl.rgsc.com.ddiehl.rgsc.calculators;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Activity_Calculator_DDRSN1 extends Activity {
+import com.ddiehl.rgsc.R;
+
+public class Calculator_DDRSN1 extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_calculator_ddrsn1);
+		setContentView(R.layout.calculator_ddrsn1);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 

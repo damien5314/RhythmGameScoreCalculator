@@ -1,4 +1,4 @@
-package com.ddiehl.rgsc;
+package com.ddiehl.rgsc.com.ddiehl.rgsc.calculators;
 
 import java.text.DecimalFormat;
 
@@ -15,8 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Activity_Calculator_InTheGroove extends Activity {
-	private static final String TAG = Activity_Calculator_InTheGroove.class.getSimpleName();
+import com.ddiehl.rgsc.R;
+
+public class Calculator_InTheGroove extends Activity {
+	private static final String TAG = Calculator_InTheGroove.class.getSimpleName();
 
 	private static final int FANTASTICS_WEIGHT = 5;
 	private static final int EXCELLENTS_WEIGHT = 4;
@@ -31,7 +33,7 @@ public class Activity_Calculator_InTheGroove extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_calculator_inthegroove);
+		setContentView(R.layout.calculator_inthegroove);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
