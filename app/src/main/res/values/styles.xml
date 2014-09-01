@@ -26,6 +26,14 @@
         <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
     </style>
+
+    <style name="ModuleListItem">
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:padding">@dimen/module_row_padding</item>
+        <item name="android:text">@string/default_module_name</item>
+        <item name="android:textSize">@dimen/module_name_size</item>
+    </style>
     
     <style name="AboutSectionHeader">
         <item name="android:layout_height">wrap_content</item>
@@ -67,30 +75,31 @@
         <item name="android:layout_height">wrap_content</item>
 	</style>
 	
-    <style name="ScoreEntryContainer">
+    <style name="ScoreContainer">
         <item name="android:layout_height">@dimen/score_entry_container_height</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="ScoreGradeContainer" parent="ScoreContainer">
         <item name="android:orientation">vertical</item>
     </style>
 	
-    <style name="ScoreButtonContainer">
-        <item name="android:layout_height">@dimen/score_entry_container_height</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_weight">1</item>
+    <style name="ScoreButtonContainer" parent="ScoreContainer">
         <item name="android:orientation">horizontal</item>
     </style>
     
     <style name="ScoreEntryLabel">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:paddingLeft">@dimen/score_entry_label_padding</item>
+        <item name="android:paddingLeft">@dimen/score_entry_label_paddingLeft</item>
         <item name="android:textSize">@dimen/score_entry_label_size</item>
     </style>
 	
     <style name="ScoreEntryField">
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_width">fill_parent</item>
+        <item name="android:padding">0dp</item> <!-- Required to keep the text from being cut off? -->
         <item name="android:gravity">center</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:inputType">number</item>

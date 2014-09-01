@@ -13,7 +13,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/marvellouses_hint"
@@ -25,7 +25,7 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <ToggleButton
                     android:id="@+id/courseModeToggle"
@@ -39,7 +39,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/perfects_hint"
@@ -51,7 +51,7 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/holds_hint"
@@ -67,7 +67,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/greats_hint"
@@ -79,7 +79,7 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/totalHolds_hint"
@@ -95,7 +95,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/goods_hint"
@@ -107,7 +107,7 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView style="@style/ScoreEntryDummyElement" />
 
@@ -117,7 +117,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/boos_hint"
@@ -129,7 +129,7 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView style="@style/ScoreEntryDummyElement" />
 
@@ -139,7 +139,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/misses_hint"

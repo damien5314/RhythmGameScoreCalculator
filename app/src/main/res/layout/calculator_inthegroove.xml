@@ -13,7 +13,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/fantastics_hint"
@@ -24,7 +24,7 @@
                     style="@style/ScoreEntryField" />
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/holds_hint"
@@ -40,7 +40,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/excellents_hint"
@@ -52,7 +52,7 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/totalHolds_hint"
@@ -68,7 +68,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/greats_hint"
@@ -79,7 +79,7 @@
                     style="@style/ScoreEntryField" />
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/mines_hint"
@@ -95,7 +95,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/decents_hint"
@@ -107,7 +107,7 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/rolls_hint"
@@ -123,7 +123,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/wayoffs_hint"
@@ -135,7 +135,7 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/totalRolls_hint"
@@ -151,7 +151,7 @@
 
         <LinearLayout style="@style/ScoreEntryRow" >
 
-            <LinearLayout style="@style/ScoreEntryContainer" >
+            <LinearLayout style="@style/ScoreGradeContainer" >
 
                 <TextView
                     android:text="@string/misses_hint"

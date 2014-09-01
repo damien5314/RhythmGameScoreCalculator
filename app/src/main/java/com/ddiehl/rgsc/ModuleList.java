@@ -36,7 +36,6 @@ public class ModuleList extends Activity {
         mModuleList = new ArrayList<CalculatorModule>();
         mModuleList.add(new CalculatorModule(getString(R.string.title_itg), Calculator_InTheGroove.class));
         mModuleList.add(new CalculatorModule(getString(R.string.title_ddrex), Calculator_DDRExtreme.class));
-//        mModuleList.add(new CalculatorModule(getString(R.string.title_activity_ddr_sn1_score_calculator), Calculator_DDRSN1.class));
         mModuleList.add(new CalculatorModule(getString(R.string.title_ddrsn2), Calculator_DDRSN2.class));
         mModuleList.add(new CalculatorModule(getString(R.string.title_iidx), Calculator_IIDX.class));
         mModuleList.add(new CalculatorModule(getString(R.string.title_popn), Calculator_PopN.class));

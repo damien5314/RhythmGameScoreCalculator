@@ -47,20 +47,16 @@
             android:id="@+id/about_changelog_headers">
 
             <TextView style="@style/AboutChangelogHeader"
-                android:text="Version"/>
+                android:text="@string/about_changelog_header1_hint"/>
+
             <TextView style="@style/AboutChangelogHeader"
-                android:text="Date"/>
+                android:text="@string/about_changelog_header2_hint"/>
+
             <TextView style="@style/AboutChangelogHeader"
-                android:text="Changes"/>
+                android:text="@string/about_changelog_header3_hint"/>
             
         </TableRow>
         
     </TableLayout>
-
-<!--    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/about_body_size"
-        android:text="@string/introduction_body" />-->
 
 </LinearLayout>
