@@ -9,12 +9,15 @@ android {
         targetSdkVersion 19
         versionCode 2
         versionName '1.1'
+        testApplicationId 'com.ddiehl.rgsc.tests'
     }
     buildTypes {
         release {
             runProguard true
             proguardFiles 'proguard-project.txt'
         }
+    }
+    productFlavors {
     }
 }
 
