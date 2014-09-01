@@ -1,4 +1,4 @@
-package com.ddiehl.rgsc.com.ddiehl.rgsc.calculators;
+package com.ddiehl.rgsc.calculators;
 
 import android.app.Activity;
 import android.content.Context;
