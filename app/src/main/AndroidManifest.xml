@@ -21,15 +21,15 @@
             android:label="@string/title_about" >
         </activity>
         <activity
-            android:name=".com.ddiehl.rgsc.calculators.Calculator_InTheGroove"
+            android:name=".calculators.Calculator_InTheGroove"
             android:label="@string/title_itg" >
         </activity>
         <activity
-            android:name=".com.ddiehl.rgsc.calculators.Calculator_DDRExtreme"
+            android:name=".calculators.Calculator_DDRExtreme"
             android:label="@string/title_ddrex" >
         </activity>
         <activity
-            android:name=".com.ddiehl.rgsc.calculators.Calculator_DDRSN2"
+            android:name=".calculators.Calculator_DDRSN2"
             android:label="@string/title_ddrsn2" >
         </activity>
         <activity
@@ -37,11 +37,11 @@
             android:label="@string/title_ddrsn1" >
         </activity>
         <activity
-            android:name=".com.ddiehl.rgsc.calculators.Calculator_PopN"
+            android:name=".calculators.Calculator_PopN"
             android:label="@string/title_popn" >
         </activity>
         <activity
-            android:name=".com.ddiehl.rgsc.calculators.Calculator_IIDX"
+            android:name=".calculators.Calculator_IIDX"
             android:label="@string/title_iidx" >
         </activity>
     </application>

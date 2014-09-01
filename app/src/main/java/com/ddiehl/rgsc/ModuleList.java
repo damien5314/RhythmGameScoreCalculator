@@ -11,11 +11,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_DDRExtreme;
-import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_DDRSN2;
-import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_IIDX;
-import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_InTheGroove;
-import com.ddiehl.rgsc.com.ddiehl.rgsc.calculators.Calculator_PopN;
+import com.ddiehl.rgsc.calculators.Calculator_DDRExtreme;
+import com.ddiehl.rgsc.calculators.Calculator_DDRSN2;
+import com.ddiehl.rgsc.calculators.Calculator_IIDX;
+import com.ddiehl.rgsc.calculators.Calculator_InTheGroove;
+import com.ddiehl.rgsc.calculators.Calculator_PopN;
 
 import java.util.ArrayList;
 
