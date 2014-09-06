@@ -1,6 +1,7 @@
 package com.ddiehl.rgsc.tests;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.View;
 import android.widget.ListView;
 
 import com.ddiehl.rgsc.ModuleList;
@@ -19,9 +20,12 @@ public class ModuleListTest extends ActivityInstrumentationTestCase2<ModuleList>
         moduleList = getActivity();
     }
 
-    public void testLengthOfModuleList() throws Exception {
+    public void testContentsOfModuleList() throws Exception {
         ListView vModuleList = (ListView) moduleList.findViewById(R.id.module_list);
         assertEquals(NUM_MODULES, vModuleList.getChildCount());
+        for (int i = 0; i < vModuleList.getChildCount(); i++) {
+            View vModule = vModuleList.getChildAt(i);
+        }
     }
 
     @Override
