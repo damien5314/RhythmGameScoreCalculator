@@ -22,6 +22,7 @@
                 <EditText
                     android:id="@+id/fantastics"
                     style="@style/ScoreEntryField" />
+
             </LinearLayout>
 
             <LinearLayout style="@style/ScoreGradeContainer" >
@@ -77,6 +78,7 @@
                 <EditText
                     android:id="@+id/greats"
                     style="@style/ScoreEntryField" />
+
             </LinearLayout>
 
             <LinearLayout style="@style/ScoreGradeContainer" >
