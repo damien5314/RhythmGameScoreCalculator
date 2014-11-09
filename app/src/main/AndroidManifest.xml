@@ -9,15 +9,18 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".ModuleList"
-            android:label="@string/title_module_list" >
+            android:label="@string/title_module_list"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".AboutApp"
-            android:label="@string/title_about" >
+            android:label="@string/title_about"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".calculators.Calculator_InTheGroove"
-            android:label="@string/title_itg" >
+            android:label="@string/title_itg"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -25,23 +28,23 @@
         </activity>
         <activity
             android:name=".calculators.Calculator_DDRExtreme"
-            android:label="@string/title_ddrex" >
+            android:label="@string/title_ddrex"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".calculators.Calculator_DDRSN2"
-            android:label="@string/title_ddrsn2" >
-        </activity>
-        <activity
-            android:name=".com.ddiehl.rgsc.calculators.Calculator_DDRSN1"
-            android:label="@string/title_ddrsn1" >
+            android:label="@string/title_ddrsn2"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".calculators.Calculator_PopN"
-            android:label="@string/title_popn" >
+            android:label="@string/title_popn"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".calculators.Calculator_IIDX"
-            android:label="@string/title_iidx" >
+            android:label="@string/title_iidx"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

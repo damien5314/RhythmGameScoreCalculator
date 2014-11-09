@@ -2,7 +2,6 @@ package com.ddiehl.rgsc.calculators;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -31,7 +30,6 @@ public class Calculator_DDRExtreme extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.calculator_ddrextreme);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		ToggleButton tb = (ToggleButton) findViewById(R.id.courseModeToggle);
 		EditText et = (EditText) findViewById(R.id.marvellouses);
 		tb.setChecked(isCourseModeOn);
