@@ -114,40 +114,23 @@ public class Calculator_InTheGroove extends Activity {
 	}
 	
 	private String calculateGrade(double score) {
-		if (score == 100.0)
-			return "(****)";
-		else if (score > 99.0)
-			return "(***)";
-		else if (score > 98.0)
-			return "(**)";
-		else if (score > 96.0)
-			return "(*)";
-		else if (score > 94.0)
-			return "(S+)";
-		else if (score > 92.0)
-			return "(S)";
-		else if (score > 89.0)
-			return "(S-)";
-		else if (score > 86.0)
-			return "(A+)";
-		else if (score > 83.0)
-			return "(A)";
-		else if (score > 80.0)
-			return "(A-)";
-		else if (score > 76.0)
-			return "(B+)";
-		else if (score > 72.0)
-			return "(B)";
-		else if (score > 68.0)
-			return "(B-)";
-		else if (score > 64.0)
-			return "(C+)";
-		else if (score > 60.0)
-			return "(C)";
-		else if (score > 55.0)
-			return "(C-)";
-		else
-			return "(D)";
+		if (score == 100.0) return "(****)";
+		else if (score > 99.0) return "(***)";
+		else if (score > 98.0) return "(**)";
+		else if (score > 96.0) return "(*)";
+		else if (score > 94.0) return "(S+)";
+		else if (score > 92.0) return "(S)";
+		else if (score > 89.0) return "(S-)";
+		else if (score > 86.0) return "(A+)";
+		else if (score > 83.0) return "(A)";
+		else if (score > 80.0) return "(A-)";
+		else if (score > 76.0) return "(B+)";
+		else if (score > 72.0) return "(B)";
+		else if (score > 68.0) return "(B-)";
+		else if (score > 64.0) return "(C+)";
+		else if (score > 60.0) return "(C)";
+		else if (score > 55.0) return "(C-)";
+		else return "(D)";
 	}
 	
 	public void clearForm(View v) {

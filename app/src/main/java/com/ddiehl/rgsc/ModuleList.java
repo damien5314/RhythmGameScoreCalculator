@@ -12,10 +12,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.ddiehl.rgsc.calculators.Calculator_DDRExtreme;
-import com.ddiehl.rgsc.calculators.Calculator_DDRSN2;
-import com.ddiehl.rgsc.calculators.Calculator_IIDX;
 import com.ddiehl.rgsc.calculators.Calculator_InTheGroove;
-import com.ddiehl.rgsc.calculators.Calculator_PopN;
 
 import java.util.ArrayList;
 
@@ -36,9 +33,9 @@ public class ModuleList extends Activity {
         mModuleList = new ArrayList<CalculatorModule>();
         mModuleList.add(new CalculatorModule(getString(R.string.title_itg), Calculator_InTheGroove.class));
         mModuleList.add(new CalculatorModule(getString(R.string.title_ddrex), Calculator_DDRExtreme.class));
-        mModuleList.add(new CalculatorModule(getString(R.string.title_ddrsn2), Calculator_DDRSN2.class));
-        mModuleList.add(new CalculatorModule(getString(R.string.title_iidx), Calculator_IIDX.class));
-        mModuleList.add(new CalculatorModule(getString(R.string.title_popn), Calculator_PopN.class));
+//        mModuleList.add(new CalculatorModule(getString(R.string.title_ddrsn2), Calculator_DDRSN2.class));
+//        mModuleList.add(new CalculatorModule(getString(R.string.title_iidx), Calculator_IIDX.class));
+//        mModuleList.add(new CalculatorModule(getString(R.string.title_popn), Calculator_PopN.class));
         refresh();
 	}
 

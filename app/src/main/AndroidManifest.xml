@@ -10,11 +10,6 @@
         <activity
             android:name=".ModuleList"
             android:label="@string/title_module_list" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".AboutApp"
@@ -23,6 +18,10 @@
         <activity
             android:name=".calculators.Calculator_InTheGroove"
             android:label="@string/title_itg" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".calculators.Calculator_DDRExtreme"
