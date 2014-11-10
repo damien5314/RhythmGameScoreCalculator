@@ -1,9 +1,11 @@
 package com.ddiehl.rgsc.calculators;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,8 +15,9 @@ import com.ddiehl.rgsc.R;
 
 import java.text.DecimalFormat;
 
-public class Calculator_InTheGroove extends Activity {
+public class Calculator_InTheGroove extends Fragment {
 	private static final String TAG = Calculator_InTheGroove.class.getSimpleName();
+    private final static String LAYOUT_ID = "id";
 
 	private static final int FANTASTICS_WEIGHT = 5;
 	private static final int EXCELLENTS_WEIGHT = 4;
@@ -27,16 +30,28 @@ public class Calculator_InTheGroove extends Activity {
 	private static final int ROLLS_WEIGHT = 5;
     private static final int BEST_WEIGHT = FANTASTICS_WEIGHT;
 
+    private Context ctx;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.calculator_inthegroove);
-	}
+    public Calculator_InTheGroove() { }
+
+    public static Fragment newInstance() {
+        Calculator_InTheGroove frag = new Calculator_InTheGroove();
+        Bundle args = new Bundle();
+        args.putInt(LAYOUT_ID, R.layout.calculator_inthegroove);
+        frag.setArguments(args);
+        return frag;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(getArguments().getInt(LAYOUT_ID), container, false);
+        ctx = v.getContext();
+        return v;
+    }
 
 	public void calculateScore(View v) {
 		// Dismiss keyboard
-		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		InputMethodManager imm = (InputMethodManager) ctx.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 		
 		int earnedScore = 0;
@@ -44,27 +59,27 @@ public class Calculator_InTheGroove extends Activity {
 		int fantastics, excellents, greats, decents, wayoffs, misses, holds, totalHolds, mines, rolls, totalRolls;
 
 		// Read in all of the fields in the form
-		try { fantastics = Integer.valueOf((((EditText) findViewById(R.id.fantastics)).getText()).toString());
+		try { fantastics = Integer.valueOf((((EditText) v.findViewById(R.id.fantastics)).getText()).toString());
 		} catch (NumberFormatException e) { fantastics = 0; }
-		try { excellents = Integer.valueOf((((EditText) findViewById(R.id.excellents)).getText()).toString());
+		try { excellents = Integer.valueOf((((EditText) v.findViewById(R.id.excellents)).getText()).toString());
 		} catch (NumberFormatException e) { excellents = 0; }
-		try { greats = Integer.valueOf((((EditText) findViewById(R.id.greats)).getText()).toString());
+		try { greats = Integer.valueOf((((EditText) v.findViewById(R.id.greats)).getText()).toString());
 		} catch (NumberFormatException e) { greats = 0; }
-		try { decents = Integer.valueOf((((EditText) findViewById(R.id.decents)).getText()).toString());
+		try { decents = Integer.valueOf((((EditText) v.findViewById(R.id.decents)).getText()).toString());
 		} catch (NumberFormatException e) { decents = 0; }
-		try { wayoffs = Integer.valueOf((((EditText) findViewById(R.id.wayoffs)).getText()).toString());
+		try { wayoffs = Integer.valueOf((((EditText) v.findViewById(R.id.wayoffs)).getText()).toString());
 		} catch (NumberFormatException e) { wayoffs = 0; }
-		try { misses = Integer.valueOf((((EditText) findViewById(R.id.misses)).getText()).toString());
+		try { misses = Integer.valueOf((((EditText) v.findViewById(R.id.misses)).getText()).toString());
 		} catch (NumberFormatException e) { misses = 0; }
-		try { holds = Integer.valueOf((((EditText) findViewById(R.id.holds)).getText()).toString());
+		try { holds = Integer.valueOf((((EditText) v.findViewById(R.id.holds)).getText()).toString());
 		} catch (NumberFormatException e) { holds = 0; }
-		try { totalHolds = Integer.valueOf((((EditText) findViewById(R.id.totalHolds)).getText()).toString());
+		try { totalHolds = Integer.valueOf((((EditText) v.findViewById(R.id.totalHolds)).getText()).toString());
 		} catch (NumberFormatException e) { totalHolds = 0; }
-		try { mines = Integer.valueOf((((EditText) findViewById(R.id.mines)).getText()).toString());
+		try { mines = Integer.valueOf((((EditText) v.findViewById(R.id.mines)).getText()).toString());
 		} catch (NumberFormatException e) { mines = 0; }
-		try { rolls = Integer.valueOf((((EditText) findViewById(R.id.rolls)).getText()).toString());
+		try { rolls = Integer.valueOf((((EditText) v.findViewById(R.id.rolls)).getText()).toString());
 		} catch (NumberFormatException e) { rolls = 0; }
-		try { totalRolls = Integer.valueOf((((EditText) findViewById(R.id.totalRolls)).getText()).toString());
+		try { totalRolls = Integer.valueOf((((EditText) v.findViewById(R.id.totalRolls)).getText()).toString());
 		} catch (NumberFormatException e) { totalRolls = 0; }
 		
 		// Verify input has been submitted
@@ -75,9 +90,9 @@ public class Calculator_InTheGroove extends Activity {
 		
 		if (stepTotal != 0) {
 			if (holds > totalHolds) {
-				Toast.makeText(getApplicationContext(), R.string.error_invalid_holds, Toast.LENGTH_SHORT).show();
+				Toast.makeText(ctx, R.string.error_invalid_holds, Toast.LENGTH_SHORT).show();
 			} else if (rolls > totalRolls) {
-				Toast.makeText(getApplicationContext(), R.string.error_invalid_rolls, Toast.LENGTH_SHORT).show();
+				Toast.makeText(ctx, R.string.error_invalid_rolls, Toast.LENGTH_SHORT).show();
 			} else {
 				// Add number from each field multiplied by its weight to earned score
 				earnedScore += fantastics * FANTASTICS_WEIGHT;
@@ -99,16 +114,16 @@ public class Calculator_InTheGroove extends Activity {
 				double scorePercent = ((int) (((double) earnedScore / (double) potentialScore) * 10000) / 100.00);
 				DecimalFormat df = new DecimalFormat("0.00");
 
-				TextView vEarnedScoreValue = (TextView) findViewById(R.id.earnedScoreValue);
+				TextView vEarnedScoreValue = (TextView) v.findViewById(R.id.earnedScoreValue);
 				vEarnedScoreValue.setText(earnedScore + "");
-				TextView vPotentialScoreValue = (TextView) findViewById(R.id.potentialScoreValue);
+				TextView vPotentialScoreValue = (TextView) v.findViewById(R.id.potentialScoreValue);
 				vPotentialScoreValue.setText(potentialScore + "");
-				TextView vScorePercent = (TextView) findViewById(R.id.scorePercent);
+				TextView vScorePercent = (TextView) v.findViewById(R.id.scorePercent);
 				vScorePercent.setText(df.format(scorePercent) + "%");
-				((TextView)this.findViewById(R.id.scoreGrade)).setText(calculateGrade(scorePercent));
+				((TextView) v.findViewById(R.id.scoreGrade)).setText(calculateGrade(scorePercent));
 			}
 		} else {
-			Toast.makeText(getApplicationContext(), R.string.error_no_steps, Toast.LENGTH_SHORT).show();
+			Toast.makeText(ctx, R.string.error_no_steps, Toast.LENGTH_SHORT).show();
 		}		
 	}
 	
@@ -133,22 +148,22 @@ public class Calculator_InTheGroove extends Activity {
 	}
 	
 	public void clearForm(View v) {
-		((EditText) findViewById(R.id.fantastics)).setText("");
-		((EditText) findViewById(R.id.excellents)).setText("");
-		((EditText) findViewById(R.id.greats)).setText("");
-		((EditText) findViewById(R.id.decents)).setText("");
-		((EditText) findViewById(R.id.wayoffs)).setText("");
-		((EditText) findViewById(R.id.misses)).setText("");
-		((EditText) findViewById(R.id.holds)).setText("");
-		((EditText) findViewById(R.id.totalHolds)).setText("");
-		((EditText) findViewById(R.id.mines)).setText("");
-		((EditText) findViewById(R.id.rolls)).setText("");
-		((EditText) findViewById(R.id.totalRolls)).setText("");
+		((EditText) v.findViewById(R.id.fantastics)).setText("");
+		((EditText) v.findViewById(R.id.excellents)).setText("");
+		((EditText) v.findViewById(R.id.greats)).setText("");
+		((EditText) v.findViewById(R.id.decents)).setText("");
+		((EditText) v.findViewById(R.id.wayoffs)).setText("");
+		((EditText) v.findViewById(R.id.misses)).setText("");
+		((EditText) v.findViewById(R.id.holds)).setText("");
+		((EditText) v.findViewById(R.id.totalHolds)).setText("");
+		((EditText) v.findViewById(R.id.mines)).setText("");
+		((EditText) v.findViewById(R.id.rolls)).setText("");
+		((EditText) v.findViewById(R.id.totalRolls)).setText("");
 		
-		((TextView) findViewById(R.id.earnedScoreValue)).setText(R.string.score_value_earned_default);
-		((TextView) findViewById(R.id.potentialScoreValue)).setText(R.string.score_value_potential_default);
-		((TextView) findViewById(R.id.scorePercent)).setText(R.string.score_percent_default);
-		((TextView) findViewById(R.id.scoreGrade)).setText(R.string.score_grade_default);
+		((TextView) v.findViewById(R.id.earnedScoreValue)).setText(R.string.score_value_earned_default);
+		((TextView) v.findViewById(R.id.potentialScoreValue)).setText(R.string.score_value_potential_default);
+		((TextView) v.findViewById(R.id.scorePercent)).setText(R.string.score_percent_default);
+		((TextView) v.findViewById(R.id.scoreGrade)).setText(R.string.score_grade_default);
 	}
 
 }

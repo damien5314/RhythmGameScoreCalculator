@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ddiehl.rgsc.calculators.Calculator_InTheGroove;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +19,6 @@ public class ViewPageActivity extends FragmentActivity {
 
     ViewPager pager;
     ViewPageAdapter pageAdapter;
-    final int[] FRAGMENT_LAYOUT_ID = new int[] {
-            R.layout.calculator_inthegroove,
-            R.layout.calculator_ddrextreme
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +33,7 @@ public class ViewPageActivity extends FragmentActivity {
 
     private List<Fragment> getFragments() {
         List<Fragment> fragmentList = new ArrayList<Fragment>();
-        for (int id : FRAGMENT_LAYOUT_ID) {
-            fragmentList.add(ViewPageFragment.newInstance(id));
-        }
+        fragmentList.add(Calculator_InTheGroove.newInstance());
         return fragmentList;
     }
 

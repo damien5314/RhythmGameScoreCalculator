@@ -18,8 +18,8 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".calculators.Calculator_InTheGroove"
-            android:label="@string/title_itg"
+            android:name=".ViewPageActivity"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
