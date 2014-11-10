@@ -2,7 +2,6 @@ package com.ddiehl.rgsc.calculators;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -27,6 +26,7 @@ public class Calculator_InTheGroove extends Activity {
 	private static final int MINES_WEIGHT = -6;
 	private static final int ROLLS_WEIGHT = 5;
     private static final int BEST_WEIGHT = FANTASTICS_WEIGHT;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
