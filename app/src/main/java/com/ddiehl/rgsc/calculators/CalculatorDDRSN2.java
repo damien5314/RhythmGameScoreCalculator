@@ -2,7 +2,6 @@ package com.ddiehl.rgsc.calculators;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -12,8 +11,8 @@ import android.widget.Toast;
 
 import com.ddiehl.rgsc.R;
 
-public class Calculator_DDRSN2 extends Activity {
-	private static final String TAG = Calculator_DDRSN2.class.getSimpleName();
+public class CalculatorDDRSN2 extends Activity {
+	private static final String TAG = CalculatorDDRSN2.class.getSimpleName();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +67,9 @@ public class Calculator_DDRSN2 extends Activity {
 
             String grade = calculateGrade((int)earnedScore);
 
-            TextView vEarnedScoreValue = (TextView) findViewById(R.id.earnedScoreValue);
+            TextView vEarnedScoreValue = (TextView) findViewById(R.id.earned_score_value);
             vEarnedScoreValue.setText((int)earnedScore + "");
-            TextView vScoreGrade = (TextView) findViewById(R.id.scoreGrade);
+            TextView vScoreGrade = (TextView) findViewById(R.id.score_grade);
             vScoreGrade.setText(grade);
 		} else {
 			Toast.makeText(this, R.string.error_no_steps, Toast.LENGTH_SHORT).show();
@@ -106,10 +105,10 @@ public class Calculator_DDRSN2 extends Activity {
 		((EditText)findViewById(R.id.holds)).setText("");
 //		((EditText)findViewById(R.id.totalHolds)).setText("");
 		
-		((TextView)findViewById(R.id.earnedScoreValue)).setText(R.string.score_value_earned_default);
+		((TextView)findViewById(R.id.earned_score_value)).setText(R.string.score_value_earned_default);
 //		((TextView)findViewById(R.id.potentialScoreValue)).setText(R.string.score_value_potential_default);
 //		((TextView)findViewById(R.id.scorePercent)).setText(R.string.score_percent_default);
-		((TextView)findViewById(R.id.scoreGrade)).setText(R.string.score_grade_default);
+		((TextView)findViewById(R.id.score_grade)).setText(R.string.score_grade_default);
 	}
 
 }

@@ -2,7 +2,6 @@ package com.ddiehl.rgsc.calculators;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -12,8 +11,8 @@ import android.widget.Toast;
 
 import com.ddiehl.rgsc.R;
 
-public class Calculator_PopN extends Activity {
-    private static final String TAG = Calculator_PopN.class.getSimpleName();
+public class CalculatorPopN extends Activity {
+    private static final String TAG = CalculatorPopN.class.getSimpleName();
 //    private static final double COOLS_WEIGHT = 2;
 //    private static final double GREATS_WEIGHT = 1.4;
 //    private static final double GOODS_WEIGHT = 0.8;
@@ -79,7 +78,7 @@ public class Calculator_PopN extends Activity {
 //            Log.d(TAG, "Potential score: " + potentialScore);
 //            Log.d(TAG, "Weighted score:  " + weightedScore);
 
-            ((TextView) findViewById(R.id.earnedScoreValue)).setText(weightedScore + "");
+            ((TextView) findViewById(R.id.earned_score_value)).setText(weightedScore + "");
         } else {
             Toast.makeText(this, R.string.error_no_steps, Toast.LENGTH_SHORT).show();
         }
@@ -91,7 +90,7 @@ public class Calculator_PopN extends Activity {
         ((EditText)findViewById(R.id.goods)).setText("");
         ((EditText)findViewById(R.id.boos)).setText("");
 
-        ((TextView)findViewById(R.id.earnedScoreValue)).setText(R.string.score_value_earned_default);
+        ((TextView)findViewById(R.id.earned_score_value)).setText(R.string.score_value_earned_default);
     }
 
 }

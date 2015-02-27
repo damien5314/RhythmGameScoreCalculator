@@ -14,8 +14,8 @@ import com.ddiehl.rgsc.R;
 
 import java.text.DecimalFormat;
 
-public class Calculator_DDRExtreme extends Activity {
-	private static final String TAG = Calculator_DDRExtreme.class.getSimpleName();
+public class CalculatorDDRExtreme extends Activity {
+	private static final String TAG = CalculatorDDRExtreme.class.getSimpleName();
 
 	private static final double MARVELLOUSES_WEIGHT = 3;
 	private static final double PERFECTS_WEIGHT = 2;
@@ -60,7 +60,7 @@ public class Calculator_DDRExtreme extends Activity {
 		} catch (NumberFormatException e) { misses = 0; }
 		try { holds = Integer.valueOf(((EditText)findViewById(R.id.holds)).getText().toString());
 		} catch (NumberFormatException e) { holds = 0; }
-		try { totalHolds = Integer.valueOf(((EditText)findViewById(R.id.totalHolds)).getText().toString());
+		try { totalHolds = Integer.valueOf(((EditText)findViewById(R.id.total_holds)).getText().toString());
 		} catch (NumberFormatException e) { totalHolds = 0; }
 		
 		// Verify input has been submitted
@@ -87,13 +87,13 @@ public class Calculator_DDRExtreme extends Activity {
                 double scorePercent = ((int)((sum(earnedScore) / potentialScore) * 10000) / 100.00);
                 DecimalFormat df = new DecimalFormat("0.00");
 
-				TextView vEarnedScoreValue = (TextView) findViewById(R.id.earnedScoreValue);
+				TextView vEarnedScoreValue = (TextView) findViewById(R.id.earned_score_value);
 				vEarnedScoreValue.setText(sum(earnedScore) + "");
-				TextView vPotentialScoreValue = (TextView) findViewById(R.id.potentialScoreValue);
+				TextView vPotentialScoreValue = (TextView) findViewById(R.id.potential_score_value);
 				vPotentialScoreValue.setText(potentialScore + "");
-				TextView vScorePercent = (TextView) findViewById(R.id.scorePercent);
+				TextView vScorePercent = (TextView) findViewById(R.id.score_percent);
 				vScorePercent.setText(df.format(scorePercent) + "%");
-				TextView vScoreGrade = (TextView) findViewById(R.id.scoreGrade);
+				TextView vScoreGrade = (TextView) findViewById(R.id.score_grade);
 				vScoreGrade.setText(calculateGrade(isCourseModeOn, judgements, potentialScoreForGrade, imperfectSteps));
 			}
 		} else {
@@ -170,12 +170,12 @@ public class Calculator_DDRExtreme extends Activity {
 		((EditText) findViewById(R.id.boos)).setText("");
 		((EditText) findViewById(R.id.misses)).setText("");
 		((EditText) findViewById(R.id.holds)).setText("");
-		((EditText) findViewById(R.id.totalHolds)).setText("");
+		((EditText) findViewById(R.id.total_holds)).setText("");
 
-		((TextView)findViewById(R.id.earnedScoreValue)).setText(R.string.score_value_earned_default);
-		((TextView)findViewById(R.id.potentialScoreValue)).setText(R.string.score_value_potential_default);
-		((TextView)findViewById(R.id.scorePercent)).setText(R.string.score_percent_default);
-		((TextView)findViewById(R.id.scoreGrade)).setText(R.string.score_grade_default);
+		((TextView)findViewById(R.id.earned_score_value)).setText(R.string.score_value_earned_default);
+		((TextView)findViewById(R.id.potential_score_value)).setText(R.string.score_value_potential_default);
+		((TextView)findViewById(R.id.score_percent)).setText(R.string.score_percent_default);
+		((TextView)findViewById(R.id.score_grade)).setText(R.string.score_grade_default);
 	}
 
     private static double sum(double[] ints) {

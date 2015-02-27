@@ -2,7 +2,6 @@ package com.ddiehl.rgsc.calculators;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -14,8 +13,8 @@ import com.ddiehl.rgsc.R;
 
 import java.text.DecimalFormat;
 
-public class Calculator_IIDX extends Activity {
-    private static final String TAG = Calculator_IIDX.class.getSimpleName();
+public class CalculatorIIDX extends Activity {
+    private static final String TAG = CalculatorIIDX.class.getSimpleName();
 
     private static final int JGREATS_WEIGHT = 2;
     private static final int GREATS_WEIGHT = 1;
@@ -77,11 +76,11 @@ public class Calculator_IIDX extends Activity {
             String grade = calculateGrade(scorePercent);
             DecimalFormat df = new DecimalFormat("0.00");
 
-            TextView vEarnedScoreValue = (TextView) findViewById(R.id.earnedScoreValue);
+            TextView vEarnedScoreValue = (TextView) findViewById(R.id.earned_score_value);
             vEarnedScoreValue.setText(earnedScore + "");
-            TextView vScorePercent = (TextView) findViewById(R.id.scorePercent);
+            TextView vScorePercent = (TextView) findViewById(R.id.score_percent);
             vScorePercent.setText(df.format(scorePercent) + "%");
-            TextView vScoreGrade = (TextView) findViewById(R.id.scoreGrade);
+            TextView vScoreGrade = (TextView) findViewById(R.id.score_grade);
             vScoreGrade.setText(grade);
         } else {
             Toast.makeText(this, R.string.error_no_steps, Toast.LENGTH_SHORT).show();
@@ -110,9 +109,9 @@ public class Calculator_IIDX extends Activity {
         ((EditText)findViewById(R.id.bads)).setText("");
         ((EditText)findViewById(R.id.poors)).setText("");
 
-        ((TextView)findViewById(R.id.earnedScoreValue)).setText(R.string.score_value_earned_default);
-        ((TextView)findViewById(R.id.scorePercent)).setText(R.string.score_percent_default);
-        ((TextView)findViewById(R.id.scoreGrade)).setText(R.string.score_grade_default);
+        ((TextView)findViewById(R.id.earned_score_value)).setText(R.string.score_value_earned_default);
+        ((TextView)findViewById(R.id.score_percent)).setText(R.string.score_percent_default);
+        ((TextView)findViewById(R.id.score_grade)).setText(R.string.score_grade_default);
     }
 
 }

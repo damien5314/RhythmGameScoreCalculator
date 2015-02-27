@@ -60,7 +60,7 @@
                     style="@style/ScoreEntryLabel" />
 
                 <EditText
-                    android:id="@+id/totalHolds"
+                    android:id="@+id/total_holds"
                     style="@style/ScoreEntryField" />
 
             </LinearLayout>
@@ -144,7 +144,7 @@
                     style="@style/ScoreEntryLabel" />
 
                 <EditText
-                    android:id="@+id/totalRolls"
+                    android:id="@+id/total_rolls"
                     style="@style/ScoreEntryField" />
 
             </LinearLayout>
@@ -169,13 +169,7 @@
             <LinearLayout style="@style/ScoreButtonContainer" >
 
                 <ImageButton
-                    android:id="@+id/submit"
-                    android:onClick="calculateScore"
-                    style="@style/ScoreSubmitButton" />
-
-                <ImageButton
-                    android:id="@+id/clearForm"
-                    android:onClick="clearForm"
+                    android:id="@+id/clear_form"
                     style="@style/ScoreClearButton" />
 
             </LinearLayout>
@@ -195,7 +189,7 @@
                 style="@style/EarnedScoreLabel" />
 
             <TextView
-                android:id="@+id/earnedScoreValue"
+                android:id="@+id/earned_score_value"
                 style="@style/CalculatedScoreValue" />
 
         </LinearLayout>
@@ -207,7 +201,7 @@
                 style="@style/PotentialScoreLabel" />
 
             <TextView
-                android:id="@+id/potentialScoreValue"
+                android:id="@+id/potential_score_value"
                 style="@style/CalculatedScoreValue" />
 
         </LinearLayout>
@@ -215,11 +209,11 @@
         <LinearLayout style="@style/CalculatedScoreRow" >
 
             <TextView
-                android:id="@+id/scorePercent"
+                android:id="@+id/score_percent"
                 style="@style/CalculatedScorePercent" />
 
             <TextView
-                android:id="@+id/scoreGrade"
+                android:id="@+id/score_grade"
                 style="@style/CalculatedScoreGrade" />
 
         </LinearLayout>

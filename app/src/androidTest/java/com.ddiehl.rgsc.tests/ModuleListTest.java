@@ -4,7 +4,6 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
 import android.widget.ListView;
 
-import com.ddiehl.rgsc.ModuleList;
 import com.ddiehl.rgsc.R;
 
 public class ModuleListTest extends ActivityInstrumentationTestCase2<ModuleList> {

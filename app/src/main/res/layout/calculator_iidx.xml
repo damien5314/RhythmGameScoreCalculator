@@ -89,12 +89,7 @@
             <LinearLayout style="@style/ScoreButtonContainer" >
 
                 <ImageButton
-                    android:id="@+id/submit"
-                    android:onClick="calculateScore"
-                    style="@style/ScoreSubmitButton"/>
-
-                <ImageButton
-                    android:id="@+id/clearForm"
+                    android:id="@+id/clear_form"
                     android:onClick="clearForm"
                     style="@style/ScoreClearButton"/>
 
@@ -117,7 +112,7 @@
                 android:id="@+id/earnedScoreLabel"/>
 
             <TextView style="@style/ExScoreValue"
-                android:id="@+id/earnedScoreValue" />
+                android:id="@+id/earned_score_value" />
 
         </LinearLayout>
 
@@ -126,10 +121,10 @@
             style="@style/CalculatedScoreRow">
 
             <TextView style="@style/CalculatedScorePercent"
-                android:id="@+id/scorePercent"/>
+                android:id="@+id/score_percent"/>
 
             <TextView style="@style/CalculatedScoreGrade"
-                android:id="@+id/scoreGrade"/>
+                android:id="@+id/score_grade"/>
 
         </LinearLayout>
 

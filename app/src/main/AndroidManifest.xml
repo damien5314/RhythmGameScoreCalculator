@@ -8,17 +8,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ModuleList"
-            android:label="@string/title_module_list"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
             android:name=".AboutApp"
             android:label="@string/title_about"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ViewPageActivity"
+            android:name=".ViewPagerActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -27,22 +22,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".calculators.Calculator_DDRExtreme"
+            android:name=".calculators.CalculatorDDRExtreme"
             android:label="@string/title_ddrex"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".calculators.Calculator_DDRSN2"
+            android:name=".calculators.CalculatorDDRSN2"
             android:label="@string/title_ddrsn2"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".calculators.Calculator_PopN"
+            android:name=".calculators.CalculatorPopN"
             android:label="@string/title_popn"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".calculators.Calculator_IIDX"
+            android:name=".calculators.CalculatorIIDX"
             android:label="@string/title_iidx"
             android:screenOrientation="portrait" >
         </activity>

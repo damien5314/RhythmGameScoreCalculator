@@ -82,12 +82,7 @@
             <LinearLayout style="@style/ScoreButtonContainer" >
 
                 <ImageButton
-                    android:id="@+id/submit"
-                    android:onClick="calculateScore"
-                    style="@style/ScoreSubmitButton"/>
-
-                <ImageButton
-                    android:id="@+id/clearForm"
+                    android:id="@+id/clear_form"
                     android:onClick="clearForm"
                     style="@style/ScoreClearButton"/>
 
@@ -108,7 +103,7 @@
                 android:text="@string/popn_score_label_default"
                 style="@style/ExScoreLabel"/>
             <TextView
-                android:id="@+id/earnedScoreValue"
+                android:id="@+id/earned_score_value"
                 style="@style/ExScoreValue"/>
 
         </LinearLayout>
