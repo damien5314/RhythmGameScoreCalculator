@@ -16,7 +16,7 @@ public class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mTabs.addTab(mTabs.newTab().setText(R.string.tab_itg).setTag(TAB_ITG));
-        mTabs.addTab(mTabs.newTab().setText(R.string.tab_ddrex).setTag(TAB_DDREX));
+        mViewPager.adapter = RGSCPagerAdapter(this, supportFragmentManager)
+        mTabs.setupWithViewPager(mViewPager)
     }
 }
