@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="tab_itg">ITG</string>
+    <string name="tab_ddrex">DDR Extreme</string>
+
     <string name="app_name">RGSC</string>
     <string name="default_module_name">\???</string>
     <string name="title_module_list">@string/app_name</string> <!-- Temporary assignment to app_name until we figure out how to have a separate launcher label -->
