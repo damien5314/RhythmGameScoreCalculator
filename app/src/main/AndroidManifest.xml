@@ -3,15 +3,11 @@
     package="com.ddiehl.rgsc" >
 
     <application
+        android:name="com.ddiehl.rgsc.RGSC"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name=".AboutApp"
-            android:label="@string/title_about"
-            android:screenOrientation="portrait" >
-        </activity>
         <activity
             android:name="com.ddiehl.rgsc.MainActivity"
             android:label="@string/app_name"
