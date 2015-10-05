@@ -7,13 +7,15 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.ddiehl.rgsc.ddrextreme.DDRExCalc
 import com.ddiehl.rgsc.itg.ITGView
 
-const val NUM_CALCULATORS = 2
-
 public class RGSCPagerAdapter(c: Context, fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    object RGSCPagerAdapter {
+        const val NUM_CALCULATORS = 2
+    }
+
     private val mContext: Context = c
 
     override fun getCount(): Int {
-        return NUM_CALCULATORS
+        return RGSCPagerAdapter.NUM_CALCULATORS
     }
 
     override fun getItem(position: Int): Fragment? {
