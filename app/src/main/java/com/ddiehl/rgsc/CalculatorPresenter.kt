@@ -2,6 +2,6 @@ package com.ddiehl.rgsc
 
 interface CalculatorPresenter {
     fun calculateScore()
-    fun loadSavedInput()
+    fun loadSavedInput() : Score
     fun saveInput()
 }

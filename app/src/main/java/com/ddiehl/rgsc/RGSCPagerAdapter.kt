@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.ddiehl.rgsc.ddrextreme.DDRExCalc
-import com.ddiehl.rgsc.itg.ITGCalc
+import com.ddiehl.rgsc.itg.ITGView
 
 const val NUM_CALCULATORS = 2
 
@@ -18,7 +18,7 @@ public class RGSCPagerAdapter(c: Context, fm: FragmentManager) : FragmentPagerAd
 
     override fun getItem(position: Int): Fragment? {
         when (position) {
-            0 -> return ITGCalc()
+            0 -> return ITGView()
             1 -> return DDRExCalc()
             else -> return null
         }
