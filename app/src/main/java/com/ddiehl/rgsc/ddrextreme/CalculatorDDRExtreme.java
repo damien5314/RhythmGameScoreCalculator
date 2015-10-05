@@ -1,4 +1,4 @@
-package com.ddiehl.rgsc.calculators;
+package com.ddiehl.rgsc.ddrextreme;
 
 import android.app.Activity;
 import android.content.Context;

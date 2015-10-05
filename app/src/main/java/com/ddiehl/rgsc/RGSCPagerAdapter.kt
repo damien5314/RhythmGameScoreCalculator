@@ -4,8 +4,8 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.ddiehl.rgsc.calculators.DDRExCalc
-import com.ddiehl.rgsc.calculators.ITGCalc
+import com.ddiehl.rgsc.ddrextreme.DDRExCalc
+import com.ddiehl.rgsc.itg.ITGCalc
 
 const val NUM_CALCULATORS = 2
 

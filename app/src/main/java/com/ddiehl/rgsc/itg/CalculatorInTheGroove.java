@@ -1,4 +1,4 @@
-package com.ddiehl.rgsc.calculators;
+package com.ddiehl.rgsc.itg;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
