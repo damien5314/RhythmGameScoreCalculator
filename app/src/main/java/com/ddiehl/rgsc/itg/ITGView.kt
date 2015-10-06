@@ -1,6 +1,7 @@
 package com.ddiehl.rgsc.itg
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.Toast
 import butterknife.bindView
 import com.ddiehl.rgsc.BaseCalc
 import com.ddiehl.rgsc.R
+import java.text.DecimalFormat
 
 public class ITGView : BaseCalc() {
     private val presenter = ITGPresenter(context, this)
@@ -48,7 +50,9 @@ public class ITGView : BaseCalc() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.calculator_inthegroove, null)
+        val view = inflater.inflate(R.layout.calculator_inthegroove, null)
+        _clearButton.setOnClickListener { clearForm() }
+        return view
     }
 
     override fun onStart() {
@@ -61,7 +65,7 @@ public class ITGView : BaseCalc() {
         super.onStop()
     }
 
-    fun displayScore(s: ITGScore) {
+    fun displayInput(s: ITGScore) {
         _fantastics.setText(s.fantastics.toString())
         _excellents.setText(s.excellents.toString())
         _greats.setText(s.excellents.toString())
@@ -77,23 +81,32 @@ public class ITGView : BaseCalc() {
 
     fun showHoldsInvalid() {
         _holds.error = getString(R.string.error_invalid_holds)
-        setErrors()
+        showScoreError()
     }
 
     fun showRollsInvalid() {
         _rolls.error = getString(R.string.error_invalid_holds)
-        setErrors()
+        showScoreError()
     }
 
-    private fun setErrors() {
+    private fun showScoreError() {
         _earnedScoreValue.text = getString(R.string.earned_score_error)
         _potentialScoreValue.text = getString(R.string.potential_score_error)
         _scorePercent.text = ""
         _scoreGrade.text = ""
     }
 
+    fun clearErrors() {
+        _holds.error = null
+        _rolls.error = null
+        _earnedScoreValue.text = ""
+        _potentialScoreValue.text = ""
+        _scorePercent.text = ""
+        _scoreGrade.text = ""
+    }
+
     fun showNoStepsError() {
-        Toast.makeText(activity, R.string.error_no_steps, Toast.LENGTH_SHORT).show()
+        Snackbar.make(view, R.string.error_no_steps, Snackbar.LENGTH_SHORT).show()
     }
 
     fun clearForm() {
@@ -112,5 +125,22 @@ public class ITGView : BaseCalc() {
         _potentialScoreValue.setText(R.string.score_value_potential_default)
         _scorePercent.setText(R.string.score_percent_default)
         _scoreGrade.setText(R.string.score_grade_default)
+    }
+
+    fun showEarned(earned: Int) {
+        _earnedScoreValue.text = earned.toString()
+    }
+
+    fun showPotential(potential: Int) {
+        _potentialScoreValue.text = potential.toString()
+    }
+
+    fun showScorePercentage(scorePercent: Double) {
+        val df = DecimalFormat("0.00")
+        _scorePercent.text = df.format(scorePercent) + "%"
+    }
+
+    fun showScoreGrade(gradeString: String) {
+        _scoreGrade.text = gradeString
     }
 }

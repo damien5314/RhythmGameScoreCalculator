@@ -5,17 +5,6 @@ import java.text.DecimalFormat
 
 class ITGPresenter(c: Context, view: ITGView) {
     object ITGPresenter {
-        const val FANTASTICS_WEIGHT = 5
-        const val EXCELLENTS_WEIGHT = 4
-        const val GREATS_WEIGHT = 2
-        const val DECENTS_WEIGHT = 0
-        const val WAYOFFS_WEIGHT = -6
-        const val MISSES_WEIGHT = -12
-        const val HOLDS_WEIGHT = 5
-        const val MINES_WEIGHT = -6
-        const val ROLLS_WEIGHT = 5
-        const val BEST_WEIGHT = FANTASTICS_WEIGHT
-
         const val PREFS_ITG = "PREFS_ITG"
         const val PREF_FANTASTICS = "PREF_FANTASTICS"
         const val PREF_EXCELLENTS = "PREF_EXCELLENTS"
@@ -34,79 +23,45 @@ class ITGPresenter(c: Context, view: ITGView) {
     private val view: ITGView = view
 
     fun onStart() {
-        val score = calculateScore(loadSavedInput())
-        view.displayScore(score)
+        val score: ITGScore = loadSavedInput()
+        view.displayInput(score)
+        updateScore(score)
     }
 
     fun onStop() {
         saveInput()
     }
 
-    private fun calculateScore(score: ITGScore): ITGScore {
-        var earnedScore = 0
-        var potentialScore = 0
-        val fantastics = score.fantastics
-        val excellents = score.excellents
-        val greats = score.greats
-        val decents = score.decents
-        val wayoffs = score.wayoffs
-        val misses = score.misses
-        val holds = score.holds
-        val totalHolds = score.totalHolds
-        val mines = score.mines
-        val rolls = score.rolls
-        val totalRolls = score.totalRolls
-
+    private fun updateScore(score: ITGScore) {
         // Verify input has been submitted
-        val stepTotal = fantastics + excellents + greats + decents +
-                wayoffs + misses + holds + totalHolds + rolls +
-                totalRolls
-
         var invalidInput = false
-
-        if (stepTotal == 0) {
+        if (score.stepTotal == 0) {
             view.showNoStepsError()
             invalidInput = true
         }
-        if (holds > totalHolds) {
+        if (score.holds > score.totalHolds) {
             view.showHoldsInvalid()
             invalidInput = true
         }
-        if (rolls > totalRolls) {
+        if (score.rolls > score.totalRolls) {
             view.showRollsInvalid()
             invalidInput = true
         }
         if (invalidInput) return
+        else view.clearErrors()
 
-        // Add number from each field multiplied by its weight to earned score
-        earnedScore += fantastics * ITGPresenter.FANTASTICS_WEIGHT
-        earnedScore += excellents * ITGPresenter.EXCELLENTS_WEIGHT
-        earnedScore += greats * ITGPresenter.GREATS_WEIGHT
-        earnedScore += decents * ITGPresenter.DECENTS_WEIGHT
-        earnedScore += wayoffs * ITGPresenter.WAYOFFS_WEIGHT
-        earnedScore += misses * ITGPresenter.MISSES_WEIGHT
-        earnedScore += holds * ITGPresenter.HOLDS_WEIGHT
-        earnedScore += mines * ITGPresenter.MINES_WEIGHT
-        earnedScore += rolls * ITGPresenter.ROLLS_WEIGHT
-
-        // Calculate potential score
-        potentialScore += (fantastics + excellents + greats + decents + wayoffs + misses) *
-                ITGPresenter.BEST_WEIGHT
-        potentialScore += totalHolds * ITGPresenter.HOLDS_WEIGHT
-        potentialScore += totalRolls * ITGPresenter.ROLLS_WEIGHT
-
+        val earned = score.earned
+        val potential = score.potential
         // Calculate score percentage rounded to 2 decimal places
-        val scorePercent = ((earnedScore.toDouble() / potentialScore.toDouble()) * 10000).toInt() /
-                100.00
-        val df = DecimalFormat("0.00")
+        val scorePercent = ((earned.toDouble() / potential.toDouble()) * 10000).toInt() / 100.00
 
-        mEarnedScoreValue.setText(earnedScore + "")
-        mPotentialScoreValue.setText(potentialScore + "")
-        mScorePercent.setText(df.format(scorePercent) + "%")
-        mScoreGrade.setText(calculateGrade(scorePercent))
+        view.showEarned(earned)
+        view.showPotential(potential)
+        view.showScorePercentage(scorePercent)
+        view.showScoreGrade(calculateGrade(scorePercent))
     }
 
-    fun loadSavedInput() : ITGScore {
+    private fun loadSavedInput() : ITGScore {
         val sp = context.getSharedPreferences(ITGPresenter.PREFS_ITG, Context.MODE_PRIVATE)
         val score = ITGScore()
         score.fantastics = sp.getInt(ITGPresenter.PREF_FANTASTICS, 0)
@@ -123,7 +78,7 @@ class ITGPresenter(c: Context, view: ITGView) {
         return score
     }
 
-    fun saveInput() {
+    private fun saveInput() {
         val sp = context.getSharedPreferences(ITGPresenter.PREFS_ITG, Context.MODE_PRIVATE)
         sp.edit()
                 .putInt(ITGPresenter.PREF_FANTASTICS, view.fantastics)
