@@ -55,7 +55,7 @@
     <string name="score_grade_default">(E)</string>
     <string name="iidx_score_label_default">EX Score</string>
     <string name="popn_score_label_default">Score</string>
-    <string name="error_no_steps">Error: No grades entered</string>
+    <string name="error_no_steps">Error: No steps entered</string>
     <string name="error_invalid_holds">Error: Holds > Total Holds</string>
     <string name="error_invalid_rolls">Error: Rolls > Total Rolls</string>
     <string name="action_settings">Settings</string>

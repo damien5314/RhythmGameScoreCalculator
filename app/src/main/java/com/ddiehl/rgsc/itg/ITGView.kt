@@ -2,20 +2,22 @@ package com.ddiehl.rgsc.itg
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import butterknife.bindView
 import com.ddiehl.rgsc.BaseCalc
 import com.ddiehl.rgsc.R
+import com.orhanobut.logger.Logger
 import java.text.DecimalFormat
 
 public class ITGView : BaseCalc() {
-    private val presenter = ITGPresenter(context, this)
+    private lateinit var presenter: ITGPresenter
 
     // View bindings
     private val _fantastics: EditText by bindView(R.id.fantastics)
@@ -36,23 +38,69 @@ public class ITGView : BaseCalc() {
     private val _clearButton: ImageButton by bindView(R.id.clear_form)
 
     // Public properties
-    val fantastics: Int = _fantastics.text.toString().toInt()
-    val excellents: Int = _excellents.text.toString().toInt()
-    val greats: Int = _greats.text.toString().toInt()
-    val decents: Int = _decents.text.toString().toInt()
-    val wayoffs: Int = _wayoffs.text.toString().toInt()
-    val misses: Int = _misses.text.toString().toInt()
-    val holds: Int = _holds.text.toString().toInt()
-    val totalHolds: Int = _totalHolds.text.toString().toInt()
-    val mines: Int = _mines.text.toString().toInt()
-    val rolls: Int = _rolls.text.toString().toInt()
-    val totalRolls: Int = _totalRolls.text.toString().toInt()
+    var fantastics: Int = 0; get() = readIntegerFrom(_fantastics)
+    var excellents: Int = 0; get() = readIntegerFrom(_excellents)
+    var greats: Int = 0; get() = readIntegerFrom(_greats)
+    var decents: Int = 0; get() = readIntegerFrom(_decents)
+    var wayoffs: Int = 0; get() = readIntegerFrom(_wayoffs)
+    var misses: Int = 0; get() = readIntegerFrom(_misses)
+    var holds: Int = 0; get() = readIntegerFrom(_holds)
+    var totalHolds: Int = 0; get() = readIntegerFrom(_totalHolds)
+    var mines: Int = 0; get() = readIntegerFrom(_mines)
+    var rolls: Int = 0; get() = readIntegerFrom(_rolls)
+    var totalRolls: Int = 0; get() = readIntegerFrom(_totalRolls)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter = ITGPresenter(context, this)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.calculator_inthegroove, null)
-        _clearButton.setOnClickListener { clearForm() }
         return view
+    }
+
+    private val tw: TextWatcher = object: TextWatcher {
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {/* no-op */}
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {/* no-op */}
+        override fun afterTextChanged(s: Editable?) {
+            presenter.onScoreUpdated()
+        }
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _clearButton.setOnClickListener { clearForm() }
+        subscribeToTextChangedEvents()
+    }
+
+    private fun subscribeToTextChangedEvents() {
+        _fantastics.addTextChangedListener(tw)
+        _excellents.addTextChangedListener(tw)
+        _greats.addTextChangedListener(tw)
+        _decents.addTextChangedListener(tw)
+        _wayoffs.addTextChangedListener(tw)
+        _misses.addTextChangedListener(tw)
+        _holds.addTextChangedListener(tw)
+        _totalHolds.addTextChangedListener(tw)
+        _mines.addTextChangedListener(tw)
+        _rolls.addTextChangedListener(tw)
+        _totalRolls.addTextChangedListener(tw)
+    }
+
+    private fun unsubscribeToTextChangedEvents() {
+        _fantastics.removeTextChangedListener(tw)
+        _excellents.removeTextChangedListener(tw)
+        _greats.removeTextChangedListener(tw)
+        _decents.removeTextChangedListener(tw)
+        _wayoffs.removeTextChangedListener(tw)
+        _misses.removeTextChangedListener(tw)
+        _holds.removeTextChangedListener(tw)
+        _totalHolds.removeTextChangedListener(tw)
+        _mines.removeTextChangedListener(tw)
+        _rolls.removeTextChangedListener(tw)
+        _totalRolls.removeTextChangedListener(tw)
     }
 
     override fun onStart() {
@@ -89,13 +137,6 @@ public class ITGView : BaseCalc() {
         showScoreError()
     }
 
-    private fun showScoreError() {
-        _earnedScoreValue.text = getString(R.string.earned_score_error)
-        _potentialScoreValue.text = getString(R.string.potential_score_error)
-        _scorePercent.text = ""
-        _scoreGrade.text = ""
-    }
-
     fun clearErrors() {
         _holds.error = null
         _rolls.error = null
@@ -110,6 +151,7 @@ public class ITGView : BaseCalc() {
     }
 
     fun clearForm() {
+        unsubscribeToTextChangedEvents()
         _fantastics.setText("")
         _excellents.setText("")
         _greats.setText("")
@@ -125,6 +167,7 @@ public class ITGView : BaseCalc() {
         _potentialScoreValue.setText(R.string.score_value_potential_default)
         _scorePercent.setText(R.string.score_percent_default)
         _scoreGrade.setText(R.string.score_grade_default)
+        subscribeToTextChangedEvents()
     }
 
     fun showEarned(earned: Int) {
@@ -142,5 +185,17 @@ public class ITGView : BaseCalc() {
 
     fun showScoreGrade(gradeString: String) {
         _scoreGrade.text = gradeString
+    }
+
+    private fun readIntegerFrom(t: EditText): Int {
+        val s = t.text.toString()
+        return if (s == "") 0 else s.toInt()
+    }
+
+    private fun showScoreError() {
+        _earnedScoreValue.text = getString(R.string.earned_score_error)
+        _potentialScoreValue.text = getString(R.string.potential_score_error)
+        _scorePercent.text = ""
+        _scoreGrade.text = ""
     }
 }

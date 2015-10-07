@@ -1,7 +1,6 @@
 package com.ddiehl.rgsc.itg
 
 import com.ddiehl.rgsc.Score
-import java.text.DecimalFormat
 
 public class ITGScore() : Score() {
     object ITGScore {
@@ -29,22 +28,26 @@ public class ITGScore() : Score() {
     var rolls = 0
     var totalRolls = 0
 
-    var earned =
-            fantastics * ITGScore.FANTASTICS_WEIGHT +
-            excellents * ITGScore.EXCELLENTS_WEIGHT +
-            greats * ITGScore.GREATS_WEIGHT +
-            decents * ITGScore.DECENTS_WEIGHT +
-            wayoffs * ITGScore.WAYOFFS_WEIGHT +
-            misses * ITGScore.MISSES_WEIGHT +
-            holds * ITGScore.HOLDS_WEIGHT +
-            mines * ITGScore.MINES_WEIGHT +
-            rolls * ITGScore.ROLLS_WEIGHT
+    var earned = 0
+        get() = fantastics * ITGScore.FANTASTICS_WEIGHT +
+                excellents * ITGScore.EXCELLENTS_WEIGHT +
+                greats * ITGScore.GREATS_WEIGHT +
+                decents * ITGScore.DECENTS_WEIGHT +
+                wayoffs * ITGScore.WAYOFFS_WEIGHT +
+                misses * ITGScore.MISSES_WEIGHT +
+                holds * ITGScore.HOLDS_WEIGHT +
+                mines * ITGScore.MINES_WEIGHT +
+                rolls * ITGScore.ROLLS_WEIGHT
     
-    var potential = 
-            (fantastics + excellents + greats + decents + wayoffs + misses) * ITGScore.BEST_WEIGHT +
-            totalHolds * ITGScore.HOLDS_WEIGHT +
-            totalRolls * ITGScore.ROLLS_WEIGHT
+    var potential = 0
+        get() = (fantastics + excellents + greats + decents + wayoffs + misses) * ITGScore.BEST_WEIGHT +
+                totalHolds * ITGScore.HOLDS_WEIGHT + totalRolls * ITGScore.ROLLS_WEIGHT
     
-    val stepTotal = fantastics + excellents + greats + decents + wayoffs + misses + 
-            mines + holds + totalHolds + rolls + totalRolls
+    var stepTotal = 0
+        get() = fantastics + excellents + greats + decents + wayoffs + misses + mines + holds +
+                totalHolds + rolls + totalRolls
+
+    override fun toString(): String {
+        return "$fantastics $excellents $greats $decents $wayoffs $misses $mines $holds $totalHolds $rolls $totalRolls"
+    }
 }
