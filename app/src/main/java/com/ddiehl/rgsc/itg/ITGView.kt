@@ -116,15 +116,15 @@ public class ITGView : BaseCalc() {
     fun displayInput(s: ITGScore) {
         _fantastics.setText(s.fantastics.toString())
         _excellents.setText(s.excellents.toString())
-        _greats.setText(s.excellents.toString())
-        _decents.setText(s.excellents.toString())
-        _wayoffs.setText(s.excellents.toString())
-        _misses.setText(s.excellents.toString())
-        _holds.setText(s.excellents.toString())
-        _totalHolds.setText(s.excellents.toString())
-        _mines.setText(s.excellents.toString())
-        _rolls.setText(s.excellents.toString())
-        _totalRolls.setText(s.excellents.toString())
+        _greats.setText(s.greats.toString())
+        _decents.setText(s.decents.toString())
+        _wayoffs.setText(s.wayoffs.toString())
+        _misses.setText(s.misses.toString())
+        _holds.setText(s.holds.toString())
+        _totalHolds.setText(s.totalHolds.toString())
+        _mines.setText(s.mines.toString())
+        _rolls.setText(s.rolls.toString())
+        _totalRolls.setText(s.totalRolls.toString())
     }
 
     fun showHoldsInvalid() {

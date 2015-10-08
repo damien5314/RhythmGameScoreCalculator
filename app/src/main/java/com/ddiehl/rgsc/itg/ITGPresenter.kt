@@ -86,6 +86,7 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
     }
 
     private fun saveScore(score: ITGScore) {
+        Logger.d("Saving score: $score")
         val sp = context.getSharedPreferences(ITGPresenter.PREFS_ITG, Context.MODE_PRIVATE)
         sp.edit()
                 .putInt(ITGPresenter.PREF_FANTASTICS, score.fantastics)
