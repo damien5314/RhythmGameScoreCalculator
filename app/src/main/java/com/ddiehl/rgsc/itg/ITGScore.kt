@@ -40,7 +40,8 @@ public class ITGScore() : Score() {
                 rolls * ITGScore.ROLLS_WEIGHT
     
     var potential = 0
-        get() = (fantastics + excellents + greats + decents + wayoffs + misses) * ITGScore.BEST_WEIGHT +
+        get() = (fantastics + excellents + greats + decents + wayoffs + misses) *
+                ITGScore.BEST_WEIGHT +
                 totalHolds * ITGScore.HOLDS_WEIGHT + totalRolls * ITGScore.ROLLS_WEIGHT
     
     var stepTotal = 0
@@ -48,6 +49,7 @@ public class ITGScore() : Score() {
                 totalHolds + rolls + totalRolls
 
     override fun toString(): String {
-        return "$fantastics $excellents $greats $decents $wayoffs $misses $mines $holds $totalHolds $rolls $totalRolls"
+        return "$fantastics $excellents $greats $decents $wayoffs $misses $mines $holds " +
+                "$totalHolds $rolls $totalRolls"
     }
 }
