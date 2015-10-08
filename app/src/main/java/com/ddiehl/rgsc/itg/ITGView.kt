@@ -13,8 +13,13 @@ import android.widget.TextView
 import butterknife.bindView
 import com.ddiehl.rgsc.BaseCalc
 import com.ddiehl.rgsc.R
-import com.orhanobut.logger.Logger
+import rx.Subscription
+import rx.android.schedulers.AndroidSchedulers
+import rx.android.widget.OnTextChangeEvent
+import rx.android.widget.WidgetObservable
 import java.text.DecimalFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 public class ITGView : BaseCalc() {
     private lateinit var presenter: ITGPresenter
@@ -75,32 +80,30 @@ public class ITGView : BaseCalc() {
         subscribeToTextChangedEvents()
     }
 
+    private fun getTextChangedObservable(t: EditText): rx.Observable<OnTextChangeEvent> {
+        return WidgetObservable.text(t)
+                .debounce(500, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+                .doOnNext { e: OnTextChangeEvent -> presenter.onScoreUpdated() }
+    }
+
+    private val _subscriptions: java.util.ArrayList<Subscription> = ArrayList<Subscription>()
+
     private fun subscribeToTextChangedEvents() {
-        _fantastics.addTextChangedListener(tw)
-        _excellents.addTextChangedListener(tw)
-        _greats.addTextChangedListener(tw)
-        _decents.addTextChangedListener(tw)
-        _wayoffs.addTextChangedListener(tw)
-        _misses.addTextChangedListener(tw)
-        _holds.addTextChangedListener(tw)
-        _totalHolds.addTextChangedListener(tw)
-        _mines.addTextChangedListener(tw)
-        _rolls.addTextChangedListener(tw)
-        _totalRolls.addTextChangedListener(tw)
+        _subscriptions.add(getTextChangedObservable(_fantastics).subscribe())
+        _subscriptions.add(getTextChangedObservable(_excellents).subscribe())
+        _subscriptions.add(getTextChangedObservable(_greats).subscribe())
+        _subscriptions.add(getTextChangedObservable(_decents).subscribe())
+        _subscriptions.add(getTextChangedObservable(_wayoffs).subscribe())
+        _subscriptions.add(getTextChangedObservable(_misses).subscribe())
+        _subscriptions.add(getTextChangedObservable(_holds).subscribe())
+        _subscriptions.add(getTextChangedObservable(_totalHolds).subscribe())
+        _subscriptions.add(getTextChangedObservable(_mines).subscribe())
+        _subscriptions.add(getTextChangedObservable(_rolls).subscribe())
+        _subscriptions.add(getTextChangedObservable(_totalRolls).subscribe())
     }
 
     private fun unsubscribeToTextChangedEvents() {
-        _fantastics.removeTextChangedListener(tw)
-        _excellents.removeTextChangedListener(tw)
-        _greats.removeTextChangedListener(tw)
-        _decents.removeTextChangedListener(tw)
-        _wayoffs.removeTextChangedListener(tw)
-        _misses.removeTextChangedListener(tw)
-        _holds.removeTextChangedListener(tw)
-        _totalHolds.removeTextChangedListener(tw)
-        _mines.removeTextChangedListener(tw)
-        _rolls.removeTextChangedListener(tw)
-        _totalRolls.removeTextChangedListener(tw)
+        _subscriptions.clear()
     }
 
     override fun onStart() {

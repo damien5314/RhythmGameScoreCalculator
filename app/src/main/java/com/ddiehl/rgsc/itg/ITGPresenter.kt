@@ -40,7 +40,6 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
 
     private fun updateScore(score: ITGScore) {
         // Verify input has been submitted
-        Logger.d("Step Total: " + score.stepTotal)
         var invalidInput = false
         if (score.stepTotal == 0) {
             view.showNoStepsError()
@@ -86,7 +85,6 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
     }
 
     private fun saveScore(score: ITGScore) {
-        Logger.d("Saving score: $score")
         val sp = context.getSharedPreferences(ITGPresenter.PREFS_ITG, Context.MODE_PRIVATE)
         sp.edit()
                 .putInt(ITGPresenter.PREF_FANTASTICS, score.fantastics)
