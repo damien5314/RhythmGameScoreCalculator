@@ -5,6 +5,7 @@ import android.widget.EditText
 import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.ScoreUpdateListener
 import com.orhanobut.logger.Logger
+import rx.Observable
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.android.widget.OnTextChangeEvent
@@ -32,7 +33,7 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
     private val view: ITGView = view
 
     fun onStart() {
-        _onTextChangedEvents = view.getTextChangedObservables()
+        _onTextChangedEvent = view.getTextChangedObservables()
         val score: ITGScore = getSavedScore()
         view.displayInput(score)
         updateScore(score, false)
@@ -154,17 +155,14 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
         else return "D"
     }
 
-    private var _onTextChangedEvents: List<rx.Observable<OnTextChangeEvent>> = emptyList()
-    private var _onTextChangedEventSubscriptions: List<Subscription> = emptyList()
+    private lateinit var _onTextChangedEvent: Observable<OnTextChangeEvent>
+    private var _onTextChangedEventSubscription: Subscription? = null
 
     private fun subscribeToTextChangedEvents() {
-        _onTextChangedEvents.forEach { _onTextChangedEventSubscriptions += it.subscribe() }
+        _onTextChangedEvent.subscribe()
     }
 
     private fun unsubscribeFromTextChangedEvents() {
-        _onTextChangedEventSubscriptions.forEach {
-            it.unsubscribe()
-            _onTextChangedEventSubscriptions -= it
-        }
+        _onTextChangedEventSubscription?.unsubscribe()
     }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView
 import butterknife.bindView
 import com.ddiehl.rgsc.BaseCalc
 import com.ddiehl.rgsc.R
+import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.android.widget.OnTextChangeEvent
 import rx.android.widget.WidgetObservable
@@ -166,8 +167,8 @@ public class ITGView : BaseCalc() {
                 .doOnNext { e: OnTextChangeEvent -> presenter.onScoreUpdated() }
     }
 
-    fun getTextChangedObservables(): List<rx.Observable<OnTextChangeEvent>> {
-        return listOf(
+    fun getTextChangedObservables(): Observable<OnTextChangeEvent> {
+        return Observable.merge(listOf(
                 getTextChangedObservable(_fantastics),
                 getTextChangedObservable(_excellents),
                 getTextChangedObservable(_greats),
@@ -179,6 +180,6 @@ public class ITGView : BaseCalc() {
                 getTextChangedObservable(_mines),
                 getTextChangedObservable(_rolls),
                 getTextChangedObservable(_totalRolls)
-        )
+        ))
     }
 }
