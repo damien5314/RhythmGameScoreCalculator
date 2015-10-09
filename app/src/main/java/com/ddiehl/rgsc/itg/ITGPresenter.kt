@@ -9,21 +9,6 @@ import rx.Subscription
 import rx.android.widget.OnTextChangeEvent
 
 class ITGPresenter(view: ITGView) : ScoreUpdateListener {
-    object ITGPresenter {
-        const val PREFS_ITG = "PREFS_ITG"
-        const val PREF_FANTASTICS = "PREF_FANTASTICS"
-        const val PREF_EXCELLENTS = "PREF_EXCELLENTS"
-        const val PREF_GREATS = "PREF_GREATS"
-        const val PREF_DECENTS = "PREF_DECENTS"
-        const val PREF_WAYOFFS = "PREF_WAYOFFS"
-        const val PREF_MISSES = "PREF_MISSES"
-        const val PREF_HOLDS = "PREF_HOLDS"
-        const val PREF_TOTAL_HOLDS = "PREF_TOTAL_HOLDS"
-        const val PREF_MINES = "PREF_MINES"
-        const val PREF_ROLLS = "PREF_ROLLS"
-        const val PREF_TOTAL_ROLLS = "PREF_TOTAL_ROLLS"
-    }
-
     private val storage: IStorage = AndroidStorage
     private val view: ITGView = view
 
