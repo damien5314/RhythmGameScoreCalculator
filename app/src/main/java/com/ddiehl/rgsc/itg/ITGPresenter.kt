@@ -1,9 +1,16 @@
 package com.ddiehl.rgsc.itg
 
 import android.content.Context
+import android.widget.EditText
+import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.ScoreUpdateListener
 import com.orhanobut.logger.Logger
+import rx.Subscription
+import rx.android.schedulers.AndroidSchedulers
+import rx.android.widget.OnTextChangeEvent
+import rx.android.widget.WidgetObservable
 import java.text.DecimalFormat
+import java.util.concurrent.TimeUnit
 
 class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
     object ITGPresenter {
@@ -25,23 +32,32 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
     private val view: ITGView = view
 
     fun onStart() {
+        _onTextChangedEvents = view.getTextChangedObservables()
         val score: ITGScore = getSavedScore()
         view.displayInput(score)
-        updateScore(score)
+        updateScore(score, false)
+        subscribeToTextChangedEvents()
     }
 
     fun onStop() {
         saveScore(getInput())
+        unsubscribeFromTextChangedEvents()
     }
     
     override fun onScoreUpdated() {
-        updateScore(getInput())
+        updateScore(getInput(), true)
     }
 
-    private fun updateScore(score: ITGScore) {
+    override fun onScoreClear() {
+        unsubscribeFromTextChangedEvents()
+        view.clearForm()
+        subscribeToTextChangedEvents()
+    }
+
+    private fun updateScore(score: ITGScore, shouldValidate: Boolean) {
         // Verify input has been submitted
         var invalidInput = false
-        if (score.stepTotal == 0) {
+        if (shouldValidate && score.stepTotal == 0) {
             view.showNoStepsError()
             invalidInput = true
         }
@@ -136,5 +152,19 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
         else if (score > 60.0) return "C"
         else if (score > 55.0) return "C-"
         else return "D"
+    }
+
+    private var _onTextChangedEvents: List<rx.Observable<OnTextChangeEvent>> = emptyList()
+    private var _onTextChangedEventSubscriptions: List<Subscription> = emptyList()
+
+    private fun subscribeToTextChangedEvents() {
+        _onTextChangedEvents.forEach { _onTextChangedEventSubscriptions += it.subscribe() }
+    }
+
+    private fun unsubscribeFromTextChangedEvents() {
+        _onTextChangedEventSubscriptions.forEach {
+            it.unsubscribe()
+            _onTextChangedEventSubscriptions -= it
+        }
     }
 }
