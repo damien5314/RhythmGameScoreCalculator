@@ -1,13 +1,14 @@
 package com.ddiehl.rgsc.itg
 
-import android.content.Context
 import com.ddiehl.rgsc.ScoreUpdateListener
+import com.ddiehl.rgsc.data.AndroidStorage
+import com.ddiehl.rgsc.data.IStorage
 import com.orhanobut.logger.Logger
 import rx.Observable
 import rx.Subscription
 import rx.android.widget.OnTextChangeEvent
 
-class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
+class ITGPresenter(view: ITGView) : ScoreUpdateListener {
     object ITGPresenter {
         const val PREFS_ITG = "PREFS_ITG"
         const val PREF_FANTASTICS = "PREF_FANTASTICS"
@@ -23,7 +24,7 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
         const val PREF_TOTAL_ROLLS = "PREF_TOTAL_ROLLS"
     }
 
-    private val context: Context = c
+    private val storage: IStorage = AndroidStorage
     private val view: ITGView = view
 
     // Rx
@@ -32,14 +33,14 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
 
     fun onStart() {
         _onTextChangedEvent = view.getTextChangedObservable()
-        val score: ITGScore = getSavedScore()
+        val score: ITGScore = storage.getSavedScore()
         view.displayInput(score)
         updateScore(score, false)
         subscribeToTextChangedEvents()
     }
 
     fun onStop() {
-        saveScore(getInput())
+        storage.saveScore(getInput())
         unsubscribeFromTextChangedEvents()
     }
     
@@ -81,40 +82,6 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
         view.showPotential(potential)
         view.showScorePercentage(scorePercent)
         view.showScoreGrade(calculateGrade(scorePercent))
-    }
-
-    private fun getSavedScore() : ITGScore {
-        val sp = context.getSharedPreferences(ITGPresenter.PREFS_ITG, Context.MODE_PRIVATE)
-        val score = ITGScore()
-        score.fantastics = sp.getInt(ITGPresenter.PREF_FANTASTICS, 0)
-        score.excellents = sp.getInt(ITGPresenter.PREF_EXCELLENTS, 0)
-        score.greats = sp.getInt(ITGPresenter.PREF_GREATS, 0)
-        score.decents = sp.getInt(ITGPresenter.PREF_DECENTS, 0)
-        score.wayoffs = sp.getInt(ITGPresenter.PREF_WAYOFFS, 0)
-        score.misses = sp.getInt(ITGPresenter.PREF_MISSES, 0)
-        score.holds = sp.getInt(ITGPresenter.PREF_HOLDS, 0)
-        score.totalHolds = sp.getInt(ITGPresenter.PREF_TOTAL_HOLDS, 0)
-        score.mines = sp.getInt(ITGPresenter.PREF_MINES, 0)
-        score.rolls = sp.getInt(ITGPresenter.PREF_ROLLS, 0)
-        score.totalRolls = sp.getInt(ITGPresenter.PREF_TOTAL_ROLLS, 0)
-        return score
-    }
-
-    private fun saveScore(score: ITGScore) {
-        val sp = context.getSharedPreferences(ITGPresenter.PREFS_ITG, Context.MODE_PRIVATE)
-        sp.edit()
-                .putInt(ITGPresenter.PREF_FANTASTICS, score.fantastics)
-                .putInt(ITGPresenter.PREF_EXCELLENTS, score.excellents)
-                .putInt(ITGPresenter.PREF_GREATS, score.greats)
-                .putInt(ITGPresenter.PREF_DECENTS, score.decents)
-                .putInt(ITGPresenter.PREF_WAYOFFS, score.wayoffs)
-                .putInt(ITGPresenter.PREF_MISSES, score.misses)
-                .putInt(ITGPresenter.PREF_HOLDS, score.holds)
-                .putInt(ITGPresenter.PREF_TOTAL_HOLDS, score.totalHolds)
-                .putInt(ITGPresenter.PREF_MINES, score.mines)
-                .putInt(ITGPresenter.PREF_ROLLS, score.rolls)
-                .putInt(ITGPresenter.PREF_TOTAL_ROLLS, score.totalRolls)
-                .commit()
     }
 
     private fun getInput(): ITGScore {

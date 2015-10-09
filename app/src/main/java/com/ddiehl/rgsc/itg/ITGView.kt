@@ -54,7 +54,7 @@ public class ITGView : BaseCalc() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = ITGPresenter(context, this)
+        presenter = ITGPresenter(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
