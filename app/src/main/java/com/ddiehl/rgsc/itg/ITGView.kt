@@ -18,7 +18,7 @@ import rx.android.widget.WidgetObservable
 import java.text.DecimalFormat
 import java.util.concurrent.TimeUnit
 
-public class ITGView : BaseCalc() {
+public class ITGView : BaseCalc(), IITGView {
     private lateinit var presenter: ITGPresenter
 
     // View bindings
@@ -40,17 +40,17 @@ public class ITGView : BaseCalc() {
     private val _clearButton: ImageButton by bindView(R.id.clear_form)
 
     // Public properties
-    var fantastics: Int = 0; get() = readIntegerFrom(_fantastics)
-    var excellents: Int = 0; get() = readIntegerFrom(_excellents)
-    var greats: Int = 0; get() = readIntegerFrom(_greats)
-    var decents: Int = 0; get() = readIntegerFrom(_decents)
-    var wayoffs: Int = 0; get() = readIntegerFrom(_wayoffs)
-    var misses: Int = 0; get() = readIntegerFrom(_misses)
-    var holds: Int = 0; get() = readIntegerFrom(_holds)
-    var totalHolds: Int = 0; get() = readIntegerFrom(_totalHolds)
-    var mines: Int = 0; get() = readIntegerFrom(_mines)
-    var rolls: Int = 0; get() = readIntegerFrom(_rolls)
-    var totalRolls: Int = 0; get() = readIntegerFrom(_totalRolls)
+    override var fantastics: Int = 0; get() = readIntegerFrom(_fantastics)
+    override var excellents: Int = 0; get() = readIntegerFrom(_excellents)
+    override var greats: Int = 0; get() = readIntegerFrom(_greats)
+    override var decents: Int = 0; get() = readIntegerFrom(_decents)
+    override var wayoffs: Int = 0; get() = readIntegerFrom(_wayoffs)
+    override var misses: Int = 0; get() = readIntegerFrom(_misses)
+    override var holds: Int = 0; get() = readIntegerFrom(_holds)
+    override var totalHolds: Int = 0; get() = readIntegerFrom(_totalHolds)
+    override var mines: Int = 0; get() = readIntegerFrom(_mines)
+    override var rolls: Int = 0; get() = readIntegerFrom(_rolls)
+    override var totalRolls: Int = 0; get() = readIntegerFrom(_totalRolls)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,18 +77,18 @@ public class ITGView : BaseCalc() {
         super.onStop()
     }
 
-    fun displayInput(s: ITGScore) {
-        _fantastics.setText(stripZero(s.fantastics))
-        _excellents.setText(stripZero(s.excellents))
-        _greats.setText(stripZero(s.greats))
-        _decents.setText(stripZero(s.decents))
-        _wayoffs.setText(stripZero(s.wayoffs))
-        _misses.setText(stripZero(s.misses))
-        _holds.setText(stripZero(s.holds))
-        _totalHolds.setText(stripZero(s.totalHolds))
-        _mines.setText(stripZero(s.mines))
-        _rolls.setText(stripZero(s.rolls))
-        _totalRolls.setText(stripZero(s.totalRolls))
+    override fun displayInput(score: ITGScore) {
+        _fantastics.setText(stripZero(score.fantastics))
+        _excellents.setText(stripZero(score.excellents))
+        _greats.setText(stripZero(score.greats))
+        _decents.setText(stripZero(score.decents))
+        _wayoffs.setText(stripZero(score.wayoffs))
+        _misses.setText(stripZero(score.misses))
+        _holds.setText(stripZero(score.holds))
+        _totalHolds.setText(stripZero(score.totalHolds))
+        _mines.setText(stripZero(score.mines))
+        _rolls.setText(stripZero(score.rolls))
+        _totalRolls.setText(stripZero(score.totalRolls))
     }
 
     private fun stripZero(i: Int): String? {
@@ -96,26 +96,26 @@ public class ITGView : BaseCalc() {
         else return i.toString()
     }
 
-    fun showHoldsInvalid() {
+    override fun showNoStepsError() {
+        Snackbar.make(view, R.string.error_no_steps, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun showHoldsInvalid() {
         _holds.error = getString(R.string.error_invalid_holds)
         showScoreError()
     }
 
-    fun showRollsInvalid() {
+    override fun showRollsInvalid() {
         _rolls.error = getString(R.string.error_invalid_holds)
         showScoreError()
     }
 
-    fun clearErrors() {
+    override fun clearErrors() {
         _holds.error = null
         _rolls.error = null
     }
 
-    fun showNoStepsError() {
-        Snackbar.make(view, R.string.error_no_steps, Snackbar.LENGTH_SHORT).show()
-    }
-
-    fun clearForm() {
+    override fun clearForm() {
         _fantastics.setText("")
         _excellents.setText("")
         _greats.setText("")
@@ -127,27 +127,23 @@ public class ITGView : BaseCalc() {
         _mines.setText("")
         _rolls.setText("")
         _totalRolls.setText("")
-//        _earnedScoreValue.setText(R.string.score_value_earned_default)
-//        _potentialScoreValue.setText(R.string.score_value_potential_default)
-//        _scorePercent.setText(R.string.score_percent_default)
-//        _scoreGrade.setText(R.string.score_grade_default)
         clearErrors()
     }
 
-    fun showEarned(earned: Int) {
+    override fun showEarned(earned: Int) {
         _earnedScoreValue.text = earned.toString()
     }
 
-    fun showPotential(potential: Int) {
+    override fun showPotential(potential: Int) {
         _potentialScoreValue.text = potential.toString()
     }
 
-    fun showScorePercentage(scorePercent: Double) {
+    override fun showScorePercentage(scorePercent: Double) {
         val df = DecimalFormat("0.00")
         _scorePercent.text = df.format(scorePercent) + "%"
     }
 
-    fun showScoreGrade(gradeString: String) {
+    override fun showScoreGrade(gradeString: String) {
         _scoreGrade.text = gradeString
     }
 
@@ -169,7 +165,7 @@ public class ITGView : BaseCalc() {
                 .doOnNext { e: OnTextChangeEvent -> presenter.onScoreUpdated() }
     }
 
-    fun getTextChangedObservable(): Observable<OnTextChangeEvent> {
+    override fun getTextChangedObservable(): Observable<OnTextChangeEvent> {
         return Observable.merge(listOf(
                 getTextChangedObservable(_fantastics),
                 getTextChangedObservable(_excellents),

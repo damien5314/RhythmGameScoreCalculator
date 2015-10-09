@@ -8,9 +8,9 @@ import rx.Observable
 import rx.Subscription
 import rx.android.widget.OnTextChangeEvent
 
-class ITGPresenter(view: ITGView) : ScoreUpdateListener {
+class ITGPresenter(view: IITGView) : ScoreUpdateListener {
     private val storage: IStorage = AndroidStorage
-    private val view: ITGView = view
+    private val view: IITGView = view
 
     // Rx
     private lateinit var _onTextChangedEvent: Observable<OnTextChangeEvent>
