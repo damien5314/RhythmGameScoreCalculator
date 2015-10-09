@@ -78,17 +78,22 @@ public class ITGView : BaseCalc() {
     }
 
     fun displayInput(s: ITGScore) {
-        _fantastics.setText(s.fantastics.toString())
-        _excellents.setText(s.excellents.toString())
-        _greats.setText(s.greats.toString())
-        _decents.setText(s.decents.toString())
-        _wayoffs.setText(s.wayoffs.toString())
-        _misses.setText(s.misses.toString())
-        _holds.setText(s.holds.toString())
-        _totalHolds.setText(s.totalHolds.toString())
-        _mines.setText(s.mines.toString())
-        _rolls.setText(s.rolls.toString())
-        _totalRolls.setText(s.totalRolls.toString())
+        _fantastics.setText(stripZero(s.fantastics))
+        _excellents.setText(stripZero(s.excellents))
+        _greats.setText(stripZero(s.greats))
+        _decents.setText(stripZero(s.decents))
+        _wayoffs.setText(stripZero(s.wayoffs))
+        _misses.setText(stripZero(s.misses))
+        _holds.setText(stripZero(s.holds))
+        _totalHolds.setText(stripZero(s.totalHolds))
+        _mines.setText(stripZero(s.mines))
+        _rolls.setText(stripZero(s.rolls))
+        _totalRolls.setText(stripZero(s.totalRolls))
+    }
+
+    private fun stripZero(i: Int): String? {
+        if (i == 0) return null;
+        else return i.toString()
     }
 
     fun showHoldsInvalid() {

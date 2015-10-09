@@ -1,17 +1,11 @@
 package com.ddiehl.rgsc.itg
 
 import android.content.Context
-import android.widget.EditText
-import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.ScoreUpdateListener
 import com.orhanobut.logger.Logger
 import rx.Observable
 import rx.Subscription
-import rx.android.schedulers.AndroidSchedulers
 import rx.android.widget.OnTextChangeEvent
-import rx.android.widget.WidgetObservable
-import java.text.DecimalFormat
-import java.util.concurrent.TimeUnit
 
 class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
     object ITGPresenter {
@@ -159,7 +153,7 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
     private var _onTextChangedEventSubscription: Subscription? = null
 
     private fun subscribeToTextChangedEvents() {
-        _onTextChangedEvent.subscribe()
+        _onTextChangedEventSubscription = _onTextChangedEvent.subscribe()
     }
 
     private fun unsubscribeFromTextChangedEvents() {
