@@ -26,8 +26,12 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
     private val context: Context = c
     private val view: ITGView = view
 
+    // Rx
+    private lateinit var _onTextChangedEvent: Observable<OnTextChangeEvent>
+    private var _onTextChangedEventSubscription: Subscription? = null
+
     fun onStart() {
-        _onTextChangedEvent = view.getTextChangedObservables()
+        _onTextChangedEvent = view.getTextChangedObservable()
         val score: ITGScore = getSavedScore()
         view.displayInput(score)
         updateScore(score, false)
@@ -46,6 +50,7 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
     override fun onScoreClear() {
         unsubscribeFromTextChangedEvents()
         view.clearForm()
+        updateScore(ITGScore(), false)
         subscribeToTextChangedEvents()
     }
 
@@ -148,9 +153,6 @@ class ITGPresenter(c: Context, view: ITGView) : ScoreUpdateListener {
         else if (score > 55.0) return "C-"
         else return "D"
     }
-
-    private lateinit var _onTextChangedEvent: Observable<OnTextChangeEvent>
-    private var _onTextChangedEventSubscription: Subscription? = null
 
     private fun subscribeToTextChangedEvents() {
         _onTextChangedEventSubscription = _onTextChangedEvent.subscribe()

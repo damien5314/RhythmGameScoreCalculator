@@ -109,10 +109,6 @@ public class ITGView : BaseCalc() {
     fun clearErrors() {
         _holds.error = null
         _rolls.error = null
-        _earnedScoreValue.text = ""
-        _potentialScoreValue.text = ""
-        _scorePercent.text = ""
-        _scoreGrade.text = ""
     }
 
     fun showNoStepsError() {
@@ -131,10 +127,11 @@ public class ITGView : BaseCalc() {
         _mines.setText("")
         _rolls.setText("")
         _totalRolls.setText("")
-        _earnedScoreValue.setText(R.string.score_value_earned_default)
-        _potentialScoreValue.setText(R.string.score_value_potential_default)
-        _scorePercent.setText(R.string.score_percent_default)
-        _scoreGrade.setText(R.string.score_grade_default)
+//        _earnedScoreValue.setText(R.string.score_value_earned_default)
+//        _potentialScoreValue.setText(R.string.score_value_potential_default)
+//        _scorePercent.setText(R.string.score_percent_default)
+//        _scoreGrade.setText(R.string.score_grade_default)
+        clearErrors()
     }
 
     fun showEarned(earned: Int) {
@@ -172,7 +169,7 @@ public class ITGView : BaseCalc() {
                 .doOnNext { e: OnTextChangeEvent -> presenter.onScoreUpdated() }
     }
 
-    fun getTextChangedObservables(): Observable<OnTextChangeEvent> {
+    fun getTextChangedObservable(): Observable<OnTextChangeEvent> {
         return Observable.merge(listOf(
                 getTextChangedObservable(_fantastics),
                 getTextChangedObservable(_excellents),
