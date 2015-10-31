@@ -1,7 +1,7 @@
 package com.ddiehl.rgsc.itg
 
 import com.ddiehl.rgsc.ScoreUpdateListener
-import com.ddiehl.rgsc.data.AndroidStorage
+import com.ddiehl.rgsc.data.ITGStorage
 import com.ddiehl.rgsc.data.IStorage
 import com.orhanobut.logger.Logger
 import rx.Observable
@@ -9,7 +9,7 @@ import rx.Subscription
 import rx.android.widget.OnTextChangeEvent
 
 class ITGPresenter(view: IITGView) : ScoreUpdateListener {
-    private val storage: IStorage = AndroidStorage
+    private val storage: IStorage = ITGStorage
     private val view: IITGView = view
 
     // Rx

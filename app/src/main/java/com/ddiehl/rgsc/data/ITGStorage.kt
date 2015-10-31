@@ -3,7 +3,7 @@ package com.ddiehl.rgsc.data
 import android.content.Context
 import com.ddiehl.rgsc.itg.ITGScore
 
-object AndroidStorage : IStorage {
+object ITGStorage : IStorage {
     const val PREFS_ITG = "PREFS_ITG"
     const val PREF_FANTASTICS = "PREF_FANTASTICS"
     const val PREF_EXCELLENTS = "PREF_EXCELLENTS"
@@ -60,5 +60,4 @@ object AndroidStorage : IStorage {
         score.totalRolls = sp.getInt(PREF_TOTAL_ROLLS, 0)
         return score
     }
-
 }
