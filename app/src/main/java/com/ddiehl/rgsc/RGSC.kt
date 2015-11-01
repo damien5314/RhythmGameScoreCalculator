@@ -8,6 +8,6 @@ public class RGSC : Application() {
     override fun onCreate() {
         Logger.init("RGSC")
                 .hideThreadInfo()
-        ITGStorage.init(this)
+        ContextProvider.set(this)
     }
 }

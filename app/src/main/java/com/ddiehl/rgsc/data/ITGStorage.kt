@@ -1,33 +1,29 @@
 package com.ddiehl.rgsc.data
 
 import android.content.Context
+import com.ddiehl.rgsc.ContextProvider
 import com.ddiehl.rgsc.itg.ITGScore
 
-object ITGStorage : IStorage {
-    const val PREFS_ITG = "PREFS_ITG"
-    const val PREF_FANTASTICS = "PREF_FANTASTICS"
-    const val PREF_EXCELLENTS = "PREF_EXCELLENTS"
-    const val PREF_GREATS = "PREF_GREATS"
-    const val PREF_DECENTS = "PREF_DECENTS"
-    const val PREF_WAYOFFS = "PREF_WAYOFFS"
-    const val PREF_MISSES = "PREF_MISSES"
-    const val PREF_HOLDS = "PREF_HOLDS"
-    const val PREF_TOTAL_HOLDS = "PREF_TOTAL_HOLDS"
-    const val PREF_MINES = "PREF_MINES"
-    const val PREF_ROLLS = "PREF_ROLLS"
-    const val PREF_TOTAL_ROLLS = "PREF_TOTAL_ROLLS"
-    
-    lateinit var context: Context
-    private var initialized: Boolean = false
-
-    public fun init(c: Context) {
-        context = c.applicationContext
-        initialized = true
+class ITGStorage : Storage {
+    companion object {
+        const val PREFS_ITG = "PREFS_ITG"
+        const val PREF_FANTASTICS = "PREF_FANTASTICS"
+        const val PREF_EXCELLENTS = "PREF_EXCELLENTS"
+        const val PREF_GREATS = "PREF_GREATS"
+        const val PREF_DECENTS = "PREF_DECENTS"
+        const val PREF_WAYOFFS = "PREF_WAYOFFS"
+        const val PREF_MISSES = "PREF_MISSES"
+        const val PREF_HOLDS = "PREF_HOLDS"
+        const val PREF_TOTAL_HOLDS = "PREF_TOTAL_HOLDS"
+        const val PREF_MINES = "PREF_MINES"
+        const val PREF_ROLLS = "PREF_ROLLS"
+        const val PREF_TOTAL_ROLLS = "PREF_TOTAL_ROLLS"
     }
+    
+    private val mContext: Context = ContextProvider.get()
 
     override fun saveScore(score: ITGScore) {
-        if (!initialized) throw IllegalStateException("${javaClass.simpleName} is not yet initialized")
-        val sp = context.getSharedPreferences(PREFS_ITG, Context.MODE_PRIVATE)
+        val sp = mContext.getSharedPreferences(PREFS_ITG, Context.MODE_PRIVATE)
         sp.edit()
                 .putInt(PREF_FANTASTICS, score.fantastics)
                 .putInt(PREF_EXCELLENTS, score.excellents)
@@ -44,8 +40,7 @@ object ITGStorage : IStorage {
     }
 
     override fun getSavedScore(): ITGScore {
-        if (!initialized) throw IllegalStateException("${javaClass.simpleName} is not yet initialized")
-        val sp = context.getSharedPreferences(PREFS_ITG, Context.MODE_PRIVATE)
+        val sp = mContext.getSharedPreferences(PREFS_ITG, Context.MODE_PRIVATE)
         val score = ITGScore()
         score.fantastics = sp.getInt(PREF_FANTASTICS, 0)
         score.excellents = sp.getInt(PREF_EXCELLENTS, 0)

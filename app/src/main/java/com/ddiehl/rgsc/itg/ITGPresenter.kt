@@ -2,15 +2,15 @@ package com.ddiehl.rgsc.itg
 
 import com.ddiehl.rgsc.ScoreUpdateListener
 import com.ddiehl.rgsc.data.ITGStorage
-import com.ddiehl.rgsc.data.IStorage
+import com.ddiehl.rgsc.data.Storage
 import com.orhanobut.logger.Logger
 import rx.Observable
 import rx.Subscription
 import rx.android.widget.OnTextChangeEvent
 
-class ITGPresenter(view: IITGView) : ScoreUpdateListener {
-    private val storage: IStorage = ITGStorage
-    private val view: IITGView = view
+class ITGPresenter(view: ITGView) : ScoreUpdateListener {
+    private val storage: Storage = ITGStorage()
+    private val view: ITGView = view
 
     // Rx
     private lateinit var _onTextChangedEvent: Observable<OnTextChangeEvent>
