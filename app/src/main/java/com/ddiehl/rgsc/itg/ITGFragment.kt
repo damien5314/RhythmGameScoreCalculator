@@ -37,7 +37,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _potentialScoreValue: TextView by bindView(R.id.potential_score_value)
     private val _scorePercent: TextView by bindView(R.id.score_percent)
     private val _scoreGrade: TextView by bindView(R.id.score_grade)
-    private val _clearButton: ImageButton by bindView(R.id.clear_form)
+    private val _clearButton: View by bindView(R.id.clear_form)
 
     // Public properties
     override var fantastics: Int = 0; get() = readIntegerFrom(_fantastics)

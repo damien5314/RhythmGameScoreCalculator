@@ -59,5 +59,6 @@
     <string name="action_settings">Settings</string>
     <string name="earned_score_error">-</string>
     <string name="potential_score_error">-</string>
+    <string name="button_clear_form">clear score</string>
 
 </resources>

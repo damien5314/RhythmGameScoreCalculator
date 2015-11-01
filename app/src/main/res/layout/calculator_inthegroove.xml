@@ -12,182 +12,168 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/score_entry"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="horizontal">
 
-            <LinearLayout style="@style/ScoreEntryRow" >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <LinearLayout style="@style/ScoreGradeContainer" >
+                <TextView
+                    android:text="@string/fantastics_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-                    <TextView
-                        android:text="@string/fantastics_hint"
-                        style="@style/ScoreEntryLabel" />
+                <EditText
+                    android:id="@+id/fantastics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryField" />
 
-                    <EditText
-                        android:id="@+id/fantastics"
-                        style="@style/ScoreEntryField" />
+                <TextView
+                    android:text="@string/excellents_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/excellents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryField" />
 
-                <LinearLayout style="@style/ScoreGradeContainer" >
+                <TextView
+                    android:text="@string/greats_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-                    <TextView
-                        android:text="@string/holds_hint"
-                        style="@style/ScoreEntryLabel" />
+                <EditText
+                    android:id="@+id/greats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryField" />
 
-                    <EditText
-                        android:id="@+id/holds"
-                        style="@style/ScoreEntryField" />
+                <TextView
+                    android:text="@string/decents_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/decents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryField" />
 
-            </LinearLayout>
+                <TextView
+                    android:text="@string/wayoffs_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-            <LinearLayout style="@style/ScoreEntryRow" >
+                <EditText
+                    android:id="@+id/wayoffs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryField" />
 
-                <LinearLayout style="@style/ScoreGradeContainer" >
+                <TextView
+                    android:text="@string/misses_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-                    <TextView
-                        android:text="@string/excellents_hint"
-                        style="@style/ScoreEntryLabel" />
-
-                    <EditText
-                        android:id="@+id/excellents"
-                        style="@style/ScoreEntryField" />
-
-                </LinearLayout>
-
-                <LinearLayout style="@style/ScoreGradeContainer" >
-
-                    <TextView
-                        android:text="@string/totalHolds_hint"
-                        style="@style/ScoreEntryLabel" />
-
-                    <EditText
-                        android:id="@+id/total_holds"
-                        style="@style/ScoreEntryField" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout style="@style/ScoreEntryRow" >
-
-                <LinearLayout style="@style/ScoreGradeContainer" >
-
-                    <TextView
-                        android:text="@string/greats_hint"
-                        style="@style/ScoreEntryLabel" />
-
-                    <EditText
-                        android:id="@+id/greats"
-                        style="@style/ScoreEntryField" />
-
-                </LinearLayout>
-
-                <LinearLayout style="@style/ScoreGradeContainer" >
-
-                    <TextView
-                        android:text="@string/mines_hint"
-                        style="@style/ScoreEntryLabel" />
-
-                    <EditText
-                        android:id="@+id/mines"
-                        style="@style/ScoreEntryField" />
-
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/misses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nextFocusDown="@+id/holds"
+                    style="@style/ScoreEntryField" />
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreEntryRow" >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <LinearLayout style="@style/ScoreGradeContainer" >
+                <TextView
+                    android:text="@string/holds_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-                    <TextView
-                        android:text="@string/decents_hint"
-                        style="@style/ScoreEntryLabel" />
+                <EditText
+                    android:id="@id/holds"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryField" />
 
-                    <EditText
-                        android:id="@+id/decents"
-                        style="@style/ScoreEntryField" />
+                <TextView
+                    android:text="@string/totalHolds_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/total_holds"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryField" />
 
-                <LinearLayout style="@style/ScoreGradeContainer" >
+                <TextView
+                    android:text="@string/mines_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-                    <TextView
-                        android:text="@string/rolls_hint"
-                        style="@style/ScoreEntryLabel" />
+                <EditText
+                    android:id="@+id/mines"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryField" />
 
-                    <EditText
-                        android:id="@+id/rolls"
-                        style="@style/ScoreEntryField" />
+                <TextView
+                    android:text="@string/rolls_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/rolls"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryField" />
 
-            </LinearLayout>
+                <TextView
+                    android:text="@string/totalRolls_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ScoreEntryLabel" />
 
-            <LinearLayout style="@style/ScoreEntryRow" >
-
-                <LinearLayout style="@style/ScoreGradeContainer" >
-
-                    <TextView
-                        android:text="@string/wayoffs_hint"
-                        style="@style/ScoreEntryLabel" />
-
-                    <EditText
-                        android:id="@+id/wayoffs"
-                        style="@style/ScoreEntryField" />
-
-                </LinearLayout>
-
-                <LinearLayout style="@style/ScoreGradeContainer" >
-
-                    <TextView
-                        android:text="@string/totalRolls_hint"
-                        style="@style/ScoreEntryLabel" />
-
-                    <EditText
-                        android:id="@+id/total_rolls"
-                        style="@style/ScoreEntryField" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout style="@style/ScoreEntryRow" >
-
-                <LinearLayout style="@style/ScoreGradeContainer" >
-
-                    <TextView
-                        android:text="@string/misses_hint"
-                        style="@style/ScoreEntryLabel" />
-
-                    <EditText
-                        android:id="@+id/misses"
-                        android:nextFocusDown="@id/holds"
-                        style="@style/ScoreEntryField" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/score_entry_container_height"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/clear_form"
-                        style="@style/ScoreClearButton" />
-
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/total_rolls"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nextFocusDown="@id/fantastics"
+                    style="@style/ScoreEntryField" />
 
             </LinearLayout>
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/clear_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_clear_form"
+            style="@style/ScoreClearButton" />
 
         <LinearLayout
             android:id="@+id/calculated_score"
@@ -197,7 +183,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -226,7 +212,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -241,16 +227,26 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/score_percent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    tools:text="0.00%"
                     style="@style/CalculatedScorePercent" />
 
                 <TextView
                     android:id="@+id/score_grade"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    tools:text="D"
                     style="@style/CalculatedScoreGrade" />
 
             </LinearLayout>
