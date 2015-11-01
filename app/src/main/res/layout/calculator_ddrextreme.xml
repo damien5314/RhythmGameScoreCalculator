@@ -152,7 +152,11 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/ScoreButtonContainer" >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/score_entry_container_height"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/clear_form"
@@ -167,13 +171,27 @@
 
     <LinearLayout
         android:id="@+id/calculated_score"
-        style="@style/CalculatedScoreSection" >
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <LinearLayout style="@style/CalculatedScoreRow" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/earnedScoreLabel"
-                style="@style/EarnedScoreLabel" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:paddingLeft="@dimen/score_display_padding"
+                android:paddingRight="@dimen/score_display_padding"
+                android:textSize="@dimen/score_display_small_size"
+                tools:text="Earned" />
 
             <TextView
                 android:id="@+id/earned_score_value"
@@ -181,7 +199,10 @@
 
         </LinearLayout>
 
-        <LinearLayout style="@style/CalculatedScoreRow" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/potentialScoreLabel"
@@ -193,7 +214,10 @@
 
         </LinearLayout>
 
-        <LinearLayout style="@style/CalculatedScoreRow" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/score_percent"

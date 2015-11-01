@@ -174,8 +174,8 @@ public class CalculatorDDRExtreme extends Activity {
 
 		((TextView)findViewById(R.id.earned_score_value)).setText(R.string.score_value_earned_default);
 		((TextView)findViewById(R.id.potential_score_value)).setText(R.string.score_value_potential_default);
-		((TextView)findViewById(R.id.score_percent)).setText(R.string.score_percent_default);
-		((TextView)findViewById(R.id.score_grade)).setText(R.string.score_grade_default);
+		((TextView)findViewById(R.id.score_percent)).setText("0.00%");
+		((TextView)findViewById(R.id.score_grade)).setText("D");
 	}
 
     private static double sum(double[] ints) {

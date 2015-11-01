@@ -9,8 +9,6 @@
     </style>
 
     <style name="ActivityStandardPadding">
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_width">match_parent</item>
         <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
         <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
@@ -64,19 +62,12 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
 	</style>
-	
-    <style name="ScoreContainer">
+
+    <style name="ScoreGradeContainer">
         <item name="android:layout_height">@dimen/score_entry_container_height</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
-    </style>
-
-    <style name="ScoreGradeContainer" parent="ScoreContainer">
         <item name="android:orientation">vertical</item>
-    </style>
-	
-    <style name="ScoreButtonContainer" parent="ScoreContainer">
-        <item name="android:orientation">horizontal</item>
     </style>
     
     <style name="ScoreEntryLabel">
@@ -109,22 +100,8 @@
         <item name="android:src">@drawable/clear_form</item>
         <item name="android:contentDescription">@string/score_clear_description</item>
     </style>
-    
-    <style name="CalculatedScoreSection">
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:gravity">center</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-    
-    <style name="CalculatedScoreRow">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:orientation">horizontal</item>
-    </style>
-    
-    <style name="CalculatedScoreLabel">
+
+    <style name="PotentialScoreLabel">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
@@ -132,13 +109,6 @@
         <item name="android:paddingLeft">@dimen/score_display_padding</item>
         <item name="android:paddingRight">@dimen/score_display_padding</item>
         <item name="android:textSize">@dimen/score_display_small_size</item>
-    </style>
-
-    <style name="EarnedScoreLabel" parent="CalculatedScoreLabel">
-        <item name="android:text">@string/score_label_earned_default</item>
-    </style>
-
-    <style name="PotentialScoreLabel" parent="CalculatedScoreLabel">
         <item name="android:text">@string/score_label_potential_default</item>
     </style>
 
@@ -152,22 +122,6 @@
         <item name="android:text">@string/score_value_earned_default</item>
         <item name="android:textSize">@dimen/score_display_small_size</item>
     </style>
-
-    <style name="ExScoreLabel" parent="CalculatedScoreLabel">
-        <item name="android:textSize">@dimen/score_display_large_size</item>
-    </style>
-
-    <style name="ExScoreValue" parent="CalculatedScoreValue">
-        <item name="android:textSize">@dimen/score_display_large_size</item>
-    </style>
-
-    <style name="PopnScoreValue">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:gravity">center</item>
-        <item name="android:text">@string/score_value_earned_default</item>
-        <item name="android:textSize">@dimen/score_display_large_size</item>
-    </style>
     
     <style name="CalculatedScorePercent">
         <item name="android:layout_width">0dp</item>
@@ -176,7 +130,6 @@
         <item name="android:gravity">right</item>
         <item name="android:paddingLeft">@dimen/score_display_padding</item>
         <item name="android:paddingRight">@dimen/score_display_padding</item>
-        <item name="android:text">@string/score_percent_default</item>
         <item name="android:textSize">@dimen/score_display_large_size</item>
     </style>
     
@@ -187,7 +140,6 @@
         <item name="android:gravity">left</item>
         <item name="android:paddingLeft">@dimen/score_display_padding</item>
         <item name="android:paddingRight">@dimen/score_display_padding</item>
-        <item name="android:text">@string/score_grade_default</item>
         <item name="android:textSize">@dimen/score_display_large_size</item>
     </style>
 
