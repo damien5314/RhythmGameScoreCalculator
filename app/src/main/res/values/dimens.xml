@@ -16,5 +16,6 @@
     <dimen name="score_section_padding_bottom">5dp</dimen>
     <dimen name="score_display_large_size">32sp</dimen>
     <dimen name="score_display_small_size">20sp</dimen>
+    <dimen name="score_entry_height">48dp</dimen>
 
 </resources>
