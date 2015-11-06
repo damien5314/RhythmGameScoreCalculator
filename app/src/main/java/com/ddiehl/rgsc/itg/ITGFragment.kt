@@ -32,8 +32,9 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _mines: EditText by bindView(R.id.mines)
     private val _rolls: EditText by bindView(R.id.rolls)
     private val _totalRolls: EditText by bindView(R.id.total_rolls)
-    private val _earnedScoreValue: TextView by bindView(R.id.earned_score_value)
-    private val _potentialScoreValue: TextView by bindView(R.id.potential_score_value)
+//    private val _earnedScoreValue: TextView by bindView(R.id.earned_score_value)
+//    private val _potentialScoreValue: TextView by bindView(R.id.potential_score_value)
+    private val _scoreValueArea: TextView by bindView(R.id.score_value_area)
     private val _scorePercent: TextView by bindView(R.id.score_percent)
     private val _scoreGrade: TextView by bindView(R.id.score_grade)
     private val _clearButton: View by bindView(R.id.clear_form)
@@ -143,12 +144,9 @@ public class ITGFragment : BaseCalc(), ITGView {
         subscribeToTextChangedEvents()
     }
 
-    override fun showEarned(earned: Int) {
-        _earnedScoreValue.text = earned.toString()
-    }
-
-    override fun showPotential(potential: Int) {
-        _potentialScoreValue.text = potential.toString()
+    override fun showScoreValues(earned: Int, potential: Int) {
+        val scoreValueFormatter = getString(R.string.score_value_formatter)
+        _scoreValueArea.text = scoreValueFormatter.format(earned, potential, potential - earned)
     }
 
     override fun showScorePercentage(scorePercent: Double) {
@@ -161,8 +159,10 @@ public class ITGFragment : BaseCalc(), ITGView {
     }
 
     private fun showScoreError() {
-        _earnedScoreValue.text = getString(R.string.earned_score_error)
-        _potentialScoreValue.text = getString(R.string.potential_score_error)
+//        _earnedScoreValue.text = getString(R.string.earned_score_error)
+//        _potentialScoreValue.text = getString(R.string.potential_score_error)
+        val scoreValueFormatter = getString(R.string.score_value_formatter)
+        _scoreValueArea.text = scoreValueFormatter.format(0, 0, 0)
         _scorePercent.text = ""
         _scoreGrade.text = ""
     }

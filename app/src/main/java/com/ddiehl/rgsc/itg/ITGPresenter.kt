@@ -51,8 +51,9 @@ class ITGPresenter(view: ITGView) : ScoreUpdateListener {
         // Calculate score percentage rounded to 2 decimal places
         val scorePercent = ((earned.toDouble() / potential.toDouble()) * 10000).toInt() / 100.00
 
-        view.showEarned(earned)
-        view.showPotential(potential)
+//        view.showEarned(earned)
+//        view.showPotential(potential)
+        view.showScoreValues(earned, potential)
         view.showScorePercentage(scorePercent)
         view.showScoreGrade(calculateGrade(scorePercent))
     }

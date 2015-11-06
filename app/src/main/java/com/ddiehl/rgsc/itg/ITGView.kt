@@ -20,8 +20,9 @@ interface ITGView {
     fun showRollsInvalid()
     fun clearErrors()
     fun clearForm()
-    fun showEarned(earned: Int)
-    fun showPotential(potential: Int)
+//    fun showEarned(earned: Int)
+//    fun showPotential(potential: Int)
+    fun showScoreValues(earned: Int, potential: Int)
     fun showScorePercentage(scorePercent: Double)
     fun showScoreGrade(gradeString: String)
     fun getTextChangedObservable(): Observable<CharSequence>

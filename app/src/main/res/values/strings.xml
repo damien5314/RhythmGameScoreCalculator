@@ -60,5 +60,6 @@
     <string name="earned_score_error">-</string>
     <string name="potential_score_error">-</string>
     <string name="button_clear_form">clear score</string>
+    <string name="score_value_formatter">%1$s / %2$s (-%3$s)</string>
 
 </resources>
