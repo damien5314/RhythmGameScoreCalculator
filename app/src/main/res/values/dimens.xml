@@ -21,5 +21,6 @@
     <dimen name="score_values_background_padding">5dp</dimen>
     <dimen name="score_values_background_width">2dp</dimen>
     <dimen name="score_values_bg_corners">5dp</dimen>
+    <dimen name="clear_button_height">48dp</dimen>
 
 </resources>

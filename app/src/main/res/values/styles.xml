@@ -16,7 +16,7 @@
     </style>
     
     <style name="ScoreEntryLabel">
-        <item name="android:paddingLeft">@dimen/score_entry_label_paddingLeft</item>
+        <!--<item name="android:paddingLeft">@dimen/score_entry_label_paddingLeft</item>-->
         <item name="android:textSize">@dimen/score_entry_label_size</item>
         <item name="android:textColor">@color/primary_text</item>
     </style>

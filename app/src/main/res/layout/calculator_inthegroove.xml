@@ -228,9 +228,8 @@
     <Button
         android:id="@+id/clear_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/clear_button_height"
         android:text="@string/button_clear_form"
-        android:src="@drawable/clear_form"
         android:contentDescription="@string/score_clear_description" />
 
 </LinearLayout>
