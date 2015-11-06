@@ -36,6 +36,7 @@
 
                     <EditText
                         android:id="@+id/fantastics"
+                        android:tag="fantastics"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         style="@style/ScoreEntryField" />
@@ -48,6 +49,7 @@
 
                     <EditText
                         android:id="@+id/excellents"
+                        android:tag="excellents"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         style="@style/ScoreEntryField" />
@@ -60,6 +62,7 @@
 
                     <EditText
                         android:id="@+id/greats"
+                        android:tag="greats"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         style="@style/ScoreEntryField" />
@@ -72,6 +75,7 @@
 
                     <EditText
                         android:id="@+id/decents"
+                        android:tag="decents"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         style="@style/ScoreEntryField" />
@@ -84,6 +88,7 @@
 
                     <EditText
                         android:id="@+id/wayoffs"
+                        android:tag="wayoffs"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         style="@style/ScoreEntryField" />
@@ -96,6 +101,7 @@
 
                     <EditText
                         android:id="@+id/misses"
+                        android:tag="misses"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         android:nextFocusDown="@+id/holds"
@@ -117,6 +123,7 @@
 
                     <EditText
                         android:id="@id/holds"
+                        android:tag="holds"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         style="@style/ScoreEntryField" />
@@ -129,6 +136,7 @@
 
                     <EditText
                         android:id="@+id/total_holds"
+                        android:tag="totalHolds"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         style="@style/ScoreEntryField" />
@@ -141,6 +149,7 @@
 
                     <EditText
                         android:id="@+id/mines"
+                        android:tag="mines"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         style="@style/ScoreEntryField" />
@@ -153,6 +162,7 @@
 
                     <EditText
                         android:id="@+id/rolls"
+                        android:tag="rolls"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         style="@style/ScoreEntryField" />
@@ -165,6 +175,7 @@
 
                     <EditText
                         android:id="@+id/total_rolls"
+                        android:tag="totalRolls"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/score_entry_height"
                         android:nextFocusDown="@id/fantastics"
