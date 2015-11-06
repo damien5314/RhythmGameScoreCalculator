@@ -2,6 +2,7 @@ package com.ddiehl.rgsc.itg
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,8 +71,8 @@ public class ITGFragment : BaseCalc(), ITGView {
         presenter = ITGPresenter(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.calculator_inthegroove, null)
     }
 
@@ -79,7 +80,27 @@ public class ITGFragment : BaseCalc(), ITGView {
         super.onViewCreated(view, savedInstanceState)
         _onTextChangedEvent = getTextChangedObservable()
         _clearButton.setOnClickListener { presenter.onScoreClear() }
-        setOnFocusListeners();
+        disableEditText()
+        setOnFocusListeners()
+    }
+
+    private fun disableEditText() {
+        disableEditText(_fantastics)
+        disableEditText(_excellents)
+        disableEditText(_greats)
+        disableEditText(_decents)
+        disableEditText(_wayoffs)
+        disableEditText(_misses)
+        disableEditText(_holds)
+        disableEditText(_totalHolds)
+        disableEditText(_mines)
+        disableEditText(_rolls)
+        disableEditText(_totalRolls)
+    }
+
+    private fun disableEditText(t: EditText) {
+        t.setRawInputType(InputType.TYPE_CLASS_NUMBER)
+        t.setTextIsSelectable(true)
     }
 
     private val keypadNumberOnFocusChangeListener = View.OnFocusChangeListener {
