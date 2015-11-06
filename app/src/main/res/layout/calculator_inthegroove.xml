@@ -191,6 +191,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="@dimen/score_display_small_size"
+            android:textColor="@color/secondary_text"
             tools:text="573 / 1337 (-764)"/>
 
         <LinearLayout
@@ -206,6 +207,7 @@
                 android:paddingLeft="@dimen/score_display_padding"
                 android:paddingRight="@dimen/score_display_padding"
                 android:textSize="@dimen/score_display_large_size"
+                android:textColor="@color/secondary_text"
                 tools:text="0.00%" />
 
             <TextView
@@ -215,6 +217,7 @@
                 android:paddingLeft="@dimen/score_display_padding"
                 android:paddingRight="@dimen/score_display_padding"
                 android:textSize="@dimen/score_display_large_size"
+                android:textColor="@color/secondary_text"
                 tools:text="D"/>
 
         </LinearLayout>
