@@ -6,6 +6,7 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import butterknife.bindView
@@ -24,7 +25,6 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val logger = RGSC.getLogger()
     private lateinit var presenter: ITGPresenter
 
-    // View bindings
     private val _fantastics: EditText by bindView(R.id.fantastics)
     private val _excellents: EditText by bindView(R.id.excellents)
     private val _greats: EditText by bindView(R.id.greats)
@@ -39,22 +39,21 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _scoreValueArea: TextView by bindView(R.id.score_value_area)
     private val _scorePercent: TextView by bindView(R.id.score_percent)
     private val _scoreGrade: TextView by bindView(R.id.score_grade)
-    private val _clearButton: View by bindView(R.id.keypad_clear_score)
-    private val _nextButton: View by bindView(R.id.keypad_next)
+
+    private val _clearButton: Button by bindView(R.id.keypad_clear_score)
+    private val _nextButton: Button by bindView(R.id.keypad_next)
     private val _keypad: ViewGroup by bindView(R.id.keypad_layout)
-    private val _keypad_1: ViewGroup by bindView(R.id.keypad_1)
-    private val _keypad_2: ViewGroup by bindView(R.id.keypad_2)
-    private val _keypad_3: ViewGroup by bindView(R.id.keypad_3)
-    private val _keypad_4: ViewGroup by bindView(R.id.keypad_4)
-    private val _keypad_5: ViewGroup by bindView(R.id.keypad_5)
-    private val _keypad_6: ViewGroup by bindView(R.id.keypad_6)
-    private val _keypad_7: ViewGroup by bindView(R.id.keypad_7)
-    private val _keypad_8: ViewGroup by bindView(R.id.keypad_8)
-    private val _keypad_9: ViewGroup by bindView(R.id.keypad_9)
-    private val _keypad_0: ViewGroup by bindView(R.id.keypad_0)
+    private val _keypad_1: Button by bindView(R.id.keypad_1)
+    private val _keypad_2: Button by bindView(R.id.keypad_2)
+    private val _keypad_3: Button by bindView(R.id.keypad_3)
+    private val _keypad_4: Button by bindView(R.id.keypad_4)
+    private val _keypad_5: Button by bindView(R.id.keypad_5)
+    private val _keypad_6: Button by bindView(R.id.keypad_6)
+    private val _keypad_7: Button by bindView(R.id.keypad_7)
+    private val _keypad_8: Button by bindView(R.id.keypad_8)
+    private val _keypad_9: Button by bindView(R.id.keypad_9)
+    private val _keypad_0: Button by bindView(R.id.keypad_0)
 
-
-    // Public properties
     override var fantastics: Int = 0; get() = readIntegerFrom(_fantastics)
     override var excellents: Int = 0; get() = readIntegerFrom(_excellents)
     override var greats: Int = 0; get() = readIntegerFrom(_greats)
@@ -67,16 +66,10 @@ public class ITGFragment : BaseCalc(), ITGView {
     override var rolls: Int = 0; get() = readIntegerFrom(_rolls)
     override var totalRolls: Int = 0; get() = readIntegerFrom(_totalRolls)
 
-    // Rx
     private lateinit var _onTextChangedEvent: Observable<CharSequence>
     private var _onTextChangedEventSubscription: Subscription? = null
 
     private var currentFocusedField: EditText? = null
-
-    private fun readIntegerFrom(t: EditText): Int {
-        val s = t.text.toString()
-        return if (s == "") 0 else s.toInt()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,9 +84,39 @@ public class ITGFragment : BaseCalc(), ITGView {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _onTextChangedEvent = getTextChangedObservable()
-        _clearButton.setOnClickListener { presenter.onScoreClear() }
         disableEditText()
         setOnFocusListeners()
+        setKeypadClickListeners()
+    }
+
+    private fun readIntegerFrom(t: EditText): Int {
+        val s = t.text.toString()
+        return if (s == "") 0 else s.toInt()
+    }
+
+    private fun setKeypadClickListeners() {
+        setDigitClickListener(_keypad_0)
+        setDigitClickListener(_keypad_1)
+        setDigitClickListener(_keypad_2)
+        setDigitClickListener(_keypad_3)
+        setDigitClickListener(_keypad_4)
+        setDigitClickListener(_keypad_5)
+        setDigitClickListener(_keypad_6)
+        setDigitClickListener(_keypad_7)
+        setDigitClickListener(_keypad_8)
+        setDigitClickListener(_keypad_9)
+        _clearButton.setOnClickListener { presenter.onScoreClear() }
+        _nextButton.setOnClickListener {
+            val nextFocusId = currentFocusedField?.nextFocusForwardId
+            if (nextFocusId != null) activity.findViewById(nextFocusId)?.requestFocus()
+        }
+    }
+
+    private fun setDigitClickListener(button: Button) {
+        button.setOnClickListener {
+            val text: String = currentFocusedField?.text.toString()
+            currentFocusedField?.setText(text + "" + button.text.toString())
+        }
     }
 
     private fun disableEditText() {
@@ -119,7 +142,6 @@ public class ITGFragment : BaseCalc(), ITGView {
         view: View, visible: Boolean ->
         _keypad.visibility = if (visible) View.VISIBLE else View.GONE
         currentFocusedField = if (visible) view as EditText else null
-        logger.d("OnFocusChanged - %s: %s", view.tag, visible)
     }
 
     private fun setOnFocusListeners() {
