@@ -11,7 +11,7 @@ public class RGSC : Application() {
 
     companion object {
         public fun getLogger(): Logger {
-            return TimberLogger.getInstance()
+            return TimberLogger
         }
     }
 }
