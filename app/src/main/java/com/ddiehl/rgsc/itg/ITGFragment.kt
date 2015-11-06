@@ -3,6 +3,7 @@ package com.ddiehl.rgsc.itg
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.text.InputType
+import android.view.InputEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,6 @@ import com.ddiehl.rgsc.BaseCalc
 import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.RGSC
 import com.jakewharton.rxbinding.widget.RxTextView
-import com.orhanobut.logger.Logger
 import rx.Observable
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
@@ -107,7 +107,7 @@ public class ITGFragment : BaseCalc(), ITGView {
         setDigitClickListener(_keypad_9)
         _clearButton.setOnClickListener { presenter.onScoreClear() }
         _nextButton.setOnClickListener {
-            val nextFocusId = currentFocusedField?.nextFocusForwardId
+            val nextFocusId = currentFocusedField?.nextFocusDownId
             if (nextFocusId != null) activity.findViewById(nextFocusId)?.requestFocus()
         }
     }
