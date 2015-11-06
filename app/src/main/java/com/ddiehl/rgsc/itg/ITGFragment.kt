@@ -40,7 +40,19 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _scorePercent: TextView by bindView(R.id.score_percent)
     private val _scoreGrade: TextView by bindView(R.id.score_grade)
     private val _clearButton: View by bindView(R.id.keypad_clear_score)
+    private val _nextButton: View by bindView(R.id.keypad_next)
     private val _keypad: ViewGroup by bindView(R.id.keypad_layout)
+    private val _keypad_1: ViewGroup by bindView(R.id.keypad_1)
+    private val _keypad_2: ViewGroup by bindView(R.id.keypad_2)
+    private val _keypad_3: ViewGroup by bindView(R.id.keypad_3)
+    private val _keypad_4: ViewGroup by bindView(R.id.keypad_4)
+    private val _keypad_5: ViewGroup by bindView(R.id.keypad_5)
+    private val _keypad_6: ViewGroup by bindView(R.id.keypad_6)
+    private val _keypad_7: ViewGroup by bindView(R.id.keypad_7)
+    private val _keypad_8: ViewGroup by bindView(R.id.keypad_8)
+    private val _keypad_9: ViewGroup by bindView(R.id.keypad_9)
+    private val _keypad_0: ViewGroup by bindView(R.id.keypad_0)
+
 
     // Public properties
     override var fantastics: Int = 0; get() = readIntegerFrom(_fantastics)
