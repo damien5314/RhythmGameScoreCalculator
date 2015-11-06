@@ -4,29 +4,19 @@ import com.ddiehl.rgsc.ScoreUpdateListener
 import com.ddiehl.rgsc.data.ITGStorage
 import com.ddiehl.rgsc.data.Storage
 import com.orhanobut.logger.Logger
-import rx.Observable
-import rx.Subscription
-import rx.android.widget.OnTextChangeEvent
 
 class ITGPresenter(view: ITGView) : ScoreUpdateListener {
     private val storage: Storage = ITGStorage()
     private val view: ITGView = view
 
-    // Rx
-    private lateinit var _onTextChangedEvent: Observable<OnTextChangeEvent>
-    private var _onTextChangedEventSubscription: Subscription? = null
-
     fun onStart() {
-        _onTextChangedEvent = view.getTextChangedObservable()
         val score: ITGScore = storage.getSavedScore()
         view.displayInput(score)
         updateScore(score, false)
-        subscribeToTextChangedEvents()
     }
 
     fun onStop() {
         storage.saveScore(getInput())
-        unsubscribeFromTextChangedEvents()
     }
     
     override fun onScoreUpdated() {
@@ -34,10 +24,8 @@ class ITGPresenter(view: ITGView) : ScoreUpdateListener {
     }
 
     override fun onScoreClear() {
-        unsubscribeFromTextChangedEvents()
         view.clearForm()
         updateScore(ITGScore(), false)
-        subscribeToTextChangedEvents()
     }
 
     private fun updateScore(score: ITGScore, shouldValidate: Boolean) {
@@ -104,13 +92,5 @@ class ITGPresenter(view: ITGView) : ScoreUpdateListener {
         else if (score > 60.0) return "C"
         else if (score > 55.0) return "C-"
         else return "D"
-    }
-
-    private fun subscribeToTextChangedEvents() {
-        _onTextChangedEventSubscription = _onTextChangedEvent.subscribe()
-    }
-
-    private fun unsubscribeFromTextChangedEvents() {
-        _onTextChangedEventSubscription?.unsubscribe()
     }
 }

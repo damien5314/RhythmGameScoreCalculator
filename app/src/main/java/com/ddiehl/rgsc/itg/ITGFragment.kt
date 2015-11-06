@@ -6,15 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.TextView
 import butterknife.bindView
 import com.ddiehl.rgsc.BaseCalc
 import com.ddiehl.rgsc.R
+import com.jakewharton.rxbinding.widget.RxTextView
 import rx.Observable
+import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
-import rx.android.widget.OnTextChangeEvent
-import rx.android.widget.WidgetObservable
 import java.text.DecimalFormat
 import java.util.concurrent.TimeUnit
 
@@ -52,6 +51,10 @@ public class ITGFragment : BaseCalc(), ITGView {
     override var rolls: Int = 0; get() = readIntegerFrom(_rolls)
     override var totalRolls: Int = 0; get() = readIntegerFrom(_totalRolls)
 
+    // Rx
+    private lateinit var _onTextChangedEvent: Observable<CharSequence>
+    private var _onTextChangedEventSubscription: Subscription? = null
+
     private fun readIntegerFrom(t: EditText): Int {
         val s = t.text.toString()
         return if (s == "") 0 else s.toInt()
@@ -74,10 +77,13 @@ public class ITGFragment : BaseCalc(), ITGView {
 
     override fun onStart() {
         super.onStart()
+        _onTextChangedEvent = getTextChangedObservable()
+        subscribeToTextChangedEvents()
         presenter.onStart()
     }
 
     override fun onStop() {
+        unsubscribeFromTextChangedEvents()
         presenter.onStop()
         super.onStop()
     }
@@ -121,6 +127,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     }
 
     override fun clearForm() {
+        unsubscribeFromTextChangedEvents()
         _fantastics.setText("")
         _excellents.setText("")
         _greats.setText("")
@@ -133,6 +140,7 @@ public class ITGFragment : BaseCalc(), ITGView {
         _rolls.setText("")
         _totalRolls.setText("")
         clearErrors()
+        subscribeToTextChangedEvents()
     }
 
     override fun showEarned(earned: Int) {
@@ -159,7 +167,7 @@ public class ITGFragment : BaseCalc(), ITGView {
         _scoreGrade.text = ""
     }
 
-    override fun getTextChangedObservable(): Observable<OnTextChangeEvent> {
+    override fun getTextChangedObservable(): Observable<CharSequence> {
         return Observable.merge(listOf(
                 getTextChangedObservable(_fantastics),
                 getTextChangedObservable(_excellents),
@@ -173,11 +181,20 @@ public class ITGFragment : BaseCalc(), ITGView {
                 getTextChangedObservable(_rolls),
                 getTextChangedObservable(_totalRolls)
         ))
+                .debounce(500, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
     }
 
-    private fun getTextChangedObservable(t: EditText): rx.Observable<OnTextChangeEvent> {
-        return WidgetObservable.text(t)
-                .debounce(500, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
-                .doOnNext { e: OnTextChangeEvent -> presenter.onScoreUpdated() }
+    private fun getTextChangedObservable(t: EditText): rx.Observable<CharSequence> {
+        return RxTextView.textChanges(t)
+    }
+
+    private fun subscribeToTextChangedEvents() {
+        _onTextChangedEventSubscription =
+                _onTextChangedEvent.subscribe({ presenter.onScoreUpdated() }, { }, { }
+        )
+    }
+
+    private fun unsubscribeFromTextChangedEvents() {
+        _onTextChangedEventSubscription?.unsubscribe()
     }
 }

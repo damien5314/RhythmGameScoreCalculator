@@ -1,7 +1,6 @@
 package com.ddiehl.rgsc.itg
 
 import rx.Observable
-import rx.android.widget.OnTextChangeEvent
 
 interface ITGView {
     var fantastics: Int
@@ -25,5 +24,5 @@ interface ITGView {
     fun showPotential(potential: Int)
     fun showScorePercentage(scorePercent: Double)
     fun showScoreGrade(gradeString: String)
-    fun getTextChangedObservable(): Observable<OnTextChangeEvent>
+    fun getTextChangedObservable(): Observable<CharSequence>
 }
