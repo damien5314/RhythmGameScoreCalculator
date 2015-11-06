@@ -1,11 +1,13 @@
 package com.ddiehl.rgsc.itg
 
+import com.ddiehl.rgsc.RGSC
 import com.ddiehl.rgsc.ScoreUpdateListener
 import com.ddiehl.rgsc.data.ITGStorage
 import com.ddiehl.rgsc.data.Storage
 import com.orhanobut.logger.Logger
 
 class ITGPresenter(view: ITGView) : ScoreUpdateListener {
+    private val logger = RGSC.getLogger()
     private val storage: Storage = ITGStorage()
     private val view: ITGView = view
 
@@ -71,7 +73,7 @@ class ITGPresenter(view: ITGView) : ScoreUpdateListener {
         score.mines = view.mines
         score.rolls = view.rolls
         score.totalRolls = view.totalRolls
-        Logger.d(score.toString())
+        logger.d(score.toString())
         return score
     }
 

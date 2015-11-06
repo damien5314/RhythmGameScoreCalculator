@@ -10,6 +10,7 @@ import android.widget.TextView
 import butterknife.bindView
 import com.ddiehl.rgsc.BaseCalc
 import com.ddiehl.rgsc.R
+import com.ddiehl.rgsc.RGSC
 import com.jakewharton.rxbinding.widget.RxTextView
 import com.orhanobut.logger.Logger
 import rx.Observable
@@ -19,6 +20,7 @@ import java.text.DecimalFormat
 import java.util.concurrent.TimeUnit
 
 public class ITGFragment : BaseCalc(), ITGView {
+    private val logger = RGSC.getLogger()
     private lateinit var presenter: ITGPresenter
 
     // View bindings
@@ -84,7 +86,7 @@ public class ITGFragment : BaseCalc(), ITGView {
         view: View, visible: Boolean ->
         _keypad.visibility = if (visible) View.VISIBLE else View.GONE
         currentFocusedField = if (visible) view as EditText else null
-        Logger.d("OnFocusChanged - %s: %s", view.tag, visible)
+        logger.d("OnFocusChanged - %s: %s", view.tag, visible)
     }
 
     private fun setOnFocusListeners() {
