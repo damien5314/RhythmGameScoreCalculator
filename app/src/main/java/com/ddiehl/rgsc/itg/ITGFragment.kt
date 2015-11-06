@@ -39,7 +39,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _scorePercent: TextView by bindView(R.id.score_percent)
     private val _scoreGrade: TextView by bindView(R.id.score_grade)
 
-    private val _clearButton: Button by bindView(R.id.keypad_clear_score)
+    private val _deleteButton: Button by bindView(R.id.keypad_delete)
     private val _nextButton: Button by bindView(R.id.keypad_next)
     private val _keypad: ViewGroup by bindView(R.id.keypad_layout)
     private val _keypad_1: Button by bindView(R.id.keypad_1)
@@ -104,7 +104,9 @@ public class ITGFragment : BaseCalc(), ITGView {
         setDigitClickListener(_keypad_7)
         setDigitClickListener(_keypad_8)
         setDigitClickListener(_keypad_9)
-        _clearButton.setOnClickListener { presenter.onScoreClear() }
+        _deleteButton.setOnClickListener {
+            currentFocusedField?.setText("")
+        }
         _nextButton.setOnClickListener {
             val nextFocusId = currentFocusedField?.nextFocusForwardId
             if (nextFocusId != null) activity.findViewById(nextFocusId)?.requestFocus()
@@ -115,6 +117,7 @@ public class ITGFragment : BaseCalc(), ITGView {
         button.setOnClickListener {
             val text: String = currentFocusedField?.text.toString()
             currentFocusedField?.setText(text + "" + button.tag)
+            currentFocusedField?.setSelection(currentFocusedField?.text?.length ?: 0);
         }
     }
 

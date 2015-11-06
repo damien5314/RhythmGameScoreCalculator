@@ -51,9 +51,12 @@
     </LinearLayout>
 
     <LinearLayout style="@style/KeypadRow">
-        <Button style="@style/KeypadButton"
+        <!--<Button style="@style/KeypadButton"
                 android:id="@+id/keypad_clear_score"
-                android:text="@string/keypad_clear_score"/>
+                android:text="@string/keypad_clear_score"/>-->
+        <Button style="@style/KeypadButton"
+                android:id="@+id/keypad_delete"
+                android:text="@string/keypad_delete"/>
         <Button style="@style/KeypadButton"
                 android:id="@+id/keypad_0"
                 android:tag="0"
