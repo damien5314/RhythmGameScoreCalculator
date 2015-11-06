@@ -1,258 +1,266 @@
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ActivityStandardPadding"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.ddiehl.rgsc.itg.ITGFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="@string/fantastics_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@+id/fantastics"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        style="@style/ScoreEntryField" />
+
+                    <TextView
+                        android:text="@string/excellents_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@+id/excellents"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        style="@style/ScoreEntryField" />
+
+                    <TextView
+                        android:text="@string/greats_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@+id/greats"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        style="@style/ScoreEntryField" />
+
+                    <TextView
+                        android:text="@string/decents_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@+id/decents"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        style="@style/ScoreEntryField" />
+
+                    <TextView
+                        android:text="@string/wayoffs_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@+id/wayoffs"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        style="@style/ScoreEntryField" />
+
+                    <TextView
+                        android:text="@string/misses_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@+id/misses"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        android:nextFocusDown="@+id/holds"
+                        style="@style/ScoreEntryField" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="@string/holds_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@id/holds"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        style="@style/ScoreEntryField" />
+
+                    <TextView
+                        android:text="@string/totalHolds_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@+id/total_holds"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        style="@style/ScoreEntryField" />
+
+                    <TextView
+                        android:text="@string/mines_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@+id/mines"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        style="@style/ScoreEntryField" />
+
+                    <TextView
+                        android:text="@string/rolls_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@+id/rolls"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        style="@style/ScoreEntryField" />
+
+                    <TextView
+                        android:text="@string/totalRolls_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/ScoreEntryLabel" />
+
+                    <EditText
+                        android:id="@+id/total_rolls"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/score_entry_height"
+                        android:nextFocusDown="@id/fantastics"
+                        style="@style/ScoreEntryField" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/calculated_score"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/earnedScoreLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:gravity="end"
+                android:paddingLeft="@dimen/score_display_padding"
+                android:paddingRight="@dimen/score_display_padding"
+                android:textSize="@dimen/score_display_small_size"
+                android:text="@string/score_label_earned_default" />
 
-                <TextView
-                    android:text="@string/fantastics_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@+id/fantastics"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    style="@style/ScoreEntryField" />
-
-                <TextView
-                    android:text="@string/excellents_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@+id/excellents"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    style="@style/ScoreEntryField" />
-
-                <TextView
-                    android:text="@string/greats_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@+id/greats"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    style="@style/ScoreEntryField" />
-
-                <TextView
-                    android:text="@string/decents_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@+id/decents"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    style="@style/ScoreEntryField" />
-
-                <TextView
-                    android:text="@string/wayoffs_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@+id/wayoffs"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    style="@style/ScoreEntryField" />
-
-                <TextView
-                    android:text="@string/misses_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@+id/misses"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    android:nextFocusDown="@+id/holds"
-                    style="@style/ScoreEntryField" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/earned_score_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:text="@string/holds_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@id/holds"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    style="@style/ScoreEntryField" />
-
-                <TextView
-                    android:text="@string/totalHolds_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@+id/total_holds"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    style="@style/ScoreEntryField" />
-
-                <TextView
-                    android:text="@string/mines_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@+id/mines"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    style="@style/ScoreEntryField" />
-
-                <TextView
-                    android:text="@string/rolls_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@+id/rolls"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    style="@style/ScoreEntryField" />
-
-                <TextView
-                    android:text="@string/totalRolls_hint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScoreEntryLabel" />
-
-                <EditText
-                    android:id="@+id/total_rolls"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/score_entry_height"
-                    android:nextFocusDown="@id/fantastics"
-                    style="@style/ScoreEntryField" />
-
-            </LinearLayout>
+                android:gravity="start"
+                android:paddingLeft="@dimen/score_display_padding"
+                android:paddingRight="@dimen/score_display_padding"
+                android:textSize="@dimen/score_display_small_size"
+                tools:text="0"/>
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/clear_form"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_clear_form"
-            style="@style/ScoreClearButton" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/potentialScoreLabel"
+                style="@style/PotentialScoreLabel" />
+
+            <TextView
+                android:id="@+id/potential_score_value"
+                style="@style/CalculatedScoreValue" />
+
+        </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/calculated_score"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/score_percent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:gravity="end"
+                tools:text="0.00%"
+                style="@style/CalculatedScorePercent" />
 
-                <TextView
-                    android:id="@+id/earnedScoreLabel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:paddingLeft="@dimen/score_display_padding"
-                    android:paddingRight="@dimen/score_display_padding"
-                    android:textSize="@dimen/score_display_small_size"
-                    android:text="@string/score_label_earned_default" />
-
-                <TextView
-                    android:id="@+id/earned_score_value"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="start"
-                    android:paddingLeft="@dimen/score_display_padding"
-                    android:paddingRight="@dimen/score_display_padding"
-                    android:textSize="@dimen/score_display_small_size"
-                    tools:text="0"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/score_grade"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/potentialScoreLabel"
-                    style="@style/PotentialScoreLabel" />
-
-                <TextView
-                    android:id="@+id/potential_score_value"
-                    style="@style/CalculatedScoreValue" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/score_percent"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    tools:text="0.00%"
-                    style="@style/CalculatedScorePercent" />
-
-                <TextView
-                    android:id="@+id/score_grade"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="start"
-                    tools:text="D"
-                    style="@style/CalculatedScoreGrade" />
-
-            </LinearLayout>
+                android:layout_weight="1"
+                android:gravity="start"
+                tools:text="D"
+                style="@style/CalculatedScoreGrade" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</ScrollView>
+    <Button
+        android:id="@+id/clear_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_clear_form"
+        style="@style/ScoreClearButton" />
+
+</LinearLayout>

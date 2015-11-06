@@ -10,7 +10,7 @@
     <dimen name="score_entry_container_height">46dp</dimen>
     <dimen name="score_entry_container_width">140dp</dimen>
     <dimen name="score_entry_label_paddingLeft">10dp</dimen>
-    <dimen name="score_entry_label_size">10sp</dimen>
+    <dimen name="score_entry_label_size">12sp</dimen>
 
     <dimen name="score_display_padding">10dp</dimen>
     <dimen name="score_section_padding_bottom">5dp</dimen>
