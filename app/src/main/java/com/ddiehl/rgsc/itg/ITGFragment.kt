@@ -3,7 +3,6 @@ package com.ddiehl.rgsc.itg
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.text.InputType
-import android.view.InputEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -107,7 +106,7 @@ public class ITGFragment : BaseCalc(), ITGView {
         setDigitClickListener(_keypad_9)
         _clearButton.setOnClickListener { presenter.onScoreClear() }
         _nextButton.setOnClickListener {
-            val nextFocusId = currentFocusedField?.nextFocusDownId
+            val nextFocusId = currentFocusedField?.nextFocusForwardId
             if (nextFocusId != null) activity.findViewById(nextFocusId)?.requestFocus()
         }
     }
@@ -115,7 +114,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     private fun setDigitClickListener(button: Button) {
         button.setOnClickListener {
             val text: String = currentFocusedField?.text.toString()
-            currentFocusedField?.setText(text + "" + button.text.toString())
+            currentFocusedField?.setText(text + "" + button.tag)
         }
     }
 
