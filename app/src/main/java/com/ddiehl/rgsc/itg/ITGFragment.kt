@@ -11,6 +11,7 @@ import butterknife.bindView
 import com.ddiehl.rgsc.BaseCalc
 import com.ddiehl.rgsc.R
 import com.jakewharton.rxbinding.widget.RxTextView
+import com.orhanobut.logger.Logger
 import rx.Observable
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
@@ -32,12 +33,11 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _mines: EditText by bindView(R.id.mines)
     private val _rolls: EditText by bindView(R.id.rolls)
     private val _totalRolls: EditText by bindView(R.id.total_rolls)
-//    private val _earnedScoreValue: TextView by bindView(R.id.earned_score_value)
-//    private val _potentialScoreValue: TextView by bindView(R.id.potential_score_value)
     private val _scoreValueArea: TextView by bindView(R.id.score_value_area)
     private val _scorePercent: TextView by bindView(R.id.score_percent)
     private val _scoreGrade: TextView by bindView(R.id.score_grade)
     private val _clearButton: View by bindView(R.id.keypad_clear_score)
+    private val _keypad: ViewGroup by bindView(R.id.keypad_layout)
 
     // Public properties
     override var fantastics: Int = 0; get() = readIntegerFrom(_fantastics)
@@ -55,6 +55,8 @@ public class ITGFragment : BaseCalc(), ITGView {
     // Rx
     private lateinit var _onTextChangedEvent: Observable<CharSequence>
     private var _onTextChangedEventSubscription: Subscription? = null
+
+    private var currentFocusedField: EditText? = null
 
     private fun readIntegerFrom(t: EditText): Int {
         val s = t.text.toString()
@@ -75,6 +77,28 @@ public class ITGFragment : BaseCalc(), ITGView {
         super.onViewCreated(view, savedInstanceState)
         _onTextChangedEvent = getTextChangedObservable()
         _clearButton.setOnClickListener { presenter.onScoreClear() }
+        setOnFocusListeners();
+    }
+
+    private val keypadNumberOnFocusChangeListener = View.OnFocusChangeListener {
+        view: View, visible: Boolean ->
+        _keypad.visibility = if (visible) View.VISIBLE else View.GONE
+        currentFocusedField = if (visible) view as EditText else null
+        Logger.d("OnFocusChanged - %s: %s", view.tag, visible)
+    }
+
+    private fun setOnFocusListeners() {
+        _fantastics.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        _excellents.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        _greats.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        _decents.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        _wayoffs.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        _misses.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        _holds.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        _totalHolds.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        _mines.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        _rolls.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        _totalRolls.onFocusChangeListener = keypadNumberOnFocusChangeListener
     }
 
     override fun onStart() {
@@ -159,8 +183,6 @@ public class ITGFragment : BaseCalc(), ITGView {
     }
 
     private fun showScoreError() {
-//        _earnedScoreValue.text = getString(R.string.earned_score_error)
-//        _potentialScoreValue.text = getString(R.string.potential_score_error)
         val scoreValueFormatter = getString(R.string.score_value_formatter)
         _scoreValueArea.text = scoreValueFormatter.format(0, 0, 0)
         _scorePercent.text = ""
