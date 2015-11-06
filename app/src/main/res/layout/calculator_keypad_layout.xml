@@ -1,0 +1,45 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keypad_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout style="@style/KeypadRow">
+        <Button style="@style/KeypadButton"
+                android:text="1"/>
+        <Button style="@style/KeypadButton"
+                android:text="2"/>
+        <Button style="@style/KeypadButton"
+                android:text="3"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/KeypadRow">
+        <Button style="@style/KeypadButton"
+                android:text="4"/>
+        <Button style="@style/KeypadButton"
+                android:text="5"/>
+        <Button style="@style/KeypadButton"
+                android:text="6"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/KeypadRow">
+        <Button style="@style/KeypadButton"
+                android:text="7"/>
+        <Button style="@style/KeypadButton"
+                android:text="8"/>
+        <Button style="@style/KeypadButton"
+                android:text="9"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/KeypadRow">
+        <Button style="@style/KeypadButton"
+                android:id="@+id/keypad_clear_score"
+                android:text="@string/keypad_clear_score"/>
+        <Button style="@style/KeypadButton"
+                android:text="0"/>
+        <Button style="@style/KeypadButton"
+                android:text="@string/keypad_next_field"/>
+    </LinearLayout>
+
+</LinearLayout>
