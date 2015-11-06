@@ -203,15 +203,19 @@
                 android:id="@+id/score_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="0.00%"
-                style="@style/CalculatedScorePercent" />
+                android:paddingLeft="@dimen/score_display_padding"
+                android:paddingRight="@dimen/score_display_padding"
+                android:textSize="@dimen/score_display_large_size"
+                tools:text="0.00%" />
 
             <TextView
                 android:id="@+id/score_grade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="D"
-                style="@style/CalculatedScoreGrade" />
+                android:paddingLeft="@dimen/score_display_padding"
+                android:paddingRight="@dimen/score_display_padding"
+                android:textSize="@dimen/score_display_large_size"
+                tools:text="D"/>
 
         </LinearLayout>
 
@@ -222,6 +226,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_clear_form"
-        style="@style/ScoreClearButton" />
+        android:src="@drawable/clear_form"
+        android:contentDescription="@string/score_clear_description" />
 
 </LinearLayout>
