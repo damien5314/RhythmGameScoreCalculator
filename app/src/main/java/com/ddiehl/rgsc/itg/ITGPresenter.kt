@@ -35,11 +35,11 @@ class ITGPresenter(view: ITGView) : ScoreUpdateListener {
             view.showNoStepsError()
             invalidInput = true
         }
-        if (score.holds > score.totalHolds) {
+        if (shouldValidate && score.holds > score.totalHolds) {
             view.showHoldsInvalid()
             invalidInput = true
         }
-        if (score.rolls > score.totalRolls) {
+        if (shouldValidate && score.rolls > score.totalRolls) {
             view.showRollsInvalid()
             invalidInput = true
         }

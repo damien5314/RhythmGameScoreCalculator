@@ -72,12 +72,12 @@ public class ITGFragment : BaseCalc(), ITGView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _onTextChangedEvent = getTextChangedObservable()
         _clearButton.setOnClickListener { presenter.onScoreClear() }
     }
 
     override fun onStart() {
         super.onStart()
-        _onTextChangedEvent = getTextChangedObservable()
         subscribeToTextChangedEvents()
         presenter.onStart()
     }
@@ -184,14 +184,13 @@ public class ITGFragment : BaseCalc(), ITGView {
                 .debounce(500, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
     }
 
-    private fun getTextChangedObservable(t: EditText): rx.Observable<CharSequence> {
-        return RxTextView.textChanges(t)
-    }
+    private fun getTextChangedObservable(t: EditText): rx.Observable<CharSequence> =
+            RxTextView.textChanges(t)
 
     private fun subscribeToTextChangedEvents() {
-        _onTextChangedEventSubscription =
-                _onTextChangedEvent.subscribe({ presenter.onScoreUpdated() }, { }, { }
-        )
+        _onTextChangedEventSubscription = _onTextChangedEvent
+                .skip(1) // Value is emitted immediately on subscribe
+                .subscribe({ presenter.onScoreUpdated() }, { }, { })
     }
 
     private fun unsubscribeFromTextChangedEvents() {
