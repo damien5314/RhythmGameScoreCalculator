@@ -1,6 +1,7 @@
 package com.ddiehl.rgsc.itg
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.text.InputType
 import android.view.LayoutInflater
@@ -69,6 +70,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     private var _onTextChangedEventSubscription: Subscription? = null
 
     private var currentFocusedField: EditText? = null
+    private var _deleteTapCounter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,6 +95,10 @@ public class ITGFragment : BaseCalc(), ITGView {
         return if (s == "") 0 else s.toInt()
     }
 
+    private val _deleteButtonHandler = Handler()
+    private val _deleteButtonRunnable = { _deleteTapCounter = 0 }
+    private val CLEAR_ALL_TIME_THRESHOLD_MS: Long = 1500
+
     private fun setKeypadClickListeners() {
         setDigitClickListener(_keypad_0)
         setDigitClickListener(_keypad_1)
@@ -105,7 +111,15 @@ public class ITGFragment : BaseCalc(), ITGView {
         setDigitClickListener(_keypad_8)
         setDigitClickListener(_keypad_9)
         _deleteButton.setOnClickListener {
+            _deleteButtonHandler.removeCallbacks(_deleteButtonRunnable)
             currentFocusedField?.setText("")
+            _deleteTapCounter++
+            if (_deleteTapCounter >= 3) {
+                _deleteTapCounter = 0
+                clearForm()
+            } else {
+                _deleteButtonHandler.postDelayed(_deleteButtonRunnable, CLEAR_ALL_TIME_THRESHOLD_MS)
+            }
         }
         _nextButton.setOnClickListener {
             val nextFocusId = currentFocusedField?.nextFocusForwardId
