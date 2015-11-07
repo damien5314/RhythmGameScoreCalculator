@@ -165,19 +165,25 @@ public class ITGFragment : BaseCalc(), ITGView {
         t.setTextIsSelectable(true)
     }
 
-    private val keypadNumberOnFocusChangeListener = View.OnFocusChangeListener {
-        view: View, visible: Boolean ->
+    private fun showKeypadListener(view: View, visible: Boolean) {
         _keypad.visibility = if (visible) View.VISIBLE else View.GONE
         _currentFocusedField = if (visible) view as EditText else null
     }
 
+    private val keypadNumberOnFocusChangeListener = View.OnFocusChangeListener {
+        view, visible -> showKeypadListener(view, visible)
+    }
+
+    private val keypadNumberScrollUpOnFocusChangeListener = View.OnFocusChangeListener {
+        view, visible ->
+        showKeypadListener(view, visible)
+        _scoreEntryScrollView.scrollTo(0, 0)
+    }
+
     private fun setOnFocusListeners() {
         for (et in _scoreEntryFields) et.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        val scrollToTopListener = View.OnFocusChangeListener { view, isFocused ->
-            _scoreEntryScrollView.scrollTo(0, 0)
-        }
-        _fantastics.onFocusChangeListener = scrollToTopListener
-        _holds.onFocusChangeListener = scrollToTopListener
+        _fantastics.onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
+        _holds.onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
     }
 
     override fun displayInput(score: ITGScore) {
