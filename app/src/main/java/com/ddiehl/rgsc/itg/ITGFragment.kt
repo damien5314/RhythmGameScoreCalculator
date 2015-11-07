@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ScrollView
 import android.widget.TextView
 import butterknife.bindView
 import com.ddiehl.rgsc.BaseCalc
@@ -31,6 +32,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     private lateinit var _presenter: ITGPresenter
     private val _handler = Handler()
 
+    private val _scoreEntryScrollView: ScrollView by bindView(R.id.score_entry_scrollview)
     private val _fantastics: EditText by bindView(R.id.fantastics)
     private val _excellents: EditText by bindView(R.id.excellents)
     private val _greats: EditText by bindView(R.id.greats)
@@ -171,6 +173,11 @@ public class ITGFragment : BaseCalc(), ITGView {
 
     private fun setOnFocusListeners() {
         for (et in _scoreEntryFields) et.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        val scrollToTopListener = View.OnFocusChangeListener { view, isFocused ->
+            _scoreEntryScrollView.scrollTo(0, 0)
+        }
+        _fantastics.onFocusChangeListener = scrollToTopListener
+        _holds.onFocusChangeListener = scrollToTopListener
     }
 
     override fun displayInput(score: ITGScore) {
