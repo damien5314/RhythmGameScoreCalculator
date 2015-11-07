@@ -22,8 +22,14 @@ import java.text.DecimalFormat
 import java.util.concurrent.TimeUnit
 
 public class ITGFragment : BaseCalc(), ITGView {
-    private val logger = RGSC.getLogger()
-    private lateinit var presenter: ITGPresenter
+    companion object {
+        private val SCORE_CALC_DELAY = 500L
+        private val CLEAR_ALL_TIME_THRESHOLD_MS = 1500L
+    }
+
+    private val _logger = RGSC.getLogger()
+    private lateinit var _presenter: ITGPresenter
+    private val _handler = Handler()
 
     private val _fantastics: EditText by bindView(R.id.fantastics)
     private val _excellents: EditText by bindView(R.id.excellents)
@@ -71,10 +77,11 @@ public class ITGFragment : BaseCalc(), ITGView {
 
     private var currentFocusedField: EditText? = null
     private var _deleteTapCounter = 0
+    private val _deleteButtonRunnable = { _deleteTapCounter = 0 }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = ITGPresenter(this)
+        _presenter = ITGPresenter(this)
     }
 
     override fun onCreateView(
@@ -90,14 +97,22 @@ public class ITGFragment : BaseCalc(), ITGView {
         setKeypadClickListeners()
     }
 
+    override fun onStart() {
+        super.onStart()
+        subscribeToTextChangedEvents()
+        _presenter.onStart()
+    }
+
+    override fun onStop() {
+        unsubscribeFromTextChangedEvents()
+        _presenter.onStop()
+        super.onStop()
+    }
+
     private fun readIntegerFrom(t: EditText): Int {
         val s = t.text.toString()
         return if (s == "") 0 else s.toInt()
     }
-
-    private val _deleteButtonHandler = Handler()
-    private val _deleteButtonRunnable = { _deleteTapCounter = 0 }
-    private val CLEAR_ALL_TIME_THRESHOLD_MS: Long = 1500
 
     private fun setKeypadClickListeners() {
         setDigitClickListener(_keypad_0)
@@ -111,14 +126,14 @@ public class ITGFragment : BaseCalc(), ITGView {
         setDigitClickListener(_keypad_8)
         setDigitClickListener(_keypad_9)
         _deleteButton.setOnClickListener {
-            _deleteButtonHandler.removeCallbacks(_deleteButtonRunnable)
+            _handler.removeCallbacks(_deleteButtonRunnable)
             currentFocusedField?.setText("")
             _deleteTapCounter++
             if (_deleteTapCounter >= 3) {
                 _deleteTapCounter = 0
                 clearForm()
             } else {
-                _deleteButtonHandler.postDelayed(_deleteButtonRunnable, CLEAR_ALL_TIME_THRESHOLD_MS)
+                _handler.postDelayed(_deleteButtonRunnable, CLEAR_ALL_TIME_THRESHOLD_MS)
             }
         }
         _nextButton.setOnClickListener {
@@ -174,18 +189,6 @@ public class ITGFragment : BaseCalc(), ITGView {
         _totalRolls.onFocusChangeListener = keypadNumberOnFocusChangeListener
     }
 
-    override fun onStart() {
-        super.onStart()
-        subscribeToTextChangedEvents()
-        presenter.onStart()
-    }
-
-    override fun onStop() {
-        unsubscribeFromTextChangedEvents()
-        presenter.onStop()
-        super.onStop()
-    }
-
     override fun displayInput(score: ITGScore) {
         _fantastics.setText(stripZero(score.fantastics))
         _excellents.setText(stripZero(score.excellents))
@@ -200,8 +203,8 @@ public class ITGFragment : BaseCalc(), ITGView {
         _totalRolls.setText(stripZero(score.totalRolls))
     }
 
-    private fun stripZero(i: Int): String? {
-        if (i == 0) return null;
+    private fun stripZero(i: Int): String {
+        if (i == 0) return ""
         else return i.toString()
     }
 
@@ -276,7 +279,7 @@ public class ITGFragment : BaseCalc(), ITGView {
                 getTextChangedObservable(_rolls),
                 getTextChangedObservable(_totalRolls)
         ))
-                .debounce(500, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+                .debounce(SCORE_CALC_DELAY, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
     }
 
     private fun getTextChangedObservable(t: EditText): rx.Observable<CharSequence> =
@@ -285,7 +288,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     private fun subscribeToTextChangedEvents() {
         _onTextChangedEventSubscription = _onTextChangedEvent
                 .skip(1) // Value is emitted immediately on subscribe
-                .subscribe({ presenter.onScoreUpdated() }, { }, { })
+                .subscribe({ _presenter.onScoreUpdated() }, { }, { })
     }
 
     private fun unsubscribeFromTextChangedEvents() {
