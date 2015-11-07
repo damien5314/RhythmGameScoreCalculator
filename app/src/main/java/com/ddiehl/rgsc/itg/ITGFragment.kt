@@ -42,6 +42,9 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _mines: EditText by bindView(R.id.mines)
     private val _rolls: EditText by bindView(R.id.rolls)
     private val _totalRolls: EditText by bindView(R.id.total_rolls)
+    private val _scoreEntryFields = listOf(_fantastics, _excellents, _greats, _decents, _wayoffs,
+            _misses, _holds, _totalHolds, _mines, _rolls, _totalRolls)
+
     private val _scoreValueArea: TextView by bindView(R.id.score_value_area)
     private val _scorePercent: TextView by bindView(R.id.score_percent)
     private val _scoreGrade: TextView by bindView(R.id.score_grade)
@@ -59,6 +62,8 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _keypad_8: Button by bindView(R.id.keypad_8)
     private val _keypad_9: Button by bindView(R.id.keypad_9)
     private val _keypad_0: Button by bindView(R.id.keypad_0)
+    private val _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
+            _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
 
     override var fantastics: Int = 0; get() = readIntegerFrom(_fantastics)
     override var excellents: Int = 0; get() = readIntegerFrom(_excellents)
@@ -115,16 +120,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     }
 
     private fun setKeypadClickListeners() {
-        setDigitClickListener(_keypad_0)
-        setDigitClickListener(_keypad_1)
-        setDigitClickListener(_keypad_2)
-        setDigitClickListener(_keypad_3)
-        setDigitClickListener(_keypad_4)
-        setDigitClickListener(_keypad_5)
-        setDigitClickListener(_keypad_6)
-        setDigitClickListener(_keypad_7)
-        setDigitClickListener(_keypad_8)
-        setDigitClickListener(_keypad_9)
+        for (button in _keypadButtons) setDigitClickListener(button)
         _deleteButton.setOnClickListener {
             _handler.removeCallbacks(_deleteButtonRunnable)
             currentFocusedField?.setText("")
@@ -151,17 +147,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     }
 
     private fun disableEditText() {
-        disableEditText(_fantastics)
-        disableEditText(_excellents)
-        disableEditText(_greats)
-        disableEditText(_decents)
-        disableEditText(_wayoffs)
-        disableEditText(_misses)
-        disableEditText(_holds)
-        disableEditText(_totalHolds)
-        disableEditText(_mines)
-        disableEditText(_rolls)
-        disableEditText(_totalRolls)
+        for (et in _scoreEntryFields) disableEditText(et)
     }
 
     private fun disableEditText(t: EditText) {
@@ -176,17 +162,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     }
 
     private fun setOnFocusListeners() {
-        _fantastics.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _excellents.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _greats.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _decents.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _wayoffs.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _misses.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _holds.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _totalHolds.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _mines.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _rolls.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _totalRolls.onFocusChangeListener = keypadNumberOnFocusChangeListener
+        for (et in _scoreEntryFields) et.onFocusChangeListener = keypadNumberOnFocusChangeListener
     }
 
     override fun displayInput(score: ITGScore) {
@@ -229,17 +205,7 @@ public class ITGFragment : BaseCalc(), ITGView {
 
     override fun clearForm() {
         unsubscribeFromTextChangedEvents()
-        _fantastics.setText("")
-        _excellents.setText("")
-        _greats.setText("")
-        _decents.setText("")
-        _wayoffs.setText("")
-        _misses.setText("")
-        _holds.setText("")
-        _totalHolds.setText("")
-        _mines.setText("")
-        _rolls.setText("")
-        _totalRolls.setText("")
+        for (et in _scoreEntryFields) et.setText("")
         clearErrors()
         subscribeToTextChangedEvents()
     }
