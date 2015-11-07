@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context="com.ddiehl.rgsc.itg.ITGFragment">
 
+    <!-- Dummy view to prevent other views from requesting focus -->
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"

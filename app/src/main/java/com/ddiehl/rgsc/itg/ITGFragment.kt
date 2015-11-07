@@ -42,13 +42,14 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _mines: EditText by bindView(R.id.mines)
     private val _rolls: EditText by bindView(R.id.rolls)
     private val _totalRolls: EditText by bindView(R.id.total_rolls)
-    private val _scoreEntryFields = listOf(_fantastics, _excellents, _greats, _decents, _wayoffs,
-            _misses, _holds, _totalHolds, _mines, _rolls, _totalRolls)
+    private lateinit var _scoreEntryFields: List<EditText>
 
+    private val _calculatedScoreArea: ViewGroup by bindView(R.id.calculated_score)
     private val _scoreValueArea: TextView by bindView(R.id.score_value_area)
     private val _scorePercent: TextView by bindView(R.id.score_percent)
     private val _scoreGrade: TextView by bindView(R.id.score_grade)
 
+    private val _keypadLayout: ViewGroup by bindView(R.id.keypad_layout)
     private val _deleteButton: Button by bindView(R.id.keypad_delete)
     private val _nextButton: Button by bindView(R.id.keypad_next)
     private val _keypad: ViewGroup by bindView(R.id.keypad_layout)
@@ -62,8 +63,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _keypad_8: Button by bindView(R.id.keypad_8)
     private val _keypad_9: Button by bindView(R.id.keypad_9)
     private val _keypad_0: Button by bindView(R.id.keypad_0)
-    private val _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
-            _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
+    private lateinit var _keypadButtons: List<Button>
 
     override var fantastics: Int = 0; get() = readIntegerFrom(_fantastics)
     override var excellents: Int = 0; get() = readIntegerFrom(_excellents)
@@ -80,7 +80,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     private lateinit var _onTextChangedEvent: Observable<CharSequence>
     private var _onTextChangedEventSubscription: Subscription? = null
 
-    private var currentFocusedField: EditText? = null
+    private var _currentFocusedField: EditText? = null
     private var _deleteTapCounter = 0
     private val _deleteButtonRunnable = { _deleteTapCounter = 0 }
 
@@ -96,10 +96,18 @@ public class ITGFragment : BaseCalc(), ITGView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _scoreEntryFields = listOf(_fantastics, _excellents, _greats, _decents, _wayoffs,
+                _misses, _holds, _totalHolds, _mines, _rolls, _totalRolls)
+        _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
+                _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
+        _keypadLayout.visibility = View.GONE
         _onTextChangedEvent = getTextChangedObservable()
         disableEditText()
         setOnFocusListeners()
         setKeypadClickListeners()
+        _calculatedScoreArea.setOnClickListener {
+            _currentFocusedField?.clearFocus()
+        }
     }
 
     override fun onStart() {
@@ -123,7 +131,7 @@ public class ITGFragment : BaseCalc(), ITGView {
         for (button in _keypadButtons) setDigitClickListener(button)
         _deleteButton.setOnClickListener {
             _handler.removeCallbacks(_deleteButtonRunnable)
-            currentFocusedField?.setText("")
+            _currentFocusedField?.setText("")
             _deleteTapCounter++
             if (_deleteTapCounter >= 3) {
                 _deleteTapCounter = 0
@@ -133,16 +141,16 @@ public class ITGFragment : BaseCalc(), ITGView {
             }
         }
         _nextButton.setOnClickListener {
-            val nextFocusId = currentFocusedField?.nextFocusForwardId
+            val nextFocusId = _currentFocusedField?.nextFocusForwardId
             if (nextFocusId != null) activity.findViewById(nextFocusId)?.requestFocus()
         }
     }
 
     private fun setDigitClickListener(button: Button) {
         button.setOnClickListener {
-            val text: String = currentFocusedField?.text.toString()
-            currentFocusedField?.setText(text + "" + button.tag)
-            currentFocusedField?.setSelection(currentFocusedField?.text?.length ?: 0);
+            val text: String = _currentFocusedField?.text.toString()
+            _currentFocusedField?.setText(text + "" + button.tag)
+            _currentFocusedField?.setSelection(_currentFocusedField?.text?.length ?: 0);
         }
     }
 
@@ -158,7 +166,7 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val keypadNumberOnFocusChangeListener = View.OnFocusChangeListener {
         view: View, visible: Boolean ->
         _keypad.visibility = if (visible) View.VISIBLE else View.GONE
-        currentFocusedField = if (visible) view as EditText else null
+        _currentFocusedField = if (visible) view as EditText else null
     }
 
     private fun setOnFocusListeners() {
