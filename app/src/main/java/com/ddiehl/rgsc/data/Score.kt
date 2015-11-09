@@ -1,7 +1,7 @@
 package com.ddiehl.rgsc.data
 
-abstract class Score {
-    abstract val elements: Map<String, ScoreElement>
+open class Score {
+    open val elements: Map<String, ScoreElement> = emptyMap()
 
     var earned: Int = 0
         get() {

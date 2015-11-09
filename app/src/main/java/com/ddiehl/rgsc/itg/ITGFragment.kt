@@ -15,6 +15,7 @@ import butterknife.bindView
 import com.ddiehl.rgsc.BaseCalc
 import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.RGSC
+import com.ddiehl.rgsc.data.Score
 import com.jakewharton.rxbinding.widget.RxTextView
 import rx.Observable
 import rx.Subscription
@@ -186,22 +187,22 @@ public class ITGFragment : BaseCalc(), ITGView {
         _holds.onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
     }
 
-    override fun displayInput(score: ITGScore) {
-        _fantastics.setText(stripZero(score.elements[ITGScore.FANTASTICS]!!.count))
-        _excellents.setText(stripZero(score.elements[ITGScore.EXCELLENTS]!!.count))
-        _greats.setText(stripZero(score.elements[ITGScore.GREATS]!!.count))
-        _decents.setText(stripZero(score.elements[ITGScore.DECENTS]!!.count))
-        _wayoffs.setText(stripZero(score.elements[ITGScore.WAY_OFFS]!!.count))
-        _misses.setText(stripZero(score.elements[ITGScore.MISSES]!!.count))
-        _holds.setText(stripZero(score.elements[ITGScore.HOLDS]!!.count))
-        _totalHolds.setText(stripZero(score.elements[ITGScore.TOTAL_HOLDS]!!.count))
-        _mines.setText(stripZero(score.elements[ITGScore.MINES]!!.count))
-        _rolls.setText(stripZero(score.elements[ITGScore.ROLLS]!!.count))
-        _totalRolls.setText(stripZero(score.elements[ITGScore.TOTAL_ROLLS]!!.count))
+    override fun displayInput(score: Score) {
+        _fantastics.setText(stripZero(score.elements[ITGScore.FANTASTICS]?.count))
+        _excellents.setText(stripZero(score.elements[ITGScore.EXCELLENTS]?.count))
+        _greats.setText(stripZero(score.elements[ITGScore.GREATS]?.count))
+        _decents.setText(stripZero(score.elements[ITGScore.DECENTS]?.count))
+        _wayoffs.setText(stripZero(score.elements[ITGScore.WAY_OFFS]?.count))
+        _misses.setText(stripZero(score.elements[ITGScore.MISSES]?.count))
+        _holds.setText(stripZero(score.elements[ITGScore.HOLDS]?.count))
+        _totalHolds.setText(stripZero(score.elements[ITGScore.TOTAL_HOLDS]?.count))
+        _mines.setText(stripZero(score.elements[ITGScore.MINES]?.count))
+        _rolls.setText(stripZero(score.elements[ITGScore.ROLLS]?.count))
+        _totalRolls.setText(stripZero(score.elements[ITGScore.TOTAL_ROLLS]?.count))
     }
 
-    private fun stripZero(i: Int): String {
-        if (i == 0) return ""
+    private fun stripZero(i: Int?): String {
+        if (i == null || i == 0) return ""
         else return i.toString()
     }
 

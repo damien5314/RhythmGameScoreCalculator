@@ -1,5 +1,6 @@
 package com.ddiehl.rgsc.itg
 
+import com.ddiehl.rgsc.data.Score
 import rx.Observable
 
 interface ITGView {
@@ -14,7 +15,7 @@ interface ITGView {
     var mines: Int
     var rolls: Int
     var totalRolls: Int
-    fun displayInput(score: ITGScore)
+    fun displayInput(score: Score)
     fun showNoStepsError()
     fun showHoldsInvalid()
     fun showRollsInvalid()

@@ -2,16 +2,17 @@ package com.ddiehl.rgsc.itg
 
 import com.ddiehl.rgsc.RGSC
 import com.ddiehl.rgsc.ScoreUpdateListener
-import com.ddiehl.rgsc.data.ITGStorage
+import com.ddiehl.rgsc.data.IStorage
+import com.ddiehl.rgsc.data.Score
 import com.ddiehl.rgsc.data.Storage
 
 class ITGPresenter(view: ITGView) : ScoreUpdateListener {
     private val logger = RGSC.getLogger()
-    private val storage: Storage = ITGStorage()
+    private val storage: IStorage = Storage("PREFS_ITG")
     private val view: ITGView = view
 
     fun onStart() {
-        val score: ITGScore = storage.getSavedScore()
+        val score: Score = storage.getSavedScore()
         view.displayInput(score)
         updateScore(score, false)
     }
@@ -29,7 +30,7 @@ class ITGPresenter(view: ITGView) : ScoreUpdateListener {
         updateScore(ITGScore(), false)
     }
 
-    private fun updateScore(score: ITGScore, shouldValidate: Boolean) {
+    private fun updateScore(score: Score, shouldValidate: Boolean) {
         // Verify input has been submitted
         var invalidInput = false
         if (shouldValidate && score.stepTotal == 0) {
