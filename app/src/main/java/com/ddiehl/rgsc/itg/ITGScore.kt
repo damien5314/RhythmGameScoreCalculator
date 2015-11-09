@@ -1,55 +1,34 @@
 package com.ddiehl.rgsc.itg
 
-import com.ddiehl.rgsc.Score
+import com.ddiehl.rgsc.data.Score
+import com.ddiehl.rgsc.data.ScoreElement
 
 public class ITGScore() : Score() {
-    object ITGScore {
-        const val FANTASTICS_WEIGHT = 5
-        const val EXCELLENTS_WEIGHT = 4
-        const val GREATS_WEIGHT = 2
-        const val DECENTS_WEIGHT = 0
-        const val WAYOFFS_WEIGHT = -6
-        const val MISSES_WEIGHT = -12
-        const val HOLDS_WEIGHT = 5
-        const val MINES_WEIGHT = -6
-        const val ROLLS_WEIGHT = 5
-        const val BEST_WEIGHT = FANTASTICS_WEIGHT
+    companion object {
+        const val FANTASTICS = "fantastics"
+        const val EXCELLENTS = "excellents"
+        const val GREATS = "greats"
+        const val DECENTS = "decents"
+        const val WAY_OFFS = "way offs"
+        const val MISSES = "misses"
+        const val HOLDS = "holds"
+        const val TOTAL_HOLDS = "total holds"
+        const val MINES = "mines"
+        const val ROLLS = "rolls"
+        const val TOTAL_ROLLS = "total rolls"
     }
-    
-    var fantastics = 0
-    var excellents = 0
-    var greats = 0
-    var decents = 0
-    var wayoffs = 0
-    var misses = 0
-    var holds = 0
-    var totalHolds = 0
-    var mines = 0
-    var rolls = 0
-    var totalRolls = 0
 
-    var earned = 0
-        get() = fantastics * ITGScore.FANTASTICS_WEIGHT +
-                excellents * ITGScore.EXCELLENTS_WEIGHT +
-                greats * ITGScore.GREATS_WEIGHT +
-                decents * ITGScore.DECENTS_WEIGHT +
-                wayoffs * ITGScore.WAYOFFS_WEIGHT +
-                misses * ITGScore.MISSES_WEIGHT +
-                holds * ITGScore.HOLDS_WEIGHT +
-                mines * ITGScore.MINES_WEIGHT +
-                rolls * ITGScore.ROLLS_WEIGHT
-    
-    var potential = 0
-        get() = (fantastics + excellents + greats + decents + wayoffs + misses) *
-                ITGScore.BEST_WEIGHT +
-                totalHolds * ITGScore.HOLDS_WEIGHT + totalRolls * ITGScore.ROLLS_WEIGHT
-    
-    var stepTotal = 0
-        get() = fantastics + excellents + greats + decents + wayoffs + misses + mines + holds +
-                totalHolds + rolls + totalRolls
-
-    override fun toString(): String {
-        return "$fantastics $excellents $greats $decents $wayoffs $misses $mines $holds " +
-                "$totalHolds $rolls $totalRolls"
-    }
+    override val elements: Map<String, ScoreElement> = mapOf(
+            Pair(FANTASTICS, ScoreElement("Fantastics", 5, 5)),
+            Pair(EXCELLENTS, ScoreElement("Excellents", 4, 5)),
+            Pair(GREATS, ScoreElement("Greats", 2, 5)),
+            Pair(DECENTS, ScoreElement("Decents", 0, 5)),
+            Pair(WAY_OFFS, ScoreElement("Way Offs", -6, 5)),
+            Pair(MISSES, ScoreElement("Misses", -12, 5)),
+            Pair(HOLDS, ScoreElement("Holds", 5, 5)),
+            Pair(TOTAL_HOLDS, ScoreElement("Total Holds", 0, 0)),
+            Pair(MINES, ScoreElement("Mines", -6, 0)),
+            Pair(ROLLS, ScoreElement("Rolls", 5, 5)),
+            Pair(TOTAL_ROLLS, ScoreElement("Total Rolls", 0, 0))
+    )
 }

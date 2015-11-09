@@ -4,7 +4,6 @@ import com.ddiehl.rgsc.RGSC
 import com.ddiehl.rgsc.ScoreUpdateListener
 import com.ddiehl.rgsc.data.ITGStorage
 import com.ddiehl.rgsc.data.Storage
-import com.orhanobut.logger.Logger
 
 class ITGPresenter(view: ITGView) : ScoreUpdateListener {
     private val logger = RGSC.getLogger()
@@ -37,11 +36,11 @@ class ITGPresenter(view: ITGView) : ScoreUpdateListener {
             view.showNoStepsError()
             invalidInput = true
         }
-        if (shouldValidate && score.holds > score.totalHolds) {
+        if (shouldValidate && score.elements[ITGScore.HOLDS]!!.count > score.elements[ITGScore.TOTAL_HOLDS]!!.count) {
             view.showHoldsInvalid()
             invalidInput = true
         }
-        if (shouldValidate && score.rolls > score.totalRolls) {
+        if (shouldValidate && score.elements[ITGScore.ROLLS]!!.count > score.elements[ITGScore.TOTAL_ROLLS]!!.count) {
             view.showRollsInvalid()
             invalidInput = true
         }
@@ -62,17 +61,17 @@ class ITGPresenter(view: ITGView) : ScoreUpdateListener {
 
     private fun getInput(): ITGScore {
         val score = ITGScore()
-        score.fantastics = view.fantastics
-        score.excellents = view.excellents
-        score.greats = view.greats
-        score.decents = view.decents
-        score.wayoffs = view.wayoffs
-        score.misses = view.misses
-        score.holds = view.holds
-        score.totalHolds = view.totalHolds
-        score.mines = view.mines
-        score.rolls = view.rolls
-        score.totalRolls = view.totalRolls
+        score.elements[ITGScore.FANTASTICS]!!.count = view.fantastics
+        score.elements[ITGScore.EXCELLENTS]!!.count = view.excellents
+        score.elements[ITGScore.GREATS]!!.count = view.greats
+        score.elements[ITGScore.DECENTS]!!.count = view.decents
+        score.elements[ITGScore.WAY_OFFS]!!.count = view.wayoffs
+        score.elements[ITGScore.MISSES]!!.count = view.misses
+        score.elements[ITGScore.HOLDS]!!.count = view.holds
+        score.elements[ITGScore.TOTAL_HOLDS]!!.count = view.totalHolds
+        score.elements[ITGScore.MINES]!!.count = view.mines
+        score.elements[ITGScore.ROLLS]!!.count = view.rolls
+        score.elements[ITGScore.TOTAL_ROLLS]!!.count = view.totalRolls
         logger.d(score.toString())
         return score
     }
