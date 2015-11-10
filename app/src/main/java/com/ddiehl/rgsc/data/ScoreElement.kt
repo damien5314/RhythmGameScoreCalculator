@@ -1,7 +1,10 @@
 package com.ddiehl.rgsc.data
 
+import android.support.annotation.IdRes
+import android.support.annotation.StringRes
+
 open class ScoreElement(
-        val id: Int, val labelResId: Int,
+        @IdRes val id: Int, @StringRes val labelResId: Int, val column: Int,
         val weight: Int, val bestWeight: Int, val isStep: Boolean = true) {
 
     var count: Int = 0

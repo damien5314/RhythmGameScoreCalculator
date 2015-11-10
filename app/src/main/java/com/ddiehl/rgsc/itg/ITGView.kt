@@ -37,6 +37,10 @@ class ITGView : ScoreViewFragment() {
         return ITGPresenter(this)
     }
 
+    override fun getEmptyScore(): Score {
+        return ITGScore()
+    }
+
     override protected fun getScoreEntryFields(): List<EditText> {
         return listOf(_fantastics, _excellents, _greats, _decents, _wayoffs,
             _misses, _holds, _totalHolds, _mines, _rolls, _totalRolls)

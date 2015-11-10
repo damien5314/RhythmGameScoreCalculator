@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="fantastics" />
+    <item type="id" name="excellents" />
+    <item type="id" name="greats" />
+    <item type="id" name="decents" />
+    <item type="id" name="wayoffs" />
+    <item type="id" name="misses" />
+    <item type="id" name="holds" />
+    <item type="id" name="total_holds" />
+    <item type="id" name="mines" />
+    <item type="id" name="rolls" />
+    <item type="id" name="total_rolls" />
+</resources>
