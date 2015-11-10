@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/primary"
-    tools:context="com.ddiehl.rgsc.itg.ITGFragment">
+    tools:context="com.ddiehl.rgsc.itg.ScoreViewFragment">
 
     <!-- Dummy view to prevent other views from requesting focus -->
     <EditText

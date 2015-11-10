@@ -3,11 +3,11 @@ package com.ddiehl.rgsc
 import android.content.Context
 
 object ContextProvider {
-    public lateinit var mContext: Context
+    private lateinit var _context: Context
 
     public fun set(context: Context) {
-        mContext = context
+        _context = context
     }
 
-    public fun get(): Context = mContext
+    public fun get(): Context = _context
 }

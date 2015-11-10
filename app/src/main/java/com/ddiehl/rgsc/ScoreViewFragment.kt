@@ -1,8 +1,9 @@
-package com.ddiehl.rgsc.itg
+package com.ddiehl.rgsc
 
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.Snackbar
+import android.support.v4.app.Fragment
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,6 @@ import android.widget.EditText
 import android.widget.ScrollView
 import android.widget.TextView
 import butterknife.bindView
-import com.ddiehl.rgsc.BaseCalc
-import com.ddiehl.rgsc.R
-import com.ddiehl.rgsc.RGSC
-import com.ddiehl.rgsc.data.Score
 import com.jakewharton.rxbinding.widget.RxTextView
 import rx.Observable
 import rx.Subscription
@@ -23,28 +20,17 @@ import rx.android.schedulers.AndroidSchedulers
 import java.text.DecimalFormat
 import java.util.concurrent.TimeUnit
 
-public class ITGFragment : BaseCalc(), ITGView {
+abstract class ScoreViewFragment() : Fragment(), ScoreView {
     companion object {
         private val SCORE_CALC_DELAY = 500L
         private val CLEAR_ALL_TIME_THRESHOLD_MS = 1500L
     }
 
     private val _logger = RGSC.getLogger()
-    private lateinit var _presenter: ITGPresenter
+    private lateinit var _presenter: ScorePresenter
     private val _handler = Handler()
 
     private val _scoreEntryScrollView: ScrollView by bindView(R.id.score_entry_scrollview)
-    private val _fantastics: EditText by bindView(R.id.fantastics)
-    private val _excellents: EditText by bindView(R.id.excellents)
-    private val _greats: EditText by bindView(R.id.greats)
-    private val _decents: EditText by bindView(R.id.decents)
-    private val _wayoffs: EditText by bindView(R.id.wayoffs)
-    private val _misses: EditText by bindView(R.id.misses)
-    private val _holds: EditText by bindView(R.id.holds)
-    private val _totalHolds: EditText by bindView(R.id.total_holds)
-    private val _mines: EditText by bindView(R.id.mines)
-    private val _rolls: EditText by bindView(R.id.rolls)
-    private val _totalRolls: EditText by bindView(R.id.total_rolls)
     private lateinit var _scoreEntryFields: List<EditText>
 
     private val _calculatedScoreArea: ViewGroup by bindView(R.id.calculated_score)
@@ -68,18 +54,6 @@ public class ITGFragment : BaseCalc(), ITGView {
     private val _keypad_0: Button by bindView(R.id.keypad_0)
     private lateinit var _keypadButtons: List<Button>
 
-    override var fantastics: Int = 0; get() = readIntegerFrom(_fantastics)
-    override var excellents: Int = 0; get() = readIntegerFrom(_excellents)
-    override var greats: Int = 0; get() = readIntegerFrom(_greats)
-    override var decents: Int = 0; get() = readIntegerFrom(_decents)
-    override var wayoffs: Int = 0; get() = readIntegerFrom(_wayoffs)
-    override var misses: Int = 0; get() = readIntegerFrom(_misses)
-    override var holds: Int = 0; get() = readIntegerFrom(_holds)
-    override var totalHolds: Int = 0; get() = readIntegerFrom(_totalHolds)
-    override var mines: Int = 0; get() = readIntegerFrom(_mines)
-    override var rolls: Int = 0; get() = readIntegerFrom(_rolls)
-    override var totalRolls: Int = 0; get() = readIntegerFrom(_totalRolls)
-
     private lateinit var _onTextChangedEvent: Observable<CharSequence>
     private var _onTextChangedEventSubscription: Subscription? = null
 
@@ -87,9 +61,15 @@ public class ITGFragment : BaseCalc(), ITGView {
     private var _deleteTapCounter = 0
     private val _deleteButtonRunnable = { _deleteTapCounter = 0 }
 
+    abstract fun getPresenter(): ScorePresenter
+
+    abstract fun getScoreEntryFields(): List<EditText>
+
+    override abstract fun clearErrors()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _presenter = ITGPresenter(this)
+        _presenter = getPresenter()
     }
 
     override fun onCreateView(
@@ -99,8 +79,7 @@ public class ITGFragment : BaseCalc(), ITGView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _scoreEntryFields = listOf(_fantastics, _excellents, _greats, _decents, _wayoffs,
-                _misses, _holds, _totalHolds, _mines, _rolls, _totalRolls)
+        _scoreEntryFields = getScoreEntryFields()
         _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
                 _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
         _keypadLayout.visibility = View.GONE
@@ -125,7 +104,7 @@ public class ITGFragment : BaseCalc(), ITGView {
         super.onStop()
     }
 
-    private fun readIntegerFrom(t: EditText): Int {
+    public fun getInputFrom(t: EditText): Int {
         val s = t.text.toString()
         return if (s == "") 0 else s.toInt()
     }
@@ -183,46 +162,18 @@ public class ITGFragment : BaseCalc(), ITGView {
 
     private fun setOnFocusListeners() {
         for (et in _scoreEntryFields) et.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        _fantastics.onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
-        _holds.onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
+        // FIXME - Make these work again
+//        _fantastics.onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
+//        _holds.onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
     }
 
-    override fun displayInput(score: Score) {
-        _fantastics.setText(stripZero(score.elements[ITGScore.FANTASTICS]?.count))
-        _excellents.setText(stripZero(score.elements[ITGScore.EXCELLENTS]?.count))
-        _greats.setText(stripZero(score.elements[ITGScore.GREATS]?.count))
-        _decents.setText(stripZero(score.elements[ITGScore.DECENTS]?.count))
-        _wayoffs.setText(stripZero(score.elements[ITGScore.WAY_OFFS]?.count))
-        _misses.setText(stripZero(score.elements[ITGScore.MISSES]?.count))
-        _holds.setText(stripZero(score.elements[ITGScore.HOLDS]?.count))
-        _totalHolds.setText(stripZero(score.elements[ITGScore.TOTAL_HOLDS]?.count))
-        _mines.setText(stripZero(score.elements[ITGScore.MINES]?.count))
-        _rolls.setText(stripZero(score.elements[ITGScore.ROLLS]?.count))
-        _totalRolls.setText(stripZero(score.elements[ITGScore.TOTAL_ROLLS]?.count))
-    }
-
-    private fun stripZero(i: Int?): String {
+    fun stripZero(i: Int?): String {
         if (i == null || i == 0) return ""
         else return i.toString()
     }
 
     override fun showNoStepsError() {
         Snackbar.make(view, R.string.error_no_steps, Snackbar.LENGTH_SHORT).show()
-    }
-
-    override fun showHoldsInvalid() {
-        _holds.error = getString(R.string.error_invalid_holds)
-        showScoreError()
-    }
-
-    override fun showRollsInvalid() {
-        _rolls.error = getString(R.string.error_invalid_holds)
-        showScoreError()
-    }
-
-    override fun clearErrors() {
-        _holds.error = null
-        _rolls.error = null
     }
 
     override fun clearForm() {
@@ -246,7 +197,7 @@ public class ITGFragment : BaseCalc(), ITGView {
         _scoreGrade.text = gradeString
     }
 
-    private fun showScoreError() {
+    fun showScoreError() {
         val scoreValueFormatter = getString(R.string.score_value_formatter)
         _scoreValueArea.text = scoreValueFormatter.format(0, 0, 0)
         _scorePercent.text = ""
@@ -254,29 +205,17 @@ public class ITGFragment : BaseCalc(), ITGView {
     }
 
     override fun getTextChangedObservable(): Observable<CharSequence> {
-        return Observable.merge(listOf(
-                getTextChangedObservable(_fantastics),
-                getTextChangedObservable(_excellents),
-                getTextChangedObservable(_greats),
-                getTextChangedObservable(_decents),
-                getTextChangedObservable(_wayoffs),
-                getTextChangedObservable(_misses),
-                getTextChangedObservable(_holds),
-                getTextChangedObservable(_totalHolds),
-                getTextChangedObservable(_mines),
-                getTextChangedObservable(_rolls),
-                getTextChangedObservable(_totalRolls)
-        ))
+        return Observable.merge(getTextChangedObservableList())
                 .debounce(SCORE_CALC_DELAY, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
     }
 
-    private fun getTextChangedObservable(t: EditText): rx.Observable<CharSequence> =
-            RxTextView.textChanges(t)
+    abstract fun getTextChangedObservableList(): List<Observable<CharSequence>>
+
+    fun getTextChangedObservable(t: EditText): Observable<CharSequence> = RxTextView.textChanges(t)
 
     private fun subscribeToTextChangedEvents() {
-        _onTextChangedEventSubscription = _onTextChangedEvent
-                .skip(1) // Value is emitted immediately on subscribe
-                .subscribe({ _presenter.onScoreUpdated() }, { }, { })
+        _onTextChangedEventSubscription =
+                _onTextChangedEvent.subscribe({ _presenter.onScoreUpdated() }, { }, { })
     }
 
     private fun unsubscribeFromTextChangedEvents() {
