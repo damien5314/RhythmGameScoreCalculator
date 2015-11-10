@@ -1,30 +1,11 @@
 package com.ddiehl.rgsc.data
 
-import android.content.Context
-import com.ddiehl.rgsc.ContextProvider
-import com.ddiehl.rgsc.itg.ITGScore
-
-class Storage(private val _prefKey: String) : IStorage {
-    private val _context: Context = ContextProvider.get()
-
-    override fun saveScore(score: Score) {
-        val sp = _context.getSharedPreferences(_prefKey, Context.MODE_PRIVATE).edit()
-        for (element in score.elements) {
-            sp.putInt(element.key, element.value.count)
-        }
-        sp.commit()
+interface Storage {
+    companion object {
+        const val PREFS_ITG = "PREFS_ITG"
+        const val PREFS_DDREX = "PREFS_DDREX"
     }
 
-    override fun getSavedScore(): Score {
-        val sp = _context.getSharedPreferences(_prefKey, Context.MODE_PRIVATE)
-        val score = when (_prefKey) {
-            IStorage.PREFS_ITG -> ITGScore()
-            else -> Score()
-        }
-        for (element in score.elements) {
-            val key = element.key
-            score.elements[key]!!.count = sp.getInt(key, 0)
-        }
-        return score
-    }
+    fun getSavedScore(): Score
+    fun saveScore(score: Score)
 }

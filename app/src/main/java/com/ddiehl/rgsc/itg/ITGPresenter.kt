@@ -1,12 +1,12 @@
 package com.ddiehl.rgsc.itg
 
 import com.ddiehl.rgsc.ScorePresenter
-import com.ddiehl.rgsc.data.IStorage
+import com.ddiehl.rgsc.data.AndroidStorage
 import com.ddiehl.rgsc.data.Score
 import com.ddiehl.rgsc.data.Storage
 
 class ITGPresenter(override val _view: ITGView) : ScorePresenter() {
-    override val _storage: IStorage = Storage(IStorage.PREFS_ITG)
+    override val _storage: Storage = AndroidStorage(Storage.PREFS_ITG)
 
     override fun getInput(): ITGScore {
         val score = ITGScore()

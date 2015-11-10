@@ -1,13 +1,13 @@
 package com.ddiehl.rgsc
 
-import com.ddiehl.rgsc.data.IStorage
 import com.ddiehl.rgsc.data.Score
+import com.ddiehl.rgsc.data.Storage
 import com.ddiehl.rgsc.itg.ITGScore
 
 abstract class ScorePresenter() : ScoreUpdateListener {
     val _logger = RGSC.getLogger()
     abstract val _view: ScoreView
-    abstract val _storage: IStorage
+    abstract val _storage: Storage
 
     abstract fun isScoreValid(score: Score): Boolean
 
