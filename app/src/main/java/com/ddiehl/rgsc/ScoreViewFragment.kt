@@ -231,9 +231,11 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
 
     private fun setOnFocusListeners() {
         for (et in _scoreEntryFields) et.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        // FIXME - Make these work again
-//        _fantastics.onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
-//        _holds.onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
+        val parentContainer = _scoreEntryScrollView.getChildAt(0) as ViewGroup
+        for (column in parentContainer.getChildren()) {
+            val firstElementParent = (column as ViewGroup).getChildAt(0) as ViewGroup
+            firstElementParent.getChildAt(1).onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
+        }
     }
 
     protected fun stripZero(i: Int?): String {
