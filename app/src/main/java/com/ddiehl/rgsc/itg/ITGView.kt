@@ -37,7 +37,7 @@ class ITGView : ScoreViewFragment() {
         return ITGPresenter(this)
     }
 
-    override fun getScoreEntryFields(): List<EditText> {
+    override protected fun getScoreEntryFields(): List<EditText> {
         return listOf(_fantastics, _excellents, _greats, _decents, _wayoffs,
             _misses, _holds, _totalHolds, _mines, _rolls, _totalRolls)
     }
@@ -71,19 +71,7 @@ class ITGView : ScoreViewFragment() {
         _rolls.error = null
     }
 
-    override fun getTextChangedObservableList(): List<Observable<CharSequence>> {
-        return listOf(
-                getTextChangedObservable(_fantastics),
-                getTextChangedObservable(_excellents),
-                getTextChangedObservable(_greats),
-                getTextChangedObservable(_decents),
-                getTextChangedObservable(_wayoffs),
-                getTextChangedObservable(_misses),
-                getTextChangedObservable(_holds),
-                getTextChangedObservable(_totalHolds),
-                getTextChangedObservable(_mines),
-                getTextChangedObservable(_rolls),
-                getTextChangedObservable(_totalRolls)
-        )
+    override protected fun getTextChangedObservables(): List<Observable<CharSequence>> {
+        return _scoreEntryFields.map { getTextChangedObservable(it) }
     }
 }
