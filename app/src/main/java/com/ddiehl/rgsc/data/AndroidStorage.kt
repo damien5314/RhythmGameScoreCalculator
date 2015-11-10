@@ -19,7 +19,7 @@ class AndroidStorage(private val _prefKey: String) : Storage {
         val sp = _context.getSharedPreferences(_prefKey, Context.MODE_PRIVATE)
         val score = when (_prefKey) {
             Storage.PREFS_ITG -> ITGScore()
-            else -> Score()
+            else -> ITGScore()
         }
         for (element in score.elements) {
             val key = element.key

@@ -1,6 +1,6 @@
 package com.ddiehl.rgsc.data
 
-open class Score {
+abstract class Score {
     open val elements: Map<String, ScoreElement> = emptyMap()
 
     var earned: Int = 0
@@ -29,4 +29,9 @@ open class Score {
         for (element in elements.values) result.append(element.count).append(" ")
         return result.toString()
     }
+
+    val percent: Double
+        get() = ((earned.toDouble() / potential.toDouble()) * 10000).toInt() / 100.00
+
+    abstract val grade: String
 }
