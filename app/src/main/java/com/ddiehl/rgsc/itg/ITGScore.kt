@@ -20,17 +20,17 @@ public class ITGScore() : Score() {
     }
 
     override val elements: Map<String, ScoreElement> = mapOf(
-            Pair(FANTASTICS, ScoreElement("Fantastics", R.id.fantastics, 5, 5)),
-            Pair(EXCELLENTS, ScoreElement("Excellents", R.id.excellents, 4, 5)),
-            Pair(GREATS, ScoreElement("Greats", R.id.greats, 2, 5)),
-            Pair(DECENTS, ScoreElement("Decents", R.id.decents, 0, 5)),
-            Pair(WAY_OFFS, ScoreElement("Way Offs", R.id.wayoffs, -6, 5)),
-            Pair(MISSES, ScoreElement("Misses", R.id.misses, -12, 5)),
-            Pair(HOLDS, ScoreElement("Holds", R.id.holds, 5, 5)),
-            Pair(TOTAL_HOLDS, ScoreElement("Total Holds", R.id.total_holds, 0, 0)),
-            Pair(MINES, ScoreElement("Mines", R.id.mines, -6, 0)),
-            Pair(ROLLS, ScoreElement("Rolls", R.id.rolls, 5, 5)),
-            Pair(TOTAL_ROLLS, ScoreElement("Total Rolls", R.id.total_rolls, 0, 0))
+            Pair(FANTASTICS, ScoreElement(R.id.fantastics, R.string.fantastics_hint, 5, 5)),
+            Pair(EXCELLENTS, ScoreElement(R.id.excellents, R.string.excellents_hint, 4, 5)),
+            Pair(GREATS, ScoreElement(R.id.greats, R.string.greats_hint, 2, 5)),
+            Pair(DECENTS, ScoreElement(R.id.decents, R.string.decents_hint, 0, 5)),
+            Pair(WAY_OFFS, ScoreElement(R.id.wayoffs, R.string.wayoffs_hint, -6, 5)),
+            Pair(MISSES, ScoreElement(R.id.misses, R.string.misses_hint, -12, 5)),
+            Pair(HOLDS, ScoreElement(R.id.holds, R.string.holds_hint, 5, 5)),
+            Pair(TOTAL_HOLDS, ScoreElement(R.id.total_holds, R.string.totalHolds_hint, 0, 0)),
+            Pair(MINES, ScoreElement(R.id.mines, R.string.mines_hint, -6, 0)),
+            Pair(ROLLS, ScoreElement(R.id.rolls, R.string.rolls_hint, 5, 5)),
+            Pair(TOTAL_ROLLS, ScoreElement(R.id.total_rolls, R.string.totalRolls_hint, 0, 0))
     )
 
     override val grade: String
