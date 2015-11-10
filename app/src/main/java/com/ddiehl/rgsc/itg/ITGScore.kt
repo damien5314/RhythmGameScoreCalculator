@@ -20,17 +20,17 @@ public class ITGScore() : Score() {
     }
 
     override val elements: Map<String, ScoreElement> = mapOf(
-            Pair(FANTASTICS, ScoreElement(R.id.fantastics, R.string.fantastics_hint, 0, 5, 5)),
-            Pair(EXCELLENTS, ScoreElement(R.id.excellents, R.string.excellents_hint, 0, 4, 5)),
-            Pair(GREATS, ScoreElement(R.id.greats, R.string.greats_hint, 0, 2, 5)),
-            Pair(DECENTS, ScoreElement(R.id.decents, R.string.decents_hint, 0, 0, 5)),
-            Pair(WAY_OFFS, ScoreElement(R.id.wayoffs, R.string.wayoffs_hint, 0, -6, 5)),
-            Pair(MISSES, ScoreElement(R.id.misses, R.string.misses_hint, 0, -12, 5)),
-            Pair(HOLDS, ScoreElement(R.id.holds, R.string.holds_hint, 1, 5, 5)),
-            Pair(TOTAL_HOLDS, ScoreElement(R.id.total_holds, R.string.totalHolds_hint, 1, 0, 0)),
-            Pair(MINES, ScoreElement(R.id.mines, R.string.mines_hint, 1, -6, 0)),
-            Pair(ROLLS, ScoreElement(R.id.rolls, R.string.rolls_hint, 1, 5, 5)),
-            Pair(TOTAL_ROLLS, ScoreElement(R.id.total_rolls, R.string.totalRolls_hint, 1, 0, 0))
+            Pair(FANTASTICS, ScoreElement(R.id.fantastics, R.string.fantastics, 0, 5, 5)),
+            Pair(EXCELLENTS, ScoreElement(R.id.excellents, R.string.excellents, 0, 4, 5)),
+            Pair(GREATS, ScoreElement(R.id.greats, R.string.greats, 0, 2, 5)),
+            Pair(DECENTS, ScoreElement(R.id.decents, R.string.decents, 0, 0, 5)),
+            Pair(WAY_OFFS, ScoreElement(R.id.wayoffs, R.string.wayoffs, 0, -6, 5)),
+            Pair(MISSES, ScoreElement(R.id.misses, R.string.misses, 0, -12, 5)),
+            Pair(HOLDS, ScoreElement(R.id.holds, R.string.holds, 1, 5, 5)),
+            Pair(TOTAL_HOLDS, ScoreElement(R.id.total_holds, R.string.total_holds, 1, 0, 0)),
+            Pair(MINES, ScoreElement(R.id.mines, R.string.mines, 1, -6, 0)),
+            Pair(ROLLS, ScoreElement(R.id.rolls, R.string.rolls, 1, 5, 5)),
+            Pair(TOTAL_ROLLS, ScoreElement(R.id.total_rolls, R.string.total_rolls, 1, 0, 0))
     )
 
     override val grade: String
