@@ -6,7 +6,6 @@ import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.ScorePresenter
 import com.ddiehl.rgsc.ScoreViewFragment
 import com.ddiehl.rgsc.data.Score
-import rx.Observable
 
 class ITGView : ScoreViewFragment() {
     private val _fantastics: EditText by bindView(R.id.fantastics)
@@ -41,11 +40,6 @@ class ITGView : ScoreViewFragment() {
         return ITGScore()
     }
 
-    override protected fun getScoreEntryFields(): List<EditText> {
-        return listOf(_fantastics, _excellents, _greats, _decents, _wayoffs,
-            _misses, _holds, _totalHolds, _mines, _rolls, _totalRolls)
-    }
-
     override fun displayInput(score: Score) {
         _fantastics.setText(stripZero(score.elements[ITGScore.FANTASTICS]?.count))
         _excellents.setText(stripZero(score.elements[ITGScore.EXCELLENTS]?.count))
@@ -73,9 +67,5 @@ class ITGView : ScoreViewFragment() {
     override fun clearErrors() {
         _holds.error = null
         _rolls.error = null
-    }
-
-    override protected fun getTextChangedObservables(): List<Observable<CharSequence>> {
-        return _scoreEntryFields.map { getTextChangedObservable(it) }
     }
 }

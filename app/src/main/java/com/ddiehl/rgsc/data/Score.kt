@@ -10,6 +10,7 @@ abstract class Score {
             return result
         }
 
+    // FIXME Potential score is not increased by total holds
     var potential: Int = 0
         get() {
             var result = 0

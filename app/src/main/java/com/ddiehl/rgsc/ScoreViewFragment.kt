@@ -14,11 +14,13 @@ import android.widget.ScrollView
 import android.widget.TextView
 import butterknife.bindView
 import com.ddiehl.rgsc.data.Score
+import com.ddiehl.rgsc.utils.getChildren
 import com.jakewharton.rxbinding.widget.RxTextView
 import rx.Observable
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import java.text.DecimalFormat
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 abstract class ScoreViewFragment() : Fragment(), ScoreView {
@@ -64,9 +66,17 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
 
     abstract protected fun getPresenter(): ScorePresenter
 
-    abstract protected fun getScoreEntryFields(): List<EditText>
-
-    abstract protected fun getTextChangedObservables(): List<Observable<CharSequence>>
+    protected fun getScoreEntryFields(): List<EditText> {
+        val parentContainer = _scoreEntryScrollView.getChildAt(0) as ViewGroup
+        val list = ArrayList<EditText>()
+        parentContainer.getChildren().map { // Columns
+            (it as ViewGroup).getChildren().map { // Element parents
+                val element = (it as ViewGroup)
+                list.add(element.getChildAt(1) as EditText)
+            }
+        }
+        return list
+    }
 
     override abstract fun clearErrors()
 
@@ -90,8 +100,8 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         val layoutInflater = activity.layoutInflater
 
         // Generate column layout for number of columns required
-        score.elements.map {
-            if (it.value.column > numColumns-1) {
+        for (element in score.elements.values) {
+            if (element.column > numColumns-1) {
                 val columnLayout = layoutInflater.inflate(
                         R.layout.calculator_column, parentContainer, false)
                 parentContainer.addView(columnLayout)
@@ -100,8 +110,7 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         }
 
         // Generate item layout for each item in the returned score
-        score.elements.map {
-            val element = it.value
+        for (element in score.elements.values) {
             // Add item layout to appropriate column as specified in score's column property
             val column = element.column
             val columnView = parentContainer.getChildAt(column) as ViewGroup
@@ -265,11 +274,9 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     }
 
     override fun getTextChangedObservable(): Observable<CharSequence> {
-        return Observable.merge(getTextChangedObservables())
+        return Observable.merge(_scoreEntryFields.map { RxTextView.textChanges(it) })
                 .debounce(SCORE_CALC_DELAY, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
     }
-
-    protected fun getTextChangedObservable(t: EditText): Observable<CharSequence> = RxTextView.textChanges(t)
 
     private fun subscribeToTextChangedEvents() {
         _onTextChangedEventSubscription =
