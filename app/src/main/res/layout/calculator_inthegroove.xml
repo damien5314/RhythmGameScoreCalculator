@@ -53,8 +53,6 @@
 
                             <TextView
                                 android:text="@string/fantastics_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -62,14 +60,10 @@
                                 android:tag="fantastics"
                                 android:nextFocusForward="@+id/excellents"
                                 android:nextFocusDown="@id/excellents"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                             <TextView
                                 android:text="@string/excellents_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -77,14 +71,10 @@
                                 android:tag="excellents"
                                 android:nextFocusForward="@+id/greats"
                                 android:nextFocusDown="@id/greats"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                             <TextView
                                 android:text="@string/greats_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -92,14 +82,10 @@
                                 android:tag="greats"
                                 android:nextFocusForward="@+id/decents"
                                 android:nextFocusDown="@id/decents"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                             <TextView
                                 android:text="@string/decents_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -107,14 +93,10 @@
                                 android:tag="decents"
                                 android:nextFocusForward="@+id/wayoffs"
                                 android:nextFocusDown="@id/wayoffs"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                             <TextView
                                 android:text="@string/wayoffs_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -122,14 +104,10 @@
                                 android:tag="wayoffs"
                                 android:nextFocusForward="@+id/misses"
                                 android:nextFocusDown="@id/misses"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                             <TextView
                                 android:text="@string/misses_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -137,8 +115,6 @@
                                 android:tag="misses"
                                 android:nextFocusForward="@+id/holds"
                                 android:nextFocusDown="@id/holds"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                         </LinearLayout>
@@ -151,8 +127,6 @@
 
                             <TextView
                                 android:text="@string/holds_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -160,14 +134,10 @@
                                 android:tag="holds"
                                 android:nextFocusForward="@+id/total_holds"
                                 android:nextFocusDown="@id/total_holds"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                             <TextView
                                 android:text="@string/totalHolds_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -175,14 +145,10 @@
                                 android:tag="totalHolds"
                                 android:nextFocusForward="@+id/mines"
                                 android:nextFocusDown="@id/mines"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                             <TextView
                                 android:text="@string/mines_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -190,14 +156,10 @@
                                 android:tag="mines"
                                 android:nextFocusForward="@+id/rolls"
                                 android:nextFocusDown="@id/rolls"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                             <TextView
                                 android:text="@string/rolls_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -205,14 +167,10 @@
                                 android:tag="rolls"
                                 android:nextFocusForward="@+id/total_rolls"
                                 android:nextFocusDown="@id/total_rolls"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                             <TextView
                                 android:text="@string/totalRolls_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 style="@style/ScoreEntryLabel" />
 
                             <EditText
@@ -220,8 +178,6 @@
                                 android:tag="totalRolls"
                                 android:nextFocusForward="@id/fantastics"
                                 android:nextFocusDown="@id/fantastics"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/score_entry_height"
                                 style="@style/ScoreEntryField" />
 
                         </LinearLayout>
