@@ -1,5 +1,6 @@
 package com.ddiehl.rgsc
 
+import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
@@ -9,12 +10,10 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ScrollView
-import android.widget.TextView
+import android.widget.*
 import butterknife.bindView
 import com.ddiehl.rgsc.data.Score
+import com.ddiehl.rgsc.data.Storage
 import com.ddiehl.rgsc.utils.getChildren
 import com.jakewharton.rxbinding.widget.RxTextView
 import rx.Observable
@@ -28,6 +27,7 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     companion object {
         private val SCORE_CALC_DELAY = 500L
         private val CLEAR_ALL_TIME_THRESHOLD_MS = 1500L
+        private val PREF_DELETE_KEY_EXPLANATION_DISPLAYED = "PREF_DELETE_KEY_EXPLANATION_DISPLAYED"
     }
 
     protected val _logger = RGSC.getLogger()
@@ -63,6 +63,7 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     protected var _currentFocusedField: EditText? = null
     protected var _deleteTapCounter = 0
     protected val _deleteButtonRunnable = { _deleteTapCounter = 0 }
+    protected var _deleteKeyExplanationShown: Boolean? = null
 
     abstract protected fun getPresenter(): ScorePresenter
 
@@ -91,6 +92,39 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
             inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.calculator, null)
         return view
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        generateScoreEntryView()
+        _scoreEntryFields = getScoreEntryFields()
+        _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
+                _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
+        if (shouldHideKeyboard()) _keypad.visibility = View.GONE
+        _onTextChangedEvent = getTextChangedObservable()
+        disableEditText()
+        setOnFocusListeners()
+        setKeypadClickListeners()
+        _calculatedScoreArea.setOnClickListener {
+            _currentFocusedField?.clearFocus()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        subscribeToTextChangedEvents()
+        _presenter.onStart()
+    }
+
+    override fun onStop() {
+        unsubscribeFromTextChangedEvents()
+        _presenter.onStop()
+        super.onStop()
+    }
+
+    protected fun getInputFrom(t: EditText): Int {
+        val s = t.text.toString()
+        return if (s == "") 0 else s.toInt()
     }
 
     private fun generateScoreEntryView() {
@@ -145,42 +179,10 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         }
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        generateScoreEntryView()
-        _scoreEntryFields = getScoreEntryFields()
-        _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
-                _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
-        if (shouldHideKeyboard()) _keypad.visibility = View.GONE
-        _onTextChangedEvent = getTextChangedObservable()
-        disableEditText()
-        setOnFocusListeners()
-        setKeypadClickListeners()
-        _calculatedScoreArea.setOnClickListener {
-            _currentFocusedField?.clearFocus()
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        subscribeToTextChangedEvents()
-        _presenter.onStart()
-    }
-
-    override fun onStop() {
-        unsubscribeFromTextChangedEvents()
-        _presenter.onStop()
-        super.onStop()
-    }
-
-    protected fun getInputFrom(t: EditText): Int {
-        val s = t.text.toString()
-        return if (s == "") 0 else s.toInt()
-    }
-
     private fun setKeypadClickListeners() {
         for (button in _keypadButtons) setDigitClickListener(button)
         _deleteButton.setOnClickListener {
+            showDeleteKeyExplanation()
             _handler.removeCallbacks(_deleteButtonRunnable)
             _currentFocusedField?.setText("")
             _deleteTapCounter++
@@ -291,5 +293,21 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
 
     private fun shouldHideKeyboard(): Boolean {
         return resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+    }
+
+    override fun showDeleteKeyExplanation() {
+        // Get value from shared preferences
+        if (_deleteKeyExplanationShown == null) {
+            val prefs = context.getSharedPreferences(Storage.PREFS_APP, Context.MODE_PRIVATE)
+            _deleteKeyExplanationShown = prefs.getBoolean(PREF_DELETE_KEY_EXPLANATION_DISPLAYED, false)
+        }
+        // If we have never shown the explanation, show it
+        if (_deleteKeyExplanationShown == false) {
+            Toast.makeText(context, R.string.delete_key_explanation, Toast.LENGTH_LONG).show()
+            // Update value in shared preferences
+            _deleteKeyExplanationShown = true
+            val prefs = context.getSharedPreferences(Storage.PREFS_APP, Context.MODE_PRIVATE)
+            prefs.edit().putBoolean(PREF_DELETE_KEY_EXPLANATION_DISPLAYED, true).apply()
+        }
     }
 }

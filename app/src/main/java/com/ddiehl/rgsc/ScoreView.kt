@@ -13,4 +13,5 @@ interface ScoreView {
     fun showScoreGrade(gradeString: String)
     fun getTextChangedObservable(): Observable<CharSequence>
     fun showScoreError()
+    fun showDeleteKeyExplanation()
 }
