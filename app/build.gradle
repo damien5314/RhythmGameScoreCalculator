@@ -12,14 +12,14 @@ android {
         versionName '2.0'
         testApplicationId 'com.ddiehl.rgsc.tests'
     }
-//    signingConfigs {
-//        release {
-//            storeFile file(ANDROID_KEYSTORE_PATH)
-//            storePassword ANDROID_KEYSTORE_PWD
-//            keyAlias KEYSTORE_ALIAS
-//            keyPassword KEYSTORE_PWD
-//        }
-//    }
+    signingConfigs {
+        release {
+            storeFile file(KEYSTORE_PATH)
+            storePassword KEYSTORE_PWD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
