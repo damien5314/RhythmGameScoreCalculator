@@ -33,7 +33,6 @@ abstract class ScorePresenter() : ScoreUpdateListener {
     }
 
     private fun updateScore(score: Score, shouldValidate: Boolean) {
-        // Verify input has been submitted
         var invalidInput = false
         if (shouldValidate) {
             if (score.stepTotal == 0) {

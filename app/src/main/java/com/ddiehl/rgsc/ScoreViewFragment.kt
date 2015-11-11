@@ -186,7 +186,7 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
             _deleteTapCounter++
             if (_deleteTapCounter >= 3) {
                 _deleteTapCounter = 0
-                clearForm()
+                _presenter.onScoreClear()
             } else {
                 _handler.postDelayed(_deleteButtonRunnable, CLEAR_ALL_TIME_THRESHOLD_MS)
             }
@@ -276,7 +276,7 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     }
 
     override fun getTextChangedObservable(): Observable<CharSequence> {
-        return Observable.merge(_scoreEntryFields.map { RxTextView.textChanges(it) })
+        return Observable.merge(_scoreEntryFields.map { RxTextView.textChanges(it).skip(1) })
                 .debounce(SCORE_CALC_DELAY, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
     }
 
