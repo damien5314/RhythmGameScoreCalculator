@@ -1,6 +1,8 @@
 package com.ddiehl.rgsc.ddrextreme
 
+import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Switch
 import butterknife.bindView
 import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.ScorePresenter
@@ -28,6 +30,15 @@ class DDRExView : ScoreViewFragment() {
 
     override fun getPresenter(): ScorePresenter {
         return DDRExPresenter(this)
+    }
+
+    override fun addGameSpecificViews() {
+        val parentContainer = _scoreEntryScrollView.getChildAt(0) as ViewGroup
+        val column = parentContainer.getChildAt(1) as ViewGroup // Second column
+        // Add switch to turn on/off marvellous judgment
+        val switch = activity.layoutInflater.inflate(
+                R.layout.calculator_column_item_switch, column, false) as Switch
+        column.addView(switch, 0)
     }
 
     override fun getEmptyScore(): Score {

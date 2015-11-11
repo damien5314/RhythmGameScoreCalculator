@@ -72,8 +72,11 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         val list = ArrayList<EditText>()
         parentContainer.getChildren().map { // Columns
             (it as ViewGroup).getChildren().map { // Element parents
-                val element = (it as ViewGroup)
-                list.add(element.getChildAt(1) as EditText)
+                // Check if this is actually a score entry element (and not a switch)
+                if (it is ViewGroup) {
+                    val child = it.getChildAt(1)
+                    if (child is EditText) list.add(child)
+                }
             }
         }
         return list
@@ -177,7 +180,14 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
                 elementParent.getChildAt(1).nextFocusForwardId = nextFocusId
             }
         }
+
+        addGameSpecificViews()
     }
+
+    /**
+     * Hook to allow game-specific implementations to add views
+     */
+    abstract fun addGameSpecificViews()
 
     private fun setKeypadClickListeners() {
         for (button in _keypadButtons) setDigitClickListener(button)
@@ -235,8 +245,11 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         for (et in _scoreEntryFields) et.onFocusChangeListener = keypadNumberOnFocusChangeListener
         val parentContainer = _scoreEntryScrollView.getChildAt(0) as ViewGroup
         for (column in parentContainer.getChildren()) {
-            val firstElementParent = (column as ViewGroup).getChildAt(0) as ViewGroup
-            firstElementParent.getChildAt(1).onFocusChangeListener = keypadNumberScrollUpOnFocusChangeListener
+            val firstElementParent = (column as ViewGroup).getChildAt(0)
+            if (firstElementParent is ViewGroup) {
+                firstElementParent.getChildAt(1).onFocusChangeListener =
+                        keypadNumberScrollUpOnFocusChangeListener
+            }
         }
     }
 
