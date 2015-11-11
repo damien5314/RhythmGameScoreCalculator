@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:background="@color/primary"
     tools:context="com.ddiehl.rgsc.itg.ScoreViewFragment">
 
@@ -13,8 +13,8 @@
         android:layout_height="0dp"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
         android:elevation="@dimen/score_section_elevation"

@@ -1,66 +1,89 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/keypad_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout style="@style/KeypadRow">
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_1"
-                android:tag="1"
-                android:text="1"/>
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_2"
-                android:tag="2"
-                android:text="2"/>
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_3"
-                android:tag="3"
-                android:text="3"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_1"
+            android:tag="1"
+            android:text="@string/keypad_1"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_2"
+            android:tag="2"
+            android:text="@string/keypad_2"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_3"
+            android:tag="3"
+            android:text="@string/keypad_3"/>
+
     </LinearLayout>
 
     <LinearLayout style="@style/KeypadRow">
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_4"
-                android:tag="4"
-                android:text="4"/>
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_5"
-                android:tag="5"
-                android:text="5"/>
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_6"
-                android:tag="6"
-                android:text="6"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_4"
+            android:tag="4"
+            android:text="@string/keypad_4"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_5"
+            android:tag="5"
+            android:text="@string/keypad_5"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_6"
+            android:tag="6"
+            android:text="@string/keypad_6"/>
+
     </LinearLayout>
 
     <LinearLayout style="@style/KeypadRow">
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_7"
-                android:tag="7"
-                android:text="7"/>
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_8"
-                android:tag="8"
-                android:text="8"/>
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_9"
-                android:tag="9"
-                android:text="9"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_7"
+            android:tag="7"
+            android:text="@string/keypad_7"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_8"
+            android:tag="8"
+            android:text="@string/keypad_8"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_9"
+            android:tag="9"
+            android:text="@string/keypad_9"/>
+
     </LinearLayout>
 
     <LinearLayout style="@style/KeypadRow">
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_delete"
-                android:text="@string/keypad_delete"/>
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_0"
-                android:tag="0"
-                android:text="0"/>
-        <Button style="@style/KeypadButton"
-                android:id="@+id/keypad_next"
-                android:text="@string/keypad_next_field"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_delete"
+            android:text="@string/keypad_delete"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_0"
+            android:tag="0"
+            android:text="@string/keypad_0"/>
+
+        <Button
+            style="@style/KeypadButton"
+            android:id="@+id/keypad_next"
+            android:text="@string/keypad_next_field"/>
+
     </LinearLayout>
 
-</LinearLayout>
+</merge>
