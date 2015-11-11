@@ -36,7 +36,8 @@ abstract class ScorePresenter() : ScoreUpdateListener {
         var invalidInput = false
         if (shouldValidate) {
             if (score.stepTotal == 0) {
-                _view.showNoStepsError()
+                // Shouldn't show no steps error when score is auto-calculated
+//                _view.showNoStepsError()
                 invalidInput = true
             } else if (!isScoreValid(score)) {
                 invalidInput = true

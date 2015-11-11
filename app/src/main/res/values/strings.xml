@@ -27,6 +27,8 @@
     <string name="action_settings">Settings</string>
     <string name="earned_score_error">-</string>
     <string name="potential_score_error">-</string>
+    <string name="score_percent_error">&#8212;.&#8212;%</string>
+    <string name="score_grade_error"/>
     <string name="button_clear_form">clear score</string>
     <string name="score_value_formatter">%1$s / %2$s (-%3$s)</string>
     <string name="keypad_next_field">Next</string>

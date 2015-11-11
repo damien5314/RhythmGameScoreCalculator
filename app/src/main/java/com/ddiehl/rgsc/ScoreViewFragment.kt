@@ -272,9 +272,9 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
 
     override fun showScoreError() {
         val scoreValueFormatter = getString(R.string.score_value_formatter)
-        _scoreValueArea.text = scoreValueFormatter.format(0, 0, 0)
-        _scorePercent.text = ""
-        _scoreGrade.text = ""
+        _scoreValueArea.text = scoreValueFormatter.format("-", "-", "-")
+        _scorePercent.text = getString(R.string.score_percent_error)
+        _scoreGrade.text = getString(R.string.score_grade_error)
     }
 
     override fun getTextChangedObservable(): Observable<CharSequence> {
