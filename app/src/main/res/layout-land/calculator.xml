@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:background="@android:color/white"
+    android:baselineAligned="false"
     tools:context="com.ddiehl.rgsc.itg.ScoreViewFragment">
 
     <!-- Dummy view to prevent other views from requesting focus -->
