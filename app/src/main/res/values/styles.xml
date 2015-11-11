@@ -1,5 +1,4 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- to remove the default action -->
@@ -43,7 +42,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:background">@null</item>
+        <item name="android:background">@drawable/calculator_button_background</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 

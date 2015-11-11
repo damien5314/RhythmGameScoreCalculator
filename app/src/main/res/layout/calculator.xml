@@ -9,7 +9,8 @@
     <!-- Dummy view to prevent other views from requesting focus -->
     <EditText
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        tools:ignore="TextFields"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -95,7 +96,6 @@
     </LinearLayout>
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/keypad_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

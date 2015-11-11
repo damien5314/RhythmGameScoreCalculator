@@ -284,7 +284,7 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
 
     private fun subscribeToTextChangedEvents() {
         _onTextChangedEventSubscription =
-                _onTextChangedEvent.subscribe({ _presenter.onScoreUpdated() }, { }, { })
+                _onTextChangedEvent.skip(1).subscribe({ _presenter.onScoreUpdated() }, { }, { })
     }
 
     private fun unsubscribeFromTextChangedEvents() {
