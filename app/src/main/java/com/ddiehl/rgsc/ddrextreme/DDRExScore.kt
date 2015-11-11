@@ -31,7 +31,10 @@ public class DDRExScore() : Score() {
         get() {
             val scorePercent = ((earned.toDouble() / potential.toDouble()) * 10000).toInt() / 100.00
             if (scorePercent == 100.0) return "AAA"
-            else if (scorePercent > 99.0) return "***"
+            else if (scorePercent >= 93.0) return "AA"
+            else if (scorePercent >= 80.0) return "A"
+            else if (scorePercent >= 65.0) return "B"
+            else if (scorePercent >= 45.0) return "C"
             else return "D"
         }
 }
