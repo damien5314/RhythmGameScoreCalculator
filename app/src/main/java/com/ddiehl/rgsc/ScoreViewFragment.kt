@@ -106,7 +106,7 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         setOnFocusListeners()
         setKeypadClickListeners()
         _calculatedScoreArea.setOnClickListener {
-            _currentFocusedField?.clearFocus()
+            if (shouldHideKeyboard()) _currentFocusedField?.clearFocus()
         }
     }
 
