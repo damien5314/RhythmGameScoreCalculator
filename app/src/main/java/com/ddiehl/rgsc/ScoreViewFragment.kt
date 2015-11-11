@@ -278,13 +278,13 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     }
 
     override fun getTextChangedObservable(): Observable<CharSequence> {
-        return Observable.merge(_scoreEntryFields.map { RxTextView.textChanges(it).skip(1) })
+        return Observable.merge(_scoreEntryFields.map { RxTextView.textChanges(it) })
                 .debounce(SCORE_CALC_DELAY, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
     }
 
     private fun subscribeToTextChangedEvents() {
         _onTextChangedEventSubscription =
-                _onTextChangedEvent.skip(1).subscribe({ _presenter.onScoreUpdated() }, { }, { })
+                _onTextChangedEvent.subscribe({ _presenter.onScoreUpdated() }, { }, { })
     }
 
     private fun unsubscribeFromTextChangedEvents() {
