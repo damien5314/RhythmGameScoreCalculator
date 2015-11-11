@@ -12,10 +12,7 @@
         android:left="@dimen/score_values_background_padding"/>
 
     <corners
-        android:topLeftRadius="@dimen/score_values_bg_corners"
-        android:topRightRadius="@dimen/score_values_bg_corners"
-        android:bottomLeftRadius="@dimen/score_values_bg_corners"
-        android:bottomRightRadius="@dimen/score_values_bg_corners"/>
+        android:radius="@dimen/score_values_bg_corners" />
 
     <solid
         android:color="@android:color/transparent"/>
