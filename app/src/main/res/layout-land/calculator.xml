@@ -4,21 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@color/primary"
+    android:background="@android:color/white"
     tools:context="com.ddiehl.rgsc.itg.ScoreViewFragment">
 
     <!-- Dummy view to prevent other views from requesting focus -->
-    <EditText
+    <!-- Don't need this in landscape-->
+    <!--<EditText
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"/>-->
 
+    <!-- No elevation in landscape -->
+    <!--android:elevation="@dimen/score_section_elevation"-->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:elevation="@dimen/score_section_elevation"
-        android:background="@android:color/white">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,12 +45,27 @@
 
             </ScrollView>
 
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
             <LinearLayout
                 android:id="@+id/calculated_score"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:background="@drawable/score_values_bg"
-                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -62,7 +78,7 @@
                     tools:text="573 / 1337 (-764)"/>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -93,16 +109,16 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/keypad_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/primary">
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/keypad_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+            <include layout="@layout/calculator_keypad_layout" />
 
-        <include layout="@layout/calculator_keypad_layout" />
+        </LinearLayout>
 
     </LinearLayout>
 
