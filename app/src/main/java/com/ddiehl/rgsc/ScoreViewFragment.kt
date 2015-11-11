@@ -1,5 +1,6 @@
 package com.ddiehl.rgsc
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.Snackbar
@@ -41,7 +42,6 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     protected val _scorePercent: TextView by bindView(R.id.score_percent)
     protected val _scoreGrade: TextView by bindView(R.id.score_grade)
 
-    protected val _keypadLayout: ViewGroup by bindView(R.id.keypad_layout)
     protected val _deleteButton: Button by bindView(R.id.keypad_delete)
     protected val _nextButton: Button by bindView(R.id.keypad_next)
     protected val _keypad: ViewGroup by bindView(R.id.keypad_layout)
@@ -151,7 +151,7 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         _scoreEntryFields = getScoreEntryFields()
         _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
                 _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
-        _keypadLayout.visibility = View.GONE
+        if (shouldHideKeyboard()) _keypad.visibility = View.GONE
         _onTextChangedEvent = getTextChangedObservable()
         disableEditText()
         setOnFocusListeners()
@@ -215,7 +215,7 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     }
 
     private fun showKeypadListener(view: View, visible: Boolean) {
-        _keypad.visibility = if (visible) View.VISIBLE else View.GONE
+        _keypad.visibility = if (!visible && shouldHideKeyboard()) View.GONE else View.VISIBLE
         _currentFocusedField = if (visible) view as EditText else null
     }
 
@@ -287,5 +287,9 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
 
     private fun unsubscribeFromTextChangedEvents() {
         _onTextChangedEventSubscription?.unsubscribe()
+    }
+
+    private fun shouldHideKeyboard(): Boolean {
+        return resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
     }
 }
