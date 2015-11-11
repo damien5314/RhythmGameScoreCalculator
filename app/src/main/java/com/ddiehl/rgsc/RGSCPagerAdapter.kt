@@ -11,7 +11,7 @@ public class RGSCPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         const val NUM_CALCULATORS = 1 // Temporarily until we implement DDR
     }
 
-    private val mContext: Context = ContextProvider.get()
+    private val _context: Context = ContextProvider.get()
 
     override fun getCount(): Int {
         return RGSCPagerAdapter.NUM_CALCULATORS
@@ -27,8 +27,8 @@ public class RGSCPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getPageTitle(position: Int): CharSequence? {
         when (position) {
-            0 -> return mContext.getString(R.string.tab_itg)
-            1 -> return mContext.getString(R.string.tab_ddrex)
+            0 -> return _context.getString(R.string.tab_itg)
+            1 -> return _context.getString(R.string.tab_ddrex)
             else -> return null
         }
     }
