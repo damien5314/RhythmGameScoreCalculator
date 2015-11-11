@@ -2,6 +2,7 @@ package com.ddiehl.rgsc.data
 
 import android.content.Context
 import com.ddiehl.rgsc.ContextProvider
+import com.ddiehl.rgsc.ddrextreme.DDRExScore
 import com.ddiehl.rgsc.itg.ITGScore
 
 class AndroidStorage(private val _prefKey: String) : Storage {
@@ -19,6 +20,7 @@ class AndroidStorage(private val _prefKey: String) : Storage {
         val sp = _context.getSharedPreferences(_prefKey, Context.MODE_PRIVATE)
         val score = when (_prefKey) {
             Storage.PREFS_ITG -> ITGScore()
+            Storage.PREFS_DDREX -> DDRExScore()
             else -> ITGScore()
         }
         for (element in score.elements) {

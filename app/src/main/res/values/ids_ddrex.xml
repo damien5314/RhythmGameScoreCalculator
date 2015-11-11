@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="ddrex_marvellouses" />
+    <item type="id" name="ddrex_perfects" />
+    <item type="id" name="ddrex_greats" />
+    <item type="id" name="ddrex_goods" />
+    <item type="id" name="ddrex_boos" />
+    <item type="id" name="ddrex_misses" />
+    <item type="id" name="ddrex_holds" />
+    <item type="id" name="ddrex_total_holds" />
+</resources>

@@ -4,17 +4,30 @@
     <string name="tab_itg">In the Groove</string>
     <string name="tab_ddrex">DDR Extreme</string>
     <string name="app_name">RGSC</string>
-    <string name="fantastics">Fantastics</string>
-    <string name="excellents">Excellents</string>
-    <string name="greats">Greats</string>
-    <string name="decents">Decents</string>
-    <string name="wayoffs">Way Offs</string>
-    <string name="misses">Misses</string>
-    <string name="holds">Holds</string>
-    <string name="total_holds">Total Holds</string>
-    <string name="mines">Mines</string>
-    <string name="rolls">Rolls</string>
-    <string name="total_rolls">Total Rolls</string>
+
+    <!-- In the Groove -->
+    <string name="itg_fantastics">Fantastics</string>
+    <string name="itg_excellents">Excellents</string>
+    <string name="itg_greats">Greats</string>
+    <string name="itg_decents">Decents</string>
+    <string name="itg_wayoffs">Way Offs</string>
+    <string name="itg_misses">Misses</string>
+    <string name="itg_holds">Holds</string>
+    <string name="itg_total_holds">Total Holds</string>
+    <string name="itg_mines">Mines</string>
+    <string name="itg_rolls">Rolls</string>
+    <string name="itg_total_rolls">Total Rolls</string>
+
+    <!-- DDR Extreme -->
+    <string name="ddrex_marvellouses">Marvellouses</string>
+    <string name="ddrex_perfects">Perfects</string>
+    <string name="ddrex_greats">Greats</string>
+    <string name="ddrex_goods">Goods</string>
+    <string name="ddrex_boos">Boos</string>
+    <string name="ddrex_misses">Misses</string>
+    <string name="ddrex_holds">Holds</string>
+    <string name="ddrex_total_holds">Total Holds</string>
+    
     <string name="score_label_earned_default">Earned</string>
     <string name="score_value_earned_default">0</string>
     <string name="score_label_potential_default">Potential</string>

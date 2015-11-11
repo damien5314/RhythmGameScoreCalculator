@@ -8,17 +8,17 @@ import com.ddiehl.rgsc.ScoreViewFragment
 import com.ddiehl.rgsc.data.Score
 
 class ITGView : ScoreViewFragment() {
-    private val _fantastics: EditText by bindView(R.id.fantastics)
-    private val _excellents: EditText by bindView(R.id.excellents)
-    private val _greats: EditText by bindView(R.id.greats)
-    private val _decents: EditText by bindView(R.id.decents)
-    private val _wayoffs: EditText by bindView(R.id.wayoffs)
-    private val _misses: EditText by bindView(R.id.misses)
-    private val _holds: EditText by bindView(R.id.holds)
-    private val _totalHolds: EditText by bindView(R.id.total_holds)
-    private val _mines: EditText by bindView(R.id.mines)
-    private val _rolls: EditText by bindView(R.id.rolls)
-    private val _totalRolls: EditText by bindView(R.id.total_rolls)
+    private val _fantastics: EditText by bindView(R.id.itg_fantastics)
+    private val _excellents: EditText by bindView(R.id.itg_excellents)
+    private val _greats: EditText by bindView(R.id.itg_greats)
+    private val _decents: EditText by bindView(R.id.itg_decents)
+    private val _wayoffs: EditText by bindView(R.id.itg_wayoffs)
+    private val _misses: EditText by bindView(R.id.itg_misses)
+    private val _holds: EditText by bindView(R.id.itg_holds)
+    private val _totalHolds: EditText by bindView(R.id.itg_total_holds)
+    private val _mines: EditText by bindView(R.id.itg_mines)
+    private val _rolls: EditText by bindView(R.id.itg_rolls)
+    private val _totalRolls: EditText by bindView(R.id.itg_total_rolls)
 
     var fantastics: Int = 0; get() = getInputFrom(_fantastics)
     var excellents: Int = 0; get() = getInputFrom(_excellents)

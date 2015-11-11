@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="fantastics" />
-    <item type="id" name="excellents" />
-    <item type="id" name="greats" />
-    <item type="id" name="decents" />
-    <item type="id" name="wayoffs" />
-    <item type="id" name="misses" />
-    <item type="id" name="holds" />
-    <item type="id" name="total_holds" />
-    <item type="id" name="mines" />
-    <item type="id" name="rolls" />
-    <item type="id" name="total_rolls" />
+    <item type="id" name="itg_fantastics" />
+    <item type="id" name="itg_excellents" />
+    <item type="id" name="itg_greats" />
+    <item type="id" name="itg_decents" />
+    <item type="id" name="itg_wayoffs" />
+    <item type="id" name="itg_misses" />
+    <item type="id" name="itg_holds" />
+    <item type="id" name="itg_total_holds" />
+    <item type="id" name="itg_mines" />
+    <item type="id" name="itg_rolls" />
+    <item type="id" name="itg_total_rolls" />
 </resources>
