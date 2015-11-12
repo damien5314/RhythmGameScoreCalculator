@@ -5,7 +5,7 @@ import android.support.annotation.StringRes
 
 open class ScoreElement(
         @IdRes val id: Int, @StringRes val labelResId: Int, val column: Int,
-        val weight: Int, val bestWeight: Int, val isStep: Boolean = true) {
+        val weight: Int, var bestWeight: Int, val isStep: Boolean = true) {
 
     var count: Int = 0
 

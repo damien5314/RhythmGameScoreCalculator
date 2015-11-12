@@ -38,10 +38,6 @@ class ITGView : ScoreViewFragment() {
         return ITGPresenter(this)
     }
 
-    override fun getEmptyScore(): Score {
-        return ITGScore()
-    }
-
     override fun displayInput(score: Score) {
         _fantastics.setText(stripZero(score.elements[ITGScore.FANTASTICS]?.count))
         _excellents.setText(stripZero(score.elements[ITGScore.EXCELLENTS]?.count))

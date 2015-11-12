@@ -2,12 +2,13 @@ package com.ddiehl.rgsc
 
 import com.ddiehl.rgsc.data.Score
 import com.ddiehl.rgsc.data.Storage
-import com.ddiehl.rgsc.itg.ITGScore
 
 abstract class ScorePresenter() : ScoreUpdateListener {
     val _logger = RGSC.getLogger()
     abstract val _view: ScoreView
     abstract val _storage: Storage
+
+    abstract protected fun getEmptyScore(): Score
 
     abstract fun isScoreValid(score: Score): Boolean
 
@@ -29,10 +30,10 @@ abstract class ScorePresenter() : ScoreUpdateListener {
 
     override fun onScoreClear() {
         _view.clearForm()
-        updateScore(ITGScore(), false)
+        updateScore(getEmptyScore(), false)
     }
 
-    private fun updateScore(score: Score, shouldValidate: Boolean) {
+    protected open fun updateScore(score: Score, shouldValidate: Boolean) {
         var invalidInput = false
         if (shouldValidate) {
             if (score.stepTotal == 0) {

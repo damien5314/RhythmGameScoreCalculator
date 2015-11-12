@@ -7,10 +7,10 @@ import com.ddiehl.rgsc.data.ScoreElement
 public class DDRExScore() : Score() {
     companion object {
         const val MARVELLOUSES = "marvellouses"
-        const val PERFECTS = "excellents"
+        const val PERFECTS = "perfects"
         const val GREATS = "greats"
-        const val GOODS = "decents"
-        const val BOOS = "way offs"
+        const val GOODS = "goods"
+        const val BOOS = "boos"
         const val MISSES = "misses"
         const val HOLDS = "holds"
         const val TOTAL_HOLDS = "total holds"

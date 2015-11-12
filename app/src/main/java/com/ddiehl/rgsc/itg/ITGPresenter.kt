@@ -8,6 +8,10 @@ import com.ddiehl.rgsc.data.Storage
 class ITGPresenter(override val _view: ITGView) : ScorePresenter() {
     override val _storage: Storage = AndroidStorage(Storage.PREFS_ITG)
 
+    override fun getEmptyScore(): Score {
+        return ITGScore()
+    }
+
     override fun getInput(): ITGScore {
         val score = ITGScore()
         score.elements[ITGScore.FANTASTICS]!!.count = _view.fantastics

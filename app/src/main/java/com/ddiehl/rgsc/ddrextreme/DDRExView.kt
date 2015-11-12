@@ -1,6 +1,10 @@
 package com.ddiehl.rgsc.ddrextreme
 
+import android.os.Bundle
+import android.text.InputType
+import android.view.View
 import android.widget.EditText
+import android.widget.Switch
 import butterknife.bindView
 import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.ScorePresenter
@@ -16,6 +20,7 @@ class DDRExView : ScoreViewFragment() {
     private val _misses: EditText by bindView(R.id.ddrex_misses)
     private val _holds: EditText by bindView(R.id.ddrex_holds)
     private val _totalHolds: EditText by bindView(R.id.ddrex_total_holds)
+    private val _marvellousSwitch: Switch by bindView(R.id.ddrex_marvellous_switch)
 
     var marvellouses: Int = 0; get() = getInputFrom(_marvellouses)
     var perfects: Int = 0; get() = getInputFrom(_perfects)
@@ -25,6 +30,7 @@ class DDRExView : ScoreViewFragment() {
     var misses: Int = 0; get() = getInputFrom(_misses)
     var holds: Int = 0; get() = getInputFrom(_holds)
     var totalHolds: Int = 0; get() = getInputFrom(_totalHolds)
+    var marvellousesEnabled: Boolean = false
 
     override val calculatorLayoutResId: Int = R.layout.calculator_ddrex
 
@@ -32,8 +38,22 @@ class DDRExView : ScoreViewFragment() {
         return DDRExPresenter(this)
     }
 
-    override fun getEmptyScore(): Score {
-        return DDRExScore()
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _marvellousSwitch.setOnCheckedChangeListener({ compoundButton, checked ->
+            marvellousesEnabled = checked
+            _marvellouses.isFocusable = checked
+            _marvellouses.isFocusableInTouchMode = checked
+            if (checked) {
+                // Enable marvelous field
+                _marvellouses.inputType = InputType.TYPE_CLASS_NUMBER
+            } else {
+                // Disable marvelous field and clear
+                _marvellouses.setText("")
+                _marvellouses.inputType = InputType.TYPE_NULL
+            }
+            _presenter.onScoreUpdated()
+        })
     }
 
     override fun displayInput(score: Score) {

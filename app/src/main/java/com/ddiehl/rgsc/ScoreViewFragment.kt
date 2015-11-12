@@ -13,7 +13,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import butterknife.bindView
-import com.ddiehl.rgsc.data.Score
 import com.ddiehl.rgsc.data.Storage
 import com.ddiehl.rgsc.utils.getChildren
 import com.jakewharton.rxbinding.widget.RxTextView
@@ -69,8 +68,6 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     abstract protected fun getPresenter(): ScorePresenter
 
     override abstract fun clearErrors()
-
-    abstract protected fun getEmptyScore(): Score
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
