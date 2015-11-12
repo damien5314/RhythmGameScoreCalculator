@@ -27,6 +27,18 @@ public class DDRExScore() : Score() {
             Pair(TOTAL_HOLDS, ScoreElement(R.id.ddrex_total_holds, R.string.ddrex_total_holds, 1, 0, 5))
     )
 
+    var marvelousEnabled = false
+        set(value) {
+            val bestWeight =
+                    if (value) elements[MARVELLOUSES]!!.weight
+                    else elements[PERFECTS]!!.weight
+            elements[PERFECTS]!!.bestWeight = bestWeight
+            elements[GREATS]!!.bestWeight = bestWeight
+            elements[GOODS]!!.bestWeight = bestWeight
+            elements[BOOS]!!.bestWeight = bestWeight
+            elements[MISSES]!!.bestWeight = bestWeight
+        }
+
     override val grade: String
         get() {
             val scorePercent = ((earned.toDouble() / potential.toDouble()) * 10000).toInt() / 100.00

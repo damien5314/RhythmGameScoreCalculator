@@ -54,6 +54,10 @@ class DDRExView : ScoreViewFragment() {
             }
             _presenter.onScoreUpdated()
         })
+        // Set initial state for switch
+        _marvellouses.setText("")
+        _marvellouses.inputType = InputType.TYPE_NULL
+        _marvellousSwitch.isChecked = false
     }
 
     override fun displayInput(score: Score) {

@@ -22,20 +22,8 @@ class DDRExPresenter(override val _view: DDRExView) : ScorePresenter() {
         score.elements[DDRExScore.MISSES]!!.count = _view.misses
         score.elements[DDRExScore.HOLDS]!!.count = _view.holds
         score.elements[DDRExScore.TOTAL_HOLDS]!!.count = _view.totalHolds
+        score.marvelousEnabled = _view.marvellousesEnabled
         return score
-    }
-
-    override fun updateScore(score: Score, shouldValidate: Boolean) {
-        val bestWeight =
-                if (_view.marvellousesEnabled) score.elements[DDRExScore.MARVELLOUSES]!!.weight
-                else score.elements[DDRExScore.PERFECTS]!!.weight
-        score.elements[DDRExScore.MARVELLOUSES]!!.bestWeight = bestWeight
-        score.elements[DDRExScore.PERFECTS]!!.bestWeight = bestWeight
-        score.elements[DDRExScore.GREATS]!!.bestWeight = bestWeight
-        score.elements[DDRExScore.GOODS]!!.bestWeight = bestWeight
-        score.elements[DDRExScore.BOOS]!!.bestWeight = bestWeight
-        score.elements[DDRExScore.MISSES]!!.bestWeight = bestWeight
-        super.updateScore(score, shouldValidate)
     }
 
     override fun isScoreValid(score: Score): Boolean {
