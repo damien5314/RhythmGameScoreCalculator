@@ -4,4 +4,161 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrex_marvellouses"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrex_marvellouses"
+                android:nextFocusDown="@id/ddrex_perfects"
+                android:nextFocusForward="@id/ddrex_perfects"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Switch
+                android:id="@+id/ddrex_marvellous_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/ddrex_marvellous_switch_label_on"
+                android:textColor="@color/primary_text"/>
+
+        </FrameLayout>
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrex_perfects"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrex_perfects"
+                android:nextFocusDown="@id/ddrex_greats"
+                android:nextFocusForward="@id/ddrex_greats"/>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrex_holds"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrex_holds"
+                android:nextFocusDown="@id/ddrex_total_holds"
+                android:nextFocusForward="@id/ddrex_total_holds" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrex_greats"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrex_greats"
+                android:nextFocusDown="@id/ddrex_goods"
+                android:nextFocusForward="@id/ddrex_goods" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrex_total_holds"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrex_total_holds"
+                android:nextFocusDown="@id/ddrex_marvellouses"
+                android:nextFocusForward="@id/ddrex_marvellouses" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrex_goods"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrex_goods"
+                android:nextFocusDown="@id/ddrex_boos"
+                android:nextFocusForward="@id/ddrex_boos" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem" />
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrex_boos"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrex_boos"
+                android:nextFocusDown="@id/ddrex_misses"
+                android:nextFocusForward="@id/ddrex_misses" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem" />
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrex_misses"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrex_misses"
+                android:nextFocusDown="@id/ddrex_holds"
+                android:nextFocusForward="@id/ddrex_holds" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem" />
+
+    </TableRow>
+
 </TableLayout>
