@@ -109,12 +109,11 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
 
     private fun initializeView() {
         _scoreEntryFields = getScoreEntryFields()
-        _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
-                _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
         if (shouldHideKeyboard()) _keypad.visibility = View.GONE
         _onTextChangedEvent = getTextChangedObservable()
-//        disableEditText()
         setOnFocusListeners()
+        _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
+                _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
         setKeypadClickListeners()
         _calculatedScoreArea.setOnClickListener {
             if (shouldHideKeyboard()) _currentFocusedField?.clearFocus()
@@ -166,13 +165,6 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
             _currentFocusedField!!.setSelection(_currentFocusedField?.text?.length ?: 0);
         }
     }
-
-//    private fun disableEditText() {
-//        for (t in _scoreEntryFields) {
-//            t.setRawInputType(InputType.TYPE_CLASS_NUMBER)
-//            t.setTextIsSelectable(true)
-//        }
-//    }
 
     private fun showKeypad(visible: Boolean) {
         _keypad.visibility = if (!visible && shouldHideKeyboard()) View.GONE else View.VISIBLE
