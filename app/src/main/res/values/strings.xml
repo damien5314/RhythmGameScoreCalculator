@@ -14,7 +14,7 @@
     <string name="itg_misses">Misses</string>
     <string name="itg_holds">Holds</string>
     <string name="itg_total_holds">Total Holds</string>
-    <string name="itg_mines">Mines</string>
+    <string name="itg_mines">Mines Hit</string>
     <string name="itg_rolls">Rolls</string>
     <string name="itg_total_rolls">Total Rolls</string>
 
