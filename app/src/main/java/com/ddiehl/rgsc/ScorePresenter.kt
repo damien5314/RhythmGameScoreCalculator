@@ -4,15 +4,13 @@ import com.ddiehl.rgsc.data.Score
 import com.ddiehl.rgsc.data.Storage
 
 abstract class ScorePresenter() : ScoreUpdateListener {
-    val _logger = RGSC.getLogger()
     abstract val _view: ScoreView
     abstract val _storage: Storage
-
-    abstract protected fun getEmptyScore(): Score
+    protected val _logger = RGSC.getLogger()
 
     abstract fun isScoreValid(score: Score): Boolean
-
     abstract fun getInput(): Score
+    protected abstract fun getEmptyScore(): Score
 
     open fun onStart() {
         val score: Score = _storage.getSavedScore()
