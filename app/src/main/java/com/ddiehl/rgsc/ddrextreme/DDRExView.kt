@@ -49,10 +49,16 @@ class DDRExView : ScoreViewFragment() {
             if (checked) {
                 // Enable marvelous field
                 _marvellouses.inputType = InputType.TYPE_CLASS_NUMBER
+                // Set next focus target for total holds field
+                _totalHolds.nextFocusDownId = _marvellouses.id
+                _totalHolds.nextFocusForwardId = _marvellouses.id
             } else {
                 // Disable marvelous field and clear
                 _marvellouses.setText("")
                 _marvellouses.inputType = InputType.TYPE_NULL
+                // Set next focus target for total holds field
+                _totalHolds.nextFocusDownId = _perfects.id
+                _totalHolds.nextFocusForwardId = _perfects.id
             }
             _presenter.onScoreUpdated()
         })
