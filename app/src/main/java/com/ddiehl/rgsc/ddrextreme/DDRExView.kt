@@ -28,6 +28,8 @@ class DDRExView : ScoreViewFragment() {
     var holds: Int = 0; get() = getInputFrom(_holds)
     var totalHolds: Int = 0; get() = getInputFrom(_totalHolds)
 
+    override val calculatorLayoutResId: Int = R.layout.calculator_ddrex
+
     override fun getPresenter(): ScorePresenter {
         return DDRExPresenter(this)
     }

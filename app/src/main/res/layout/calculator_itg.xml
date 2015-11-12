@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_fantastics"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_fantastics"
+                android:nextFocusDown="@id/itg_excellents"
+                android:nextFocusForward="@id/itg_excellents"/>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_holds"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_holds"
+                android:nextFocusDown="@id/itg_total_holds"
+                android:nextFocusForward="@id/itg_total_holds" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_excellents"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_excellents"
+                android:nextFocusDown="@id/itg_greats"
+                android:nextFocusForward="@id/itg_greats"/>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_total_holds"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_total_holds"
+                android:nextFocusDown="@id/itg_mines"
+                android:nextFocusForward="@id/itg_mines" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_greats"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_greats"
+                android:nextFocusDown="@id/itg_decents"
+                android:nextFocusForward="@id/itg_decents" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_mines"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_mines"
+                android:nextFocusDown="@id/itg_rolls"
+                android:nextFocusForward="@id/itg_rolls" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_decents"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_decents"
+                android:nextFocusDown="@id/itg_wayoffs"
+                android:nextFocusForward="@id/itg_wayoffs" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_rolls"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_rolls"
+                android:nextFocusDown="@id/itg_total_rolls"
+                android:nextFocusForward="@id/itg_total_rolls" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_wayoffs"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_wayoffs"
+                android:nextFocusDown="@id/itg_misses"
+                android:nextFocusForward="@id/itg_misses" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_total_rolls"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_total_rolls"
+                android:nextFocusDown="@id/itg_fantastics"
+                android:nextFocusForward="@id/itg_fantastics" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/itg_misses"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/itg_misses"
+                android:nextFocusDown="@id/itg_holds"
+                android:nextFocusForward="@id/itg_holds" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem" />
+
+    </TableRow>
+
+</TableLayout>

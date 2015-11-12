@@ -32,6 +32,8 @@ class ITGView : ScoreViewFragment() {
     var rolls: Int = 0; get() = getInputFrom(_rolls)
     var totalRolls: Int = 0; get() = getInputFrom(_totalRolls)
 
+    override protected val calculatorLayoutResId: Int = R.layout.calculator_itg
+
     override fun getPresenter(): ScorePresenter {
         return ITGPresenter(this)
     }

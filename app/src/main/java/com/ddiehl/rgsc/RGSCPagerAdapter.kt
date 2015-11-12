@@ -9,7 +9,7 @@ import com.ddiehl.rgsc.itg.ITGView
 
 public class RGSCPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     object RGSCPagerAdapter {
-        const val NUM_CALCULATORS = 2
+        const val NUM_CALCULATORS = 1
     }
 
     private val _context: Context = ContextProvider.get()
