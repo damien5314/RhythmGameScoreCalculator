@@ -1,6 +1,5 @@
 package com.ddiehl.rgsc.ddrextreme
 
-import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.data.Score
 import com.ddiehl.rgsc.data.ScoreElement
 
@@ -17,14 +16,14 @@ public class DDRExScore() : Score() {
     }
 
     override val elements: Map<String, ScoreElement> = mapOf(
-            Pair(MARVELOUSES, ScoreElement(R.id.ddrex_marvelouses, R.string.ddrex_marvelouses, 0, 3, 3)),
-            Pair(PERFECTS, ScoreElement(R.id.ddrex_perfects, R.string.ddrex_perfects, 0, 2, 3)),
-            Pair(GREATS, ScoreElement(R.id.ddrex_greats, R.string.ddrex_greats, 0, 1, 3)),
-            Pair(GOODS, ScoreElement(R.id.ddrex_goods, R.string.ddrex_goods, 0, 0, 3)),
-            Pair(BOOS, ScoreElement(R.id.ddrex_boos, R.string.ddrex_boos, 0, -4, 3)),
-            Pair(MISSES, ScoreElement(R.id.ddrex_misses, R.string.ddrex_misses, 0, -8, 3)),
-            Pair(HOLDS, ScoreElement(R.id.ddrex_holds, R.string.ddrex_holds, 1, 5, 0)),
-            Pair(TOTAL_HOLDS, ScoreElement(R.id.ddrex_total_holds, R.string.ddrex_total_holds, 1, 0, 5))
+            Pair(MARVELOUSES, ScoreElement(3, 3)),
+            Pair(PERFECTS, ScoreElement(2, 3)),
+            Pair(GREATS, ScoreElement(1, 3)),
+            Pair(GOODS, ScoreElement(0, 3)),
+            Pair(BOOS, ScoreElement(-4, 3)),
+            Pair(MISSES, ScoreElement(-8, 3)),
+            Pair(HOLDS, ScoreElement(5, 0, false)),
+            Pair(TOTAL_HOLDS, ScoreElement(0, 5, false))
     )
 
     var marvelousEnabled = false

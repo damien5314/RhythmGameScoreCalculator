@@ -1,6 +1,5 @@
 package com.ddiehl.rgsc.itg
 
-import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.data.Score
 import com.ddiehl.rgsc.data.ScoreElement
 
@@ -20,17 +19,17 @@ public class ITGScore() : Score() {
     }
 
     override val elements: Map<String, ScoreElement> = mapOf(
-            Pair(FANTASTICS, ScoreElement(R.id.itg_fantastics, R.string.itg_fantastics, 0, 5, 5)),
-            Pair(EXCELLENTS, ScoreElement(R.id.itg_excellents, R.string.itg_excellents, 0, 4, 5)),
-            Pair(GREATS, ScoreElement(R.id.itg_greats, R.string.itg_greats, 0, 2, 5)),
-            Pair(DECENTS, ScoreElement(R.id.itg_decents, R.string.itg_decents, 0, 0, 5)),
-            Pair(WAY_OFFS, ScoreElement(R.id.itg_wayoffs, R.string.itg_wayoffs, 0, -6, 5)),
-            Pair(MISSES, ScoreElement(R.id.itg_misses, R.string.itg_misses, 0, -12, 5)),
-            Pair(HOLDS, ScoreElement(R.id.itg_holds, R.string.itg_holds, 1, 5, 0)),
-            Pair(TOTAL_HOLDS, ScoreElement(R.id.itg_total_holds, R.string.itg_total_holds, 1, 0, 5)),
-            Pair(MINES, ScoreElement(R.id.itg_mines, R.string.itg_mines, 1, -6, 0)),
-            Pair(ROLLS, ScoreElement(R.id.itg_rolls, R.string.itg_rolls, 1, 5, 0)),
-            Pair(TOTAL_ROLLS, ScoreElement(R.id.itg_total_rolls, R.string.itg_total_rolls, 1, 0, 5))
+            Pair(FANTASTICS, ScoreElement(5, 5)),
+            Pair(EXCELLENTS, ScoreElement(4, 5)),
+            Pair(GREATS, ScoreElement(2, 5)),
+            Pair(DECENTS, ScoreElement(0, 5)),
+            Pair(WAY_OFFS, ScoreElement(-6, 5)),
+            Pair(MISSES, ScoreElement(-12, 5)),
+            Pair(HOLDS, ScoreElement(5, 0, false)),
+            Pair(TOTAL_HOLDS, ScoreElement(0, 5, false)),
+            Pair(MINES, ScoreElement(-6, 0, false)),
+            Pair(ROLLS, ScoreElement(5, 0, false)),
+            Pair(TOTAL_ROLLS, ScoreElement(0, 5, false))
     )
 
     override val grade: String
