@@ -42,10 +42,6 @@ class ITGView : ScoreViewFragment() {
         return ITGScore()
     }
 
-    override fun addGameSpecificViews() {
-        // no-op for ITG
-    }
-
     override fun displayInput(score: Score) {
         _fantastics.setText(stripZero(score.elements[ITGScore.FANTASTICS]?.count))
         _excellents.setText(stripZero(score.elements[ITGScore.EXCELLENTS]?.count))

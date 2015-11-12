@@ -86,6 +86,8 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         return view
     }
 
+    abstract protected val calculatorLayoutResId: Int
+
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _scoreEntryFields = getScoreEntryFields()
@@ -106,7 +108,7 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         val list = ArrayList<EditText>()
         for (row in parentContainer.getChildren()) {
             for (element in (row as TableRow).getChildren()) {
-                // Check if this is actually a score entry element (and not a switch)
+                // Check if this is actually a score entry element
                 if (element is ViewGroup) {
                     val child = element.getChildAt(1)
                     if (child is EditText) list.add(child)
@@ -133,13 +135,6 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         return if (s == "") 0 else s.toInt()
     }
 
-    abstract protected val calculatorLayoutResId: Int
-
-    /**
-     * Hook to allow game-specific implementations to add views
-     */
-    abstract fun addGameSpecificViews()
-
     private fun setKeypadClickListeners() {
         for (button in _keypadButtons) setDigitClickListener(button)
         _deleteButton.setOnClickListener {
@@ -163,8 +158,13 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     private fun setDigitClickListener(button: Button) {
         button.setOnClickListener {
             val text: String = _currentFocusedField?.text.toString()
-            _currentFocusedField?.setText(text + "" + button.tag)
-            _currentFocusedField?.setSelection(_currentFocusedField?.text?.length ?: 0);
+            if (_currentFocusedField != null) {
+                val selectionLength =
+                        _currentFocusedField!!.selectionEnd - _currentFocusedField!!.selectionStart
+                if (selectionLength == 0) _currentFocusedField!!.setText(text + button.tag)
+                else _currentFocusedField!!.setText(button.tag as String)
+                _currentFocusedField!!.setSelection(_currentFocusedField?.text?.length ?: 0);
+            }
         }
     }
 
