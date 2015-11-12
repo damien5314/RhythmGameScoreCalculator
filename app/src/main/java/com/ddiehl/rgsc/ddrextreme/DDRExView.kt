@@ -12,7 +12,7 @@ import com.ddiehl.rgsc.ScoreViewFragment
 import com.ddiehl.rgsc.data.Score
 
 class DDRExView : ScoreViewFragment() {
-    private val _marvellouses: EditText by bindView(R.id.ddrex_marvellouses)
+    private val _marvelouses: EditText by bindView(R.id.ddrex_marvelouses)
     private val _perfects: EditText by bindView(R.id.ddrex_perfects)
     private val _greats: EditText by bindView(R.id.ddrex_greats)
     private val _goods: EditText by bindView(R.id.ddrex_goods)
@@ -20,9 +20,9 @@ class DDRExView : ScoreViewFragment() {
     private val _misses: EditText by bindView(R.id.ddrex_misses)
     private val _holds: EditText by bindView(R.id.ddrex_holds)
     private val _totalHolds: EditText by bindView(R.id.ddrex_total_holds)
-    private val _marvellousSwitch: Switch by bindView(R.id.ddrex_marvellous_switch)
+    private val _marvelousSwitch: Switch by bindView(R.id.ddrex_marvelous_switch)
 
-    var marvellouses: Int = 0; get() = getInputFrom(_marvellouses)
+    var marvelouses: Int = 0; get() = getInputFrom(_marvelouses)
     var perfects: Int = 0; get() = getInputFrom(_perfects)
     var greats: Int = 0; get() = getInputFrom(_greats)
     var goods: Int = 0; get() = getInputFrom(_goods)
@@ -30,9 +30,9 @@ class DDRExView : ScoreViewFragment() {
     var misses: Int = 0; get() = getInputFrom(_misses)
     var holds: Int = 0; get() = getInputFrom(_holds)
     var totalHolds: Int = 0; get() = getInputFrom(_totalHolds)
-    var marvellousesEnabled: Boolean
-        get() = _marvellousSwitch.isChecked
-        set(enabled) { _marvellousSwitch.isChecked = enabled }
+    var marvelousEnabled: Boolean
+        get() = _marvelousSwitch.isChecked
+        set(enabled) { _marvelousSwitch.isChecked = enabled }
 
     override val calculatorLayoutResId: Int = R.layout.calculator_ddrex
 
@@ -42,20 +42,20 @@ class DDRExView : ScoreViewFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _marvellousSwitch.setOnCheckedChangeListener({ compoundButton, checked ->
-            marvellousesEnabled = checked
-            _marvellouses.isFocusable = checked
-            _marvellouses.isFocusableInTouchMode = checked
+        _marvelousSwitch.setOnCheckedChangeListener({ compoundButton, checked ->
+            marvelousEnabled = checked
+            _marvelouses.isFocusable = checked
+            _marvelouses.isFocusableInTouchMode = checked
             if (checked) {
                 // Enable marvelous field
-                _marvellouses.inputType = InputType.TYPE_CLASS_NUMBER
+                _marvelouses.inputType = InputType.TYPE_CLASS_NUMBER
                 // Set next focus target for total holds field
-                _totalHolds.nextFocusDownId = _marvellouses.id
-                _totalHolds.nextFocusForwardId = _marvellouses.id
+                _totalHolds.nextFocusDownId = _marvelouses.id
+                _totalHolds.nextFocusForwardId = _marvelouses.id
             } else {
                 // Disable marvelous field and clear
-                _marvellouses.setText("")
-                _marvellouses.inputType = InputType.TYPE_NULL
+                _marvelouses.setText("")
+                _marvelouses.inputType = InputType.TYPE_NULL
                 // Set next focus target for total holds field
                 _totalHolds.nextFocusDownId = _perfects.id
                 _totalHolds.nextFocusForwardId = _perfects.id
@@ -63,13 +63,13 @@ class DDRExView : ScoreViewFragment() {
             _presenter.onScoreUpdated()
         })
         // Set initial state for switch
-        _marvellouses.setText("")
-        _marvellouses.inputType = InputType.TYPE_NULL
-        _marvellousSwitch.isChecked = false
+        _marvelouses.setText("")
+        _marvelouses.inputType = InputType.TYPE_NULL
+        _marvelousSwitch.isChecked = false
     }
 
     override fun displayInput(score: Score) {
-        _marvellouses.setText(stripZero(score.elements[DDRExScore.MARVELLOUSES]?.count))
+        _marvelouses.setText(stripZero(score.elements[DDRExScore.MARVELOUSES]?.count))
         _perfects.setText(stripZero(score.elements[DDRExScore.PERFECTS]?.count))
         _greats.setText(stripZero(score.elements[DDRExScore.GREATS]?.count))
         _goods.setText(stripZero(score.elements[DDRExScore.GOODS]?.count))

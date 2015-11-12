@@ -19,13 +19,13 @@ class DDRExPresenter(override val _view: DDRExView) : ScorePresenter() {
         // Load state of marvelous switch
         val sp = ContextProvider.get().getSharedPreferences(Storage.PREFS_DDREX, Context.MODE_PRIVATE)
         val marvelousEnabled = sp.getBoolean(PREF_MARVELOUS_SWITCH, false)
-        _view.marvellousesEnabled = marvelousEnabled
+        _view.marvelousEnabled = marvelousEnabled
     }
 
     override fun onStop() {
         // Save state of marvelous switch
         val sp = ContextProvider.get().getSharedPreferences(Storage.PREFS_DDREX, Context.MODE_PRIVATE)
-        sp.edit().putBoolean(PREF_MARVELOUS_SWITCH, _view.marvellousesEnabled).apply()
+        sp.edit().putBoolean(PREF_MARVELOUS_SWITCH, _view.marvelousEnabled).apply()
         super.onStop()
     }
 
@@ -35,7 +35,7 @@ class DDRExPresenter(override val _view: DDRExView) : ScorePresenter() {
 
     override fun getInput(): DDRExScore {
         val score = DDRExScore()
-        score.elements[DDRExScore.MARVELLOUSES]!!.count = _view.marvellouses
+        score.elements[DDRExScore.MARVELOUSES]!!.count = _view.marvelouses
         score.elements[DDRExScore.PERFECTS]!!.count = _view.perfects
         score.elements[DDRExScore.GREATS]!!.count = _view.greats
         score.elements[DDRExScore.GOODS]!!.count = _view.goods
@@ -43,7 +43,7 @@ class DDRExPresenter(override val _view: DDRExView) : ScorePresenter() {
         score.elements[DDRExScore.MISSES]!!.count = _view.misses
         score.elements[DDRExScore.HOLDS]!!.count = _view.holds
         score.elements[DDRExScore.TOTAL_HOLDS]!!.count = _view.totalHolds
-        score.marvelousEnabled = _view.marvellousesEnabled
+        score.marvelousEnabled = _view.marvelousEnabled
         return score
     }
 

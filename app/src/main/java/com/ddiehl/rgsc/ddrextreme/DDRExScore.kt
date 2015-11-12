@@ -6,7 +6,7 @@ import com.ddiehl.rgsc.data.ScoreElement
 
 public class DDRExScore() : Score() {
     companion object {
-        const val MARVELLOUSES = "marvellouses"
+        const val MARVELOUSES = "marvelouses"
         const val PERFECTS = "perfects"
         const val GREATS = "greats"
         const val GOODS = "goods"
@@ -17,7 +17,7 @@ public class DDRExScore() : Score() {
     }
 
     override val elements: Map<String, ScoreElement> = mapOf(
-            Pair(MARVELLOUSES, ScoreElement(R.id.ddrex_marvellouses, R.string.ddrex_marvellouses, 0, 3, 3)),
+            Pair(MARVELOUSES, ScoreElement(R.id.ddrex_marvelouses, R.string.ddrex_marvelouses, 0, 3, 3)),
             Pair(PERFECTS, ScoreElement(R.id.ddrex_perfects, R.string.ddrex_perfects, 0, 2, 3)),
             Pair(GREATS, ScoreElement(R.id.ddrex_greats, R.string.ddrex_greats, 0, 1, 3)),
             Pair(GOODS, ScoreElement(R.id.ddrex_goods, R.string.ddrex_goods, 0, 0, 3)),
@@ -30,7 +30,7 @@ public class DDRExScore() : Score() {
     var marvelousEnabled = false
         set(value) {
             val bestWeight =
-                    if (value) elements[MARVELLOUSES]!!.weight
+                    if (value) elements[MARVELOUSES]!!.weight
                     else elements[PERFECTS]!!.weight
             elements[PERFECTS]!!.bestWeight = bestWeight
             elements[GREATS]!!.bestWeight = bestWeight

@@ -19,7 +19,7 @@
     <string name="itg_total_rolls">Total Rolls</string>
 
     <!-- DDR Extreme -->
-    <string name="ddrex_marvellouses">Marvellouses</string>
+    <string name="ddrex_marvelouses">Marvelouses</string>
     <string name="ddrex_perfects">Perfects</string>
     <string name="ddrex_greats">Greats</string>
     <string name="ddrex_goods">Goods</string>
@@ -50,6 +50,6 @@
     <string name="keypad_next_field">Next</string>
     <string name="keypad_delete">Delete</string>
     <string name="delete_key_explanation">Triple-tap delete key to clear all fields</string>
-    <string name="ddrex_marvellous_switch_label_on">Oni/Nonstop</string>
+    <string name="ddrex_marvelous_switch_label_on">Oni/Nonstop</string>
 
 </resources>

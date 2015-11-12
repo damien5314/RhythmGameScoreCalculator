@@ -10,11 +10,11 @@
 
             <TextView
                 style="@style/ScoreEntryLabel"
-                android:text="@string/ddrex_marvellouses"/>
+                android:text="@string/ddrex_marvelouses"/>
 
             <EditText
                 style="@style/ScoreEntryField"
-                android:id="@id/ddrex_marvellouses"
+                android:id="@id/ddrex_marvelouses"
                 android:nextFocusDown="@id/ddrex_perfects"
                 android:nextFocusForward="@id/ddrex_perfects"/>
 
@@ -26,11 +26,11 @@
             android:layout_weight="1">
 
             <Switch
-                android:id="@+id/ddrex_marvellous_switch"
+                android:id="@+id/ddrex_marvelous_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/ddrex_marvellous_switch_label_on"
+                android:text="@string/ddrex_marvelous_switch_label_on"
                 android:textColor="@color/primary_text"/>
 
         </FrameLayout>
@@ -94,8 +94,8 @@
             <EditText
                 style="@style/ScoreEntryField"
                 android:id="@id/ddrex_total_holds"
-                android:nextFocusDown="@id/ddrex_marvellouses"
-                android:nextFocusForward="@id/ddrex_marvellouses" />
+                android:nextFocusDown="@id/ddrex_marvelouses"
+                android:nextFocusForward="@id/ddrex_marvelouses" />
 
         </LinearLayout>
 
