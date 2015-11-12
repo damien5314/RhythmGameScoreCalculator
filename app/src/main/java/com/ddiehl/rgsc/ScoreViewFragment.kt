@@ -2,6 +2,7 @@ package com.ddiehl.rgsc
 
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Rect
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.Snackbar
@@ -87,7 +88,6 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        generateScoreEntryView()
         _scoreEntryFields = getScoreEntryFields()
         _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
                 _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
@@ -131,82 +131,6 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     protected fun getInputFrom(t: EditText): Int {
         val s = t.text.toString()
         return if (s == "") 0 else s.toInt()
-    }
-
-    private fun generateScoreEntryView() {
-//        val score = getEmptyScore()
-//        val grid = _scoreEntryScrollView.getChildAt(0) as TableLayout
-//        val layoutInflater = activity.layoutInflater
-//
-//        // Generate column layout for number of columns required
-////        for (element in score.elements.values) {
-////            if (element.column > numColumns-1) {
-////                val columnLayout = layoutInflater.inflate(
-////                        R.layout.calculator_column, parentContainer, false)
-////                parentContainer.addView(columnLayout)
-////                numColumns++
-////            }
-////        }
-//
-//        // Generate item layout for each item in the returned score
-//        for (element in score.elements.values) {
-//            // Add item layout to appropriate column as specified in score's column property
-////            val column = element.column
-////            val columnView = parentContainer.getChildAt(column) as ViewGroup
-//            var rowIndex = 0
-//            var row: TableRow? = grid.getChildAt(rowIndex) as TableRow
-//            while (row != null && element.column >= row.childCount-1) {
-//                row = grid.getChildAt(++rowIndex) as TableRow
-//            }
-//            if (row == null) {
-//                row = layoutInflater.inflate(R.layout.calculator_score_row, grid, false) as TableRow
-//                grid.addView(row)
-//            }
-//            val elementContainer = layoutInflater.inflate(
-//                    R.layout.calculator_score_element, row, false) as ViewGroup
-//            row.addView(elementContainer)
-//            // Set text for TextView to item's label resource
-//            val elementTextView = elementContainer.getChildAt(0) as TextView
-//            elementTextView.text = getString(element.labelResId)
-//            // Set id for EditText to item's id
-//            val elementEditText = elementContainer.getChildAt(1) as EditText
-//            elementEditText.id = element.id
-//        }
-//
-//        // Add next focus forward/down attributes to each EditText
-//        for (i in 0..grid.childCount-1) {
-//            var row = grid.getChildAt(i) as ViewGroup
-//            for (j in 0..row.childCount-1) {
-//                var elementParent = row.getChildAt(j)
-//                if (elementParent is ViewGroup) {
-//                    // Determine next focus target
-//                    var nextFocusParent: ViewGroup?
-//                    val nextRow = grid.getChildAt(i+1)
-//                    if (nextRow != null) {
-//                        val nextElement = (nextRow as ViewGroup).getChildAt(j)
-//                        if (nextElement != null) {
-//                            if (nextElement is ViewGroup) nextFocusParent = nextElement
-//                        }
-//                    }
-////                    if (j == row.childCount-1) {
-////                        val nextColumnIndex = if (i == grid.childCount-1) 0 else i+1
-////                        val nextColumn = grid.getChildAt(nextColumnIndex) as ViewGroup
-////                        nextFocusParent = nextColumn.getChildAt(0) as ViewGroup
-////                    } else {
-////                        nextFocusParent = row.getChildAt(j+1) as ViewGroup
-////                    }
-//                    val nextFocusId = nextFocusParent.getChildAt(1).id
-//                    // Set next focus target for child EditText field
-//                    val editTextField = elementParent.getChildAt(1) as EditText
-//                    editTextField.nextFocusDownId = nextFocusId
-//                    editTextField.nextFocusForwardId = nextFocusId
-//                }
-//            }
-//        }
-//
-//        addGameSpecificViews()
-
-        activity.layoutInflater.inflate(calculatorLayoutResId, _scoreEntryScrollView, true)
     }
 
     abstract protected val calculatorLayoutResId: Int
@@ -253,31 +177,26 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         t.setTextIsSelectable(true)
     }
 
-    private fun showKeypadListener(view: View, visible: Boolean) {
+    private fun showKeypad(visible: Boolean) {
         _keypad.visibility = if (!visible && shouldHideKeyboard()) View.GONE else View.VISIBLE
-        _currentFocusedField = if (visible) view as EditText else null
-    }
-
-    private val keypadNumberOnFocusChangeListener = View.OnFocusChangeListener {
-        view, visible -> showKeypadListener(view, visible)
-    }
-
-    protected val keypadNumberScrollUpOnFocusChangeListener = View.OnFocusChangeListener {
-        view, visible ->
-        showKeypadListener(view, visible)
-        _scoreEntryScrollView.scrollTo(0, 0)
     }
 
     private fun setOnFocusListeners() {
         for (et in _scoreEntryFields) et.onFocusChangeListener = keypadNumberOnFocusChangeListener
-        val parentContainer = _scoreEntryScrollView.getChildAt(0) as ViewGroup
-        for (column in parentContainer.getChildren()) {
-            val firstElementParent = (column as ViewGroup).getChildAt(0)
-            if (firstElementParent is ViewGroup) {
-                firstElementParent.getChildAt(1).onFocusChangeListener =
-                        keypadNumberScrollUpOnFocusChangeListener
-            }
-        }
+    }
+
+    private val keypadNumberOnFocusChangeListener = View.OnFocusChangeListener {
+        view, visible ->
+        _currentFocusedField = if (visible) view as EditText else null
+        showKeypad(visible)
+        val parentLayout = view.parent.parent as View
+        if (visible) scrollToView(_scoreEntryScrollView, parentLayout)
+    }
+
+    private fun scrollToView(scrollView: ScrollView, view: View) {
+        val scrollBounds = Rect()
+        scrollView.getHitRect(scrollBounds)
+        scrollView.smoothScrollTo(0, view.top)
     }
 
     protected fun stripZero(i: Int?): String {
