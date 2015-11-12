@@ -191,9 +191,16 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
     }
 
     private fun scrollToView(scrollView: ScrollView, view: View) {
-        val scrollBounds = Rect()
-        scrollView.getHitRect(scrollBounds)
+        if (!scrollView.isViewVisible(view))
         scrollView.smoothScrollTo(0, view.top)
+    }
+
+    private fun ScrollView.isViewVisible(view: View): Boolean {
+        val scrollBounds = Rect();
+        getDrawingRect(scrollBounds);
+        val top = view.y;
+        val bottom = top + view.height;
+        return scrollBounds.top <= top && scrollBounds.bottom >= bottom
     }
 
     protected fun stripZero(i: Int?): String {
