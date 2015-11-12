@@ -30,7 +30,9 @@ class DDRExView : ScoreViewFragment() {
     var misses: Int = 0; get() = getInputFrom(_misses)
     var holds: Int = 0; get() = getInputFrom(_holds)
     var totalHolds: Int = 0; get() = getInputFrom(_totalHolds)
-    var marvellousesEnabled: Boolean = false
+    var marvellousesEnabled: Boolean
+        get() = _marvellousSwitch.isChecked
+        set(enabled) { _marvellousSwitch.isChecked = enabled }
 
     override val calculatorLayoutResId: Int = R.layout.calculator_ddrex
 

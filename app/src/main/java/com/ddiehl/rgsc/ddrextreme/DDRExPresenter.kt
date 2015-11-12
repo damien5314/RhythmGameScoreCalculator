@@ -1,12 +1,33 @@
 package com.ddiehl.rgsc.ddrextreme
 
+import android.content.Context
+import com.ddiehl.rgsc.ContextProvider
 import com.ddiehl.rgsc.ScorePresenter
 import com.ddiehl.rgsc.data.AndroidStorage
 import com.ddiehl.rgsc.data.Score
 import com.ddiehl.rgsc.data.Storage
 
 class DDRExPresenter(override val _view: DDRExView) : ScorePresenter() {
+    companion object {
+        val PREF_MARVELOUS_SWITCH = "pref_marvelous_switch"
+    }
+
     override val _storage: Storage = AndroidStorage(Storage.PREFS_DDREX)
+
+    override fun onStart() {
+        super.onStart()
+        // Load state of marvelous switch
+        val sp = ContextProvider.get().getSharedPreferences(Storage.PREFS_DDREX, Context.MODE_PRIVATE)
+        val marvelousEnabled = sp.getBoolean(PREF_MARVELOUS_SWITCH, false)
+        _view.marvellousesEnabled = marvelousEnabled
+    }
+
+    override fun onStop() {
+        // Save state of marvelous switch
+        val sp = ContextProvider.get().getSharedPreferences(Storage.PREFS_DDREX, Context.MODE_PRIVATE)
+        sp.edit().putBoolean(PREF_MARVELOUS_SWITCH, _view.marvellousesEnabled).apply()
+        super.onStop()
+    }
 
     override fun getEmptyScore(): Score {
         return DDRExScore()

@@ -14,13 +14,13 @@ abstract class ScorePresenter() : ScoreUpdateListener {
 
     abstract fun getInput(): Score
 
-    fun onStart() {
+    open fun onStart() {
         val score: Score = _storage.getSavedScore()
         _view.displayInput(score)
         updateScore(score, false)
     }
 
-    fun onStop() {
+    open fun onStop() {
         _storage.saveScore(getInput())
     }
     
