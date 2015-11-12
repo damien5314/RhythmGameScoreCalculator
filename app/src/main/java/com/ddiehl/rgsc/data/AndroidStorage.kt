@@ -3,6 +3,7 @@ package com.ddiehl.rgsc.data
 import android.content.Context
 import com.ddiehl.rgsc.ContextProvider
 import com.ddiehl.rgsc.ddrextreme.DDRExScore
+import com.ddiehl.rgsc.ddrsn2.DDRSN2Score
 import com.ddiehl.rgsc.itg.ITGScore
 
 class AndroidStorage(private val _prefKey: String) : Storage {
@@ -21,7 +22,8 @@ class AndroidStorage(private val _prefKey: String) : Storage {
         val score = when (_prefKey) {
             Storage.PREFS_ITG -> ITGScore()
             Storage.PREFS_DDREX -> DDRExScore()
-            else -> ITGScore()
+            Storage.PREFS_DDRSN2 -> DDRSN2Score()
+            else -> throw RuntimeException("Score key not recognized")
         }
         for (element in score.elements) {
             val key = element.key

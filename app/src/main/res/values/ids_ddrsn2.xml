@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="ddrsn2_marvelouses" />
+    <item type="id" name="ddrsn2_perfects" />
+    <item type="id" name="ddrsn2_greats" />
+    <item type="id" name="ddrsn2_goods" />
+    <item type="id" name="ddrsn2_boos" />
+    <item type="id" name="ddrsn2_misses" />
+    <item type="id" name="ddrsn2_holds" />
+    <item type="id" name="ddrsn2_total_holds" />
+</resources>

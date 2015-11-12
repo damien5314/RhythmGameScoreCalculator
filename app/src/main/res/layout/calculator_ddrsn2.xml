@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrsn2_marvelouses"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrsn2_marvelouses"
+                android:nextFocusDown="@id/ddrsn2_perfects"
+                android:nextFocusForward="@id/ddrsn2_perfects"/>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrsn2_holds"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrsn2_holds"
+                android:nextFocusDown="@id/ddrsn2_total_holds"
+                android:nextFocusForward="@id/ddrsn2_total_holds" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrsn2_perfects"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrsn2_perfects"
+                android:nextFocusDown="@id/ddrsn2_greats"
+                android:nextFocusForward="@id/ddrsn2_greats"/>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrsn2_total_holds"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrsn2_total_holds"
+                android:nextFocusDown="@id/ddrsn2_marvelouses"
+                android:nextFocusForward="@id/ddrsn2_marvelouses" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrsn2_greats"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrsn2_greats"
+                android:nextFocusDown="@id/ddrsn2_goods"
+                android:nextFocusForward="@id/ddrsn2_goods" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem" />
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrsn2_goods"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrsn2_goods"
+                android:nextFocusDown="@id/ddrsn2_boos"
+                android:nextFocusForward="@id/ddrsn2_boos" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem" />
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrsn2_boos"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrsn2_boos"
+                android:nextFocusDown="@id/ddrsn2_misses"
+                android:nextFocusForward="@id/ddrsn2_misses" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem" />
+
+    </TableRow>
+
+    <TableRow style="@style/ScoreEntryRow">
+
+        <LinearLayout style="@style/ScoreEntryItem">
+
+            <TextView
+                style="@style/ScoreEntryLabel"
+                android:text="@string/ddrsn2_misses"/>
+
+            <EditText
+                style="@style/ScoreEntryField"
+                android:id="@id/ddrsn2_misses"
+                android:nextFocusDown="@id/ddrsn2_holds"
+                android:nextFocusForward="@id/ddrsn2_holds" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/ScoreEntryItem" />
+
+    </TableRow>
+
+</TableLayout>

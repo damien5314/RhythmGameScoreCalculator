@@ -3,6 +3,7 @@
 
     <string name="tab_itg">In the Groove</string>
     <string name="tab_ddrex">DDR Extreme</string>
+    <string name="tab_ddrsn2">DDR Supernova 2</string>
     <string name="app_name">RGSC</string>
 
     <!-- In the Groove -->
@@ -27,6 +28,16 @@
     <string name="ddrex_misses">Misses</string>
     <string name="ddrex_holds">Holds</string>
     <string name="ddrex_total_holds">Total Holds</string>
+
+    <!-- DDR SN2 -->
+    <string name="ddrsn2_marvelouses">Marvelouses</string>
+    <string name="ddrsn2_perfects">Perfects</string>
+    <string name="ddrsn2_greats">Greats</string>
+    <string name="ddrsn2_goods">Goods</string>
+    <string name="ddrsn2_boos">Boos</string>
+    <string name="ddrsn2_misses">Misses</string>
+    <string name="ddrsn2_holds">Holds</string>
+    <string name="ddrsn2_total_holds">Total Holds</string>
 
     <string name="score_entry_hint">0</string>
     <string name="error_no_steps">Error: No steps entered</string>
