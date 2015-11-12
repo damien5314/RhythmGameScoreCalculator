@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,6 +68,11 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
 
     override abstract fun clearErrors()
 
+    protected fun getInputFrom(t: EditText): Int {
+        val s = t.text.toString()
+        return if (s == "") 0 else s.toInt()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _presenter = getPresenter()
@@ -87,12 +91,29 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        initializeView()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        initializeView()
+        _presenter.onStart()
+        subscribeToTextChangedEvents()
+    }
+
+    override fun onStop() {
+        unsubscribeFromTextChangedEvents()
+        _presenter.onStop()
+        super.onStop()
+    }
+
+    private fun initializeView() {
         _scoreEntryFields = getScoreEntryFields()
         _keypadButtons = listOf(_keypad_0, _keypad_1, _keypad_2, _keypad_3, _keypad_4,
                 _keypad_5, _keypad_6, _keypad_7, _keypad_8, _keypad_9)
         if (shouldHideKeyboard()) _keypad.visibility = View.GONE
         _onTextChangedEvent = getTextChangedObservable()
-        disableEditText()
+//        disableEditText()
         setOnFocusListeners()
         setKeypadClickListeners()
         _calculatedScoreArea.setOnClickListener {
@@ -115,25 +136,8 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         return list
     }
 
-    override fun onStart() {
-        super.onStart()
-        subscribeToTextChangedEvents()
-        _presenter.onStart()
-    }
-
-    override fun onStop() {
-        unsubscribeFromTextChangedEvents()
-        _presenter.onStop()
-        super.onStop()
-    }
-
-    protected fun getInputFrom(t: EditText): Int {
-        val s = t.text.toString()
-        return if (s == "") 0 else s.toInt()
-    }
-
     private fun setKeypadClickListeners() {
-        for (button in _keypadButtons) setDigitClickListener(button)
+        for (button in _keypadButtons) button.setOnClickListener(digitClickListener)
         _deleteButton.setOnClickListener {
             showDeleteKeyExplanation()
             _handler.removeCallbacks(_deleteButtonRunnable)
@@ -152,27 +156,23 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         }
     }
 
-    private fun setDigitClickListener(button: Button) {
-        button.setOnClickListener {
-            val text: String = _currentFocusedField?.text.toString()
-            if (_currentFocusedField != null) {
-                val selectionLength =
-                        _currentFocusedField!!.selectionEnd - _currentFocusedField!!.selectionStart
-                if (selectionLength == 0) _currentFocusedField!!.setText(text + button.tag)
-                else _currentFocusedField!!.setText(button.tag as String)
-                _currentFocusedField!!.setSelection(_currentFocusedField?.text?.length ?: 0);
-            }
+    private val digitClickListener: View.OnClickListener = View.OnClickListener {
+        val text: String = _currentFocusedField?.text.toString()
+        if (_currentFocusedField != null) {
+            val selectionLength =
+                    _currentFocusedField!!.selectionEnd - _currentFocusedField!!.selectionStart
+            if (selectionLength == 0) _currentFocusedField!!.setText(text + it.tag)
+            else _currentFocusedField!!.setText(it.tag as String)
+            _currentFocusedField!!.setSelection(_currentFocusedField?.text?.length ?: 0);
         }
     }
 
-    private fun disableEditText() {
-        for (et in _scoreEntryFields) disableEditText(et)
-    }
-
-    private fun disableEditText(t: EditText) {
-        t.setRawInputType(InputType.TYPE_CLASS_NUMBER)
-        t.setTextIsSelectable(true)
-    }
+//    private fun disableEditText() {
+//        for (t in _scoreEntryFields) {
+//            t.setRawInputType(InputType.TYPE_CLASS_NUMBER)
+//            t.setTextIsSelectable(true)
+//        }
+//    }
 
     private fun showKeypad(visible: Boolean) {
         _keypad.visibility = if (!visible && shouldHideKeyboard()) View.GONE else View.VISIBLE
