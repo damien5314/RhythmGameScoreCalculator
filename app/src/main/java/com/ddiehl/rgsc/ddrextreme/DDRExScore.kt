@@ -41,12 +41,20 @@ public class DDRExScore() : Score() {
 
     override val grade: String
         get() {
-            val scorePercent = ((earned.toDouble() / potential.toDouble()) * 10000).toInt() / 100.00
-            if (scorePercent == 100.0) return "AAA"
+            val scorePercent = percent
+            if (scorePercent == 100.0 && marvelousEnabled) return "AAAA"
+            else if (!hasNonPerfectSteps()) return "AAA"
             else if (scorePercent >= 93.0) return "AA"
             else if (scorePercent >= 80.0) return "A"
             else if (scorePercent >= 65.0) return "B"
             else if (scorePercent >= 45.0) return "C"
             else return "D"
         }
+
+    private fun hasNonPerfectSteps(): Boolean {
+        return elements[GREATS]!!.count != 0 ||
+                elements[GOODS]!!.count != 0 ||
+                elements[BOOS]!!.count != 0 ||
+                elements[MISSES]!!.count != 0
+    }
 }

@@ -35,7 +35,7 @@ public class ITGScore() : Score() {
 
     override val grade: String
         get() {
-            val scorePercent = ((earned.toDouble() / potential.toDouble()) * 10000).toInt() / 100.00
+            val scorePercent = percent
             if (scorePercent == 100.0) return "****"
             else if (scorePercent > 99.0) return "***"
             else if (scorePercent > 98.0) return "**"
