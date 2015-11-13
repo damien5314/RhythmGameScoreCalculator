@@ -10,6 +10,6 @@
     <color name="divider">#B6B6B6</color>
 
     <color name="score_values_background">@color/primary_light</color>
-    <color name="primary_pressed">#ff0000</color>
-    <color name="primary_focused">#00ff00</color>
+    <color name="primary_pressed">@color/primary_dark</color>
+    <color name="primary_focused">@color/primary_dark</color>
 </resources>
