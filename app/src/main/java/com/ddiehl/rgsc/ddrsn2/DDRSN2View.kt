@@ -7,6 +7,8 @@ import com.ddiehl.rgsc.R
 import com.ddiehl.rgsc.ScorePresenter
 import com.ddiehl.rgsc.ScoreViewFragment
 import com.ddiehl.rgsc.data.Score
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class DDRSN2View : ScoreViewFragment() {
     private val _marvelouses: EditText by bindView(R.id.ddrsn2_marvelouses)
@@ -45,7 +47,7 @@ class DDRSN2View : ScoreViewFragment() {
     }
 
     override fun showScoreValues(earned: Int, potential: Int) {
-        _scoreValueArea.text = earned.toString()
+        _scoreValueArea.text = NumberFormat.getInstance().format(earned)
     }
 
     override fun showScorePercentage(scorePercent: Double) {
