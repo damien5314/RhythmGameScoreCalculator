@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import butterknife.ButterKnife
 import butterknife.bindView
 import com.ddiehl.rgsc.data.Storage
 import com.ddiehl.rgsc.utils.getChildren
@@ -85,6 +86,11 @@ abstract class ScoreViewFragment() : Fragment(), ScoreView {
         val scoreEntryLayout = inflater.inflate(calculatorLayoutResId, scoreEntryContainer, false)
         scoreEntryContainer.addView(scoreEntryLayout)
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        ButterKnife.reset(this)
     }
 
     abstract protected val calculatorLayoutResId: Int
