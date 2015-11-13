@@ -26,9 +26,31 @@ public class DDRSN2Score() : Score() {
             Pair(TOTAL_HOLDS, ScoreElement(0, 5, false))
     )
 
+    override val earned: Int
+        get() {
+            val value = stepValue
+            var total = 0.0
+            total += elements[MARVELOUSES]!!.count * value
+            total += elements[PERFECTS]!!.count * (value - 10)
+            total += elements[GREATS]!!.count * (value / 2 - 10)
+            total += elements[HOLDS]!!.count * value
+            return (total.toInt() / 10) * 10 // Round down to the nearest 10
+        }
+
+    override val potential: Int = 1000000
+
+    private val stepValue: Double
+        get() = 1000000.0 / (stepTotal + elements[TOTAL_HOLDS]!!.count)
+
     override val grade: String
         get() {
-            val scorePercent = percent
+            val score = earned
+            if (score == 1000000) return "AAAA"
+            if (score > 990000) return "AAA"
+            if (score > 950000) return "AA"
+            if (score > 900000) return "A"
+            if (score > 800000) return "B"
+            if (score > 700000) return "C"
             return "D"
         }
 }

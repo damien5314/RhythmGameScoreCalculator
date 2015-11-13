@@ -1,5 +1,6 @@
 package com.ddiehl.rgsc.ddrsn2
 
+import android.view.View
 import android.widget.EditText
 import butterknife.bindView
 import com.ddiehl.rgsc.R
@@ -41,6 +42,20 @@ class DDRSN2View : ScoreViewFragment() {
         _misses.setText(stripZero(score.elements[DDRSN2Score.MISSES]?.count))
         _holds.setText(stripZero(score.elements[DDRSN2Score.HOLDS]?.count))
         _totalHolds.setText(stripZero(score.elements[DDRSN2Score.TOTAL_HOLDS]?.count))
+    }
+
+    override fun showScoreValues(earned: Int, potential: Int) {
+        _scoreValueArea.text = earned.toString()
+    }
+
+    override fun showScorePercentage(scorePercent: Double) {
+        // No-op for DDR SN2
+        _scorePercent.visibility = View.GONE
+    }
+
+    override fun showScoreError() {
+        _scoreValueArea.text = "-"
+        _scoreGrade.text = "-"
     }
 
     fun showHoldsInvalid() {
