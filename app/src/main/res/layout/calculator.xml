@@ -89,7 +89,7 @@
     <LinearLayout
         android:id="@+id/keypad_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/keypad_layout_height"
         android:orientation="vertical"
         android:background="@color/primary">
 

@@ -49,6 +49,7 @@
                 android:id="@+id/calculated_score"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_margin="5dp"
                 android:background="@drawable/score_values_bg"
                 android:orientation="vertical">
 
@@ -59,7 +60,7 @@
                     android:layout_gravity="center"
                     android:textSize="@dimen/score_display_small_size"
                     android:textColor="@color/secondary_text"
-                    tools:text="573 / 1337 (-764)"/>
+                    tools:text="573 / 1337 (764)"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -95,8 +96,8 @@
 
         <LinearLayout
             android:id="@+id/keypad_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/keypad_layout_width"
+            android:layout_height="@dimen/keypad_layout_height"
             android:orientation="vertical">
 
             <include layout="@layout/calculator_keypad_layout" />

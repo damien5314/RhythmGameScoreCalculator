@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
@@ -16,6 +17,11 @@
     <dimen name="score_values_background_padding">5dp</dimen>
     <dimen name="score_values_background_width">2dp</dimen>
     <dimen name="score_values_bg_corners">5dp</dimen>
-    <dimen name="clear_button_height">48dp</dimen>
+
+    <dimen name="keypad_layout_width">288dp</dimen>
+    <dimen name="keypad_layout_height">192dp</dimen>
+    <dimen name="keypad_button_width">60dp</dimen>
+    <dimen name="keypad_button_height">48dp</dimen>
+    <dimen name="keypad_button_text_size">18sp</dimen>
 
 </resources>
