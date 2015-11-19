@@ -39,55 +39,47 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/calculated_score"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_margin="@dimen/score_display_padding"
             android:gravity="center"
+            android:background="@drawable/score_values_bg"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/score_value_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/score_display_values_text_size"
+                android:textColor="@color/secondary_text"
+                tools:text="573 / 1337 (764)"/>
+
             <LinearLayout
-                android:id="@+id/calculated_score"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:layout_margin="@dimen/score_display_padding"
-                android:gravity="center"
-                android:background="@drawable/score_values_bg"
-                android:orientation="vertical">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/score_value_area"
+                    android:id="@+id/score_percent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/score_display_values_text_size"
+                    android:paddingLeft="@dimen/score_display_padding"
+                    android:paddingRight="@dimen/score_display_padding"
+                    android:textSize="@dimen/score_display_values_text_size_large"
                     android:textColor="@color/secondary_text"
-                    tools:text="573 / 1337 (764)"/>
+                    tools:text="0.00%" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/score_grade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/score_percent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/score_display_padding"
-                        android:paddingRight="@dimen/score_display_padding"
-                        android:textSize="@dimen/score_display_values_text_size_large"
-                        android:textColor="@color/secondary_text"
-                        tools:text="0.00%" />
-
-                    <TextView
-                        android:id="@+id/score_grade"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/score_display_padding"
-                        android:paddingRight="@dimen/score_display_padding"
-                        android:textSize="@dimen/score_display_values_text_size_large"
-                        android:textColor="@color/secondary_text"
-                        tools:text="D"/>
-
-                </LinearLayout>
+                    android:paddingLeft="@dimen/score_display_padding"
+                    android:paddingRight="@dimen/score_display_padding"
+                    android:textSize="@dimen/score_display_values_text_size_large"
+                    android:textColor="@color/secondary_text"
+                    tools:text="D"/>
 
             </LinearLayout>
 
