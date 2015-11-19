@@ -70,7 +70,7 @@ object ButterKnife {
     }
 }
 
-private fun findView<T : View>(thisRef: Any, id: Int): T? {
+private fun <T : View> findView(thisRef: Any, id: Int): T? {
     @Suppress("UNCHECKED_CAST")
     return when (thisRef) {
         is View -> thisRef.findViewById(id)
