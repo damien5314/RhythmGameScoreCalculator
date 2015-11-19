@@ -5,14 +5,13 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="tab_layout_elevation">6dp</dimen>
 
-    <dimen name="score_entry_label_size">12sp</dimen>
-    <dimen name="score_entry_field_text_size">@dimen/score_entry_label_size</dimen>
+    <dimen name="score_entry_label_text_size">12sp</dimen>
+    <dimen name="score_entry_field_text_size">18sp</dimen>
 
     <dimen name="score_display_padding">10dp</dimen>
     <dimen name="score_section_elevation">6dp</dimen>
     <dimen name="score_display_values_text_size">20sp</dimen>
     <dimen name="score_display_values_text_size_large">32sp</dimen>
-    <dimen name="score_entry_height">48dp</dimen>
 
     <dimen name="score_values_background_width">2dp</dimen>
     <dimen name="score_values_bg_corners">5dp</dimen>

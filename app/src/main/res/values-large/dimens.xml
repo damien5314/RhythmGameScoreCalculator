@@ -5,7 +5,8 @@
     <dimen name="activity_vertical_margin">24dp</dimen>
     <dimen name="tab_layout_elevation">6dp</dimen>
 
-    <dimen name="score_entry_label_size">18sp</dimen>
+    <dimen name="score_entry_label_text_size">18sp</dimen>
+    <dimen name="score_entry_field_text_size">27sp</dimen>
 
     <dimen name="score_display_padding">15dp</dimen>
     <dimen name="score_section_elevation">6dp</dimen>

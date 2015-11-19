@@ -29,14 +29,13 @@
     <style name="ScoreEntryLabel">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/score_entry_label_size</item>
+        <item name="android:textSize">@dimen/score_entry_label_text_size</item>
         <item name="android:textColor">@color/primary_text</item>
     </style>
 
     <style name="ScoreEntryField">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/score_entry_height</item>
-        <item name="android:padding">0dp</item> <!-- Required to keep the text from being cut off? -->
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:inputType">number</item>
