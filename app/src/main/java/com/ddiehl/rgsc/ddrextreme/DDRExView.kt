@@ -65,6 +65,8 @@ class DDRExView : ScoreViewFragment() {
         // Set initial state for switch
         _marvelouses.setText("")
         _marvelouses.inputType = InputType.TYPE_NULL
+        _marvelouses.isFocusable = false
+        _marvelouses.isFocusableInTouchMode = false
         _marvelousSwitch.isChecked = false
     }
 
