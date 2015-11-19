@@ -6,6 +6,7 @@
     <dimen name="tab_layout_elevation">6dp</dimen>
 
     <dimen name="score_entry_label_size">12sp</dimen>
+    <dimen name="score_entry_field_text_size">@dimen/score_entry_label_size</dimen>
 
     <dimen name="score_display_padding">10dp</dimen>
     <dimen name="score_section_elevation">6dp</dimen>

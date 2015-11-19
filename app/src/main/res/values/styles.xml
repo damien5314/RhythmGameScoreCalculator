@@ -41,6 +41,7 @@
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:inputType">number</item>
         <item name="android:textIsSelectable">true</item>
+        <item name="android:textSize">@dimen/score_entry_field_text_size</item>
         <item name="android:textColor">@color/primary_text</item>
         <item name="android:hint">0</item>
         <item name="android:background">@android:color/transparent</item>
