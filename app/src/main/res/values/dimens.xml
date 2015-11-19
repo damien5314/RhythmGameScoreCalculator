@@ -16,8 +16,8 @@
     <dimen name="score_values_background_width">2dp</dimen>
     <dimen name="score_values_bg_corners">5dp</dimen>
 
-    <dimen name="keypad_layout_width">288dp</dimen>
-    <dimen name="keypad_layout_height">192dp</dimen>
+    <!--<dimen name="keypad_layout_width">288dp</dimen>-->
+    <!--<dimen name="keypad_layout_height">192dp</dimen>-->
     <dimen name="keypad_button_text_size">18sp</dimen>
 
 </resources>
