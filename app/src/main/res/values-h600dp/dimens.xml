@@ -2,6 +2,5 @@
 <resources>
 
     <dimen name="score_entry_height">48dp</dimen>
-    <!--<dimen name="keypad_layout_height">300dp</dimen>-->
 
 </resources>
